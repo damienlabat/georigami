@@ -1,0 +1,42 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+#area-form{
+	background-color: #F5F5F5;
+    box-shadow: 0 0 0 1px #DDDDDD;
+    border-radius: 4px;
+    padding: 0 0 16px;
+}
+
+#start-btn,
+#update-btn {
+    display: block;
+    float: none;
+    margin: auto;
+    clear:both;
+}
+
+
+#map-canvas {
+	height:600px; 
+	margin:40px auto;
+}
+
+
+
+
+#map-canvas img {
+	max-width: none !important;
+}
+
+
+
+
+
+
+
+
