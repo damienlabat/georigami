@@ -1,5 +1,8 @@
 $(function() {
 
+
+
+
   draggableRectangle= function( map, lat, lng, width, height, options ) {
 
     var DR={ lat: lat, lng: lng, width: width, height: height };
@@ -84,9 +87,12 @@ $(function() {
 
 
 
+
+
   Georigami.init = function() {
 
-    var slicesObj=[];
+    var slices=[];
+    var slicesData=[];
     var cadre=null;
 
     //initmap
@@ -100,116 +106,158 @@ $(function() {
 
 
 
-    var updateForm= function() {
 
+
+    var updateForm= function() {
       $('#input-latitude').val(  Georigami.rectangle.lat );
       $('#input-longitude').val( Georigami.rectangle.lng );
-
       $('#input-width').val(  Georigami.rectangle.width );
       $('#input-height').val( Georigami.rectangle.height );
+      drawSlices(  getParams()  );
+    }
 
-      drawSlices();
+
+
+
+    var getParams= function() {
+      var res={};
+      res.lat= parseFloat( $('#input-latitude').val() );
+      res.lng= parseFloat( $('#input-longitude').val() );
+      res.width= parseFloat( $('#input-width').val() );
+      res.height= parseFloat( $('#input-height').val() );
+      res.vSlices= parseFloat( $('#input-vertical-slices').val() );
+      res.hSlices= parseFloat( $('#input-horizontal-slices').val() );
+      res.vSamples= parseFloat( $('#input-vertical-samples').val() );
+      res.hSamples= parseFloat( $('#input-horizontal-samples').val() );
+      return res;
+    }
+
+    var initParams= function(params) {
+      $('#input-latitude').val( params.lat );
+      $('#input-longitude').val( params.lng );
+      $('#input-width').val( params.width );
+      $('#input-height').val( params.height );
+      $('#input-vertical-slices').val( params.vSlices );
+      $('#input-horizontal-slices').val( params.hSlices );
+      $('#input-vertical-samples').val( params.vSamples );
+      $('#input-horizontal-samples').val( params.hSamples );
     }
 
 
 
 
 
-    var drawSlices= function() {
+    var drawSlices= function(params) {
 
-        var center= new google.maps.LatLng( Georigami.rectangle.lat , Georigami.rectangle.lng );
+        var center= new google.maps.LatLng( params.lat , params.lng );
 
         //clear
         if (cadre!=null) cadre.setMap(null);
-        for (var i = slicesObj.length - 1; i >= 0; i--) {
-            slicesObj[i].setMap(null);
+        for (var i = slices.length - 1; i >= 0; i--) {
+            slices[i].setMap(null);
           };
-        slicesObj.length = 0;
+        slices.length = 0;
+        slicesData.length = 0;
 
-          /* */
+        var NE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, params.height/2, 0),   params.width/2,90); // NE
+        var SE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, params.height/2, 180), params.width/2,90); // SE
+        var NW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, params.height/2, 0),   params.width/2,-90); // NW
+        var SW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, params.height/2, 180), params.width/2,-90); // SW
 
-          var distDiag= Math.sqrt( (Georigami.rectangle.width*Georigami.rectangle.height)/2 );
+        cadre = new google.maps.Polygon({
+              path: [NE,SE,SW,NW],
+              strokeColor: "#000000",
+              strokeOpacity: 1.0,
+              strokeWeight: 0.25,   
+              fillColor: "#FFFFFF",
+              geodesic: true,
+              zIndex: 10001
+            });
 
-          var NE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, Georigami.rectangle.height/2, 0), Georigami.rectangle.width/2,90); // NE
-          var SE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, Georigami.rectangle.height/2, 180), Georigami.rectangle.width/2,90); // SE
-          var NW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, Georigami.rectangle.height/2, 0), Georigami.rectangle.width/2,-90); // NW
-          var SW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, Georigami.rectangle.height/2, 180), Georigami.rectangle.width/2,-90); // SW
-
-                 cadre = new google.maps.Polygon({
-                path: [NE,SE,SW,NW],
-                strokeColor: "#000000",
-                strokeOpacity: 1.0,
-                strokeWeight: 0.25,   
-                fillColor: "#FFFFFF",
-                geodesic: true,
-                zIndex: 10001
-              });
-
-          cadre.setMap(map);   
+        cadre.setMap(map);   
 
                  
-          var nbL= parseInt($('#input-vertical-slices').val());
-          for (var i = 1; i<=nbL; i++) {
-             var lineCoord = [
-                google.maps.geometry.spherical.interpolate(NW, NE, i/(nbL+1) ),
-                google.maps.geometry.spherical.interpolate(SW, SE, i/(nbL+1) )
-              ]
+        var nbL= params.vSlices;
+        for (var i = 1; i<=nbL; i++) {
+           var lineCoord = [
+              google.maps.geometry.spherical.interpolate(NW, NE, i/(nbL+1) ),
+              google.maps.geometry.spherical.interpolate(SW, SE, i/(nbL+1) )
+            ]
 
-              var slicePath = new google.maps.Polyline({
-                path: lineCoord,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 1,
-                geodesic: true,
-                zIndex: 10001
-              });
+            var slicePath = new google.maps.Polyline({
+              path: lineCoord,
+              strokeColor: "#FF0000",
+              strokeOpacity: 1.0,
+              strokeWeight: 1,
+              geodesic: true,
+              zIndex: 10001
+            });
 
-              slicePath.setMap(map);   
-              slicesObj.push(slicePath);
+            slicePath.setMap(map);   
+            slices.push(slicePath);
+            slicesData.push({
+              type: 'vertical',
+              index: i,
+              path: lineCoord
+              
+            });
 
-             }
+           }
 
-          nbL= parseInt($('#input-horizontal-slices').val());
-          for (var i = 1; i<=nbL; i++) {
-             var lineCoord = [
-                google.maps.geometry.spherical.interpolate(NW, SW, i/(nbL+1) ),
-                google.maps.geometry.spherical.interpolate(NE, SE, i/(nbL+1) )
-              ]
 
-              var slicePath = new google.maps.Polyline({
-                path: lineCoord,
-                strokeColor: "#FF0000",
-                strokeOpacity: 1.0,
-                strokeWeight: 1,
-                geodesic: true,
-                zIndex: 10001
-              });
+        nbL= params.hSlices;
+        for (var i = 1; i<=nbL; i++) {
+           var lineCoord = [
+              google.maps.geometry.spherical.interpolate(NW, SW, i/(nbL+1) ),
+              google.maps.geometry.spherical.interpolate(NE, SE, i/(nbL+1) )
+            ]
 
-              slicePath.setMap(map);   
-              slicesObj.push(slicePath);
+            var slicePath = new google.maps.Polyline({
+              path: lineCoord,
+              strokeColor: "#FF0000",
+              strokeOpacity: 1.0,
+              strokeWeight: 1,
+              geodesic: true,
+              zIndex: 10001
+            });
 
-             }
+            slicePath.setMap(map);   
+            slices.push(slicePath);
+            slicesData.push({
+              type: 'horizontal',
+              index: i,
+              path: lineCoord              
+            });
+
+           }
   }
 
 
 
-   
-    $('#input-vertical-slices').val(   Georigami.area.vSlices );
-    $('#input-horizontal-slices').val( Georigami.area.hSlices );
-    Georigami.rectangle= draggableRectangle(map, Georigami.area.lat , Georigami.area.lng, Georigami.area.width, Georigami.area.height, {onChange: updateForm });
+    //init params
+    initParams(Georigami.area);
+
+    Georigami.rectangle= draggableRectangle(map, Georigami.area.lat , Georigami.area.lng, Georigami.area.width, Georigami.area.height, { 
+        onChange: updateForm 
+      });
+
     updateForm();
 
     
 
     map.fitBounds(Georigami.rectangle.getBounds());
 
+
+
     $('#update-btn').click( function(){
         Georigami.rectangle.updateCenter( $('#input-latitude').val() , $('#input-longitude').val() );
         Georigami.rectangle.updateDimensions( $('#input-width').val() , $('#input-height').val() );
-        drawSlices();
+        drawSlices( getParams() );
         map.fitBounds(Georigami.rectangle.getBounds());
         return false;
     });
+
+
 
 
     var loadSlice= function(i) {
@@ -219,9 +267,14 @@ $(function() {
             if (pathstr!='') pathstr=pathstr+'|';
             pathstr=pathstr+pt.lat()+','+pt.lng();
         });
-       var url='http://maps.googleapis.com/maps/api/elevation/json?path='+pathstr+'&samples=500&sensor=false';
+       //var url='http://maps.googleapis.com/maps/api/elevation/json?path='+pathstr+'&samples=100&sensor=false';
+       var url='./res.json';
        $.getJSON(url, function(data) {
           console.log(data);
+          if (data.status!='OK') {
+            alert('ERROR status: '+data.status)
+            return
+          }
           slice.data=data;
           if (i+1<slicesObj.length) loadSlice(i+1);
           else console.log(slicesObj);
@@ -229,30 +282,25 @@ $(function() {
     }
 
 
+
+
     $('#start-btn').click( function(){
-        loadSlice(0);
-        });
-
-
-
-
-       // 
-        
-/*
-        $.ajax({
-          dataType: "json",
-          url: url,
-          data: data,
-          success: success
-        });*/
-
+        startWork( getParams(), slicesData );        
+        console.log(slicesData);
         return false;
-
-
-  };
+     });
 
 
 
+  var startWork= function(params, slices) {
+    var result={params:params,slices:slices};
+
+    $('<div>result<pre>'+JSON.stringify(result)+'</pre></div>').insertAfter($('#start-btn'));
+
+    return result;
+  }
+
+} //fin init
 
 
 

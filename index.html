@@ -61,47 +61,61 @@
 
                 <div class="row">  
 
-	                <div class="span4">                	
+	                <div class="span3"> 
+
 							<legend>Set center</legend>
+
 							<label for="input-latitude">Latitude</label>
-							<input type="text" id="input-latitude">
+							<input type="text" id="input-latitude" class="span3">
 
 							<label for="input-longitude">Longitude</label>
-							<input type="text" id="input-longitude">
+							<input type="text" id="input-longitude" class="span3">
 
 							<label for="input-search">Search by name</label>
-							<input type="text" id="input-search" placeholder="Type something…">
+							<input type="text" id="input-search" placeholder="Type something…" class="span3">
 					</div>
 
 
-					<div class="span4">                	
-							<legend>Set size</legend>
-	
-							<div class="input-append">
-								<label for="input-width">Width</label>
-								<input type="text" id="input-width">
-								<span class="add-on">m</span>
-							</div>
+					<div class="span3">                	
 
-							<div class="input-append">
-								<label for="input-height">Height</label>
-								<input type="text" id="input-height">
-								<span class="add-on">m</span>
-							</div>
+							<legend>Set size</legend>	
+
+							<label for="input-width">Width</label>
+							<input type="text" id="input-width" class="span3">
+
+							<label for="input-height">Height</label>
+							<input type="text" id="input-height" class="span3">
+
 					</div>
 
 
-					<div class="span4">                	
-							<legend>Set slice number</legend>
+					<div class="span3">            
+
+							<legend>Set slices number</legend>
+
 							<label for="input-vertical-slices">vertical slices</label>
-							<input type="text" id="input-vertical-slices"> 
+							<input type="text" id="input-vertical-slices" class="span3">
 
-							<label for="input-horizontal-slices">horizontal slices</label>
-							<input type="text" id="input-horizontal-slices">
+                            <label for="input-horizontal-slices">horizontal slices</label>
+                            <input type="text" id="input-horizontal-slices" class="span3">
+
+                    </div>
+
+                    <div class="span3">  
+
+                            <legend>Set slices samples</legend>			
+
+                            <label for="input-vertical-samples">vertical slices samples</label>
+                            <input type="text" id="input-vertical-samples" class="span3">
+
+                            <label for="input-horizontal-samples">horizontal slices samples</label>
+                            <input type="text" id="input-horizontal-samples" class="span3">
+
 					</div>                    
                         
 
                 </div>
+                
                 <button id="update-btn" class="btn btn-primary btn-small span4">Update</button>                    
                     
 			    </form>
@@ -133,8 +147,10 @@
                     lng:-0.4367395901782629,
                     width:10000, 
                     height:10000,
-                    vSlices:10,
-                    hSlices:10
+                    vSlices:2,
+                    hSlices:2,
+                    vSamples:50,
+                    hSamples:50
                 }
             };
         </script>
