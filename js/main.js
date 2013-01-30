@@ -283,30 +283,28 @@ $(function() {
 
       for (var i = 0; i< result.slices.length; i++) {
         var s=result.slices[i];
-        var sObj={coord:[[0,0]],cut:[]}        
-        for (var n = 0; n< s.data.results.length; n++) {          
+        var sObj={coord:[],cut:[]}        
+        for (var n = 0; n< s.data.results.length; n++) { 
           z=s.data.results[n].elevation;
           if (s.type=='vertical') 
-            x= n/(s.data.results.length)*data.height/maxDim;
+            x= n/(s.data.results.length-1)*data.height/maxDim;
           else
-            x= n/(s.data.results.length)*data.width/maxDim;
-          y=0.1+(z-data.min)/maxDim;
+            x= n/(s.data.results.length-1)*data.width/maxDim;
+          y=(z-data.min)/maxDim;
           sObj.coord.push([x,y]);
         }
         
-        if (s.type=='vertical') {
-          sObj.coord.push([data.height/maxDim,0]);
+        if (s.type=='vertical') 
           data.vSlicesObj.push(sObj);
-        }
-        else {
-          sObj.coord.push([data.width/maxDim,0]);
-          data.hSlicesObj.push(sObj);
-        }
+        else data.hSlicesObj.push(sObj);
+
       }
 
+      data.vSlicesObj= data.vSlicesObj.reverse();
       // TODO! add serveur ping
+      console.log(data);
       load3D(result,data);
-      // addDownloadButton();
+      addDownloadButton(result,data);
     }
 
 
@@ -384,6 +382,21 @@ $(function() {
     return result;
   }
 
+      /*************************/
+     /*                       */
+    /*        PAPER          */
+   /*                       */
+  /*************************/
+  var addDownloadButton= function(result,data) {
+
+    $('<a href="#">test</a>').insertAfter( result.divObj.find('.div3Dview') );
+
+  }
+
+
+
+
+
 
 
 
@@ -419,6 +432,8 @@ $(function() {
 
     var windowHalfX = 0;
     var windowHalfY = 0;    
+
+    var verticalScale=2;
 
     
 
@@ -500,7 +515,7 @@ $(function() {
         model3DObj.addShape= function( shape, x, y, z, rx, ry, rz ) {
 
           var scale=300;
-          var extrudeSettings = { amount: 1/scale , bevelSegments: 1, steps: 1 , bevelSegments: 1, bevelSize: 1/scale, bevelThickness:1/scale };
+          var extrudeSettings = { amount: 0.2/scale , bevelSegments: 1, steps: 1 , bevelSegments: 1, bevelSize: 0.2/scale, bevelThickness:0.2/scale };
           var color = 0xffffff;
           var material= new THREE.MeshLambertMaterial( { color: color } );
           var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
@@ -522,25 +537,28 @@ $(function() {
 
           // CEST LA MERDE
         for (var i = 0; i< model3DObj.data.hSlicesObj.length; i++) {
-          var slicePts = [];
+          var slicePts = [ new THREE.Vector2 ( data.width/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
           var sl=model3DObj.data.hSlicesObj[i];
-          for (var n = 0; n<sl.coord.length; n++)  slicePts.push( new THREE.Vector2 ( sl.coord[n][0], sl.coord[n][1] ) );
+          for (var n = 0; n<sl.coord.length; n++)  slicePts.push( new THREE.Vector2 ( sl.coord[n][0], sl.coord[n][1]*verticalScale+0.1 ) );
           var sliceShape = new THREE.Shape( slicePts );
-          var dx= -(maxDim/data.width)/2;
+          var dx= -(data.width/maxDim)/2;         
           var dy= -0.1;
-          var dz= -(maxDim/data.height)/2 + (i+1)*(maxDim/data.height) / ( model3DObj.data.hSlicesObj.length+2 );
+          var dz= -(data.height/maxDim)/2 + (i+0.5)*(data.height/maxDim) / ( model3DObj.data.hSlicesObj.length );
+
+          //console.log(dx,dy,dz);
           model3DObj.addShape( sliceShape, dx, dy, dz, 0, 0, 0 );
         }
 
         for (var i = 0; i< model3DObj.data.vSlicesObj.length; i++) {
-          var slicePts = [];
+          var slicePts = [ new THREE.Vector2 ( data.height/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
           var sl=model3DObj.data.vSlicesObj[i];
-          for (var n = 0; n<sl.coord.length; n++)  slicePts.push( new THREE.Vector2 ( sl.coord[n][0], sl.coord[n][1] ) );
+          for (var n = 0; n<sl.coord.length; n++)  slicePts.push( new THREE.Vector2 ( sl.coord[n][0], sl.coord[n][1]*verticalScale+0.1 ) );
           var sliceShape = new THREE.Shape( slicePts );
-          var dx= -(maxDim/data.height)/2;
+          var dx= -(data.height/maxDim)/2;
           var dy= -0.1;
-          var dz= -(maxDim/data.width)/2+(i+1)*(maxDim/data.width)/(model3DObj.data.vSlicesObj.length+2);
-          model3DObj.addShape( sliceShape, dz, dy, dx, 0, -Math.PI/2, 0 );
+          var dz= -(data.width/maxDim)/2+ (i+0.5)*(data.width/maxDim)/(model3DObj.data.vSlicesObj.length);
+          //model3DObj.addShape( sliceShape, dz, dy, dx, 0, -Math.PI/2, 0 );
+          model3DObj.addShape( sliceShape, dz, dy, -dx, 0, Math.PI/2, 0 );
         }
 
 
