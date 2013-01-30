@@ -283,7 +283,7 @@ $(function() {
 
       for (var i = 0; i< result.slices.length; i++) {
         var s=result.slices[i];
-        var sObj={coord:[],cut:[]}        
+        var sObj={coord:[],cut:[],maxY:0}        
         for (var n = 0; n< s.data.results.length; n++) { 
           z=s.data.results[n].elevation;
           if (s.type=='vertical') 
@@ -291,6 +291,7 @@ $(function() {
           else
             x= n/(s.data.results.length-1)*data.width/maxDim;
           y=(z-data.min)/maxDim;
+          if (y>sObj.maxY) sObj.maxY=y;
           sObj.coord.push([x,y]);
         }
         
@@ -323,7 +324,7 @@ $(function() {
       if (slice.type=='vertical') samples=result.params.vSamples;
         else samples=result.params.hSamples;
       //var url='http://maps.googleapis.com/maps/api/elevation/json?path='+pathstr+'&samples='+samples+'&sensor=false';
-      var url='./ex.json';
+      var url='./ex2.json';
       $.getJSON(url, function(data) {
           if (data.status!='OK') {
             alert('ERROR status: '+data.status)
@@ -389,11 +390,66 @@ $(function() {
   /*************************/
   var addDownloadButton= function(result,data) {
 
-    $('<a href="#">test</a>').insertAfter( result.divObj.find('.div3Dview') );
+    var btn=$('<button class="btn btn-small btn-primary" type="button">print paper</button>').insertAfter( result.divObj.find('.div3Dview') );
+    btn.click( function(){
+      buildPaper(result,data);
+      return false;
+    });  
 
   }
 
 
+  var buildPaper= function(result,data) {
+
+    var tiles=[];
+
+    var coef=500;
+    var verticalScale=3;
+    
+    var html = "<html>"
+      html += "<head><title>Images</title></head>";
+      html += "<body>";
+      html += '<h1>intro</h1>';
+
+      html += '<h2>horizontal</h2>';
+      for (var i = 0; i< data.hSlicesObj.length; i++) html += "<img src='"+getImage(data.hSlicesObj[i],coef,verticalScale)+"'/>";
+      html += '<h2>vertical</h2>';
+      for (var i = 0; i< data.vSlicesObj.length; i++) html += "<img src='"+getImage(data.vSlicesObj[i],coef,verticalScale)+"'/>";
+
+      html += "</body></html>";   
+    var blob = new Blob([html], {type: 'text/html'}); 
+    window.open( window.URL.createObjectURL( blob ));
+  }
+
+
+
+  var getImage=function( slice,coef,verticalScale) {
+    var W=Math.round( coef );
+    var H=Math.round( slice.maxY*coef*verticalScale+ 0.1*coef )+5;
+    var canvas=  $( '<canvas width="'+W+'" height="'+H+'"/>');
+    var c=canvas[0];
+    var ctx=c.getContext("2d");
+    var x;
+    var y;
+    ctx.beginPath();
+    ctx.strokeStyle="#000000";  
+    ctx.lineWidth   = 1;  
+
+    ctx.moveTo(0,H);
+    for (i=0; i<slice.coord.length; i++) {
+      x=slice.coord[i][0]*coef;
+      y=H- slice.coord[i][1]*coef*verticalScale - 0.1*coef;
+      ctx.lineTo(x,y);          
+    }
+    ctx.lineTo(x,H);        
+    ctx.lineTo(0,H);
+    ctx.stroke();
+
+    var b64= c.toDataURL('image/png');      
+
+    canvas=null;
+    return b64;
+  }
 
 
 
@@ -418,13 +474,13 @@ $(function() {
     var camera, scene, renderer, dirLight, hemiLight, parent;
 
 
-    var targetRotationX = 0;
+    var targetRotationX = Math.PI/4;
     var targetRotationXOnMouseDown = 0;
 
     var mouseX = 0;
     var mouseXOnMouseDown = 0;
 
-    var targetRotationY = 0;
+    var targetRotationY = Math.PI/8;
     var targetRotationYOnMouseDown = 0;
 
     var mouseY = 0;
@@ -433,7 +489,7 @@ $(function() {
     var windowHalfX = 0;
     var windowHalfY = 0;    
 
-    var verticalScale=2;
+    var verticalScale=3;
 
     
 
