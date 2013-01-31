@@ -283,7 +283,7 @@ $(function() {
 
       for (var i = 0; i< result.slices.length; i++) {
         var s=result.slices[i];
-        var sObj={coord:[],cut:[],maxY:0}        
+        var sObj={coord:[],maxY:0,title:''}        
         for (var n = 0; n< s.data.results.length; n++) { 
           z=s.data.results[n].elevation;
           if (s.type=='vertical') 
@@ -295,13 +295,23 @@ $(function() {
           sObj.coord.push([x,y]);
         }
         
-        if (s.type=='vertical') 
-          data.vSlicesObj.push(sObj);
-        else data.hSlicesObj.push(sObj);
+        if (s.type=='vertical') {
+          var n=data.vSlicesObj.length;
+          if (n==0) sObj.title='West' ;
+            else sObj.title='W'+n;
+          data.vSlicesObj.push(sObj);          
+        }
+        else {
+          var n=data.hSlicesObj.length;
+          if (n==0) sObj.title='South' ;
+            else sObj.title='S'+n;
+          data.hSlicesObj.push(sObj);
+        }
 
       }
 
       data.vSlicesObj= data.vSlicesObj.reverse();
+
       // TODO! add serveur ping
       console.log(data);
       load3D(result,data);
@@ -323,8 +333,8 @@ $(function() {
         });
       if (slice.type=='vertical') samples=result.params.vSamples;
         else samples=result.params.hSamples;
-      //var url='http://maps.googleapis.com/maps/api/elevation/json?path='+pathstr+'&samples='+samples+'&sensor=false';
-      var url='./ex2.json';
+      var url='http://maps.googleapis.com/maps/api/elevation/json?path='+pathstr+'&samples='+samples+'&sensor=false';
+      // var url='./ex2.json';
       $.getJSON(url, function(data) {
           if (data.status!='OK') {
             alert('ERROR status: '+data.status)
@@ -404,17 +414,19 @@ $(function() {
     var tiles=[];
 
     var coef=500;
-    var verticalScale=3;
+    var verticalScale=1;
     
     var html = "<html>"
-      html += "<head><title>Images</title></head>";
+      html += "<head><title>Images</title><style type='text/css'>";
+      html += "img{margin:10px} body{color: #333333;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;font-size: 14px;line-height: 20px;}";
+      html += "</style></head>";
       html += "<body>";
       html += '<h1>intro</h1>';
 
       html += '<h2>horizontal</h2>';
-      for (var i = 0; i< data.hSlicesObj.length; i++) html += "<img src='"+getImage(data.hSlicesObj[i],coef,verticalScale)+"'/>";
+      for (var i = 0; i< data.hSlicesObj.length; i++) html += "<img src='"+getImage(data.hSlicesObj[i],coef,verticalScale)+"' title='"+data.hSlicesObj[i].title+"'/>";
       html += '<h2>vertical</h2>';
-      for (var i = 0; i< data.vSlicesObj.length; i++) html += "<img src='"+getImage(data.vSlicesObj[i],coef,verticalScale)+"'/>";
+      for (var i = data.vSlicesObj.length-1; i>=0 ; i--) html += "<img src='"+getImage(data.vSlicesObj[i],coef,verticalScale)+"' title='"+data.vSlicesObj[i].title+"'/>";
 
       html += "</body></html>";   
     var blob = new Blob([html], {type: 'text/html'}); 
@@ -444,6 +456,9 @@ $(function() {
     ctx.lineTo(x,H);        
     ctx.lineTo(0,H);
     ctx.stroke();
+
+    ctx.font="7px Arial";
+    ctx.fillText(slice.title, 10, H-10);
 
     var b64= c.toDataURL('image/png');      
 
@@ -489,7 +504,7 @@ $(function() {
     var windowHalfX = 0;
     var windowHalfY = 0;    
 
-    var verticalScale=3;
+    var verticalScale=1;
 
     
 
@@ -591,7 +606,6 @@ $(function() {
 
         // Slices
 
-          // CEST LA MERDE
         for (var i = 0; i< model3DObj.data.hSlicesObj.length; i++) {
           var slicePts = [ new THREE.Vector2 ( data.width/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
           var sl=model3DObj.data.hSlicesObj[i];
@@ -601,7 +615,6 @@ $(function() {
           var dy= -0.1;
           var dz= -(data.height/maxDim)/2 + (i+0.5)*(data.height/maxDim) / ( model3DObj.data.hSlicesObj.length );
 
-          //console.log(dx,dy,dz);
           model3DObj.addShape( sliceShape, dx, dy, dz, 0, 0, 0 );
         }
 
@@ -610,11 +623,10 @@ $(function() {
           var sl=model3DObj.data.vSlicesObj[i];
           for (var n = 0; n<sl.coord.length; n++)  slicePts.push( new THREE.Vector2 ( sl.coord[n][0], sl.coord[n][1]*verticalScale+0.1 ) );
           var sliceShape = new THREE.Shape( slicePts );
-          var dx= -(data.height/maxDim)/2;
+          var dx= (data.height/maxDim)/2;
           var dy= -0.1;
-          var dz= -(data.width/maxDim)/2+ (i+0.5)*(data.width/maxDim)/(model3DObj.data.vSlicesObj.length);
-          //model3DObj.addShape( sliceShape, dz, dy, dx, 0, -Math.PI/2, 0 );
-          model3DObj.addShape( sliceShape, dz, dy, -dx, 0, Math.PI/2, 0 );
+          var dz= (data.width/maxDim)/2- (i+0.5)*(data.width/maxDim)/(model3DObj.data.vSlicesObj.length);
+          model3DObj.addShape( sliceShape, dz, dy, -dx, 0, -Math.PI/2, 0 );
         }
 
 
