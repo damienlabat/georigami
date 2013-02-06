@@ -5,8 +5,12 @@
     <div id="map-canvas"></div>  
     @foreach ($data['blocs'] as $bloc)
 
+
        <div class='bloc'>
-        {{$bloc->lat}} {{$bloc->lng}} <a href="./bloc{{$bloc->id}}">open</a> {{-- TODO --}}
+      
+          <img src="./img/flags/{{ strtolower($bloc->geonameData->countryCode) }}.png" title="{{ $bloc->geonameData->country }}"/> {{ $bloc->geonameData->name }} <span title="{{ $bloc->geonameData->feature[1] }}">({{ $bloc->geonameData->feature[0] }})</span> <a href="./bloc{{$bloc->id}}">open</a>  
+
+     
        </div>
     @endforeach
    

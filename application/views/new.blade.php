@@ -3,7 +3,7 @@
 @section('content')
    
             <h2>Select area</h2>
-            <form class='form-horizontal'>
+            <form id='paramform' class='form-horizontal'>
 
                 <div class="row">  
 
@@ -12,16 +12,16 @@
 							<legend>Set center</legend>
                             <div class='control-group'>
     							<label class="control-label" for="input-latitude">Latitude</label>
-    							<div class="controls"><input type="text" id="input-latitude" class="span2"></div>
+    							<div class="controls"><input type="number" step="any" min="-90" max="90" id="input-latitude" class="span2 livechange"></div>
                             </div>
                             <div class='control-group'>
     							<label class="control-label" for="input-longitude">Longitude</label>
-    							<div class="controls"><input type="text" id="input-longitude" class="span2"></div>
+    							<div class="controls"><input type="number" step="any" min="-180" max="180" id="input-longitude" class="span2 livechange"></div>
                             </div>
                             <div class='control-group'>
     							<label class="control-label" for="input-search">Search by name</label>
     							<div class="controls"><input type="text" id="input-search" placeholder="Type something…" class="span2"></div>
-                                <ul id="search-result"></ul>
+                                <div id="search-result"></div>
                             </div>
 
 					</div>
@@ -33,11 +33,11 @@
 
                             <div class='control-group'>
     							<label class="control-label" for="input-width">Width</label>
-    							<div class="controls"><input type="text" id="input-width" class="span1"></div>
+    							<div class="controls"><input type="number" step="1" min="1" id="input-width" class="span1 livechange"> m</div>
                             </div>
                             <div class='control-group'>
     							<label class="control-label" for="input-height">Height</label>
-    							<div class="controls"><input type="text" id="input-height" class="span1"></div>
+    							<div class="controls"><input type="number" step="1" min="1" id="input-height" class="span1 livechange"> m</div>
                             </div>
 
 					</div>
@@ -51,12 +51,12 @@
 
                             <div class='control-group'>
                                 <label class="control-label" for="input-horizontal-slices">horizontal slices</label>
-                                <div class="controls"><input type="text" id="input-horizontal-slices" class="span1"></div>
+                                <div class="controls"><input type="number" step="1" min="2" max="500" id="input-horizontal-slices" class="span1 livechange"></div>
                             </div>
 
                             <div class='control-group'>
     							<label class="control-label" for="input-vertical-slices">vertical slices</label>
-    							<div class="controls"><input type="text" id="input-vertical-slices" class="span1"></div>
+    							<div class="controls"><input type="number" step="1" min="2" max="500" id="input-vertical-slices" class="span1 livechange"></div>
                             </div>
                             
                     </div>
@@ -67,11 +67,11 @@
 
                             <div class='control-group'>
                                 <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
-                                <div class="controls"><input type="text" id="input-horizontal-samples" class="span1"></div>
+                                <div class="controls"><input type="number" id="input-horizontal-samples" class="span1"></div>
                             </div>
                             <div class='control-group'>
                                 <label class="control-label" for="input-vertical-samples">vertical slices samples</label>
-                                <div class="controls"><input type="text" id="input-vertical-samples" class="span1"></div>
+                                <div class="controls"><input type="number" id="input-vertical-samples" class="span1"></div>
                             </div>
 
 					</div>                    
@@ -79,7 +79,7 @@
 
                 </div>
 
-                <button id="update-btn" class="btn btn-primary btn-small span4">Update</button>                    
+                <!--button id="update-btn" class="btn btn-primary btn-small span4">Update</button-->                    
                     
 			    </form>
 

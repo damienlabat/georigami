@@ -1,8 +1,14 @@
 <?php
 
-class Blocs extends Eloquent {
+class Bloc extends Eloquent {
 
 	public static $timestamps = true;
+
+
+    public function location()
+    {
+        return $this->belongs_to('Location');
+    }
 
 
 
@@ -77,13 +83,9 @@ class Blocs extends Eloquent {
 
 
 
-    public function update_geoname()
-    {
 
-        File::put($this->getDirectory().$this->id.'.json', json_encode($coords));
 
-        return json_encode($coords);
-    }
+
 
 
 

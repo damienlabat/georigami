@@ -33,7 +33,9 @@
 */
 
 Route::get('test', function() {
-    
+        $location= Location::get_byLatLng( 42.9, -0.45 );
+        print_r($location);
+
 });
 
 

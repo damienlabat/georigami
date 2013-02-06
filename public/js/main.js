@@ -62,7 +62,7 @@ $(function() {
     var marker = new google.maps.Marker({ map: map, position: center, draggable: true, icon: icon, raiseOnDrag:false, zIndex: 10002});
     marker.setAnimation(null);
     
-    google.maps.event.addListener(marker, 'dragend', function(event) {
+    google.maps.event.addListener(marker, 'drag', function(event) {
           DR.updateCenter( event.latLng.lat() , event.latLng.lng() );
           changeFunction();
         });
@@ -89,11 +89,6 @@ $(function() {
 
 
 
-
-
-
-
-
 $('#input-search').change( function(){
 
   $.ajax({
@@ -104,12 +99,20 @@ $('#input-search').change( function(){
 
                  $('#search-result').html('');
 
+                 if (data.geonames.length>0) $('#search-result').html('<ul></ul>');
+                  else $('#search-result').html('<span style="color:red">no results</span>'); //TODO
+
                  for (var i = 0; i< data.geonames.length; i++) {
-                    $('<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">'+data.geonames[i].name+' - '+data.geonames[i].country+' ('+data.geonames[i].feature[0]+')</a></li>').appendTo( $('#search-result') );
+                    var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
+                    if (data.geonames[i].country!='') html=html+'<img src="./img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
+                    html=html+data.geonames[i].name;
+                    if (data.geonames[i].feature!='') html=html+' ('+data.geonames[i].feature[0]+')';
+                    html=html+'</a></li>';
+
+                    $(html).appendTo( $('#search-result>ul') );
                  };
 
-                 $('#search-result a').on("click", function(){ 
-                   // alert( $(this).data("lat")+' '+$(this).data("lng") ); 
+                 $('#search-result a').on("click", function(){                    
                   
                     $('#input-latitude').val(  $(this).data("lat") );
                     $('#input-longitude').val( $(this).data("lng") );
@@ -124,7 +127,6 @@ $('#input-search').change( function(){
               });
   return false
 });
-
 
 
 
@@ -212,7 +214,8 @@ function createMarker(name, latlng) {
 
     $('.vs-input').val(Georigami.verticalScale);
 
-    $('.update').click( function(){
+    $('.vs-input').change( function(){
+      console.log('ping');
         paperBtn.setVerticalScale( $('.vs-input').val() );
         view3D.setVerticalScale( $('.vs-input').val() );
     });
@@ -390,9 +393,19 @@ function createMarker(name, latlng) {
     //map.fitBounds(Georigami.rectangle.getBounds());
 
 
+    $('input.livechange').keypress( function(){
+        setTimeout('Georigami.update()',1);;
+    });
+    $('input.livechange').mousedown( function(){
+        setTimeout('Georigami.update()',1);;
+    });
 
-    $('#update-btn').click( function(){
+    $('#update-btn').mousedown( function(){
         Georigami.update();
+        return false;
+    });
+
+    $('#paramform').submit( function(){       
         return false;
     });
 
@@ -566,7 +579,7 @@ var startWork= function(data) {
         '<tr> <td>hSlices</td><td>'+data.hSlices+'</td></tr>'+
         '<tr> <td>vSamples</td><td>'+data.vSamples+'</td></tr>'+
         '<tr> <td>hSamples</td><td>'+data.hSamples+'</td></tr></tbody>'+
-        '<tr> <td>vertical scale</td><td><input class="vs-input span1" value="'+Georigami.verticalScale+'"> <button class="btn btn-mini update">Update</button></td></tr></tbody>'+
+        '<tr> <td>vertical scale</td><td><input class="vs-input span1" type="number" step="0.1" min="0.1" value="'+Georigami.verticalScale+'"></td></tr></tbody>'+
             
       '</table>'+
       '</div>'+
@@ -578,7 +591,7 @@ var startWork= function(data) {
     var view3D= load3D( data, bloc.find('.div3Dview'), Georigami.verticalScale );
     var paperBtn= addDownloadButton( data ,bloc.find('.divPaperBtn'), Georigami.verticalScale );   
 
-    bloc.find('.update').click( function(){
+    bloc.find('.vs-input').change( function(){
         paperBtn.setVerticalScale( bloc.find('.vs-input').val() );
         view3D.setVerticalScale( bloc.find('.vs-input').val() );
     });

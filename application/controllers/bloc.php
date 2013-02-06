@@ -4,7 +4,7 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$blocs=Blocs::all();
+		$blocs=Bloc::all();
 		$blocs_array=[];
 		foreach($blocs as $b){
 		 $blocs_array[] = $b->to_array();
@@ -16,7 +16,7 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_get($id)
 	{
-		if (!$bloc=Blocs::find($id)) return Response::error('404');
+		if (!$bloc=Bloc::find($id)) return Response::error('404');
 		$blocArray=$bloc->to_array();
 		$blocArray['coords']=$bloc->get_coords();
 		return View::make('bloc')->with('data',array( 'bloc'=>$bloc, 'bloc_json'=>json_encode( $blocArray ) ));
@@ -26,7 +26,7 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_getJson($id, $with_data=FALSE)
 	{
-		if (!$bloc=Blocs::find($id)) return Response::error('404');
+		if (!$bloc=Bloc::find($id)) return Response::error('404');
 		$res= $bloc->attributes;
 		if ($with_data) $res['coords']= $bloc->get_coords();
 		
@@ -38,7 +38,7 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_image($id,$view)
 	{
-		if (!$bloc=Blocs::find($id)) return Response::error('404');
+		if (!$bloc=Bloc::find($id)) return Response::error('404');
 
 		return 'image '.$id.$view;
 	}
@@ -78,7 +78,7 @@ class Bloc_Controller extends Base_Controller {
 		}
 
 
-		$coords= Blocs::validate_coords($input['coords']);
+		$coords= Bloc::validate_coords($input['coords']);
 
 		if (!$coords)
 		{
@@ -86,7 +86,17 @@ class Bloc_Controller extends Base_Controller {
 		}
 
 
-		$bloc = new Blocs;
+		$location= Location::get_byLatLng( $input['lat'], $input['lng'] );
+
+		if (!$location) {
+			$location= new Location;
+			$location->lat = $input['lat'];
+			$location->lng = $input['lng'];
+			$location->save();
+			$location->update_geoname();
+		}
+
+		$bloc = new Bloc;
 
 		$bloc->hSamples = $input['hSamples'];
 		$bloc->vSamples = $input['vSamples'];
@@ -95,20 +105,15 @@ class Bloc_Controller extends Base_Controller {
 		$bloc->vSlices = $input['vSlices'];
 
 		$bloc->height = $input['height'];
-		$bloc->width = $input['width'];
-
-		$bloc->lat = $input['lat'];
-		$bloc->lng = $input['lng'];
-
+		$bloc->width = $input['width'];		
 
 		$bloc->min = $input['min'];
 		$bloc->max = $input['max'];	
 
 		$bloc->bbox = $input['bbox'];
 
-		$bloc->save();
 
-		$bloc->save_coords( $coords );
+		$bloc= $location->blocs()->insert( $bloc );
 
 		return self::action_getJson( $bloc->id, TRUE );
 	}
