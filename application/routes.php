@@ -32,9 +32,8 @@
 |
 */
 
-Route::get('test', function() {
-        $location= Location::get_byLatLng( 42.9, -0.45 );
-        print_r($location);
+Route::get('test/(:any)', function($q) {
+        return Response::json( Geoname::search(  $q, 'T', 10, 'short' ) );
 
 });
 
@@ -43,6 +42,12 @@ Route::get('test', function() {
 Route::get('/', array(
         'as'     => 'index',
         'uses'   => 'bloc@index'
+     ));
+
+
+Route::get('/map', array(
+        'as'     => 'map',
+        'uses'   => 'bloc@map'
      ));
 
 
@@ -64,10 +69,17 @@ Route::POST('/new', array(
 
 
 
-Route::get('/bloc(:num)', array(
+Route::get('/location(:num)', array(
         'as'     => 'get',
         'uses'   => 'bloc@get'
      ));
+
+
+Route::get('/location(:num)/(:num)', array(
+        'as'     => 'get',
+        'uses'   => 'bloc@get'
+     ));
+
 
 
 Route::get('/bloc(:num).json', array(
@@ -76,9 +88,9 @@ Route::get('/bloc(:num).json', array(
      ));
 
 
-Route::get('/bloc(:num)((N|S|W|E){1}).png', array(
-        'as'     => 'image',
-        'uses'   => 'bloc@image'
+Route::get('/bloc(:num)((N|S|W|E){1}).svg', array(
+        'as'     => 'svg',
+        'uses'   => 'bloc@svg'
      ));
 
 

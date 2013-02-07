@@ -1,6 +1,6 @@
 <?php
 
-class Geoname extends Eloquent {
+class Geoname {
 
     protected static $base_url = 'http://api.geonames.org/';
 

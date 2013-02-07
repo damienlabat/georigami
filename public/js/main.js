@@ -150,11 +150,22 @@ $('#input-search').change( function(){
 
 Georigami.verticalScale=1;
 
-  /*******************/
- /*   initIndex     */
+
+/*******************/
+ /*   initIndex    */
 /*******************/
 
   Georigami.initIndex = function() {
+
+  }
+
+
+
+  /*******************/
+ /*   initMap       */
+/*******************/
+
+  Georigami.initMap = function() {
 
      var infowindow;
      //initmap
@@ -167,12 +178,23 @@ Georigami.verticalScale=1;
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);  
 
     var markers = [];
-    for (var i = 0; i < Georigami.blocs_list.length; i++) {
-      var data=Georigami.blocs_list[i];
+    for (var i = 0; i < Georigami.location_list.length; i++) {
+      var data=Georigami.location_list[i];
       var latLng = new google.maps.LatLng( data.lat,data.lng );
 
-      var html='<h3>lat:'+data.lat+' lng:'+data.lng+' </h3><a href="./bloc'+data.id+'">open</a>'; // TODO
-
+      var html='<h3 title="'+data.feature+'">'+data.name+'</h3><img src="./img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> '+data.countryname+'<br/><br/>';
+      for (var j = 0; j < data.blocs.length; j++) {
+        var bloc=data.blocs[j];
+        html =html+'<a href="./location'+data.id+'/'+(j+1)+'"><div>';
+        html =html+'<img src="./bloc'+bloc.id+'N.svg" title="North" width="100px">';
+        html =html+'<img src="./bloc'+bloc.id+'W.svg" title="West" width="100px">';
+        html =html+'<img src="./bloc'+bloc.id+'S.svg" title="South" width="100px">';
+        html =html+'<img src="./bloc'+bloc.id+'E.svg" title="Est" width="100px">';
+        html =html+'</div>';
+        html =html+'</a>';
+        };
+       // TODO
+         
       var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng) );
 
       markers.push(marker);
@@ -207,15 +229,12 @@ function createMarker(name, latlng) {
 
   Georigami.initBloc = function() {
 
-   console.log( Georigami.bloc );
-
     var view3D= load3D( Georigami.bloc, $('.div3Dview'), Georigami.verticalScale );
     var paperBtn= addDownloadButton( Georigami.bloc ,$('.divPaperBtn'), Georigami.verticalScale ); 
 
     $('.vs-input').val(Georigami.verticalScale);
 
     $('.vs-input').change( function(){
-      console.log('ping');
         paperBtn.setVerticalScale( $('.vs-input').val() );
         view3D.setVerticalScale( $('.vs-input').val() );
     });
@@ -758,8 +777,6 @@ var startWork= function(data) {
 
     model3Dobj.renderSlices= function() {
         // Slices
-
-        console.log(model3Dobj.data);
 
           for (var i = 0; i< model3Dobj.data.h.length; i++) {
             var slicePts = [ new THREE.Vector2 ( data.width/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];

@@ -40,6 +40,7 @@
                     <a class="brand" href="{{URL::home()}}" title='pas très fier de ce jeu de mot :s'>Georigami</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
+                            <li>{{HTML::link('/map', 'Map')}}</li>
                             <li>{{HTML::link('/new', 'Build your own')}}</li>
                         </ul>                        
                     </div>
