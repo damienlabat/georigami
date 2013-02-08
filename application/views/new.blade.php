@@ -20,8 +20,8 @@
                             </div>
                             <div class='control-group'>
     							<label class="control-label" for="input-search">Search by name</label>
-    							<div class="controls"><input type="text" id="input-search" placeholder="Type something…" class="span2"></div>
-                                <div id="search-result"></div>
+    							<div class="controls"><input type="text" id="input-search" placeholder="Type something…" class="span2" value=""></div>
+                                <div id="search-result" class="span3"></div>
                             </div>
 
 					</div>
@@ -107,10 +107,10 @@
                     lng:0,
                     width:10000, 
                     height:10000,
-                    vSlices:11,
-                    hSlices:11,
-                    vSamples:13,
-                    hSamples:13
+                    vSlices:1,
+                    hSlices:1,
+                    vSamples:2,
+                    hSamples:2
                 }
             };
 

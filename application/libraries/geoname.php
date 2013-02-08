@@ -8,7 +8,36 @@ class Geoname {
     static function search($req,$featureClass=null,$maxRows=50,$style='short')
     {        
 
-        $url = self::$base_url.'searchJSON?name='.utf8_encode( $req );
+        $url = self::$base_url.'searchJSON?name='.urlencode( utf8_encode( $req ) );
+        if ($maxRows!=null) $url.= '&maxRows='.$maxRows;
+        if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
+        if ($style!=null) $url.= '&style='.$style;
+        $url.= '&username='.Config::get('geoname.username');
+        
+        $res = json_decode(file_get_contents($url), TRUE );
+
+        if (isset($res['geonames'])) {
+
+            foreach ($res['geonames'] as &$o) {
+                if (isset($o['countryCode']))   $o['country']= Geoname::getISO3166( $o['countryCode'] );
+                    else $o['country']='';
+                if (isset($o['fcode']))         $o['feature']= Geoname::getFCode( $o['fcode'] );
+                    else $o['feature']='';
+            }
+        }
+
+        return $res;
+    }
+
+
+
+
+
+
+    static function startwith($req,$featureClass=null,$maxRows=5,$style='short')
+    {        
+
+        $url = self::$base_url.'searchJSON?name_startsWith='.utf8_encode( $req );
         if ($maxRows!=null) $url.= '&maxRows='.$maxRows;
         if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
         if ($style!=null) $url.= '&style='.$style;
@@ -25,6 +54,10 @@ class Geoname {
 
         return $res;
     }
+
+
+
+
 
 
 	static function findNearby($lat,$lng,$featureClass=null) // plus bbox ?

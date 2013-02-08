@@ -24,6 +24,7 @@
 $environments = array(
 
 	'local' => array('http://localhost*','http://127.0.0.1*', '*.dev'),
+  'server' => array('http://www.damienlabat.fr/*','http://*.damienlabat.fr*'),
 
 );
 

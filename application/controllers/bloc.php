@@ -4,10 +4,10 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_index()
 	{
-		$locations=Location::all();
-		$locations_array=[];
+		$locations=Location::with('blocs')->order_by('updated_at', 'desc')->get();
+
+		$locations_array=array();
 		foreach($locations as $b){			
-			$blocs=$b->blocs;
 			$data=$b->to_array();
 		 	$locations_array[] = $data;
 		}
@@ -17,10 +17,9 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_map()
 	{
-		$locations=Location::all();
-		$locations_array=[];
+		$locations=Location::with('blocs')->order_by('updated_at', 'desc')->get();
+		$locations_array=array();
 		foreach($locations as $b){			
-			$blocs=$b->blocs;
 			$data=$b->to_array();
 		 	$locations_array[] = $data;
 		}
@@ -31,14 +30,13 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_get($locationid,$pos=1)
 	{
-		if (!$location=Location::find($locationid)) return Response::error('404');
-		$blocs=$location->blocs;
+		if (!$location=Location::with('blocs')->find($locationid)) return Response::error('404');
 		$locationArray=$location->to_array();
 
 		if (!isset($locationArray['blocs'][$pos-1])) return Response::error('404');
 
 		$blocArray=$locationArray['blocs'][$pos-1];
-		$blocArray['coords']=$blocs[$pos-1]->get_coords();
+		$blocArray['coords']=$location->blocs[$pos-1]->get_coords();
 
 		return View::make('bloc')->with('data',array( 'pos'=>$pos-1, 'location'=>$locationArray, 'location_json'=>json_encode( $locationArray ), 'bloc_json'=> json_encode( $blocArray )));
 	}
@@ -47,7 +45,7 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_getJson($id, $with_data=FALSE)
 	{
-		if (!$bloc=Bloc::find($id)->with('location')) return Response::error('404');
+		if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
 		$res=$bloc->to_array();
 		$res['location']=$bloc->location->to_array();
 		if ($with_data) $res['coords']= $bloc->get_coords();
@@ -89,6 +87,8 @@ class Bloc_Controller extends Base_Controller {
 			}
 
 		}
+
+		$data['max']=(floor($data['max']*1000)+1 ) / 1000;
 
 		//print_r($data);
 

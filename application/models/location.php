@@ -4,10 +4,12 @@ class Location extends Eloquent {
 
 	public static $timestamps = true;
 
-	public function blocs()
+    public function blocs()
     {
-        return $this->has_many('Bloc');
+        return $this->has_many('Bloc')
+            ->order_by('updated_at', 'desc');
     }
+
 
     public static function get_byLatLng($lat,$lng) {
 
@@ -30,20 +32,20 @@ class Location extends Eloquent {
 
             
 
-        	$this->distance 	= $data['distance'];
-        	$this->geonameId 	= $data['geonameId'];
-        	$this->countryName 	= $data['countryName'];
-        	$this->adminCode1 	= $data['adminCode1'];
-        	$this->fclName 		= $data['fclName'];
-        	$this->countryCode 	= $data['countryCode'];
-        	$this->fcodeName 	= $data['fcodeName'];
-        	$this->toponymName 	= $data['toponymName'];
-        	$this->fcl 			= $data['fcl'];
-        	$this->name 		= $data['name'];
-        	$this->fcode 		= $data['fcode'];
-        	$this->adminName1 	= $data['adminName1'];
-        	$this->feature 		= $data['feature'][0];
-        	$this->featureDetail = $data['feature'][1];
+        	if (isset($data['distance']))    $this->distance 	    = $data['distance'];
+        	if (isset($data['geonameId']))   $this->geonameId 	= $data['geonameId'];
+        	if (isset($data['countryName'])) $this->countryName 	= $data['countryName'];
+        	if (isset($data['adminCode1']))  $this->adminCode1 	= $data['adminCode1'];
+        	if (isset($data['fclName']))     $this->fclName 		= $data['fclName'];
+        	if (isset($data['countryCode'])) $this->countryCode 	= $data['countryCode'];
+        	if (isset($data['fcodeName']))   $this->fcodeName 	= $data['fcodeName'];
+        	if (isset($data['toponymName'])) $this->toponymName 	= $data['toponymName'];
+        	if (isset($data['fcl']))         $this->fcl 			= $data['fcl'];
+        	if (isset($data['name']))        $this->name 	   	    = $data['name'];
+        	if (isset($data['fcode']))       $this->fcode 		= $data['fcode'];
+        	if (isset($data['adminName1']))  $this->adminName1 	= $data['adminName1'];
+        	if (isset($data['feature']))     $this->feature 		= $data['feature'][0];
+        	if (isset($data['feature']))     $this->featureDetail = $data['feature'][1];
         	
         	$this->save();        	
         }

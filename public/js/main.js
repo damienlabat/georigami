@@ -1,5 +1,7 @@
-$(function() {
+var map;
+var elevator;
 
+$(function() {
 
 
 
@@ -89,7 +91,17 @@ $(function() {
 
 
 
+
 $('#input-search').change( function(){
+
+  var req=$('#input-search').val();
+
+  if (req=='') {
+    $('#search-result').html('');
+    return false;
+  }
+
+  $('#search-result').html('searching ...');
 
   $.ajax({
                 url: "search",
@@ -146,6 +158,8 @@ $('#input-search').change( function(){
 
 
 
+
+
   if(typeof Georigami == 'undefined') Georigami={};
 
 Georigami.verticalScale=1;
@@ -175,7 +189,19 @@ Georigami.verticalScale=1;
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
 
-    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);  
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);  
+    
+
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+
+      if (( map.zoom>15 )&&( map.getMapTypeId()==google.maps.MapTypeId.TERRAIN )) map.setMapTypeId( google.maps.MapTypeId.ROADMAP );
+
+      if ( map.zoom>19 ) map.setMapTypeId( google.maps.MapTypeId.ROADMAP );        
+
+      if (map.zoom<=15) map.setMapTypeId( google.maps.MapTypeId.TERRAIN );
+
+    });
+
 
     var markers = [];
     for (var i = 0; i < Georigami.location_list.length; i++) {
@@ -449,10 +475,12 @@ function createMarker(name, latlng) {
       var x,y,z;
       var maxDim= Math.max(data.width,data.height); 
 
+      console.log(result);
+
       // get min and max
       for (var i = 0; i< result.slices.length; i++)
-        for (var n = 0; n< result.slices[i].data.results.length; n++) {          
-          z=result.slices[i].data.results[n].elevation;
+        for (var n = 0; n< result.slices[i].data.length; n++) {          
+          z=result.slices[i].data[n].elevation;
           if (z<data.min) data.min=z;
           if (z>data.max) data.max=z;
         }
@@ -460,12 +488,13 @@ function createMarker(name, latlng) {
       for (var i = 0; i< result.slices.length; i++) {
         var s=result.slices[i];
         var sCoords=[];        
-        for (var n = 0; n< s.data.results.length; n++) { 
-          z=s.data.results[n].elevation;
+        for (var n = 0; n< s.data.length; n++) { 
+          z=s.data[n].elevation;
+          console.log(z);
           if (s.type=='vertical') 
-            x= n/(s.data.results.length-1)*data.height/maxDim;
+            x= n/(s.data.length-1)*data.height/maxDim;
           else
-            x= n/(s.data.results.length-1)*data.width/maxDim;
+            x= n/(s.data.length-1)*data.width/maxDim;
           y=(z-data.min)/maxDim;         
           sCoords.push([x,y]);
         }
@@ -490,22 +519,70 @@ function createMarker(name, latlng) {
 
 
 
+
     var loadSlice= function(result,i) {
       var slice=result.slices[i];
       var pathstr='';
       var samples;
       showLoading( 'loading slice '+(i+1)+'/'+result.slices.length, (i+1)/result.slices.length );
 
+      var path=[];
       $.each( slice.path, function(i2, pt) {
             if (pathstr!='') pathstr=pathstr+'|';
             pathstr=pathstr+pt.lat()+','+pt.lng();
+            path.push( new google.maps.LatLng( pt.lat() , pt.lng() ) );
         });
+
       if (slice.type=='vertical') samples=result.params.vSamples;
         else samples=result.params.hSamples;
-      var url='http://maps.googleapis.com/maps/api/elevation/json?path='+pathstr+'&samples='+samples+'&sensor=false';
-      console.log(result);
-      // var url='ex2.json';
-      $.getJSON(url, function(data) {
+
+
+       var pathRequest={
+            'path': path,
+            'samples': samples
+          }
+
+      elevator = new google.maps.ElevationService();
+      elevator.getElevationAlongPath(pathRequest, plotElevation);
+
+
+
+
+       function plotElevation(results, status) {
+           if (status!='OK') {
+            alert('GOOGLE ELEVATION API ERROR status: '+status)
+            return
+          }
+
+          slice.data=results;
+          if (i+1<result.slices.length) loadSlice(result,i+1);
+            else {
+             // showLoading( 'building geom' );
+
+              post=buildSlices(result);
+              post.coords=JSON.stringify( {'v':post.vSlicesObj, 'h':post.hSlicesObj } );
+              delete post.vSlicesObj;
+              delete post.hSlicesObj;
+
+
+              $.ajax({
+                type: "POST",
+                data: post,
+                success: function(data){
+
+                  showLoading( 'show result' );
+                  var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
+                  Georigami.results.push( { data:data, view3D:visu.view3D, paperBtn:visu.paperBtn } );  
+                  showLoading( '' );
+
+                  },
+                });
+              
+              }
+       }
+
+/*
+  $.get(url, function(data) {
           if (data.status!='OK') {
             alert('ERROR status: '+data.status)
             return
@@ -538,7 +615,13 @@ function createMarker(name, latlng) {
               
 
             }
+      }).error(function() { 
+
+        alert("looks like google don't want to play with us anymore :("); 
+        showLoading( 'GAME OVER' );
+          
       });
+*/
     }
 
 
@@ -580,6 +663,8 @@ var startWork= function(data) {
 
 
   var visuSlice= function(id,data,obj) {
+
+    console.log(data);
     
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
