@@ -4,6 +4,34 @@ var elevator;
 $(function() {
 
 
+  findTile= function(map, latlng) {
+
+    var maxZoomService = new google.maps.MaxZoomService();
+
+
+  maxZoomService.getMaxZoomAtLatLng(latlng, function(response) {
+    if (response.status != google.maps.MaxZoomStatus.OK) {
+      alert("Error in MaxZoomService");
+      return;
+    } else {
+      //console.log("The maximum zoom at this location is: " + response.zoom);
+      if (response.zoom>15) response.zoom=15;
+      var pt= map.getProjection().fromLatLngToPoint(latlng);
+      var x= pt.x;
+      var y= pt.y;
+
+    //  response.zoom=response.zoom-1
+      var cell= Math.pow( 2, response.zoom);
+
+      console.log(x,y,cell);
+
+      url='https://khms0.googleapis.com/kh?v=125&x='+ Math.floor(x/256*cell) +'&y='+ Math.floor(y/256*cell) +'&z='+ response.zoom;
+      console.log(url);
+    }
+  });
+  }
+
+
 
   draggableRectangle= function( map, lat, lng, width, height, options ) {
 
@@ -85,6 +113,17 @@ $(function() {
       }
       else updateSizeFromRect=true;                
     });
+
+    google.maps.event.addListener(map, 'click', function(event) {
+          DR.updateCenter( event.latLng.lat() , event.latLng.lng() );
+          changeFunction();
+
+
+console.log( findTile( map, event.latLng  ) );
+
+
+
+        });
         
     return DR
   };
@@ -279,6 +318,7 @@ function createMarker(name, latlng) {
     var slices=[];
     var slicesData=[];
     var cadre=null;
+    var requestDelay=5000;
 
     Georigami.results=[];
 
@@ -314,9 +354,22 @@ function createMarker(name, latlng) {
       res.height= parseFloat( $('#input-height').val() );
       res.vSlices= parseFloat( $('#input-vertical-slices').val() );
       res.hSlices= parseFloat( $('#input-horizontal-slices').val() );
-      res.vSamples= parseFloat( $('#input-vertical-samples').val() );
-      res.hSamples= parseFloat( $('#input-horizontal-samples').val() );
+      res.sampling= parseFloat( $('#input-sampling').val() );
+
+      res.vSamples= res.sampling* (res.hSlices+2);
+      $('#input-vertical-samples').val(res.vSamples);
+
+      res.hSamples= res.sampling* (res.vSlices+2);
+      $('#input-horizontal-samples').val(res.hSamples);
+
+     /* res.vSamples= parseFloat( $('#input-vertical-samples').val() );
+      res.hSamples= parseFloat( $('#input-horizontal-samples').val() );*/
+
       res.bbox= Georigami.rectangle.getBounds(true);
+      
+      $('#request-count').html((res.vSlices+res.hSlices) + ' request (max by day: 2 500)');
+      $('#location-count').html((res.vSlices*res.vSamples+res.hSlices*res.hSamples) + ' points (max by day: 25 000)');
+
       return res;
     }
 
@@ -329,8 +382,7 @@ function createMarker(name, latlng) {
       $('#input-height').val( params.height );
       $('#input-vertical-slices').val( params.vSlices );
       $('#input-horizontal-slices').val( params.hSlices );
-      $('#input-vertical-samples').val( params.vSamples );
-      $('#input-horizontal-samples').val( params.hSamples );
+      $('#input-sampling').val( params.sampling );
     }
 
 
@@ -338,7 +390,7 @@ function createMarker(name, latlng) {
 
 
     var drawSlices= function(params) {
-
+     
         var center= new google.maps.LatLng( params.lat , params.lng );
 
         //clear
@@ -467,15 +519,13 @@ function createMarker(name, latlng) {
     var buildSlices= function(result) {     
 
       var data=result.params;
-      //console.log(result);
+
       data.vSlicesObj=[];
       data.hSlicesObj=[];
       data.min= Infinity;
       data.max= -Infinity;
       var x,y,z;
       var maxDim= Math.max(data.width,data.height); 
-
-      console.log(result);
 
       // get min and max
       for (var i = 0; i< result.slices.length; i++)
@@ -490,7 +540,6 @@ function createMarker(name, latlng) {
         var sCoords=[];        
         for (var n = 0; n< s.data.length; n++) { 
           z=s.data[n].elevation;
-          console.log(z);
           if (s.type=='vertical') 
             x= n/(s.data.length-1)*data.height/maxDim;
           else
@@ -520,7 +569,7 @@ function createMarker(name, latlng) {
 
 
 
-    var loadSlice= function(result,i) {
+    Georigami.loadSlice= function(result,i) {
       var slice=result.slices[i];
       var pathstr='';
       var samples;
@@ -555,7 +604,8 @@ function createMarker(name, latlng) {
           }
 
           slice.data=results;
-          if (i+1<result.slices.length) loadSlice(result,i+1);
+          console.log("delay: "+requestDelay*(samples/500)+'ms');
+          if (i+1<result.slices.length) setTimeout(function(){ Georigami.loadSlice(result,i+1) }, requestDelay*(samples/500)  ); // too be kind with google api
             else {
              // showLoading( 'building geom' );
 
@@ -581,47 +631,7 @@ function createMarker(name, latlng) {
               }
        }
 
-/*
-  $.get(url, function(data) {
-          if (data.status!='OK') {
-            alert('ERROR status: '+data.status)
-            return
-          }
-          slice.data=data;
-          if (i+1<result.slices.length) loadSlice(result,i+1);
-            else {
-             // showLoading( 'building geom' );
-              post=buildSlices(result);
-              post.coords=JSON.stringify( {'v':post.vSlicesObj, 'h':post.hSlicesObj } );
-              delete post.vSlicesObj;
-              delete post.hSlicesObj;
 
-
-              $.ajax({
-                type: "POST",
-                data: post,
-                success: function(data){
-
-                  console.log(data);
-                  showLoading( 'show result' );
-                  var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
-                  Georigami.results.push( { data:data, view3D:visu.view3D, paperBtn:visu.paperBtn } );  
-                  showLoading( '' );
-
-                  },
-                });
-              
-
-              
-
-            }
-      }).error(function() { 
-
-        alert("looks like google don't want to play with us anymore :("); 
-        showLoading( 'GAME OVER' );
-          
-      });
-*/
     }
 
 
@@ -645,7 +655,7 @@ function createMarker(name, latlng) {
 
 
 var startWork= function(data) {
-    loadSlice(data,0);
+    Georigami.loadSlice(data,0);
 } // fin init NEW
 
 
@@ -664,7 +674,6 @@ var startWork= function(data) {
 
   var visuSlice= function(id,data,obj) {
 
-    console.log(data);
     
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+

@@ -2,29 +2,42 @@
 
 @section('content')
 
+<?php $lastCountry=""; $adminName1=""; ?>
+
     <div id="map-canvas"></div>  
 
-    <ul class='locations'>
+    <div class='locations'>
     @foreach ($data['locations'] as $location)
 
 
-       
+       <?php
+       if ($lastCountry!=$location['countryname']) {
+        echo '<h2><img src="./img/flags/'. strtolower($location['countrycode']) .'.png" title="'. $location['countryname'] .'"/> '. $location['countryname'] .'</h2>';
+        $lastCountry=$location['countryname']; $adminName1="";
+       }
+
+       if ($adminName1!=$location['adminname1']) {
+        echo '<h3>'. $location['adminname1'] .'</h3>';
+        $adminName1=$location['adminname1']; 
+       }
+
+       ?>
       
-          <li>
+          <div>
             <a href="./location{{$location['id']}}">
               <h3 title="{{ $location['feature'] }}">{{ $location['name'] }}</h3>
-              <img src="./img/flags/{{ strtolower($location['countrycode']) }}.png" title="{{ $location['countryname'] }}"/> {{ $location['countryname'] }}<br/>
+              <!--img src="./img/flags/{{ strtolower($location['countrycode']) }}.png" title="{{ $location['countryname'] }}"/> {{ $location['countryname'] }}<br/-->
               {{ $location['updated_at'] }}
             @if (count($location['blocs']) > 1) 
               X{{ count($location['blocs']) }} 
             @endif
             </a>
-          </li> 
+          </siv> 
 
      
        
     @endforeach
-  </ul>
+  </div>
    
 @endsection
 

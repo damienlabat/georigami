@@ -51,7 +51,7 @@
         <div class="container">
 
             @yield('content')
-        <hr>
+            <hr class="clearfix">
 
             <footer>
                 <p>fork me ...</p>

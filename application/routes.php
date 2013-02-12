@@ -45,6 +45,10 @@ Route::get('/', array(
      ));
 
 
+
+
+
+
 Route::get('/map', array(
         'as'     => 'map',
         'uses'   => 'bloc@map'
@@ -69,13 +73,8 @@ Route::POST('/new', array(
 
 
 
-Route::get('/location(:num)', array(
-        'as'     => 'get',
-        'uses'   => 'bloc@get'
-     ));
 
-
-Route::get('/location(:num)/(:num)', array(
+Route::get('/bloc(:num)', array(
         'as'     => 'get',
         'uses'   => 'bloc@get'
      ));

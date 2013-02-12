@@ -1,28 +1,46 @@
 @layout('layout')
 
 @section('content')
+<h1>Last blocks</h1>
+<div class="row">
+  
 
+ @foreach ($data['blocs']->results as $bloc) 
    
-    @foreach ($data['locations'] as $location)
+            <div class=' bloc clearfix'>
+              <img src="./bloc{{$bloc->id}}N.svg" title="North view"></a>
 
-       <div class='locations'>
-         <a href="./location{{$location['id']}}"><img src="./img/flags/{{ strtolower($location['countrycode']) }}.png" title="{{ $location['countryname'] }}"/> {{ $location['name'] }} <span title="{{ $location['featuredetail'] }}">({{ $location['feature'] }})</span> X{{ count($location['blocs']) }}</a><br/>
-         @foreach ($location['blocs'] as $bloc)
-          <div>
-            <a href='./bloc{{$bloc['id']}}N.svg'><img src="./bloc{{$bloc['id']}}N.svg" title="North" width='200px'></a>
-            <a href='./bloc{{$bloc['id']}}W.svg'><img src="./bloc{{$bloc['id']}}W.svg" title="West" width='200px'></a>
-            <a href='./bloc{{$bloc['id']}}S.svg'><img src="./bloc{{$bloc['id']}}S.svg" title="South" width='200px'></a>
-            <a href='./bloc{{$bloc['id']}}E.svg'><img src="./bloc{{$bloc['id']}}E.svg" title="Est" width='200px'></a>
-            {{$bloc['id']}}
-          </div>
-        @endforeach
+
+
+
+              <a href='./bloc{{$bloc->id}}'>
+               <h4>{{$bloc->location->name}}</h4>
+                <img src="./img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countryname }}" alt=""/><br/>
+                {{$bloc->location->countryname}}<br/>
+                <br/>
+                {{$bloc->location->adminname1}}<br/>
+                {{$bloc->width}}m x {{$bloc->height}}m<br/>
+                {{$bloc->created_at}}<br/> 
+
+              </a>
+
+            </div>
+
+               
+
+
+
       
-         
+    @endforeach   
 
-     
-       </div>
-    @endforeach
-   
+
+    {{ $data['blocs']->links() }}
+
+
+
+
+    
+
 @endsection
 
 
@@ -32,10 +50,4 @@
 
 @section('script')    
 
-        <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>       
-        <script>
-            var Georigami={};
-            Georigami.location_list={{$data['locations_json']}};
-            $(function() {  Georigami.initIndex();    });
-        </script>
 @endsection      

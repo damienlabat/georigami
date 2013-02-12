@@ -3,21 +3,28 @@
 class Bloc_Controller extends Base_Controller {
 
 	public function action_index()
-	{
-		$locations=Location::with('blocs')->order_by('updated_at', 'desc')->get();
+	{	$per_page=4*8;
 
-		$locations_array=array();
-		foreach($locations as $b){			
+
+		$blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($per_page);;
+
+	/*	$blocs_array=array();
+		foreach($blocs as $b){			
 			$data=$b->to_array();
-		 	$locations_array[] = $data;
-		}
-		return View::make('index')->with('data',array( 'locations'=>$locations_array, 'locations_json'=>json_encode( $locations_array ) ));
+		 	$blocs_array[] = $data;
+		}*/
+		return View::make('index')->with('data',array('blocs'=>$blocs ));
 	}
 
 
 	public function action_map()
 	{
-		$locations=Location::with('blocs')->order_by('updated_at', 'desc')->get();
+		$locations=Location::with('blocs')
+		->order_by('countryName', 'asc')	
+		->order_by('adminName1', 'asc')		
+		->order_by('name', 'asc')	
+		->get();
+
 		$locations_array=array();
 		foreach($locations as $b){			
 			$data=$b->to_array();
@@ -28,17 +35,18 @@ class Bloc_Controller extends Base_Controller {
 
 
 
-	public function action_get($locationid,$pos=1)
+	public function action_get($blocid)
 	{
-		if (!$location=Location::with('blocs')->find($locationid)) return Response::error('404');
-		$locationArray=$location->to_array();
 
-		if (!isset($locationArray['blocs'][$pos-1])) return Response::error('404');
+		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
-		$blocArray=$locationArray['blocs'][$pos-1];
-		$blocArray['coords']=$location->blocs[$pos-1]->get_coords();
+		$blocArray=$bloc->to_array();
+		$blocArray['coords']=$bloc->get_coords();
 
-		return View::make('bloc')->with('data',array( 'pos'=>$pos-1, 'location'=>$locationArray, 'location_json'=>json_encode( $locationArray ), 'bloc_json'=> json_encode( $blocArray )));
+		$location=$bloc->location;
+
+		return View::make('bloc')->with('data',array( 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray )));
+
 	}
 
 
@@ -90,7 +98,6 @@ class Bloc_Controller extends Base_Controller {
 
 		$data['max']=(floor($data['max']*1000)+1 ) / 1000;
 
-		//print_r($data);
 
 		 Event::override('laravel.done', function(){}); // No profiler
 		 $svg=View::make(  'svgprofil' )->with('data',$data);
