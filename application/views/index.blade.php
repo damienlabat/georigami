@@ -17,9 +17,11 @@
                <h4>{{$bloc->location->name}}</h4>
                 <img src="./img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countryname }}" alt=""/><br/>
                 {{$bloc->location->countryname}}<br/>
-                <br/>
                 {{$bloc->location->adminname1}}<br/>
+                altitude: {{round($bloc->min)}}m - {{round($bloc->max)}}m<br/>
                 {{$bloc->width}}m x {{$bloc->height}}m<br/>
+                slices: {{$bloc->vslices}} x {{$bloc->hslices}}<br/>
+                {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
                 {{$bloc->created_at}}<br/> 
 
               </a>

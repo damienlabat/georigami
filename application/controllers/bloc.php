@@ -3,16 +3,9 @@
 class Bloc_Controller extends Base_Controller {
 
 	public function action_index()
-	{	$per_page=4*8;
+	{	$per_page=4*4;
 
-
-		$blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($per_page);;
-
-	/*	$blocs_array=array();
-		foreach($blocs as $b){			
-			$data=$b->to_array();
-		 	$blocs_array[] = $data;
-		}*/
+		$blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($per_page);
 		return View::make('index')->with('data',array('blocs'=>$blocs ));
 	}
 
@@ -20,17 +13,30 @@ class Bloc_Controller extends Base_Controller {
 	public function action_map()
 	{
 		$locations=Location::with('blocs')
+		->where('name','<>','')
 		->order_by('countryName', 'asc')	
 		->order_by('adminName1', 'asc')		
 		->order_by('name', 'asc')	
 		->get();
 
+		$counts=array('countryName','adminName1','name');		
+
 		$locations_array=array();
 		foreach($locations as $b){			
 			$data=$b->to_array();
 		 	$locations_array[] = $data;
+
+		 	if (!isset($counts['countryName'][ $b->countryname ])) $counts['countryName'][ $b->countryname ]=0;
+		 	$counts['countryName'][ $b->countryname ]++;
+
+		 	if (!isset($counts['adminName1'][ $b->adminname1 ])) $counts['adminName1'][ $b->adminname1 ]=0;
+		 	$counts['adminName1'][ $b->adminname1 ]++;
+
+		 	if (!isset($counts['name'][ $b->name ])) $counts['name'][ $b->name ]=0;
+		 	$counts['name'][ $b->name ]++;
+
 		}
-		return View::make('map')->with('data',array( 'locations'=>$locations_array, 'locations_json'=>json_encode( $locations_array ) ));
+		return View::make('map')->with('data',array( 'locations'=>$locations, 'counts'=>$counts, 'locations_json'=>json_encode( $locations_array ) ));
 	}
 
 
@@ -43,9 +49,12 @@ class Bloc_Controller extends Base_Controller {
 		$blocArray=$bloc->to_array();
 		$blocArray['coords']=$bloc->get_coords();
 
+		$blocPrev= Bloc::with('location')->where('id','<',$blocid)->order_by('id', 'desc')->first();
+		$blocNext= Bloc::with('location')->where('id','>',$blocid)->order_by('id', 'asc')->first();
+
 		$location=$bloc->location;
 
-		return View::make('bloc')->with('data',array( 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray )));
+		return View::make('bloc')->with('data',array( 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray ), 'prev'=>$blocPrev, 'next'=>$blocNext ));
 
 	}
 

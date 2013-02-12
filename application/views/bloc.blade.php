@@ -2,6 +2,27 @@
 
 @section('content')
 
+         <ul class="pager">            
+              @if ($data['prev']!=null)
+              <li class="previous">
+                  <a href="./bloc{{$data['prev']->id}}" title="{{$data['prev']->location->name}}">&larr; Older</a>              
+              @else
+              <li class="previous disabled">
+                  <a href="#">&larr; Older</a>
+              @endif
+              </li>
+              @if ($data['next']!=null)
+              <li class="next">
+                  <a href="./bloc{{$data['next']->id}}" title="{{$data['next']->location->name}}">Newer &rarr;</a>         
+              @else
+              <li class="next disabled">
+                  <a href="#">Newer &rarr;</a>
+              @endif
+              </li>
+          </ul>
+
+
+
         <div class='row'>
    
             <div class="span2">
@@ -22,6 +43,9 @@
            <div class="div3Dview"></div>
            vertical scale <input class="vs-input span1" value="1" type="number" step="0.1" min="0.1">
            <div class="divPaperBtn"></div>
+
+
+ 
 
 
 @endsection

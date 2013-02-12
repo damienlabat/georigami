@@ -64,19 +64,71 @@ class Geoname {
     {
         $url = self::$base_url.'findNearbyJSON?lat='.$lat.'&lng='.$lng;
         if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
-        $url.= '&username='.Config::get('geoname.username');
+        $url.= '&style=full&localCountry=false&username='.Config::get('geoname.username');
 
         $res = json_decode(file_get_contents($url), TRUE );
 
-        foreach ($res['geonames'] as &$o) {
-            if (isset($o['countryCode']))   $o['country']= self::getISO3166( $o['countryCode'] );
-                else $o['country']='';
-            if (isset($o['fcode']))         $o['feature']= self::getFCode( $o['fcode'] );
-                else $o['feature']='';
-        }
+        if ($res===null) return false;
+
+        return $res['geonames'];
+    }
+
+
+
+
+
+
+
+    static function findCountrySubdivision($lat,$lng)
+    {
+        $url = self::$base_url.'countrySubdivisionJSON?lat='.$lat.'&lng='.$lng;
+
+        $url.= '&username='.Config::get('geoname.username');
+
+        $res = json_decode(file_get_contents($url), TRUE );       
+
+        if (isset($res['status']))
+            if($res['status']['value']==15) return false;
 
         return $res;
     }
+
+
+
+
+
+
+
+
+    static function findOcean($lat,$lng)
+    {
+        $url = self::$base_url.'oceanJSON?lat='.$lat.'&lng='.$lng;
+
+        $url.= '&username='.Config::get('geoname.username');
+
+        $res = json_decode(file_get_contents($url), TRUE );       
+
+        return $res;
+    }
+
+
+
+
+    static function findTheBest($lat,$lng) {
+
+        $res= self::findNearby(  $lat,$lng, 'T' );
+        if ($res==null) $res= self::findNearby(  $lat,$lng );
+        if ($res==null) $res= self::findCountrySubdivision(  $lat,$lng );
+        if ($res==null) {
+            $ocean= self::findOcean(  $lat,$lng );
+            $res=   array('name'=>$ocean['ocean']['name']);
+        }
+
+        return $res;
+
+    }
+
+    
 
 
     static  function getISO3166( $code ) {
@@ -89,6 +141,14 @@ class Geoname {
 
     static  function getFCode( $code ) {
         $list= json_decode( Config::get('geoname.fcodes'), TRUE );
+
+        if (isset($list[$code])) return $list[$code]; 
+            return FALSE;
+    }
+
+
+    static  function continentCode( $code ) {
+        $list= json_decode( Config::get('geoname.continentcodes'), TRUE );
 
         if (isset($list[$code])) return $list[$code]; 
             return FALSE;

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php $lastCountry=""; $adminName1=""; ?>
+<?php $lastCountry=null; $adminName1=null; ?>
 
     <div id="map-canvas"></div>  
 
@@ -11,32 +11,33 @@
 
 
        <?php
-       if ($lastCountry!=$location['countryname']) {
-        echo '<h2><img src="./img/flags/'. strtolower($location['countrycode']) .'.png" title="'. $location['countryname'] .'"/> '. $location['countryname'] .'</h2>';
-        $lastCountry=$location['countryname']; $adminName1="";
+       if ($lastCountry!==$location->countryname) {
+
+        if ($adminName1!==null) echo "</ul></div>";
+        if ($lastCountry!==null) echo "</div>";
+
+        echo '<div class="row"><h2>'. $location->countryname .'</h2>';
+        $lastCountry=$location->countryname; $adminName1=null;
        }
 
-       if ($adminName1!=$location['adminname1']) {
-        echo '<h3>'. $location['adminname1'] .'</h3>';
-        $adminName1=$location['adminname1']; 
+       if ($adminName1!==$location->adminname1) {
+        if ($adminName1!==null) echo "</ul></div>";
+        echo '<div class="span3"><h4>'. $location->adminname1 .'</h4><ul>';
+        $adminName1=$location->adminname1; 
        }
 
        ?>
       
-          <div>
-            <a href="./location{{$location['id']}}">
-              <h3 title="{{ $location['feature'] }}">{{ $location['name'] }}</h3>
-              <!--img src="./img/flags/{{ strtolower($location['countrycode']) }}.png" title="{{ $location['countryname'] }}"/> {{ $location['countryname'] }}<br/-->
-              {{ $location['updated_at'] }}
-            @if (count($location['blocs']) > 1) 
-              X{{ count($location['blocs']) }} 
-            @endif
-            </a>
-          </siv> 
-
+          
+            <li><a href="./location{{$location->id}}">{{ $location->name }}</a></li>
+          
      
        
     @endforeach
+   <?php 
+   if ($adminName1!="") echo "</ul></div>";
+   if ($lastCountry!="") echo "</div>";
+    ?>
   </div>
    
 @endsection
