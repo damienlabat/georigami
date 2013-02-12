@@ -34,7 +34,7 @@
     @endforeach   
 
 
-    {{ $data['blocs']->links() }}
+    {{ $data['blocs']->links(1, Paginator::ALIGN_CENTER); }}
 
 
 
