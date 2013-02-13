@@ -32,25 +32,6 @@
 |
 */
 
-Route::get('test/(:any)', function($q) {
-        return Response::json( Geoname::search(  $q, 'T', 10, 'short' ) );
-});
-
-Route::get('test', function() {
-    echo '<pre>';
-
-$lat=-78.52666524819439;        $lng=-85.61645507812500;        print_r( Geoname::findTheBest(  $lat,$lng) );
-$lat=-88;                       $lng=0;                         print_r( Geoname::findTheBest(  $lat,$lng) );
-$lat=45;                        $lng=0;                         print_r( Geoname::findTheBest(  $lat,$lng) );
-$lat=2;                         $lng=0;                         print_r( Geoname::findTheBest(  $lat,$lng) );
-
-
-
-    echo '</pre>';
-
-});
-
-/***************/
 
 
 
@@ -86,6 +67,13 @@ Route::POST('/new', array(
 
 
 
+Route::get('/location(:num)', array(
+        'as'     => 'location',
+        'uses'   => 'bloc@location'
+     ));
+
+
+
 
 
 
@@ -93,6 +81,14 @@ Route::get('/bloc(:num)', array(
         'as'     => 'get',
         'uses'   => 'bloc@get'
      ));
+
+Route::get('/bloc(:num)/(profil|print)', array(
+        'as'     => 'get',
+        'uses'   => 'bloc@get'
+     ));
+
+
+
 
 
 
@@ -106,6 +102,10 @@ Route::get('/bloc(:num)((N|S|W|E){1}).svg', array(
         'as'     => 'svg',
         'uses'   => 'bloc@svg'
      ));
+
+
+
+
 
 
 

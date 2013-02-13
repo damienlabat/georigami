@@ -126,11 +126,11 @@
                 area: {
                     lat:42.840467241791764,
                     lng:-0.4395133789062129,
-                    width:1000, 
-                    height:1000,
-                    vSlices:20,
-                    hSlices:20,
-                    sampling:2
+                    width:1000000, 
+                    height:1000000,
+                    vSlices:1,
+                    hSlices:1,
+                    sampling:1
                     
                 }
             };

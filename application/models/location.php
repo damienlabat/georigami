@@ -11,47 +11,46 @@ class Location extends Eloquent {
     }
 
 
-    public static function get_byLatLng($lat,$lng) {
+    public static function getorcreate($lat,$lng) {
 
-    	return self::where('lat', '=', $lat)->where('lng', '=', $lng)->first();
+        $data_json=Geoname::findTheBest( $lat,$lng) ;
+
+        if (!isset($data_json['lat'])) {
+            $data_json['lat']=number_format($lat, 5, '.', '');
+            $data_json['lng']=number_format($lng, 5, '.', '');
+        }
+        
+        if ($location= self::where('lat', '=', $data_json['lat'])->where('lng', '=', $data_json['lng'])->first() )
+            return $location;
+        else return self::create( $data_json );   	
 
     }
 
 
 
-    public function update_geoname()
+    public static function create($data)
     { 
 
-        $data=FALSE;
-        $geoname=Geoname::findNearby($this->lat,$this->lng, 'T');
-        if (count($geoname['geonames']==0))	$geoname=Geoname::findNearby($this->lat,$this->lng);
+        $location = new Location;
 
+        $location->lat=$data['lat'];
+        $location->lng=$data['lng'];
 
-        if (count($geoname['geonames']>0)) {
-        	$data=$geoname['geonames'][0];
-
-            
-
-        	if (isset($data['distance']))    $this->distance 	    = $data['distance'];
-        	if (isset($data['geonameId']))   $this->geonameId 	= $data['geonameId'];
-        	if (isset($data['countryName'])) $this->countryName 	= $data['countryName'];
-        	if (isset($data['adminCode1']))  $this->adminCode1 	= $data['adminCode1'];
-        	if (isset($data['fclName']))     $this->fclName 		= $data['fclName'];
-        	if (isset($data['countryCode'])) $this->countryCode 	= $data['countryCode'];
-        	if (isset($data['fcodeName']))   $this->fcodeName 	= $data['fcodeName'];
-        	if (isset($data['toponymName'])) $this->toponymName 	= $data['toponymName'];
-        	if (isset($data['fcl']))         $this->fcl 			= $data['fcl'];
-        	if (isset($data['name']))        $this->name 	   	    = $data['name'];
-        	if (isset($data['fcode']))       $this->fcode 		= $data['fcode'];
-        	if (isset($data['adminName1']))  $this->adminName1 	= $data['adminName1'];
-        	if (isset($data['feature']))     $this->feature 		= $data['feature'][0];
-        	if (isset($data['feature']))     $this->featureDetail = $data['feature'][1];
-        	
-        	$this->save();        	
-        }
+    	if (isset($data['geonameId']))      $location->geonameId 	    = $data['geonameId'];
+        if (isset($data['name']))           $location->name             = $data['name'];
+        if (isset($data['adminName1']))     $location->adminName1       = $data['adminName1'];
+        if (isset($data['adminName2']))     $location->adminName2       = $data['adminName2'];
+        if (isset($data['adminName3']))     $location->adminName3       = $data['adminName3'];
+        if (isset($data['adminName4']))     $location->adminName4       = $data['adminName4'];
+        if (isset($data['countryCode']))    $location->countryCode      = $data['countryCode'];
+        if (isset($data['fcl']))            $location->fcl              = $data['fcl'];
+        if (isset($data['fcode']))          $location->fcode            = $data['fcode'];
+        if (isset($data['continentCode']))  $location->continentCode    = $data['continentCode'];
+    	
+    	
+    	$location->save();       
         
-        
-        return $this;
+        return $location;
     }
 
 }

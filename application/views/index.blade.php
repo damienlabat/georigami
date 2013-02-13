@@ -15,10 +15,10 @@
 
               <a href='./bloc{{$bloc->id}}'>
                <h4>{{$bloc->location->name}}</h4>
-                <img src="./img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countryname }}" alt=""/><br/>
-                {{$bloc->location->countryname}}<br/>
+                <img src="./img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
+                {{Geoname::getISO3166($bloc->location->countrycode)}}<br/>
                 {{$bloc->location->adminname1}}<br/>
-                altitude: {{round($bloc->min)}}m - {{round($bloc->max)}}m<br/>
+                altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>
                 {{$bloc->width}}m x {{$bloc->height}}m<br/>
                 slices: {{$bloc->vslices}} x {{$bloc->hslices}}<br/>
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
@@ -35,6 +35,7 @@
       
     @endforeach   
 
+</div>
 
     {{ $data['blocs']->links(1, Paginator::ALIGN_CENTER); }}
 

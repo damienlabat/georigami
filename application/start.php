@@ -171,3 +171,17 @@ if ( ! Request::cli() and Config::get('session.driver') !== '')
 {
 	Session::load();
 }
+
+
+if (Request::cli())
+{
+  Bundle::start('myunit');
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Load Custom Macros
+|--------------------------------------------------------------------------
+*/
+require path('app').'macros/html.php';

@@ -60,6 +60,8 @@ class Geoname {
 
 
 
+
+
 	static function findNearby($lat,$lng,$featureClass=null) // plus bbox ?
     {
         $url = self::$base_url.'findNearbyJSON?lat='.$lat.'&lng='.$lng;
@@ -67,10 +69,10 @@ class Geoname {
         $url.= '&style=full&localCountry=false&username='.Config::get('geoname.username');
 
         $res = json_decode(file_get_contents($url), TRUE );
-
-        if ($res===null) return false;
-
-        return $res['geonames'];
+       
+        if (!isset($res['geonames'])) return false;
+        if (count($res['geonames'])==0) return false;
+            else return $res['geonames'][0];
     }
 
 
@@ -81,10 +83,8 @@ class Geoname {
 
     static function findCountrySubdivision($lat,$lng)
     {
-        $url = self::$base_url.'countrySubdivisionJSON?lat='.$lat.'&lng='.$lng;
-
+        $url = self::$base_url.'countrySubdivisionJSON?lat='.$lat.'&lng='.$lng;  
         $url.= '&username='.Config::get('geoname.username');
-
         $res = json_decode(file_get_contents($url), TRUE );       
 
         if (isset($res['status']))
@@ -103,9 +103,7 @@ class Geoname {
     static function findOcean($lat,$lng)
     {
         $url = self::$base_url.'oceanJSON?lat='.$lat.'&lng='.$lng;
-
         $url.= '&username='.Config::get('geoname.username');
-
         $res = json_decode(file_get_contents($url), TRUE );       
 
         return $res;
@@ -116,9 +114,9 @@ class Geoname {
 
     static function findTheBest($lat,$lng) {
 
-        $res= self::findNearby(  $lat,$lng, 'T' );
-        if ($res==null) $res= self::findNearby(  $lat,$lng );
-        if ($res==null) $res= self::findCountrySubdivision(  $lat,$lng );
+        $res= self::findNearby(  $lat,$lng, 'T' );        
+        if (!$res) $res= self::findNearby(  $lat,$lng );
+        if (!$res) $res= self::findCountrySubdivision(  $lat,$lng );
         if ($res==null) {
             $ocean= self::findOcean(  $lat,$lng );
             $res=   array('name'=>$ocean['ocean']['name']);
@@ -135,7 +133,7 @@ class Geoname {
         $list= json_decode( Config::get('geoname.iso_countries'), TRUE );
 
         if (isset($list[$code])) return $list[$code]; 
-            return FALSE;
+            return $code;
     }
 
 
@@ -143,7 +141,14 @@ class Geoname {
         $list= json_decode( Config::get('geoname.fcodes'), TRUE );
 
         if (isset($list[$code])) return $list[$code]; 
-            return FALSE;
+            return $code;
+    }
+
+    static  function getFcl( $code ) {
+        $list= json_decode( Config::get('geoname.fcl'), TRUE );
+
+        if (isset($list[$code])) return $list[$code]; 
+            return $code;
     }
 
 
@@ -151,7 +156,7 @@ class Geoname {
         $list= json_decode( Config::get('geoname.continentcodes'), TRUE );
 
         if (isset($list[$code])) return $list[$code]; 
-            return FALSE;
+            return $code;
     }
 
 

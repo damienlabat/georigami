@@ -119,7 +119,7 @@ $(function() {
           changeFunction();
 
 
-console.log( findTile( map, event.latLng  ) );
+//console.log( findTile( map, event.latLng  ) );
 
 
 
@@ -127,6 +127,25 @@ console.log( findTile( map, event.latLng  ) );
         
     return DR
   };
+
+
+
+
+
+var infowindow;
+
+function createMarker(name, latlng) {
+    var marker = new google.maps.Marker({position: latlng, map: map});
+    google.maps.event.addListener(marker, "click", function() {
+      if (infowindow) infowindow.close();
+      infowindow = new google.maps.InfoWindow({content: name});
+      infowindow.open(map, marker);
+    });
+    return marker;
+  }
+
+
+
 
 
 
@@ -220,7 +239,6 @@ Georigami.verticalScale=1;
 
   Georigami.initMap = function() {
 
-     var infowindow;
      //initmap
     var mapOptions = {
         center: new google.maps.LatLng (0 , 0 ),
@@ -247,14 +265,14 @@ Georigami.verticalScale=1;
       var data=Georigami.location_list[i];
       var latLng = new google.maps.LatLng( data.lat,data.lng );
 
-      var html='<h3 title="'+data.feature+'">'+data.name+'</h3><img src="./img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> '+data.countryname+'<br/><br/>';
+      var html='<a href="./location'+data.id+'"><h3 title="'+data.feature+'">'+data.name+'</h3><img src="./img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> '+data.countryname+' '+data.adminname1+'<br/>';
       for (var j = 0; j < data.blocs.length; j++) {
         var bloc=data.blocs[j];
-        html =html+'<a href="./location'+data.id+'/'+(j+1)+'"><div>';
-        html =html+'<img src="./bloc'+bloc.id+'N.svg" title="North" width="100px">';
-        html =html+'<img src="./bloc'+bloc.id+'W.svg" title="West" width="100px">';
+        html =html+'<div>';
+        html =html+'<img src="./bloc'+bloc.id+'N.svg" title="North" width="64px">';
+       /* html =html+'<img src="./bloc'+bloc.id+'W.svg" title="West" width="100px">';
         html =html+'<img src="./bloc'+bloc.id+'S.svg" title="South" width="100px">';
-        html =html+'<img src="./bloc'+bloc.id+'E.svg" title="Est" width="100px">';
+        html =html+'<img src="./bloc'+bloc.id+'E.svg" title="Est" width="100px">';*/
         html =html+'</div>';
         html =html+'</a>';
         };
@@ -269,21 +287,66 @@ Georigami.verticalScale=1;
     var mcOptions = {gridSize: 50, maxZoom: 15}; 
     var mapCluster = new MarkerClusterer(map, markers, mcOptions); 
 
+  }
+
+
+
+/*******************/
+ /*   initLocation    */
+/*******************/
+
+  Georigami.initLocation = function() {
     
-function createMarker(name, latlng) {
-    var marker = new google.maps.Marker({position: latlng, map: map});
-    google.maps.event.addListener(marker, "click", function() {
-      if (infowindow) infowindow.close();
-      infowindow = new google.maps.InfoWindow({content: name});
-      infowindow.open(map, marker);
-    });
-    return marker;
+     //initmap
+
+    var Loc=new google.maps.LatLng (Georigami.location.lat , Georigami.location.lng );
+    var mapOptions = {
+        center: Loc,
+        zoom: 1,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+      };
+
+    map = new google.maps.Map(document.getElementById("map-canvas2"), mapOptions);  
+    
+
+    var markers = [];
+    var bounds = new google.maps.LatLngBounds ();
+    bounds.extend(Loc);
+
+    for (var i = 0; i < Georigami.location.blocs.length; i++) {
+      var data=Georigami.location.blocs[i];
+      var latLng = new google.maps.LatLng( data.lat,data.lng );
+      bounds.extend(latLng);
+
+      var html='<a href="./bloc'+data.id+'">';
+
+        //html =html+data.lat+', '+data.lng+'<br/>';
+
+
+
+        html =html+'<img src="./bloc'+data.id+'N.svg" title="North" width="100px">';
+        html =html+'<img src="./bloc'+data.id+'W.svg" title="West" width="100px">';
+        html =html+'<img src="./bloc'+data.id+'S.svg" title="South" width="100px">';
+        html =html+'<img src="./bloc'+data.id+'E.svg" title="Est" width="100px">';
+
+        html =html+'<br/>';
+
+        html =html+'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>';
+        html =html+data.width+'m x '+data.height+'m<br/>';        
+        html =html+'slices: '+data.vslices+' x '+data.hslices+'<br/>';
+        html =html+(data.vslices*data.vsamples+data.hslices*data.hsamples)+' samples<br/>';
+        html =html+'created at  '+data.created_at+'<br/>';
+
+        html =html+'</a>';
+
+         
+      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng) );
+     
+    }
+
+    map.fitBounds (bounds);    
+
   }
-
-
-
-  }
-
 
 
 
@@ -471,7 +534,7 @@ function createMarker(name, latlng) {
               path: lineCoord              
             });
 
-           }
+           }           
   }
 
 
@@ -678,21 +741,20 @@ var startWork= function(data) {
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
       '<div class="row">'+
-      '<div class="span9 resultcontent"><div class="div3Dview"></div><div class="divPaperBtn"></div></div>'+
-      '<div class="span2">'+
+      '<div class="span8 resultcontent"><div class="div3Dview"></div><div class="divPaperBtn"></div></div>'+
+      '<div class="span3">'+
       '<table class="table">'+             
-        '<thead><tr> <th>params</th><th></th></tr></thead>'+
         '<tbody>' +
-        '<tr> <td>place</td><td class="placename"></td></tr>'+
+        '<tr> <td>place</td><td class="placename"><a href="location'+data.location.id+'"><img src="./img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
         '<tr> <td>latitude</td><td>'+data.lat+'</td></tr>'+
         '<tr> <td>longitude</td><td>'+data.lng+'</td></tr>'+
-        '<tr> <td>width</td><td>'+data.width+'</td></tr>'+
-        '<tr> <td>height</td><td>'+data.height+'</td></tr>'+
-        '<tr> <td>vSlices</td><td>'+data.vSlices+'</td></tr>'+
-        '<tr> <td>hSlices</td><td>'+data.hSlices+'</td></tr>'+
-        '<tr> <td>vSamples</td><td>'+data.vSamples+'</td></tr>'+
-        '<tr> <td>hSamples</td><td>'+data.hSamples+'</td></tr></tbody>'+
-        '<tr> <td>vertical scale</td><td><input class="vs-input span1" type="number" step="0.1" min="0.1" value="'+Georigami.verticalScale+'"></td></tr></tbody>'+
+        '<tr> <td>altitude</td><td>'+Math.round(data.min)+'m to '+Math.round(data.max)+'m</td></tr>'+
+        '<tr> <td>width</td><td>'+data.width+'m</td></tr>'+
+        '<tr> <td>height</td><td>'+data.height+'m</td></tr>'+
+        '<tr> <td>vSlices</td><td>'+data.vslices+'</td></tr>'+
+        '<tr> <td>hSlices</td><td>'+data.hslices+'</td></tr>'+
+        '<tr> <td>vertical scale</td><td><input class="vs-input span1" type="number" step="0.1" min="0.1" value="'+Georigami.verticalScale+'"></td></tr>'+
+        '</tbody>'+
             
       '</table>'+
       '</div>'+

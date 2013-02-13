@@ -2,6 +2,8 @@
 
 @section('content')
 
+        <h1>{{$data['show']}}</h1>
+
          <ul class="pager">            
               @if ($data['prev']!=null)
               <li class="previous">
@@ -29,12 +31,14 @@
                <img src="./bloc{{$data['bloc']['id']}}N.svg" title="North view">
             </div>
             <div class="span2">
+              <a href='./location{{$data['bloc']['location']['id']}}'>
                <h4>{{$data['bloc']['location']['name']}}</h4>
-                <img src="./img/flags/{{ strtolower($data['bloc']['location']['countrycode']) }}.png" title="{{ $data['bloc']['location']['countryname'] }}" alt="" /><br/>
-                {{$data['bloc']['location']['countryname']}}<br/>
+                <img src="./img/flags/{{ strtolower($data['bloc']['location']['countrycode']) }}.png" title="{{ $data['bloc']['location']['countrycode'] }}" alt="" /> {{ Geoname::getISO3166( $data['bloc']['location']['countrycode'])}}<br/>
+                {{$data['bloc']['location']['adminname1']}}<br/>
+              </a>
             </div>
             <div class="span6">
-                {{$data['bloc']['location']['adminname1']}}<br/>
+                
                 {{$data['bloc']['width']}}m x {{$data['bloc']['height']}}m<br/>
                 {{$data['bloc']['created_at']}}
               </div>

@@ -18,30 +18,33 @@ class Create_Blocs_Table {
             $table->decimal('lat',18,14);
             $table->decimal('lng',18,14);
 
-            $table->decimal('distance',8,5)->unsigned();
-
             $table->integer('geonameId');
  
-            $table->string('countryName');
-            $table->string('adminCode1');
-            $table->string('fclName');
-            $table->string('countryCode');
-            $table->string('fcodeName');
-            $table->string('toponymName');
-            $table->string('fcl');
             $table->string('name');
-            $table->string('fcode');            
+
             $table->string('adminName1');
-            $table->string('feature');
-            $table->string('featureDetail');
+            $table->string('adminName2');
+            $table->string('adminName3');
+            $table->string('adminName4');
+
+            $table->string('countryCode',2);   
+
+            $table->string('fcl',1);  
+            $table->string('fcode',5); 
+            $table->string('continentCode',2);                                          
 
             $table->timestamps();
         });
 
 
+
+
         Schema::create('blocs',function($table){
             
             $table->increments('id')->unsigned();
+
+            $table->decimal('lat',18,14);
+            $table->decimal('lng',18,14);
 
             $table->integer('width')->unsigned();
             $table->integer('height')->unsigned();

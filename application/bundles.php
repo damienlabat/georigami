@@ -35,6 +35,6 @@
 
 return array(
 	'bob',
+	'myunit',
 	'bootstrapper' => array('auto' => true),
-
 );

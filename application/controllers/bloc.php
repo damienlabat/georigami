@@ -13,35 +13,57 @@ class Bloc_Controller extends Base_Controller {
 	public function action_map()
 	{
 		$locations=Location::with('blocs')
-		->where('name','<>','')
-		->order_by('countryName', 'asc')	
+		->where('name','<>','')		
+		->order_by('continentCode', 'asc')	
+		->order_by('countryCode', 'asc')	
 		->order_by('adminName1', 'asc')		
+		->order_by('adminName2', 'asc')		
+		->order_by('adminName3', 'asc')		
+		->order_by('adminName4', 'asc')		
 		->order_by('name', 'asc')	
 		->get();
 
-		$counts=array('countryName','adminName1','name');		
+		//$counts=array('countryName','adminName1','name');		
 
 		$locations_array=array();
 		foreach($locations as $b){			
 			$data=$b->to_array();
+			$data['countryname']=Geoname::getISO3166($data['countrycode']);
 		 	$locations_array[] = $data;
-
-		 	if (!isset($counts['countryName'][ $b->countryname ])) $counts['countryName'][ $b->countryname ]=0;
-		 	$counts['countryName'][ $b->countryname ]++;
-
-		 	if (!isset($counts['adminName1'][ $b->adminname1 ])) $counts['adminName1'][ $b->adminname1 ]=0;
-		 	$counts['adminName1'][ $b->adminname1 ]++;
-
-		 	if (!isset($counts['name'][ $b->name ])) $counts['name'][ $b->name ]=0;
-		 	$counts['name'][ $b->name ]++;
-
 		}
-		return View::make('map')->with('data',array( 'locations'=>$locations, 'counts'=>$counts, 'locations_json'=>json_encode( $locations_array ) ));
+		return View::make('map')->with('data',array( 'locations'=>$locations, 'locations_json'=>json_encode( $locations_array ) ));
 	}
 
 
 
-	public function action_get($blocid)
+	public function action_location($locationid)
+	{	
+
+		if (!$location=Location::with('blocs')->find($locationid)) return Response::error('404');
+
+		$locationPrev= Location::with('blocs')->where('id','<',$locationid)->order_by('id', 'desc')->first();
+		$locationNext= Location::with('blocs')->where('id','>',$locationid)->order_by('id', 'asc')->first();
+
+
+		$locationArray=$location->to_array();
+		$locationArray['blocs']=array();
+
+		foreach($location->blocs as $b){			
+			$data=$b->to_array();
+			$data['coords']=$b->get_coords();
+		 	$locationArray['blocs'][] = $data;
+		}
+
+
+
+		return View::make('location')->with('data',array('location'=>$location , 'location_json'=> json_encode( $locationArray ),'prev'=>$locationPrev, 'next'=>$locationNext));
+	}
+
+
+
+
+
+	public function action_get($blocid, $show='3D')
 	{
 
 		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
@@ -54,7 +76,7 @@ class Bloc_Controller extends Base_Controller {
 
 		$location=$bloc->location;
 
-		return View::make('bloc')->with('data',array( 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray ), 'prev'=>$blocPrev, 'next'=>$blocNext ));
+		return View::make('bloc')->with('data',array( 'show'=>$show, 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray ), 'prev'=>$blocPrev, 'next'=>$blocNext ));
 
 	}
 
@@ -65,6 +87,8 @@ class Bloc_Controller extends Base_Controller {
 		if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
 		$res=$bloc->to_array();
 		$res['location']=$bloc->location->to_array();
+		$res['location']['countryname']=Geoname::getISO3166($res['location']['countrycode']);
+
 		if ($with_data) $res['coords']= $bloc->get_coords();
 		
 		return  Response::json( $res );
@@ -158,17 +182,12 @@ class Bloc_Controller extends Base_Controller {
 		}
 
 
-		$location= Location::get_byLatLng( $input['lat'], $input['lng'] );
-
-		if (!$location) {
-			$location= new Location;
-			$location->lat = $input['lat'];
-			$location->lng = $input['lng'];
-			$location->save();
-			$location->update_geoname();
-		}
+		$location= Location::getorcreate( $input['lat'], $input['lng'] );
 
 		$bloc = new Bloc;
+
+		$bloc->lat = $input['lat'];
+		$bloc->lng = $input['lng'];
 
 		$bloc->hSamples = $input['hSamples'];
 		$bloc->vSamples = $input['vSamples'];
@@ -190,6 +209,7 @@ class Bloc_Controller extends Base_Controller {
 		$bloc->save_coords( $coords );
 
 		return self::action_getJson( $bloc->id, TRUE );
+
 	}
 
 }

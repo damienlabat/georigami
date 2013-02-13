@@ -100,4 +100,17 @@ class Bloc extends Eloquent {
 
 
 
+    public static function count_withlocation($field,$value)
+    {
+
+        // how to make this better ???
+        $count=0;
+        $locations = Location::with('blocs')->where( $field,'=',$value )->get();
+        foreach ($locations as $location) $count+= count($location->blocs);
+    
+        return $count;
+    }
+
+
+
 }
