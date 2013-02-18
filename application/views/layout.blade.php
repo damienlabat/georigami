@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>@yield('title')</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
@@ -65,8 +65,24 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
         {{HTML::script("js/vendor/bootstrap.min.js")}}
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+        {{HTML::script("js/markerclusterer.js")}}
+        
   		<!--script src="https://raw.github.com/mrdoob/three.js/master/build/three.js"></script-->
+        <script>Georigami={baseurl:'{{URL::base()}}'};</script>
         {{HTML::script("js/vendor/three.min.js")}}
+
+        {{HTML::script("js/map.js")}}
+        {{HTML::script("js/3d.js")}}
+        {{HTML::script("js/paper.js")}}
+
+        {{HTML::script("js/page_new.js")}}
+        {{HTML::script("js/page_map.js")}}
+        {{HTML::script("js/page_location.js")}}
+        {{HTML::script("js/page_bloc.js")}}
+
+
+        <!-- TODO compile JS files -->
+
         {{HTML::script("js/main.js")}}
 
 @yield('script')

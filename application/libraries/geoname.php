@@ -62,11 +62,11 @@ class Geoname {
 
 
 
-	static function findNearby($lat,$lng,$featureClass=null) // plus bbox ?
+	static function findNearby($lat,$lng,$featureClass=null,$radius=1) // plus bbox ?
     {
         $url = self::$base_url.'findNearbyJSON?lat='.$lat.'&lng='.$lng;
         if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
-        $url.= '&style=full&localCountry=false&username='.Config::get('geoname.username');
+        $url.= '&style=full&localCountry=false&radius='.$radius.'&username='.Config::get('geoname.username');
 
         $res = json_decode(file_get_contents($url), TRUE );
        
@@ -114,12 +114,13 @@ class Geoname {
 
     static function findTheBest($lat,$lng) {
 
-        $res= self::findNearby(  $lat,$lng, 'T' );        
-        if (!$res) $res= self::findNearby(  $lat,$lng );
+        $res= self::findNearby(  $lat,$lng, 'T' ,5 );        
+        if (!$res) $res= self::findNearby(  $lat,$lng, null, 5 );
         if (!$res) $res= self::findCountrySubdivision(  $lat,$lng );
         if ($res==null) {
             $ocean= self::findOcean(  $lat,$lng );
-            $res=   array('name'=>$ocean['ocean']['name']);
+            if (isset($ocean['ocean'])) $res=  array('name'=>$ocean['ocean']['name']);
+                else return false;
         }
 
         return $res;
@@ -141,7 +142,7 @@ class Geoname {
         $list= json_decode( Config::get('geoname.fcodes'), TRUE );
 
         if (isset($list[$code])) return $list[$code]; 
-            return $code;
+            return array($code,'');
     }
 
     static  function getFcl( $code ) {

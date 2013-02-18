@@ -55,27 +55,16 @@
     position: relative;
 }
 
-.result>p.index {
-    background-color: #F5F5F5;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px 0 4px 0;
-    color: #9DA0A4;
-    content: "Example";
-    font-size: 12px;
-    font-weight: bold;
-    left: -1px;
-    padding: 3px 7px;
-    position: absolute;
-    top: -1px;
-}
+
 
 .div3Dview {
-  height:600px;
+  height:500px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);
 }
 
 #search-result {    
     display: block;    
-    margin-left: 172px;
+   /* margin-left: 172px;*/
     /*max-height: 100px;
     overflow: auto;*/
     padding: 8px;

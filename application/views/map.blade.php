@@ -1,5 +1,17 @@
 @layout('layout')
 
+
+
+
+
+@section('title')
+Georigami - Map
+@endsection
+
+
+
+
+
 @section('content')
 
 <?php 
@@ -31,7 +43,7 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
         if ($adminName1!==null) echo "</div>";
         if ($countryCode!==null) echo "</div>";
 
-        echo '<div class="row"><h2>'. (Geoname::getISO3166($location->countrycode)!=''?Geoname::getISO3166($location->countrycode):'ocean') . HTML::showcount( Bloc::count_withlocation('countrycode',$location->countrycode) ). '</h2>';
+        echo '<div class="row"><a name="'.strtolower($location->countrycode).'"></a><h2><img src="./img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>'. (Geoname::getISO3166($location->countrycode)!=''?Geoname::getISO3166($location->countrycode):'ocean') . HTML::showcount( Bloc::count_withlocation('countrycode',$location->countrycode) ). '</h2>';
         $countryCode=$location->countrycode;
         $adminName1=null; $adminName2plus=null;
        }
@@ -87,9 +99,8 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
 
 @section('script')    
 
-        <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>       
+     
         <script>
-            var Georigami={};
             Georigami.location_list={{$data['locations_json']}};
             $(function() {  Georigami.initMap();    });
         </script>

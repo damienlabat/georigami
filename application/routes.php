@@ -34,7 +34,6 @@
 
 
 
-
 Route::get('/', array(
         'as'     => 'index',
         'uses'   => 'bloc@index'
@@ -56,8 +55,29 @@ Route::get('/map', array(
 
 Route::get('/new', function()
 {
-	return View::make('new');
+    $lat=       Input::get('lat',       0);
+    $lng=       Input::get('lng',       0);
+    $width=     Input::get('width',     10000);
+    $height=    Input::get('height',    10000);
+    $hslices=   Input::get('hslices',   15);
+    $vslices=   Input::get('vslices',   15);
+    $sampling=  Input::get('sampling',  1);
+
+
+    $data=array(
+        'lat'       =>$lat, 
+        'lng'       =>$lng,
+        'width'     =>$width, 
+        'height'    =>$height,
+        'hSlices'   =>$hslices, 
+        'vSlices'   =>$hslices,
+        'sampling'  =>$sampling
+        );
+
+	return View::make('new')->with($data);
 });
+
+
 
 Route::POST('/new', array(
         'as'     => 'store',

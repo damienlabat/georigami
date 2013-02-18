@@ -13,7 +13,7 @@ class Bloc_Controller extends Base_Controller {
 	public function action_map()
 	{
 		$locations=Location::with('blocs')
-		->where('name','<>','')		
+		//->where('name','<>','')		
 		->order_by('continentCode', 'asc')	
 		->order_by('countryCode', 'asc')	
 		->order_by('adminName1', 'asc')		

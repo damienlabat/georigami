@@ -1,5 +1,17 @@
 @layout('layout')
 
+
+
+
+
+@section('title')
+Georigami - build your own
+@endsection
+
+
+
+
+
 @section('content')
    
             <h2>Select area</h2>
@@ -122,17 +134,15 @@
 @section('script')           
         <script>
 
-            var Georigami={
-                area: {
-                    lat:42.840467241791764,
-                    lng:-0.4395133789062129,
-                    width:1000000, 
-                    height:1000000,
-                    vSlices:1,
-                    hSlices:1,
-                    sampling:1
-                    
-                }
+            Georigami.area= {
+                
+                    lat:{{$lat}},
+                    lng:{{$lng}},
+                    width:{{$width}}, 
+                    height:{{$height}},
+                    vSlices:{{$vSlices}},
+                    hSlices:{{$hSlices}},
+                    sampling:{{$sampling}}      
             };
 
   

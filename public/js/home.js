@@ -1,0 +1,7 @@
+/*******************/
+ /*   initIndex    */
+/*******************/
+
+  Georigami.initIndex = function() {
+
+  }

@@ -1,5 +1,17 @@
 @layout('layout')
 
+
+
+
+
+@section('title')
+Georigami
+@endsection
+
+
+
+
+
 @section('content')
 <h1>Last blocks</h1>
 <div class="row">

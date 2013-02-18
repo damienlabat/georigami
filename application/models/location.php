@@ -52,5 +52,4 @@ class Location extends Eloquent {
         
         return $location;
     }
-
 }

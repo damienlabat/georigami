@@ -1,5 +1,17 @@
 @layout('layout')
 
+
+
+
+
+@section('title')
+Georigami - {{$data['location']->name}}
+@endsection
+
+
+
+
+
 @section('content')
 
 
@@ -28,13 +40,18 @@
         <div class="span4">
           
           <h4>{{$data['location']->name}}</h4>
-                  <img src="./img/flags/{{ strtolower($data['location']->countrycode) }}.png" title="{{ $data['location']->countrycode }}" alt="" /> {{ Geoname::getISO3166( $data['location']->countrycode)}}<br/>
-
+                  <a href="{{ URL::to('map') }}#{{ strtolower($data['location']->countrycode) }}"><img src="./img/flags/{{ strtolower($data['location']->countrycode) }}.png" title="{{ $data['location']->countrycode }}" alt=""/> {{ Geoname::getISO3166( $data['location']->countrycode)}}</a><br/>
+                  <h4 title="{{Geoname::getFCode($data['location']->fcode)[1]}}">{{Geoname::getFCode($data['location']->fcode)[0]}}</h4>
+                  {{Geoname::getFcl($data['location']->fcl)}}<br/>
                   {{$data['location']->adminname1}}<br/>
                   {{$data['location']->adminname2}}<br/>
                   {{$data['location']->adminname3}}<br/>
                   {{$data['location']->adminname4}}<br/>
                   <a href='http://toolserver.org/~geohack/geohack.php?params={{$data['location']->lat}}___N_{{$data['location']->lng}}___E'/>{{$data['location']->lat}}, {{$data['location']->lng}}</a><br/>
+
+                  <br/>
+                  <h4>Nearest locations:</h4>
+                  TODO
 
         </div>
 
@@ -49,10 +66,10 @@
   @foreach ($data['location']->blocs as $bloc) 
         <a href='./bloc{{$bloc->id}}'> 
             <div class=' bloc2 clearfix'>
-              <div class='span2'><img src="./bloc{{$bloc->id}}N.svg" title="North view"></div>
-              <div class='span2'><img src="./bloc{{$bloc->id}}E.svg" title="North view"></div>
-              <div class='span2'><img src="./bloc{{$bloc->id}}S.svg" title="North view"></div>
-              <div class='span2'><img src="./bloc{{$bloc->id}}W.svg" title="North view"></div>
+              <div class='span2'><img src="./bloc{{$bloc->id}}N.svg" title="North view" class="hidden-phone"></div>
+              <div class='span2'><img src="./bloc{{$bloc->id}}E.svg" title="North view" class="hidden-phone"></div>
+              <div class='span2'><img src="./bloc{{$bloc->id}}S.svg" title="North view" class="hidden-phone"></div>
+              <div class='span2'><img src="./bloc{{$bloc->id}}W.svg" title="North view" class="hidden-phone"></div>
 
 
 
@@ -77,6 +94,7 @@
       
     @endforeach 
 
+ <a href='{{ URL::to('new') }}?lat={{$data['location']->lat}}&lng={{$data['location']->lng}}' class='btn btn-primary'>Build a new one</a>
 
 
  
@@ -93,7 +111,6 @@
 @section('script')         
 
         <script>
-            var Georigami={};
             
              Georigami.location={{$data['location_json']}}; 
             
