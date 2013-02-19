@@ -15,7 +15,7 @@ Georigami - Map
 @section('content')
 
 <?php 
-$continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adminName3=null; $adminName4=null; $ulopen=false; 
+/*$continentCode=null;*/ $countryCode=null; $adminName1=null; $adminName2=null; $adminName3=null; $adminName4=null; $ulopen=false; 
 ?>
 
     <div id="map-canvas"></div>  
@@ -25,7 +25,7 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
 
 
        <?php
-       if ($continentCode!==$location->continentcode) {
+       /*if ($continentCode!==$location->continentcode) {
 
         if ($ulopen) { echo '</ul>'; $ulopen=false; }
         if ($adminName1!==null) echo "</div>";
@@ -34,7 +34,7 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
         echo '<h1>'. Geoname::continentCode($location->continentcode) .'</h1>';
         $continentCode=$location->continentcode;
         $countryCode=null; $adminName1=null; $adminName2plus=null;
-       }
+       }*/
 
 
        if ($countryCode!==$location->countrycode) {
@@ -43,7 +43,11 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
         if ($adminName1!==null) echo "</div>";
         if ($countryCode!==null) echo "</div>";
 
-        echo '<div class="row"><a name="'.strtolower($location->countrycode).'"></a><h2><img src="./img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>'. (Geoname::getISO3166($location->countrycode)!=''?Geoname::getISO3166($location->countrycode):'ocean') . HTML::showcount( Bloc::count_withlocation('countrycode',$location->countrycode) ). '</h2>';
+        echo '<div class="row"><a name="'.strtolower($location->countrycode).'"></a>'
+        .'<h2><img src="'.URL::base().'/img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>'
+        .(Geoname::getISO3166($location->countrycode)!=''?Geoname::getISO3166($location->countrycode):'ocean') 
+        .HTML::showcount( Bloc::count_with( array('countrycode'=>$location->countrycode) ) ). '</h2>';
+
         $countryCode=$location->countrycode;
         $adminName1=null; $adminName2plus=null;
        }
@@ -52,7 +56,10 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
        if ($adminName1!==$location->adminname1) {
         if ($ulopen) { echo '</ul>'; $ulopen=false; }
         if ($adminName1!==null) echo "</div>";
-        echo '<div class="span3"><h4>'. $location->adminname1 . HTML::showcount( Bloc::count_withlocation('adminname1',$location->adminname1) ).'</h4>';
+
+        echo '<div class="span3"><h4>'. $location->adminname1 
+        .HTML::showcount( Bloc::count_with( array('adminname1'=>$location->adminname1, 'countrycode'=>$location->countrycode) ) ).'</h4>';
+
         $adminName1=$location->adminname1; 
        }
 
@@ -79,7 +86,12 @@ $continentCode=null; $countryCode=null; $adminName1=null; $adminName2=null; $adm
        ?>
       
           
-            <li><a href="./location{{$location->id}}">{{ $location->name }}{{ HTML::showcount( $location->blocs()->count() ) }}</a></li>
+            <li><a href="{{URL::to_route('location', array($location->id)) }}"><?php 
+            if ($location->name!='')  echo $location->name; 
+            elseif  ($location->adminname4!='')  echo $location->adminname4; 
+            elseif  ($location->adminname3!='')  echo $location->adminname3; 
+            else echo 'unnamed';
+            ?>{{ HTML::showcount( $location->blocs()->count() ) }}</a></li>
           
      
        

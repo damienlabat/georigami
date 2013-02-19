@@ -105,7 +105,7 @@ draggableRectangle= function( map, lat, lng, width, height, options ) {
     var rectangle = new google.maps.Rectangle(options);
     rectangle.setMap(map);
 
-    var icon = new google.maps.MarkerImage("./img/hang.png", null, null, new google.maps.Point(8, 8));
+    var icon = new google.maps.MarkerImage(Georigami.baseurl+"/img/hang.png", null, null, new google.maps.Point(8, 8));
     var marker = new google.maps.Marker({ map: map, position: center, draggable: true, icon: icon, raiseOnDrag:false, zIndex: 10002});
     marker.setAnimation(null);
     

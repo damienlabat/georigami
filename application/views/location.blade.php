@@ -17,8 +17,8 @@ Georigami - {{$data['location']->name}}
 
          <ul class="pager">            
               @if ($data['prev']!=null)
-              <li class="previous">
-                  <a href="./location{{$data['prev']->id}}" title="{{$data['prev']->name}}">&larr; Older</a>              
+              <li class="previous">   
+                  <a href="{{URL::to_route('location', array($data['prev']->id)) }}" title="{{$data['prev']->name}}">&larr; Older</a>               
               @else
               <li class="previous disabled">
                   <a href="#">&larr; Older</a>
@@ -26,7 +26,7 @@ Georigami - {{$data['location']->name}}
               </li>
               @if ($data['next']!=null)
               <li class="next">
-                  <a href="./location{{$data['next']->id}}" title="{{$data['next']->name}}">Newer &rarr;</a>         
+                  <a href="{{URL::to_route('location', array($data['next']->id)) }}" title="{{$data['next']->name}}">Newer &rarr;</a>                  
               @else
               <li class="next disabled">
                   <a href="#">Newer &rarr;</a>
@@ -40,7 +40,7 @@ Georigami - {{$data['location']->name}}
         <div class="span4">
           
           <h4>{{$data['location']->name}}</h4>
-                  <a href="{{ URL::to('map') }}#{{ strtolower($data['location']->countrycode) }}"><img src="./img/flags/{{ strtolower($data['location']->countrycode) }}.png" title="{{ $data['location']->countrycode }}" alt=""/> {{ Geoname::getISO3166( $data['location']->countrycode)}}</a><br/>
+                  <img src="{{URL::base()}}/img/flags/{{ strtolower($data['location']->countrycode) }}.png" title="{{ $data['location']->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($data['location']->countrycode) }}">{{ Geoname::getISO3166( $data['location']->countrycode)}}</a><br/>
                   <h4 title="{{Geoname::getFCode($data['location']->fcode)[1]}}">{{Geoname::getFCode($data['location']->fcode)[0]}}</h4>
                   {{Geoname::getFcl($data['location']->fcl)}}<br/>
                   {{$data['location']->adminname1}}<br/>
@@ -64,12 +64,12 @@ Georigami - {{$data['location']->name}}
 
 
   @foreach ($data['location']->blocs as $bloc) 
-        <a href='./bloc{{$bloc->id}}'> 
+        <a href='{{URL::to_route('get', array($bloc->id)) }}'> 
             <div class=' bloc2 clearfix'>
-              <div class='span2'><img src="./bloc{{$bloc->id}}N.svg" title="North view" class="hidden-phone"></div>
-              <div class='span2'><img src="./bloc{{$bloc->id}}E.svg" title="North view" class="hidden-phone"></div>
-              <div class='span2'><img src="./bloc{{$bloc->id}}S.svg" title="North view" class="hidden-phone"></div>
-              <div class='span2'><img src="./bloc{{$bloc->id}}W.svg" title="North view" class="hidden-phone"></div>
+              <div class='span2'><img src="{{URL::to_route('svg', array($bloc->id,'N')) }}" title="North face" class="hidden-phone"></div>
+              <div class='span2'><img src="{{URL::to_route('svg', array($bloc->id,'W')) }}" title="West face" class="hidden-phone"></div>
+              <div class='span2'><img src="{{URL::to_route('svg', array($bloc->id,'S')) }}" title="South face" class="hidden-phone"></div>
+              <div class='span2'><img src="{{URL::to_route('svg', array($bloc->id,'E')) }}" title="East face" class="hidden-phone"></div>
 
 
 

@@ -59,8 +59,8 @@ Route::get('/new', function()
     $lng=       Input::get('lng',       0);
     $width=     Input::get('width',     10000);
     $height=    Input::get('height',    10000);
-    $hslices=   Input::get('hslices',   15);
-    $vslices=   Input::get('vslices',   15);
+    $hslices=   Input::get('hslices',   21);
+    $vslices=   Input::get('vslices',   21);
     $sampling=  Input::get('sampling',  1);
 
 
@@ -76,6 +76,7 @@ Route::get('/new', function()
 
 	return View::make('new')->with($data);
 });
+
 
 
 
@@ -103,7 +104,7 @@ Route::get('/bloc(:num)', array(
      ));
 
 Route::get('/bloc(:num)/(profil|print)', array(
-        'as'     => 'get',
+        'as'     => 'getplus',
         'uses'   => 'bloc@get'
      ));
 
@@ -118,7 +119,7 @@ Route::get('/bloc(:num).json', array(
      ));
 
 
-Route::get('/bloc(:num)((N|S|W|E){1}).svg', array(
+Route::get('/bloc(:num)(N|S|W|E).svg', array(
         'as'     => 'svg',
         'uses'   => 'bloc@svg'
      ));

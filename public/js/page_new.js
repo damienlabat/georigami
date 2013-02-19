@@ -37,7 +37,7 @@ $('#input-search').change( function(){
 
                  for (var i = 0; i< data.geonames.length; i++) {
                     var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
-                    if (data.geonames[i].country!='') html=html+'<img src="./img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
+                    if (data.geonames[i].country!='') html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
                     html=html+data.geonames[i].name;
                     if (data.geonames[i].feature!='') html=html+' ('+data.geonames[i].feature[0]+')';
                     html=html+'</a></li>';
@@ -357,7 +357,7 @@ var startWork= function(data) {
       '<div class="span3">'+
       '<table class="table">'+             
         '<tbody>' +
-        '<tr> <td>place</td><td class="placename"><a href="location'+data.location.id+'"><img src="./img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
+        '<tr> <td>place</td><td class="placename"><a href="'+Georigami.baseurl+'/location'+data.location.id+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
         '<tr> <td>latitude</td><td>'+data.lat+'</td></tr>'+
         '<tr> <td>longitude</td><td>'+data.lng+'</td></tr>'+
         '<tr> <td>altitude</td><td>'+Math.round(data.min)+'m to '+Math.round(data.max)+'m</td></tr>'+

@@ -19,7 +19,7 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
          <ul class="pager">            
               @if ($data['prev']!=null)
               <li class="previous">
-                  <a href="./bloc{{$data['prev']->id}}" title="{{$data['prev']->location->name}}">&larr; Older</a>              
+                  <a href="{{URL::to_route('get', array($data['prev']->id)) }}" title="{{$data['prev']->location->name}}">&larr; Older</a>              
               @else
               <li class="previous disabled">
                   <a href="#">&larr; Older</a>
@@ -27,7 +27,7 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
               </li>
               @if ($data['next']!=null)
               <li class="next">
-                  <a href="./bloc{{$data['next']->id}}" title="{{$data['next']->location->name}}">Newer &rarr;</a>         
+                  <a href="{{URL::to_route('get', array($data['next']->id)) }}" title="{{$data['next']->location->name}}">Newer &rarr;</a>         
               @else
               <li class="next disabled">
                   <a href="#">Newer &rarr;</a>
@@ -40,16 +40,16 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
         <div class='row'>
    
             <div class="span2">
-               <img src="./bloc{{$data['bloc']['id']}}N.svg" title="North view"  class="hidden-phone">
+               <img src="{{URL::to_route('svg', array($data['bloc']['id'],'N')) }}" title="North view"  class="hidden-phone">
             </div>
             <div class="span2">
-              <a href='./location{{$data['bloc']['location']['id']}}'>
-               <h4>{{$data['bloc']['location']['name']}}</h4>
-                <img src="./img/flags/{{ strtolower($data['bloc']['location']['countrycode']) }}.png" title="{{ $data['bloc']['location']['countrycode'] }}" alt="" /> {{ Geoname::getISO3166( $data['bloc']['location']['countrycode'])}}<br/>
+              <a href='{{URL::to_route('location', array($data['bloc']['location']['id'])) }}'>
+               <h4>{{$data['bloc']['location']['name']}}</h4></a>
+                <img src="{{URL::base()}}/img/flags/{{ strtolower($data['bloc']['location']['countrycode']) }}.png" title="{{ $data['bloc']['location']['countrycode'] }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($data['bloc']['location']['countrycode'])}}'>{{ Geoname::getISO3166( $data['bloc']['location']['countrycode'])}}</a><br/>
                 <span title="{{Geoname::getFCode($data['location']->fcode)[1]}}">{{Geoname::getFCode($data['location']->fcode)[0]}}</span><br/>
                 <!--{{Geoname::getFcl($data['location']->fcl)}}<br/-->
                 {{$data['bloc']['location']['adminname1']}}<br/>
-              </a>
+              <!--/a-->
             </div>
             <div class="span6">
                 
@@ -63,11 +63,13 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
     <div class='row'>
 
       <div class="span2">
+
         <ul class="nav nav-list">
           <li class="active"><a href="#">preview 3D</a></li>
-          <li class=""><a href="./bloc{{$data['bloc']['id']}}/profil">profil</a></li>
-          <li class=""><a href="./bloc{{$data['bloc']['id']}}/print">print</a></li>
+          <li class=""><a href="{{URL::to_route('getplus', array($data['bloc']['id'], 'profil')) }}">profil</a></li>
+          <li class=""><a href="{{URL::to_route('getplus', array($data['bloc']['id'], 'print')) }}">print</a></li>
         </ul>
+
          vertical scale <input class="vs-input span1" value="1" type="number" step="0.1" min="0.1">
       </div>
 

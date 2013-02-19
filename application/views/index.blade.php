@@ -20,14 +20,14 @@ Georigami
  @foreach ($data['blocs']->results as $bloc) 
    
             <div class=' bloc clearfix'>
-              <img src="./bloc{{$bloc->id}}N.svg" title="North view"></a>
+              <img src="{{URL::to_route('svg', array($bloc->id,'N')) }}" title="North view"></a>
 
 
 
 
-              <a href='./bloc{{$bloc->id}}'>
+              <a href='{{URL::to_route('get', array($bloc->id)) }}'>
                <h4>{{$bloc->location->name}}</h4>
-                <img src="./img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
+                <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
                 {{Geoname::getISO3166($bloc->location->countrycode)}}<br/>
                 {{$bloc->location->adminname1}}<br/>
                 altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>

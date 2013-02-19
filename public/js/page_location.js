@@ -46,16 +46,16 @@ $(function() {
       bounds.extend(latLng);
 
 
-      var html='<a href="./bloc'+data.id+'">';
+      var html='<a href="'+Georigami.baseurl+'/bloc'+data.id+'">';
 
         //html =html+data.lat+', '+data.lng+'<br/>';
 
 
 
-        html =html+'<img src="./bloc'+data.id+'N.svg" title="North" width="100px">';
-        html =html+'<img src="./bloc'+data.id+'W.svg" title="West" width="100px">';
-        html =html+'<img src="./bloc'+data.id+'S.svg" title="South" width="100px">';
-        html =html+'<img src="./bloc'+data.id+'E.svg" title="Est" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'N.svg" title="North" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'W.svg" title="West" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'S.svg" title="South" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'E.svg" title="Est" width="100px">';
 
         html =html+'<br/>';
 

@@ -14,7 +14,7 @@ class Bloc_Controller extends Base_Controller {
 	{
 		$locations=Location::with('blocs')
 		//->where('name','<>','')		
-		->order_by('continentCode', 'asc')	
+		//->order_by('continentCode', 'asc') ERROR IN GEONAME DATABASE SOME COUNTRY WITH 2 CONTINENTS (ie. russian federation) 	
 		->order_by('countryCode', 'asc')	
 		->order_by('adminName1', 'asc')		
 		->order_by('adminName2', 'asc')		
@@ -31,6 +31,7 @@ class Bloc_Controller extends Base_Controller {
 			$data['countryname']=Geoname::getISO3166($data['countrycode']);
 		 	$locations_array[] = $data;
 		}
+		
 		return View::make('map')->with('data',array( 'locations'=>$locations, 'locations_json'=>json_encode( $locations_array ) ));
 	}
 

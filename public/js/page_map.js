@@ -47,14 +47,14 @@ $(function() {
       var data=Georigami.location_list[i];
       var latLng = new google.maps.LatLng( data.lat,data.lng );
 
-      var html='<a href="./location'+data.id+'"><h3 title="'+data.feature+'">'+data.name+'</h3><img src="./img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> '+data.countryname+' '+data.adminname1+'<br/>';
+      var html='<a href="'+Georigami.baseurl+'/location'+data.id+'"><h3 title="'+data.feature+'">'+data.name+'</h3><img src="'+Georigami.baseurl+'/img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> '+data.countryname+' '+data.adminname1+'<br/>';
       for (var j = 0; j < data.blocs.length; j++) {
         var bloc=data.blocs[j];
         html =html+'<div>';
-        html =html+'<img src="./bloc'+bloc.id+'N.svg" title="North" width="64px">';
-       /* html =html+'<img src="./bloc'+bloc.id+'W.svg" title="West" width="100px">';
-        html =html+'<img src="./bloc'+bloc.id+'S.svg" title="South" width="100px">';
-        html =html+'<img src="./bloc'+bloc.id+'E.svg" title="Est" width="100px">';*/
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'N.svg" title="North" width="64px">';
+       /* html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'W.svg" title="West" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'S.svg" title="South" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'E.svg" title="Est" width="100px">';*/
         html =html+'</div>';
         html =html+'</a>';
         };
