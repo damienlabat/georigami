@@ -14,8 +14,6 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 
 @section('content')
 
-        <h1>{{$data['show']}}</h1>
-
          <ul class="pager">            
               @if ($data['prev']!=null)
               <li class="previous">
@@ -60,24 +58,13 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 
 
 
-    <div class='row'>
 
-      <div class="span2">
+<ul class="nav nav-tabs">@yield('bloc_menu')</ul>
 
-        <ul class="nav nav-list">
-          <li class="active"><a href="#">preview 3D</a></li>
-          <li class=""><a href="{{URL::to_route('getplus', array($data['bloc']['id'], 'profil')) }}">profil</a></li>
-          <li class=""><a href="{{URL::to_route('getplus', array($data['bloc']['id'], 'print')) }}">print</a></li>
-        </ul>
+      
+      @yield('bloc_content')
 
-         vertical scale <input class="vs-input span1" value="1" type="number" step="0.1" min="0.1">
-      </div>
 
-      <div class="div3Dview span8"></div>
-
-    </div>
-          
-         <div class="divPaperBtn"></div>
 
        
 
@@ -96,15 +83,6 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 
           
 
-@section('script')         
-
-        <script>
-            
-            Georigami.bloc={{$data['bloc_json']}};
-            
-            $(function() {  Georigami.initBloc();    });
-           
-
-        </script>
+@section('script') 
 
 @endsection      

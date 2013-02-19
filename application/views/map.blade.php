@@ -43,7 +43,7 @@ Georigami - Map
         if ($adminName1!==null) echo "</div>";
         if ($countryCode!==null) echo "</div>";
 
-        echo '<div class="row"><a name="'.strtolower($location->countrycode).'"></a>'
+        echo '<div class="row"><a name="'.strtolower($location->countrycode).'" class="anchor"></a>'
         .'<h2><img src="'.URL::base().'/img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>'
         .(Geoname::getISO3166($location->countrycode)!=''?Geoname::getISO3166($location->countrycode):'ocean') 
         .HTML::showcount( Bloc::count_with( array('countrycode'=>$location->countrycode) ) ). '</h2>';

@@ -64,8 +64,10 @@ class Bloc_Controller extends Base_Controller {
 
 
 
-	public function action_get($blocid, $show='3D')
+	public function action_get($blocid, $show='3d')
 	{
+
+		$face=       Input::get('face',       'N');
 
 		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
@@ -77,7 +79,7 @@ class Bloc_Controller extends Base_Controller {
 
 		$location=$bloc->location;
 
-		return View::make('bloc')->with('data',array( 'show'=>$show, 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray ), 'prev'=>$blocPrev, 'next'=>$blocNext ));
+		return View::make('bloc_'.$show)->with('data',array( 'show'=>$show, 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray ), 'prev'=>$blocPrev, 'next'=>$blocNext, 'face'=>$face ));
 
 	}
 
