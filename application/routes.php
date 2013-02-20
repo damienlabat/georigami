@@ -34,7 +34,12 @@
 
 
 
-Route::get('/', array(
+Route::get('/', function(){
+        return View::make('welcome');
+     });
+
+
+Route::get('/last', array(
         'as'     => 'index',
         'uses'   => 'bloc@index'
      ));
@@ -53,7 +58,7 @@ Route::get('/map', array(
 
 
 
-Route::get('/new', function()
+Route::get('/new', array('as' => 'new', function()
 {
     $lat=       Input::get('lat',       0);
     $lng=       Input::get('lng',       0);
@@ -75,7 +80,7 @@ Route::get('/new', function()
         );
 
 	return View::make('new')->with($data);
-});
+}));
 
 
 
@@ -103,7 +108,7 @@ Route::get('/bloc(:num)', array(
         'uses'   => 'bloc@get'
      ));
 
-Route::get('/bloc(:num)/(profil|print)', array(
+Route::get('/bloc(:num)/(profil|print|3d)', array(
         'as'     => 'getplus',
         'uses'   => 'bloc@get'
      ));

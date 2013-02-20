@@ -21,6 +21,41 @@ class Bloc extends Eloquent {
 
 
 
+    public function profil_data($face) 
+    {
+        $data=array();
+
+        $coords=$this->get_coords();
+
+
+        if ($face=='S') $data['coords']=$coords->h;
+        if ($face=='N') $data['coords']=array_reverse($coords->h);
+
+        if ($face=='W') $data['coords']=$coords->v;
+        if ($face=='E') $data['coords']=array_reverse($coords->v);
+
+        if (($face=='N')||($face=='S')) $data['dim']=$this->width/max($this->height,$this->width);
+        else    $data['dim']=$this->height/max($this->height,$this->width);
+
+        $data['max']=0;
+        
+        foreach ($data['coords'] as &$slice) {
+            if ($slice->m > $data['max']) $data['max']=$slice->m;
+
+            if (($face=='N')||($face=='E')) {
+                $slice->c=array_reverse($slice->c);
+                foreach ($slice->c as &$cpt) $cpt[0]=$data['dim']-$cpt[0];
+            }
+
+        }
+
+        $data['max']=(floor($data['max']*1000)+1 ) / 1000;
+
+        return $data;
+    }
+
+
+
 	static function validate_coords($coordsJson)
     {
     	$coords=json_decode($coordsJson);   

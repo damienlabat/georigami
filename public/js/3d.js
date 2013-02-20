@@ -44,6 +44,13 @@
       model3Dobj.renderSlices();
 
     }
+
+
+    model3Dobj.setRotation= function(rotX,rotY) { 
+      if (rotY==null) rotY=Math.PI/8;
+      targetRotationX=rotX;
+      targetRotationY=rotY;
+    }
  
 
 

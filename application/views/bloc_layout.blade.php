@@ -38,7 +38,7 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
         <div class='row'>
    
             <div class="span2">
-               <img src="{{URL::to_route('svg', array($data['bloc']['id'],'N')) }}" title="North view"  class="hidden-phone">
+               <img src="{{URL::to_route('svg', array($data['bloc']['id'],$data['face'])) }}" title="{{$data['face']}} view"  class="hidden-phone">
             </div>
             <div class="span2">
               <a href='{{URL::to_route('location', array($data['bloc']['location']['id'])) }}'>
@@ -57,9 +57,14 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
       </div>
 
 
+<br/>
 
-
-<ul class="nav nav-tabs">@yield('bloc_menu')</ul>
+<div class='navbar navbar-inverse'>
+  <div class="navbar-inner">
+    <a class="brand" href="#">Bloc N°{{$data['bloc']['id']}}</a>
+    <ul class="nav">@yield('bloc_menu')</ul>
+  </div>
+</div>
 
       
       @yield('bloc_content')

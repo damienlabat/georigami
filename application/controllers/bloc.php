@@ -64,11 +64,14 @@ class Bloc_Controller extends Base_Controller {
 
 
 
-	public function action_get($blocid, $show='3d')
+	public function action_get($blocid, $show=null)
 	{
+		if ($show==null) return Redirect::to_route('getplus', array($blocid,'profil'));
 
-		$face=       Input::get('face',       'N');
-		$vscale=     Input::get('vscale',     1);
+		$face=       	Input::get('face',       'N');
+		$vscale=     	Input::get('vscale',     1);
+		$strokewidth= 	Input::get('strokewidth', '2');
+		$color=       	Input::get('color',       'black');
 
 		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
@@ -80,7 +83,7 @@ class Bloc_Controller extends Base_Controller {
 
 		$location=$bloc->location;
 
-		return View::make('bloc_'.$show)->with('data',array( 
+		$data=array( 
 			'show'=>$show, 
 			'location'=>$location, 
 			'bloc'=>$blocArray, 
@@ -89,10 +92,23 @@ class Bloc_Controller extends Base_Controller {
 			'next'=>$blocNext, 
 			'vscale'=>$vscale, 
 			'face'=>$face 
-		));
+		);
+
+		if ($show=='profil') {
+
+			$data['strokewidth']= $strokewidth/10;
+			$data=array_merge($data, $bloc->profil_data($face) );
+
+		}
+
+		return View::make('bloc_'.$show)->with('data',$data);
 
 	}
 
+
+
+
+	
 
 
 	public function action_getJson($id, $with_data=FALSE)
@@ -110,7 +126,7 @@ class Bloc_Controller extends Base_Controller {
 
 
 
-	public function action_svg($id,$view)
+	public function action_svg($id,$face)
 	{
 		$color=       Input::get('color',       'black');
 		$strokewidth= Input::get('strokewidth', '2');
@@ -119,34 +135,8 @@ class Bloc_Controller extends Base_Controller {
 
 		$data=array('strokewidth'=> $strokewidth/1000 );
 
-		
+		$data=array_merge($data, $bloc->profil_data($face) );
 
-		$coords=$bloc->get_coords();
-
-
-		if ($view=='S') $data['coords']=$coords->h;
-		if ($view=='N') $data['coords']=array_reverse($coords->h);
-
-		if ($view=='W') $data['coords']=$coords->v;
-		if ($view=='E') $data['coords']=array_reverse($coords->v);
-
-		if (($view=='N')||($view=='S'))	$data['dim']=$bloc->width/max($bloc->height,$bloc->width);
-		else	$data['dim']=$bloc->height/max($bloc->height,$bloc->width);
-
-		$data['max']=0;
-		
-		foreach ($data['coords'] as &$slice) {
-			if ($slice->m > $data['max']) $data['max']=$slice->m;
-
-			if (($view=='N')||($view=='E'))	{
-				$slice->c=array_reverse($slice->c);
-				foreach ($slice->c as &$cpt) $cpt[0]=$data['dim']-$cpt[0];
-			}
-
-		}
-
-		$data['max']=(floor($data['max']*1000)+1 ) / 1000;
-		$data['color']=$color;
 
 
 		 Event::override('laravel.done', function(){}); // No profiler

@@ -40,8 +40,9 @@
                     <a class="brand" href="{{URL::home()}}" title='pas très fier de ce jeu de mot :s'>Georigami</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li>{{HTML::link('/map', 'Map')}}</li>
-                            <li>{{HTML::link('/new', 'Build your own')}}</li>
+                            <li>{{HTML::link_to_route('index', 'Last ones')}}</li>
+                            <li>{{HTML::link_to_route('map', 'Map')}}</li>
+                            <li>{{HTML::link_to_route('new', 'Build your own')}}</li>
                         </ul>                        
                     </div>
                 </div>
@@ -73,7 +74,6 @@
 
         {{HTML::script("js/map.js")}}
         {{HTML::script("js/3d.js")}}
-        {{HTML::script("js/paper.js")}}
 
         {{HTML::script("js/page_new.js")}}
         {{HTML::script("js/page_map.js")}}
