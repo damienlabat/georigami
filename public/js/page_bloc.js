@@ -7,10 +7,10 @@ $(function() {
 
   Georigami.initBloc = function() {
 
-    var view3D= load3D( Georigami.bloc, $('.div3Dview'), Georigami.verticalScale );
-    var paperBtn= addDownloadButton( Georigami.bloc ,$('.divPaperBtn'), Georigami.verticalScale ); 
+    var view3D= load3D( Georigami.bloc, $('.div3Dview'), $('.vs-input').val() );
+    var paperBtn= addDownloadButton( Georigami.bloc ,$('.divPaperBtn'),$('.vs-input').val() ); 
 
-    $('.vs-input').val(Georigami.verticalScale);
+   // $('.vs-input').val(Georigami.verticalScale);
 
     $('.vs-input').change( function(){
         paperBtn.setVerticalScale( $('.vs-input').val() );

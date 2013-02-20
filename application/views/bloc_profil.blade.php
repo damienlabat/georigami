@@ -25,6 +25,8 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 <div>
   
   <img src="{{URL::to_route('svg', array($data['bloc']['id'],$data['face'])) }}" title="North face">
+    <br/>
+    vertical scale <input class="vs-input span1" value="{{$data['vscale']}}" type="number" step="0.1" min="0.1">
 </div>
 
 

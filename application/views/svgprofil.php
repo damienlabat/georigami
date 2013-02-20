@@ -1,5 +1,4 @@
-<?php echo '<?xml version="1.0" encoding="utf-8"?>'.PHP_EOL; ?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<?php echo HTML::SVG_header() ?>
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    width="100%" height="100%" viewBox="-0.1 -0.1 1.2 <?php echo max($data['max']+0.2,0.5); ?>" enable-background="-0.1 -0.1 1.2 <?php echo max($data['max']+0.2,0.5); ?>" xml:space="preserve">
 
@@ -12,15 +11,14 @@
 
 
 <?php
-$e=0;
-$de=1/count($data['coords']);
+
+
 
 foreach ($data['coords'] as $slice) {
-	$e= $e+$de;
 	$coord='';
 	foreach ($slice->c as $c) $coord.=($c[0]+(0.5-$data['dim']/2)).','.($data['max']-$c[1]).',';
 	echo "<polygon  points='".$coord . (0.5+$data['dim']/2).",0,".(0.5+$data['dim']/2).",".($data['max']+0.1).",".(0.5-$data['dim']/2).",".($data['max']+0.1).",".(0.5-$data['dim']/2).",0' style='fill:url(#glow);stroke:none' />
-	      <polyline points='".$coord."' style='fill:none; stroke:black;stroke-width:".($data['strokewidth']*$e)."' />
+	      <polyline points='".$coord."' style='fill:none; stroke:".$data['color'].";stroke-width:".$data['strokewidth']."' />
 	      ";
 }
 ?>

@@ -50,7 +50,7 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
               <!--/a-->
             </div>
             <div class="span6">
-                
+                {{$data['bloc']['hslices']}} x {{$data['bloc']['vslices']}}<br/>
                 {{$data['bloc']['width']}}m x {{$data['bloc']['height']}}m<br/>
                 {{$data['bloc']['created_at']}}
             </div>

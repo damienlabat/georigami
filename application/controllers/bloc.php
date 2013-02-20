@@ -68,6 +68,7 @@ class Bloc_Controller extends Base_Controller {
 	{
 
 		$face=       Input::get('face',       'N');
+		$vscale=     Input::get('vscale',     1);
 
 		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
@@ -79,7 +80,16 @@ class Bloc_Controller extends Base_Controller {
 
 		$location=$bloc->location;
 
-		return View::make('bloc_'.$show)->with('data',array( 'show'=>$show, 'location'=>$location, 'bloc'=>$blocArray, 'bloc_json'=> json_encode( $blocArray ), 'prev'=>$blocPrev, 'next'=>$blocNext, 'face'=>$face ));
+		return View::make('bloc_'.$show)->with('data',array( 
+			'show'=>$show, 
+			'location'=>$location, 
+			'bloc'=>$blocArray, 
+			'bloc_json'=> json_encode( $blocArray ), 
+			'prev'=>$blocPrev, 
+			'next'=>$blocNext, 
+			'vscale'=>$vscale, 
+			'face'=>$face 
+		));
 
 	}
 
@@ -102,9 +112,12 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_svg($id,$view)
 	{
+		$color=       Input::get('color',       'black');
+		$strokewidth= Input::get('strokewidth', '2');
+
 		if (!$bloc=Bloc::find($id)) return Response::error('404');
 
-		$data=array('strokewidth'=>0.005);
+		$data=array('strokewidth'=> $strokewidth/1000 );
 
 		
 
@@ -133,6 +146,7 @@ class Bloc_Controller extends Base_Controller {
 		}
 
 		$data['max']=(floor($data['max']*1000)+1 ) / 1000;
+		$data['color']=$color;
 
 
 		 Event::override('laravel.done', function(){}); // No profiler

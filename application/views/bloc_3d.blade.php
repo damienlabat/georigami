@@ -16,7 +16,9 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 
  
   <div class="div3Dview"></div>
-  vertical scale <input class="vs-input span1" value="1" type="number" step="0.1" min="0.1">
+  <br/>
+    vertical scale <input class="vs-input span1" value="{{$data['vscale']}}" type="number" step="0.1" min="0.1">
+  
 
 @endsection
 
@@ -40,7 +42,7 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
             
             Georigami.bloc={{$data['bloc_json']}};
             
-            $(function() {  Georigami.initBloc();    });
+           $(function() {  Georigami.initBloc();    });
            
 
         </script>

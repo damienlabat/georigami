@@ -154,3 +154,46 @@ div.locations>.row>h2 {
     font-size: 0.5em;
     color: #333;
 }
+
+
+/* printpage */
+
+
+
+
+    svg.svgprint {  width:100%; border:none; }
+    svg.svgprint .svgslice { stroke:#000; fill: white; stroke-width:0.15; stroke-linecap:round }
+    svg.svgprint .svgcut   { stroke:#000; fill: none; stroke-width:0.15; stroke-linecap:round; stroke-dasharray: 1,1 }
+    svg.svgprint text {fill:#000;  font-family:'Helvetica'; font-size:1.5px ;}
+
+@media print{
+
+    body.print .container {width:95%;} 
+
+    body.print .navbar,
+    body.print .pager,
+    body.print .nav {
+        display: none;
+    }
+
+    body.print a[href]:after {
+        content: "";
+    }
+
+    body.print div.span12 {
+        width:670px;
+        margin:0;
+        padding:0;
+    }
+
+    body.print div.span12 * {
+        margin:0;
+        padding:0;
+    }
+
+
+
+
+
+
+}

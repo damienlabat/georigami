@@ -59,9 +59,9 @@ Route::get('/new', function()
     $lng=       Input::get('lng',       0);
     $width=     Input::get('width',     10000);
     $height=    Input::get('height',    10000);
-    $hslices=   Input::get('hslices',   21);
-    $vslices=   Input::get('vslices',   21);
-    $sampling=  Input::get('sampling',  1);
+    $hslices=   Input::get('hslices',   11);
+    $vslices=   Input::get('vslices',   11);
+    $sampling=  Input::get('sampling',  5);
 
 
     $data=array(
