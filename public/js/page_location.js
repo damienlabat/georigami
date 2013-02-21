@@ -68,7 +68,7 @@ $(function() {
         html =html+'</a>';
 
       
-      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+Georigami.location.icon+'.png' );
+      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+Georigami.location.icon+'.png', Georigami.baseurl+'/img/ico/shadow.png' );
       
       gridObj=createGrid(map, data, marker);      
       bounds.union( gridObj.getBounds() );

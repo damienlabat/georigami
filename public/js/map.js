@@ -153,10 +153,22 @@ draggableRectangle= function( map, lat, lng, width, height, options ) {
 
 
 
-function createMarker(name, latlng, icon) {
+function createMarker(name, latlng, icon, shadow) {
 
     var options={position: latlng, map: map};
-    if (icon!=null) options.icon=icon;
+    
+    if (icon!=null) options.icon=new google.maps.MarkerImage(icon,
+        new google.maps.Size(32.0, 37.0),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(16.0, 18.0)
+    );
+
+    if (shadow!=null) options.shadow=new google.maps.MarkerImage(
+        shadow,
+        new google.maps.Size(51.0, 37.0),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(16.0, 18.0)
+    );;
 
     var marker = new google.maps.Marker(options);
     google.maps.event.addListener(marker, "click", function() {

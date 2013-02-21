@@ -60,7 +60,7 @@ $(function() {
         };
        // TODO
          
-      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+data.icon+'.png' );
+      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+data.icon+'.png', Georigami.baseurl+'/img/ico/shadow.png');
 
       markers.push(marker);
     }
