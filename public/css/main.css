@@ -160,6 +160,37 @@ div.locations>.row>h2 {
 }
 
 
+i.loading {
+    background: url(../img/loading.gif) no-repeat scroll 50% 50% transparent;
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* printpage */
 
 
@@ -194,6 +225,7 @@ div.locations>.row>h2 {
         margin:0;
         padding:0;
     }
+
 
 
 

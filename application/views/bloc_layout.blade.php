@@ -59,7 +59,7 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
 
 <br/>
 
-<div class='navbar navbar-inverse'>
+<div class='navbar'>
   <div class="navbar-inner">
     <a class="brand" href="#">Bloc N°{{$bloc->id}}</a>
     <ul class="nav">@yield('bloc_menu')</ul>

@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width">
         
         {{HTML::style("/css/bootstrap.min.css")}}
+        {{--HTML::style("/css/bootstrap.simplex.min.css")--}}
         <style>
             body {
                 padding-top: 60px;
@@ -29,7 +30,7 @@
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

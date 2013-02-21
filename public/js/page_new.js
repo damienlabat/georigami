@@ -22,7 +22,7 @@ $('#input-search').change( function(){
     return false;
   }
 
-  $('#search-result').html('searching ...');
+  $('#search-result').html('<i class="loading"></i> searching ...');
 
   $.ajax({
                 url: Georigami.baseurl+"/search",
@@ -33,7 +33,7 @@ $('#input-search').change( function(){
                  $('#search-result').html('');
 
                  if (data.geonames.length>0) $('#search-result').html('<ul></ul>');
-                  else $('#search-result').html('<span style="color:red">no results</span>'); //TODO
+                  else $('#search-result').html('<div class="alert alert-error">no results for '+$('#input-search').val()+'</div>'); //TODO
 
                  for (var i = 0; i< data.geonames.length; i++) {
                     var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
@@ -68,7 +68,7 @@ $('#input-search').change( function(){
     var slices=[];
     var slicesData=[];
     var cadre=null;
-    var requestDelay=5000;
+    var requestDelay=5000; // best for 5000
 
     Georigami.results=[];
 
@@ -273,7 +273,7 @@ $('#input-search').change( function(){
 
        function plotElevation(results, status) {
            if (status!='OK') {
-            alert('GOOGLE ELEVATION API ERROR status: '+status)
+            Georigami.alert('GOOGLE ELEVATION API ERROR',status );
             return
           }
 
