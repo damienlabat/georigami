@@ -153,13 +153,22 @@ draggableRectangle= function( map, lat, lng, width, height, options ) {
 
 
 
-function createMarker(name, latlng) {
-    var marker = new google.maps.Marker({position: latlng, map: map});
+function createMarker(name, latlng, icon) {
+
+    var options={position: latlng, map: map};
+    if (icon!=null) options.icon=icon;
+
+    var marker = new google.maps.Marker(options);
     google.maps.event.addListener(marker, "click", function() {
       if (infowindow) infowindow.close();
       infowindow = new google.maps.InfoWindow({content: name});
       infowindow.open(map, marker);
     });
+    google.maps.event.addListener(marker, "mouseover", function() {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){marker.setAnimation(null)}, 750*3);
+    });
+    marker.setAnimation(google.maps.Animation.DROP);
     return marker;
   }
 

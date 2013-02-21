@@ -60,13 +60,12 @@ $(function() {
         };
        // TODO
          
-      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng) );
+      var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+data.icon+'.png' );
 
       markers.push(marker);
     }
 
-
-    var mcOptions = {gridSize: 50, maxZoom: 15}; 
+    var mcOptions = {gridSize: 50, maxZoom: 15 }; 
     var mapCluster = new MarkerClusterer(map, markers, mcOptions); 
 
   }

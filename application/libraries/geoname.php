@@ -161,5 +161,16 @@ class Geoname {
     }
 
 
+    static  function getIcon( $code, $code2=false, $code3='default' ) {
+        $list= json_decode( Config::get('geoname.icons'), TRUE );
+
+        if (isset($list[$code])) return $list[$code];
+            elseif (isset($list[$code2])) return $list[$code2];
+                elseif (isset($list[$code3])) return $list[$code3];
+
+        return false;
+    }
+
+
 
 }

@@ -22,7 +22,6 @@ class Bloc_Controller extends Base_Controller {
 	public function action_map()
 	{
 		$locations=Location::with('blocs')
-		//->where('name','<>','')		
 		//->order_by('continentCode', 'asc') ERROR IN GEONAME DATABASE SOME COUNTRY WITH 2 CONTINENTS (ie. russian federation) 	
 		->order_by('countryCode', 'asc')	
 		->order_by('adminName1', 'asc')		
@@ -31,17 +30,13 @@ class Bloc_Controller extends Base_Controller {
 		->order_by('adminName4', 'asc')		
 		->order_by('name', 'asc')	
 		->get();
-
-		//$counts=array('countryName','adminName1','name');		
+	
 
 		$locations_array=array();
-		foreach($locations as $b){			
-			$data=$b->to_array();
-			$data['countryname']=Geoname::getISO3166($data['countrycode']);
-			$data['url']= $b->get_url();
-		 	$locations_array[] = $data;
-		}
-		
+
+		foreach($locations as $b)		
+		 	$locations_array[] = $b->presenter();
+
 		return View::make('map')->with( array( 'locations'=>$locations, 'locations_json'=>json_encode( $locations_array ) ));
 	}
 
@@ -59,15 +54,7 @@ class Bloc_Controller extends Base_Controller {
 		$locationNext= Location::with('blocs')->where('id','>',$locationid)->order_by('id', 'asc')->first();
 
 
-		$locationArray=$location->to_array();
-		$locationArray['blocs']=array();
-
-		foreach($location->blocs as $b){			
-			$data=$b->to_array();
-			$data['coords']=$b->get_coords();
-		 	$locationArray['blocs'][] = $data;
-		}
-
+		$locationArray=$location->presenter();
 
 
 		return View::make('location')->with(array('location'=>$location , 'location_json'=> json_encode( $locationArray ),'face'=>$face, 'prev'=>$locationPrev, 'next'=>$locationNext));
@@ -91,8 +78,7 @@ class Bloc_Controller extends Base_Controller {
 		if (Str::slug($bloc->location->name)!=$locname) 
 		  return Redirect::to_route('location', array(Str::slug($bloc->location->name),$locid));
 
-		$blocArray=$bloc->to_array();
-		$blocArray['coords']=$bloc->get_coords();
+		$blocArray=$bloc->presenter();
 
 		$blocPrev= Bloc::with('location')->where('id','<',$blocid)->order_by('id', 'desc')->first();
 		$blocNext= Bloc::with('location')->where('id','>',$blocid)->order_by('id', 'asc')->first();
@@ -129,8 +115,8 @@ class Bloc_Controller extends Base_Controller {
 	public function action_getJson($id, $with_data=FALSE)
 	{
 		if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
-		$res=$bloc->to_array();
-		$res['location']=$bloc->location->to_array();
+		$res=$bloc->presenter();
+		$res['location']=$bloc->location->presenter();
 		$res['location']['countryname']=Geoname::getISO3166($res['location']['countrycode']);
 
 		if ($with_data) $res['coords']= $bloc->get_coords();

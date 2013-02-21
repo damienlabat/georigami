@@ -45,7 +45,7 @@ Georigami - Map
 
         echo '<div class="row"><a name="'.strtolower($location->countrycode).'" class="anchor"></a>'
         .'<h2><img src="'.URL::base().'/img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>'
-        .(Geoname::getISO3166($location->countrycode)!=''?Geoname::getISO3166($location->countrycode):'ocean') 
+        .($location->countryname!=''?$location->countryname:'ocean') 
         .HTML::showcount( Bloc::count_with( array('countrycode'=>$location->countrycode) ) ). '</h2>';
 
         $countryCode=$location->countrycode;
@@ -86,7 +86,7 @@ Georigami - Map
        ?>
       
           
-            <li><a href="{{ $location->get_url() }}"><?php 
+            <li><a href="{{ $location->get_url() }}"> <img src='{{URL::base()}}/img/ico/{{$location->icon}}.png' title='{{$location->fcodename()}}'/>{{$location->fcode}} <?php 
             if ($location->name!='')  echo $location->name; 
             elseif  ($location->adminname4!='')  echo $location->adminname4; 
             elseif  ($location->adminname3!='')  echo $location->adminname3; 

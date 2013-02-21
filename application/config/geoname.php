@@ -2982,6 +2982,21 @@ return array(
 		\"U\": \"deepblue\",
 		\"V\": \"green\",
 
+		\"PK\": 	\"peak\",	
+		\"MT\": 	\"mountains\",
+		\"RDGE\": 	\"canyon-2\",
+		\"CRQ\": 	\"mountains\",
+
+		\"VLC\": 	\"volcano-2\",
+
+		\"STM\": 	\"river-2\",
+
+		
+
+		\"PPL\": \"office-building\",		
+		\"RUIN\": \"ruins-2\",
+
+
 		\"default\":\"white\"
 	}",
 

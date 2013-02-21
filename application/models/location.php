@@ -1,6 +1,6 @@
 <?php
 
-class Location extends Eloquent {
+class Location extends BaseModel {
 
 	public static $timestamps = true;
 
@@ -12,8 +12,33 @@ class Location extends Eloquent {
 
 
     public function get_url() {
+        return URL::to_route('location', array( Str::slug($this->name),  $this->id ));
+    }
 
-            return URL::to_route('location', array( Str::slug($this->name),  $this->id ));
+
+    public function get_countryname() {
+        return Geoname::getISO3166($this->countrycode);
+    }
+
+    public function get_icon() {
+        return Geoname::getIcon($this->fcode, $this->fcl);
+    }
+
+
+    public function continentname() {
+        return Geoname::continentCode($this->continentcode);
+    }
+
+    public function fcodename() {
+        return Geoname::getFCode($this->fcode)[0];
+    }
+
+    public function fcodedetail() {
+        return Geoname::getFCode($this->fcode)[1];
+    }
+
+    public function fclassname() {
+        return Geoname::getFcl($this->fcl);
     }
 
 

@@ -40,9 +40,9 @@ Georigami - {{$location->name}}
         <div class="span4">
           
           <h4>{{$location->name}}</h4>
-                  <img src="{{URL::base()}}/img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ Geoname::getISO3166( $location->countrycode)}}</a><br/>
-                  <h4 title="{{Geoname::getFCode($location->fcode)[1]}}">{{Geoname::getFCode($location->fcode)[0]}}</h4>
-                  {{Geoname::getFcl($location->fcl)}}<br/>
+                  <img src="{{URL::base()}}/img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ $location->countryname}}</a><br/>
+                  <h4 title="{{$location->fcodedetail()}}"><img src='{{URL::base()}}/img/ico/{{$location->icon}}.png' title='{{$location->fcodename()}}'/> {{$location->fcodename()}}</h4>
+                  {{$location->fclassname()}}<br/>
                   {{$location->adminname1}}<br/>
                   {{$location->adminname2}}<br/>
                   {{$location->adminname3}}<br/>

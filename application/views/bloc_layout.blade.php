@@ -43,11 +43,11 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
             <div class="span2">
               <a href='{{ $bloc->location->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4></a>
-                <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ Geoname::getISO3166( $bloc->location->countrycode )}}</a><br/>
-                <span title="{{Geoname::getFCode($bloc->location->fcode)[1]}}">{{Geoname::getFCode($bloc->location->fcode)[0]}}</span><br/>
-                <!--{{Geoname::getFcl($bloc->location->fcl)}}<br/-->
+                <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ $bloc->location->countryname }}</a><br/>
+                <span title="{{ $bloc->location->fcodedetail() }}">{{ $bloc->location->fcodename() }}</span><br/>
+
                 {{$bloc->location->adminname1}}<br/>
-              <!--/a-->
+
             </div>
             <div class="span6">
                 {{$bloc->hslices}} x {{$bloc->vslices}}<br/>

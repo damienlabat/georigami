@@ -1,6 +1,6 @@
 <?php
 
-class Bloc extends Eloquent {
+class Bloc extends BaseModel {
 
 	public static $timestamps = true;
 
@@ -146,8 +146,6 @@ class Bloc extends Eloquent {
 
     public static function count_with($array_field)
     {
-
-
         $count=0;
         $locations = Location::with('blocs');
         foreach ($array_field as $key => $value) 
