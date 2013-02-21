@@ -26,6 +26,8 @@
     var mouseY = 0;
     var mouseYOnMouseDown = 0;
 
+    var camerazoom=35;
+
     var windowHalfX = 0;
     var windowHalfY = 0;  
     slicesObjs=[];
@@ -126,6 +128,8 @@
         camera = new THREE.PerspectiveCamera( 50, W / H, 1, 1000 );
         camera.position.set( 0, 150, 500 );
 
+        camera.setLens(camerazoom); 
+
         scene = new THREE.Scene();
       /* 
         scene.fog = new THREE.Fog( 0xfafafa, 1000, 10000 );
@@ -180,6 +184,9 @@
         container[0].addEventListener( 'touchstart', model3Dobj.onDocumentTouchStart, false );
         container[0].addEventListener( 'touchmove', model3Dobj.onDocumentTouchMove, false );
 
+        container[0].addEventListener( 'mousewheel', model3Dobj.mousewheel, false );
+        container[0].addEventListener( 'DOMMouseScroll', model3Dobj.mousewheel, false ); // firefox
+
         //
 
         window.addEventListener( 'resize', model3Dobj.onWindowResize, false );
@@ -211,7 +218,7 @@
 
         container[0].addEventListener( 'mousemove', model3Dobj.onDocumentMouseMove, false );
         container[0].addEventListener( 'mouseup', model3Dobj.onDocumentMouseUp, false );
-        container[0].addEventListener( 'mouseout', model3Dobj.onDocumentMouseOut, false );
+        container[0].addEventListener( 'mouseout', model3Dobj.onDocumentMouseOut, false );        
 
         mouseXOnMouseDown = event.clientX - windowHalfX;
         targetRotationXOnMouseDown = targetRotationX;
@@ -278,6 +285,32 @@
         }
 
       }
+
+
+      model3Dobj.mousewheel= function( event ) {
+
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          var delta = 0;
+
+          if ( event.wheelDelta ) { // WebKit / Opera / Explorer 9
+
+            delta = event.wheelDelta / 40;
+
+          } else if ( event.detail ) { // Firefox
+
+            delta = - event.detail / 3;
+
+          }
+
+          camerazoom += ( 1 / delta ) * 5;
+          if (camerazoom<1) camerazoom=1;
+
+          camera.setLens(camerazoom);
+
+        }
 
       //
 
