@@ -2,12 +2,21 @@
 
 class Bloc_Controller extends Base_Controller {
 
+
+
+
 	public function action_index()
 	{	$per_page=4*4;
 
+		$face=       	Input::get('face',       'N');
+
 		$blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($per_page);
-		return View::make('index')->with('data',array('blocs'=>$blocs ));
+
+		return View::make('index')->with(array('blocs'=>$blocs, 'face'=>$face ));
 	}
+
+
+
 
 
 	public function action_map()
@@ -29,18 +38,22 @@ class Bloc_Controller extends Base_Controller {
 		foreach($locations as $b){			
 			$data=$b->to_array();
 			$data['countryname']=Geoname::getISO3166($data['countrycode']);
+			$data['url']= $b->get_url();
 		 	$locations_array[] = $data;
 		}
 		
-		return View::make('map')->with('data',array( 'locations'=>$locations, 'locations_json'=>json_encode( $locations_array ) ));
+		return View::make('map')->with( array( 'locations'=>$locations, 'locations_json'=>json_encode( $locations_array ) ));
 	}
 
 
 
-	public function action_location($locationid)
+	public function action_location($locname,$locationid)
 	{	
+		$face=       	Input::get('face',       'N');
 
 		if (!$location=Location::with('blocs')->find($locationid)) return Response::error('404');
+
+		if (Str::slug($location->name)!=$locname)  return Redirect::to_route('location', array(Str::slug($location->name),$locationid));
 
 		$locationPrev= Location::with('blocs')->where('id','<',$locationid)->order_by('id', 'desc')->first();
 		$locationNext= Location::with('blocs')->where('id','>',$locationid)->order_by('id', 'asc')->first();
@@ -57,16 +70,16 @@ class Bloc_Controller extends Base_Controller {
 
 
 
-		return View::make('location')->with('data',array('location'=>$location , 'location_json'=> json_encode( $locationArray ),'prev'=>$locationPrev, 'next'=>$locationNext));
+		return View::make('location')->with(array('location'=>$location , 'location_json'=> json_encode( $locationArray ),'face'=>$face, 'prev'=>$locationPrev, 'next'=>$locationNext));
 	}
 
 
 
 
 
-	public function action_get($blocid, $show=null)
+	public function action_get($locname,$locid,$blocid, $show=null)
 	{
-		if ($show==null) return Redirect::to_route('getplus', array($blocid,'profil'));
+		if ($show==null) return Redirect::to_route('getplus', array($locname,$locid,$blocid,'profil'));
 
 		$face=       	Input::get('face',       'N');
 		$vscale=     	Input::get('vscale',     1);
@@ -74,6 +87,9 @@ class Bloc_Controller extends Base_Controller {
 		$color=       	Input::get('color',       'black');
 
 		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
+
+		if (Str::slug($bloc->location->name)!=$locname) 
+		  return Redirect::to_route('location', array(Str::slug($bloc->location->name),$locid));
 
 		$blocArray=$bloc->to_array();
 		$blocArray['coords']=$bloc->get_coords();
@@ -85,8 +101,7 @@ class Bloc_Controller extends Base_Controller {
 
 		$data=array( 
 			'show'=>$show, 
-			'location'=>$location, 
-			'bloc'=>$blocArray, 
+			'bloc'=>$bloc, 
 			'bloc_json'=> json_encode( $blocArray ), 
 			'prev'=>$blocPrev, 
 			'next'=>$blocNext, 
@@ -101,7 +116,7 @@ class Bloc_Controller extends Base_Controller {
 
 		}
 
-		return View::make('bloc_'.$show)->with('data',$data);
+		return View::make('bloc_'.$show)->with($data);
 
 	}
 
@@ -140,16 +155,14 @@ class Bloc_Controller extends Base_Controller {
 
 
 		 Event::override('laravel.done', function(){}); // No profiler
-		 $svg=View::make(  'svgprofil' )->with('data',$data);
+		 $svg=View::make(  'svgprofil' )->with($data);
 		 return Response::make($svg, 200, array('Content-Type' => 'image/svg+xml'));
 
 
 	}
 
 
-
-
-
+	
 	public function action_store()
 	{
 		$input = Input::all();

@@ -5,7 +5,7 @@
 
 
 @section('title')
-Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id']}})
+Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
 @endsection
 
 
@@ -15,17 +15,17 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 @section('content')
 
          <ul class="pager">            
-              @if ($data['prev']!=null)
+              @if ($prev!=null)
               <li class="previous">
-                  <a href="{{URL::to_route('get', array($data['prev']->id)) }}" title="{{$data['prev']->location->name}}">&larr; Older</a>              
+                  <a href="{{ $prev->get_url($show) }}?face={{$face}}" title="{{$prev->location->name}}">&larr; Older</a>              
               @else
               <li class="previous disabled">
                   <a href="#">&larr; Older</a>
               @endif
               </li>
-              @if ($data['next']!=null)
+              @if ($next!=null)
               <li class="next">
-                  <a href="{{URL::to_route('get', array($data['next']->id)) }}" title="{{$data['next']->location->name}}">Newer &rarr;</a>         
+                  <a href="{{ $next->get_url($show) }}?face={{$face}}" title="{{$next->location->name}}">Newer &rarr;</a>         
               @else
               <li class="next disabled">
                   <a href="#">Newer &rarr;</a>
@@ -38,21 +38,21 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
         <div class='row'>
    
             <div class="span2">
-               <img src="{{URL::to_route('svg', array($data['bloc']['id'],$data['face'])) }}" title="{{$data['face']}} view"  class="hidden-phone">
+               <img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{$face}} view"  class="hidden-phone">
             </div>
             <div class="span2">
-              <a href='{{URL::to_route('location', array($data['bloc']['location']['id'])) }}'>
-               <h4>{{$data['bloc']['location']['name']}}</h4></a>
-                <img src="{{URL::base()}}/img/flags/{{ strtolower($data['bloc']['location']['countrycode']) }}.png" title="{{ $data['bloc']['location']['countrycode'] }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($data['bloc']['location']['countrycode'])}}'>{{ Geoname::getISO3166( $data['bloc']['location']['countrycode'])}}</a><br/>
-                <span title="{{Geoname::getFCode($data['location']->fcode)[1]}}">{{Geoname::getFCode($data['location']->fcode)[0]}}</span><br/>
-                <!--{{Geoname::getFcl($data['location']->fcl)}}<br/-->
-                {{$data['bloc']['location']['adminname1']}}<br/>
+              <a href='{{ $bloc->location->get_url() }}'>
+               <h4>{{$bloc->location->name}}</h4></a>
+                <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ Geoname::getISO3166( $bloc->location->countrycode )}}</a><br/>
+                <span title="{{Geoname::getFCode($bloc->location->fcode)[1]}}">{{Geoname::getFCode($bloc->location->fcode)[0]}}</span><br/>
+                <!--{{Geoname::getFcl($bloc->location->fcl)}}<br/-->
+                {{$bloc->location->adminname1}}<br/>
               <!--/a-->
             </div>
             <div class="span6">
-                {{$data['bloc']['hslices']}} x {{$data['bloc']['vslices']}}<br/>
-                {{$data['bloc']['width']}}m x {{$data['bloc']['height']}}m<br/>
-                {{$data['bloc']['created_at']}}
+                {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
+                {{$bloc->width}}m x {{$bloc->height}}m<br/>
+                {{$bloc->created_at}}
             </div>
       </div>
 
@@ -61,7 +61,7 @@ Georigami - {{$data['bloc']['location']['name']}} (bloc n° {{$data['bloc']['id'
 
 <div class='navbar navbar-inverse'>
   <div class="navbar-inner">
-    <a class="brand" href="#">Bloc N°{{$data['bloc']['id']}}</a>
+    <a class="brand" href="#">Bloc N°{{$bloc->id}}</a>
     <ul class="nav">@yield('bloc_menu')</ul>
   </div>
 </div>

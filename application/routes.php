@@ -93,7 +93,7 @@ Route::POST('/new', array(
 
 
 
-Route::get('/location(:num)', array(
+Route::get('/(:any)_(:num)', array(
         'as'     => 'location',
         'uses'   => 'bloc@location'
      ));
@@ -103,12 +103,12 @@ Route::get('/location(:num)', array(
 
 
 
-Route::get('/bloc(:num)', array(
+Route::get('/(:any)_(:num)/bloc(:num)', array(
         'as'     => 'get',
         'uses'   => 'bloc@get'
      ));
 
-Route::get('/bloc(:num)/(profil|print|3d)', array(
+Route::get('/(:any)_(:num)/bloc(:num)_(profil|print|3d)', array(
         'as'     => 'getplus',
         'uses'   => 'bloc@get'
      ));
@@ -143,10 +143,6 @@ Route::POST('/search', array(
      ));
 
 
-Route::POST('/startwith', array(
-        'as'     => 'startwith',
-        'uses'   => 'geoname@startwith'
-     ));
 
 
 

@@ -20,6 +20,15 @@ class Bloc extends Eloquent {
 	}
 
 
+    public function get_url($show=null) {
+
+        if ($show==null)
+            return URL::to_route('get', array( Str::slug($this->location->name),  $this->location->id, $this->id ));
+        else 
+            return URL::to_route('getplus', array( Str::slug($this->location->name),  $this->location->id, $this->id, $show ));
+    }
+
+
 
     public function profil_data($face) 
     {

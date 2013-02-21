@@ -17,7 +17,7 @@ Georigami
 <div class="row">
   
 
- @foreach ($data['blocs']->results as $bloc) 
+ @foreach ($blocs->results as $bloc) 
    
             <div class=' bloc clearfix'>
               <img src="{{URL::to_route('svg', array($bloc->id,'N')) }}" title="North view"></a>
@@ -25,7 +25,7 @@ Georigami
 
 
 
-              <a href='{{URL::to_route('get', array($bloc->id)) }}'>
+              <a href='{{ $bloc->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4>
                 <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
                 {{Geoname::getISO3166($bloc->location->countrycode)}}<br/>
@@ -49,7 +49,7 @@ Georigami
 
 </div>
 
-    {{ $data['blocs']->links(1, Paginator::ALIGN_CENTER); }}
+    {{ $blocs->links(1, Paginator::ALIGN_CENTER); }}
 
 
 

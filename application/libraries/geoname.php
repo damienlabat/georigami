@@ -119,7 +119,7 @@ class Geoname {
         if (!$res) $res= self::findCountrySubdivision(  $lat,$lng );
         if ($res==null) {
             $ocean= self::findOcean(  $lat,$lng );
-            if (isset($ocean['ocean'])) $res=  array('name'=>$ocean['ocean']['name']);
+            if (isset($ocean['ocean'])) $res=  array('adminName1'=>$ocean['ocean']['name']);
                 else return false;
         }
 

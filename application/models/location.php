@@ -11,6 +11,13 @@ class Location extends Eloquent {
     }
 
 
+    public function get_url() {
+
+            return URL::to_route('location', array( Str::slug($this->name),  $this->id ));
+    }
+
+
+
     public static function getorcreate($lat,$lng) {
 
         $data_json=Geoname::findTheBest( $lat,$lng) ;
@@ -37,7 +44,10 @@ class Location extends Eloquent {
         $location->lng=$data['lng'];
 
     	if (isset($data['geonameId']))      $location->geonameId 	    = $data['geonameId'];
+
         if (isset($data['name']))           $location->name             = $data['name'];
+            else                                   $location->name      = 'unknown place';
+
         if (isset($data['adminName1']))     $location->adminName1       = $data['adminName1'];
         if (isset($data['adminName2']))     $location->adminName2       = $data['adminName2'];
         if (isset($data['adminName3']))     $location->adminName3       = $data['adminName3'];

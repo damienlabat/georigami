@@ -21,7 +21,7 @@ Georigami - Map
     <div id="map-canvas"></div>  
 
     <div class='locations'>
-    @foreach ($data['locations'] as $location)
+    @foreach ($locations as $location)
 
 
        <?php
@@ -86,7 +86,7 @@ Georigami - Map
        ?>
       
           
-            <li><a href="{{URL::to_route('location', array($location->id)) }}"><?php 
+            <li><a href="{{ $location->get_url() }}"><?php 
             if ($location->name!='')  echo $location->name; 
             elseif  ($location->adminname4!='')  echo $location->adminname4; 
             elseif  ($location->adminname3!='')  echo $location->adminname3; 
@@ -113,7 +113,7 @@ Georigami - Map
 
      
         <script>
-            Georigami.location_list={{$data['locations_json']}};
+            Georigami.location_list={{ $locations_json }};
             $(function() {  Georigami.initMap();    });
         </script>
 @endsection      
