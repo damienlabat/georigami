@@ -105,6 +105,7 @@ $('#input-search').change( function(){
       res.vSlices= parseFloat( $('#input-vertical-slices').val() );
       res.hSlices= parseFloat( $('#input-horizontal-slices').val() );
       res.sampling= parseFloat( $('#input-sampling').val() );
+      res.rotate= parseFloat( $('#input-rotate').val() );
 
       res.vSamples= res.sampling* (res.hSlices+2);
       $('#input-vertical-samples').val(res.vSamples);
@@ -133,6 +134,7 @@ $('#input-search').change( function(){
       $('#input-vertical-slices').val( params.vSlices );
       $('#input-horizontal-slices').val( params.hSlices );
       $('#input-sampling').val( params.sampling );
+      $('#input-rotate').val( params.rotate );
       $('input').trigger('change');
     }
 
@@ -142,7 +144,7 @@ $('#input-search').change( function(){
 
   var drawSlices= function(params) {
     if (gridObj!=null) gridObj.clear();
-    gridObj= grid(map,params.lat,params.lng,params.width,params.height,params.vSlices,params.hSlices,null);
+    gridObj= grid(map,params.lat,params.lng,params.width,params.height,params.vSlices,params.hSlices,params.rotate);
   }
 
   Georigami.update= function() {

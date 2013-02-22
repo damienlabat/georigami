@@ -50,9 +50,12 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
 
             </div>
             <div class="span6">
-                {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
+                altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>
                 {{$bloc->width}}m x {{$bloc->height}}m<br/>
-                {{$bloc->created_at}}
+                rotation: {{$bloc->rotate}}°<br/>
+                slices: {{$bloc->vslices}} x {{$bloc->hslices}}<br/>
+                {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
+                {{$bloc->created_at}}<br/> 
             </div>
       </div>
 

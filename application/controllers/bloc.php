@@ -163,6 +163,7 @@ class Bloc_Controller extends Base_Controller {
 
 		    'height'    => 'required|integer|min:1',
 		    'width'     => 'required|integer|min:1',
+		    'rotate'    => 'required|integer|min:-45|max:45',
 
 		    'lat'       => 'required|numeric|min:-90|max:90',
 		    'lng'       => 'required|numeric|min:-180|max:180',
@@ -200,6 +201,8 @@ class Bloc_Controller extends Base_Controller {
 
 		$bloc->hSlices = $input['hSlices'];
 		$bloc->vSlices = $input['vSlices'];
+
+		$bloc->rotate = $input['rotate'];
 
 		$bloc->height = $input['height'];
 		$bloc->width = $input['width'];		

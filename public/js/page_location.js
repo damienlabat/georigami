@@ -10,7 +10,8 @@ $(function() {
 
 
   function createGrid(map, data, marker) {
-    var gridObj=grid(map,data.lat,data.lng,data.width,data.height,data.vslices,data.hslices,null);         
+    var gridObj=grid(map,data.lat,data.lng,data.width,data.height,data.vslices,data.hslices,data.rotate); 
+    console.log(data.rotate)        ;
       google.maps.event.addListener(marker, "mouseover", function() {
         gridObj.setOptions( { strokeColor: "#00FF00"  } );
       });

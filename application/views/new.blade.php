@@ -144,10 +144,11 @@ Georigami - build your own
                     lng:{{$lng}},
                     width:{{$width}}, 
                     height:{{$height}},
+                    rotate:{{$rotate}},
+
                     vSlices:{{$vSlices}},
                     hSlices:{{$hSlices}},
-                    sampling:{{$sampling}},
-                    rotate:{{$sampling}}  
+                    sampling:{{$sampling}}                    
             };
 
   

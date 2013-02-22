@@ -195,8 +195,10 @@ function createMarker(name, latlng, icon, shadow) {
 
 
 
-function grid(map,lat,lng,width,height,vSlices,hSlices,options) {
+function grid(map,lat,lng,width,height,vSlices,hSlices,rotate) {
 
+  if (rotate==null) rotate=0;
+  rotate=parseFloat(rotate);
 	var grid={};
 	var slices=[];
 	var slicesData=[];
@@ -204,10 +206,10 @@ function grid(map,lat,lng,width,height,vSlices,hSlices,options) {
        
 	var center= new google.maps.LatLng( lat , lng );    
 
-    var NE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0),   width/2,90); // NE
-    var SE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180), width/2,90); // SE
-    var NW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0),   width/2,-90); // NW
-    var SW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180), width/2,-90); // SW
+    var NE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0+rotate),   width/2, 90+rotate); // NE
+    var SE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180+rotate), width/2, 90+rotate); // SE
+    var NW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0+rotate),   width/2, -90+rotate); // NW
+    var SW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180+rotate), width/2, -90+rotate); // SW
 
 
     cadre = new google.maps.Polygon({

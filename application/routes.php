@@ -64,10 +64,12 @@ Route::get('/new', array('as' => 'new', function()
     $lng=       Input::get('lng',       0);
     $width=     Input::get('width',     10000);
     $height=    Input::get('height',    10000);
+    $rotate=    Input::get('rotate',    0);
+
     $hslices=   Input::get('hslices',   11);
     $vslices=   Input::get('vslices',   11);
     $sampling=  Input::get('sampling',  5);
-    $rotate=    Input::get('rotate',    0);
+
 
 
     $data=array(
@@ -75,10 +77,12 @@ Route::get('/new', array('as' => 'new', function()
         'lng'       =>$lng,
         'width'     =>$width, 
         'height'    =>$height,
+        'rotate'    =>$rotate,
+
         'hSlices'   =>$hslices, 
         'vSlices'   =>$vslices,
         'sampling'  =>$sampling,
-        'rotate'    =>$rotate
+        
         );
 
 	return View::make('new')->with($data);

@@ -49,6 +49,8 @@ class Create_Blocs_Table {
             $table->integer('width')->unsigned();
             $table->integer('height')->unsigned();
 
+            $table->integer('rotate');
+
             $table->float('min');
             $table->float('max');
 
