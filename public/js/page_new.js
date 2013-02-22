@@ -169,12 +169,10 @@ $('#input-search').change( function(){
     //map.fitBounds(Georigami.rectangle.getBounds());
 
 
-    $('input.livechange').keypress( function(){
-        setTimeout('Georigami.update()',1);;
-    });
-    $('input.livechange').mousedown( function(){
-        setTimeout('Georigami.update()',1);;
-    });
+    $('.livechange').keypress( function(){    setTimeout('Georigami.update()',1);    });
+    $('.livechange').mousedown( function(){   setTimeout('Georigami.update()',1);    });
+    $('.livechange').blur( function(){        setTimeout('Georigami.update()',1);    });
+
 
     $('#update-btn').mousedown( function(){
         Georigami.update();

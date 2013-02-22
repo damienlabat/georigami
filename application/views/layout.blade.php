@@ -21,7 +21,8 @@
             }
         </style>
         {{HTML::style("css/bootstrap-responsive.min.css")}}
-        {{--HTML::style("css/main.css")--}}
+
+        {{HTML::style("css/jquery-ui-1.10.1.custom.css")}}
 
         {{HTML::script("js/vendor/modernizr-2.6.2-respond-1.1.0.min.js")}}
     </head>
@@ -68,6 +69,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
         {{HTML::script("js/vendor/bootstrap.min.js")}}
+        {{HTML::script("js/vendor/jquery-ui-1.10.1.custom.min.js")}}
+
+
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
         {{HTML::script("js/markerclusterer.js")}}
         

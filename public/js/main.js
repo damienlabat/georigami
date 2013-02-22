@@ -21,6 +21,16 @@ $(function() {
 	}
 
 
+
+	$('.spinner').each( function(k,obj){ 
+		if (obj.type!='number') {
+			$(this).spinner();
+
+		}
+	});
+	
+
+
   if(typeof Georigami == 'undefined') Georigami={};
 Georigami.verticalScale=1;
 

@@ -32,13 +32,13 @@ Georigami - build your own
                         <div class="row">
                             <div class="span5">
 
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
         							<label class="control-label" for="input-latitude">Latitude</label>
-        							<div class="controls"><input type="number" step="any" min="-90" max="90" id="input-latitude" class="span2 livechange"></div>
+        							<div class="controls"><input type="number" step="any" min="-90" max="90" id="input-latitude" class="span2"></div>
                                 </div>
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
         							<label class="control-label" for="input-longitude">Longitude</label>
-        							<div class="controls"><input type="number" step="any" min="-180" max="180" id="input-longitude" class="span2 livechange"></div>
+        							<div class="controls"><input type="number" step="any" min="-180" max="180" id="input-longitude" class="span2"></div>
                                 </div>
                                 <div class='control-group'>
         							<label class="control-label" for="input-search">Search by name</label>
@@ -49,13 +49,13 @@ Georigami - build your own
                             </div>
                             
                             <div class="span5">
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
                                     <label class="control-label" for="input-width">Width</label>
-                                    <div class="controls"><input type="number" step="1" min="1" id="input-width" class="span1 livechange"> m</div>
+                                    <div class="controls"><input type="number" step="1" min="1" id="input-width" class="span1 spinner"> m</div>
                                 </div>
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
                                     <label class="control-label" for="input-height">Height</label>
-                                    <div class="controls"><input type="number" step="1" min="1" id="input-height" class="span1 livechange"> m</div>
+                                    <div class="controls"><input type="number" step="1" min="1" id="input-height" class="span1 spinner"> m</div>
                                 </div>
                             </div>
 
@@ -74,23 +74,23 @@ Georigami - build your own
                         <div class="row">
                             <div class="span5">          
 
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
                                     <label class="control-label" for="input-horizontal-slices">horizontal slices</label>
-                                    <div class="controls"><input type="number" step="1" min="2" max="500" id="input-horizontal-slices" class="span1 livechange"> (max 100)</div>
+                                    <div class="controls"><input type="number" step="1" min="2" max="500" id="input-horizontal-slices" class="span1 spinner"> (max 100)</div>
                                 </div>
 
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
         							<label class="control-label" for="input-vertical-slices">vertical slices</label>
-        							<div class="controls"><input type="number" step="1" min="2" max="500" id="input-vertical-slices" class="span1 livechange"> (max 100)</div>
+        							<div class="controls"><input type="number" step="1" min="2" max="500" id="input-vertical-slices" class="span1 spinner"> (max 100)</div>
                                 </div>
 
                             </div>
                             
                             <div class="span5">
 
-                                <div class='control-group'>
+                                <div class='control-group livechange'>
                                     <label class="control-label" for="input-sampling">X sampling</label>
-                                    <div class="controls"><input type="number" id="input-sampling" class="span1 livechange"  step="1" min="1"></div>
+                                    <div class="controls"><input type="number" id="input-sampling" class="span1 spinner"  step="1" min="1"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
