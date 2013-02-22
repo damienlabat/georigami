@@ -51,11 +51,15 @@ Georigami - build your own
                             <div class="span5">
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-width">Width</label>
-                                    <div class="controls"><input type="number" step="1" min="1" id="input-width" class="span1 spinner"> m</div>
+                                    <div class="controls"><input type="number" step="1" min="1"  id="input-width" class="span1"> m</div>
                                 </div>
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-height">Height</label>
-                                    <div class="controls"><input type="number" step="1" min="1" id="input-height" class="span1 spinner"> m</div>
+                                    <div class="controls"><input type="number" step="1" min="1" id="input-height" class="span1"> m</div>
+                                </div>
+                                 <div class='control-group livechange'>
+                                    <label class="control-label" for="input-rotate">Rotate</label>
+                                    <div class="controls"><input type="range" step="1" min="-45" max="45" id="input-rotate" class='span1'> °</div>
                                 </div>
                             </div>
 
@@ -76,12 +80,12 @@ Georigami - build your own
 
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-horizontal-slices">horizontal slices</label>
-                                    <div class="controls"><input type="number" step="1" min="2" max="500" id="input-horizontal-slices" class="span1 spinner"> (max 100)</div>
+                                    <div class="controls"><input type="range" step="1" min="2" max="100" id="input-horizontal-slices"></div>
                                 </div>
 
                                 <div class='control-group livechange'>
         							<label class="control-label" for="input-vertical-slices">vertical slices</label>
-        							<div class="controls"><input type="number" step="1" min="2" max="500" id="input-vertical-slices" class="span1 spinner"> (max 100)</div>
+        							<div class="controls"><input type="range" step="1" min="2" max="100" id="input-vertical-slices"></div>
                                 </div>
 
                             </div>
@@ -90,15 +94,15 @@ Georigami - build your own
 
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-sampling">X sampling</label>
-                                    <div class="controls"><input type="number" id="input-sampling" class="span1 spinner"  step="1" min="1"></div>
+                                    <div class="controls"><input type="range" id="input-sampling" step="1" min="1" max="20"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
-                                    <div class="controls"><input type="number" id="input-horizontal-samples" class="span1 uneditable-input" readonly="readonly"> (max 512)</div>
+                                    <div class="controls"><input type="text" id="input-horizontal-samples" class="span1 uneditable-input" readonly="readonly"> (max 512)</div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-vertical-samples">vertical slices samples</label>
-                                    <div class="controls"><input type="number" id="input-vertical-samples" class="span1 uneditable-input"  readonly="readonly"> (max 512)</div>
+                                    <div class="controls"><input type="text" id="input-vertical-samples" class="span1 uneditable-input"  readonly="readonly"> (max 512)</div>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +146,8 @@ Georigami - build your own
                     height:{{$height}},
                     vSlices:{{$vSlices}},
                     hSlices:{{$hSlices}},
-                    sampling:{{$sampling}}      
+                    sampling:{{$sampling}},
+                    rotate:{{$sampling}}  
             };
 
   

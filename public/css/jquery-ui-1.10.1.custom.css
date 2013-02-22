@@ -193,6 +193,9 @@ button.ui-button::-moz-focus-inner {
 .ui-slider {
 	position: relative;
 	text-align: left;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+	background:#eee;
+	margin:8px 0;
 }
 .ui-slider .ui-slider-handle {
 	position: absolute;

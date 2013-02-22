@@ -133,6 +133,7 @@ $('#input-search').change( function(){
       $('#input-vertical-slices').val( params.vSlices );
       $('#input-horizontal-slices').val( params.hSlices );
       $('#input-sampling').val( params.sampling );
+      $('input').trigger('change');
     }
 
 
@@ -170,8 +171,7 @@ $('#input-search').change( function(){
 
 
     $('.livechange').keypress( function(){    setTimeout('Georigami.update()',1);    });
-    $('.livechange').mousedown( function(){   setTimeout('Georigami.update()',1);    });
-    $('.livechange').blur( function(){        setTimeout('Georigami.update()',1);    });
+    $('.livechange').mouseup( function(){     Georigami.update()    });
 
 
     $('#update-btn').mousedown( function(){

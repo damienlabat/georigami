@@ -23,6 +23,7 @@
         {{HTML::style("css/bootstrap-responsive.min.css")}}
 
         {{HTML::style("css/jquery-ui-1.10.1.custom.css")}}
+        <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/-->
 
         {{HTML::script("js/vendor/modernizr-2.6.2-respond-1.1.0.min.js")}}
     </head>
@@ -59,6 +60,7 @@
             <hr class="clearfix">
 
             <footer>
+                <div id="slider"></div>
                 <p>Map and elevation from <a href='https://developers.google.com/maps/documentation/javascript/elevation'>Google Maps</a> - Placenames from <a href='http://www.geonames.org/'>geonames.org</a> - Fork me on <a href='https://github.com/damienl/georigami'>GitHub</a></p>
             </footer>
 
@@ -68,6 +70,7 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+
         {{HTML::script("js/vendor/bootstrap.min.js")}}
         {{HTML::script("js/vendor/jquery-ui-1.10.1.custom.min.js")}}
 
