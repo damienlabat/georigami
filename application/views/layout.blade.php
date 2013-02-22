@@ -10,8 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         
-        {{HTML::style("/css/bootstrap.min.css")}}
-        {{--HTML::style("/css/bootstrap.simplex.min.css")--}}
+        {{--HTML::style("/css/bootstrap.min.css")--}}
+
+        {{HTML::style("/css/main.css")}}
+        
         <style>
             body {
                 padding-top: 60px;
@@ -19,7 +21,7 @@
             }
         </style>
         {{HTML::style("css/bootstrap-responsive.min.css")}}
-        {{HTML::style("css/main.css")}}
+        {{--HTML::style("css/main.css")--}}
 
         {{HTML::script("js/vendor/modernizr-2.6.2-respond-1.1.0.min.js")}}
     </head>
@@ -30,7 +32,7 @@
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
-        <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
