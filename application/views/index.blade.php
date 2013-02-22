@@ -33,7 +33,7 @@ Georigami
                 altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>
                 {{$bloc->width}}m x {{$bloc->height}}m<br/>
                 rotation: {{$bloc->rotate}}°<br/>
-                slices: {{$bloc->vslices}} x {{$bloc->hslices}}<br/>
+                slices: {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
                 {{$bloc->created_at}}<br/> 
 

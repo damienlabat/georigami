@@ -9,6 +9,8 @@ $(function() {
 
     var gridObj=null;
 
+     $('#start-btn').hide();
+
 
 
 
@@ -91,6 +93,8 @@ $('#input-search').change( function(){
       $('#input-width').val(  Georigami.rectangle.width );
       $('#input-height').val( Georigami.rectangle.height );
       drawSlices(  getParams()  );
+
+      if ((Georigami.rectangle.lat!=0)||(Georigami.rectangle.lng!=0)) $('#start-btn').slideDown();        
     }
 
 
@@ -274,11 +278,12 @@ $('#input-search').change( function(){
        function plotElevation(results, status) {
            if (status!='OK') {
             Georigami.alert('GOOGLE ELEVATION API ERROR',status );
+            $('#start-btn').slideDown();
             return
           }
 
           slice.data=results;
-          console.log("delay: "+requestDelay*(samples/500)+'ms');
+          //console.log("delay: "+requestDelay*(samples/500)+'ms');
           if (i+1<result.slices.length) setTimeout(function(){ Georigami.loadSlice(result,i+1) }, requestDelay*(samples/500)  ); // too be kind with google api
             else {
              // showLoading( 'building geom' );
@@ -297,7 +302,7 @@ $('#input-search').change( function(){
 
                   showLoading( 'show result' );
                   var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
-                  Georigami.results.push( { data:data, view3D:visu.view3D, paperBtn:visu.paperBtn } );  
+                  Georigami.results.push( { data:data } );  
                   showLoading( '' );
 
                   },
@@ -330,8 +335,9 @@ $('#input-search').change( function(){
 
 
 var startWork= function(data) {
+    $('#start-btn').slideUp();
     Georigami.loadSlice(data,0);
-} // fin init NEW
+} 
 
 
 
@@ -348,11 +354,11 @@ var startWork= function(data) {
 
 
   var visuSlice= function(id,data,obj) {
-
+    $('#start-btn').slideDown();
     
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
-      '<div class="row">'+
+     /* '<div class="row">'+
       '<div class="span8 resultcontent"><div class="div3Dview"></div><div class="divPaperBtn"></div></div>'+
       '<div class="span3">'+
       '<table class="table">'+             
@@ -370,21 +376,29 @@ var startWork= function(data) {
             
       '</table>'+
       '</div>'+
-      '</div>'+
+      '</div>'+*/
+      '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
+      '<a href="'+data.url+'" class="row">'+
+        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'N.svg" class="span2"/>'+
+        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'E.svg" class="span2"/>'+
+        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'S.svg" class="span2"/>'+
+        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'W.svg" class="span2"/>'+
+        '<div class="span2">'+
+          'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>'+
+          data.width+'m x '+data.height+'m<br/>'+
+          'rotation: '+data.rotate+'m<br/>'+
+          'slices: '+data.hslices+' x '+data.vslices+'<br/>'+
+          (data.vslices*data.vsamples + data.hslices*data.hsamples)+' samples<br/>'+
+          data.created_at+        
+        '</div>'+
+      '</a>'+
       '</div>';
 
-    var bloc=$(html).prependTo(obj);         
+      console.log(data);
 
-    var view3D= load3D( data, bloc.find('.div3Dview'), Georigami.verticalScale );
-    var paperBtn= addDownloadButton( data ,bloc.find('.divPaperBtn'), Georigami.verticalScale );   
+    var bloc=$(html).prependTo(obj); 
 
-    bloc.find('.vs-input').change( function(){
-        paperBtn.setVerticalScale( bloc.find('.vs-input').val() );
-        view3D.setVerticalScale( bloc.find('.vs-input').val() );
-    });
-    
 
-    return {view3D:view3D, paperBtn:paperBtn};
   }
 
 
