@@ -1,5 +1,10 @@
 @layout('layout')
 
+
+@section('bodyclass')
+welcome@endsection
+
+
 @section('content')
             <div class="hero-unit">
                 <h1>Georigami</h1>
@@ -8,13 +13,3 @@
    
             Hello
 @endsection
-
-
-
-
-
-          
-
-@section('script')           
-        <script></script>
-@endsection      

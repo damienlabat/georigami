@@ -3,6 +3,21 @@ $(function() {
   Georigami.status=null;
 
 
+
+
+  var showLoading= function(content, pp) {
+      $('#status .text').html(content);
+      if (pp!=null) {
+          if (!$('#status .progress').length) $('<div class="progress progress-striped active"><div class="bar" style="width: '+(pp*100)+'%;"></div></div>').appendTo( $('#status') );      
+          else $('#status .progress .bar').css('width',(pp*100)+'%');
+
+          if (pp==1) $('#status .progress').addClass('progress-success');
+        }
+        else $('#status .progress').remove();
+
+  }
+
+
   /*******************/
  /*   initNew       */
 /*******************/
@@ -36,7 +51,7 @@ $(function() {
 
 
 Georigami.setStatus(null);
-
+//showLoading( 'test', 0.35 );
 
 
 $('#input-search').change( function(){
@@ -373,15 +388,7 @@ $('#input-search').change( function(){
     });
 
 
-  var showLoading= function(content, pp) {
-      $('#status .text').html(content);
-      if (pp!=null) {
-          if (!$('#status .progress').length) $('<div class="progress"><div class="bar" style="width: '+(pp*100)+'%;"></div></div>').appendTo( $('#status') );      
-          else $('#status .progress .bar').css('width',(pp*100)+'%');
-        }
-        else $('#status .progress').remove();
-
-  }
+  
 
 
 var startWork= function(data) {

@@ -97,7 +97,7 @@ class Bloc_Controller extends Base_Controller {
 
 		if ($show=='profil') {
 
-			$data['strokewidth']= $strokewidth/10;
+			$data['strokewidth']= $strokewidth/100;
 			$data=array_merge($data, $bloc->profil_data($face) );
 
 		}

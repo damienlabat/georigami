@@ -5641,6 +5641,11 @@ i[class^="icon-"] {
   clear: both;
   margin-top: 8px;
 }
+#status .text {
+  font-size: 1.5em;
+  margin-top: 25px;
+  text-align: center;
+}
 #map-canvas {
   height: 500px;
   margin: 40px auto;
@@ -5756,7 +5761,7 @@ i.loading {
 input[type='range'] {
   margin: 8px 0;
 }
-/* printpage */
+/* SVG */
 svg.svgprint {
   width: 100%;
   border: none;
@@ -5781,6 +5786,7 @@ svg.svgprint text {
   font-size: 2px;
   letter-spacing: 10;
 }
+/* printpage */
 @media print {
   body.print .container {
     width: 95%;

@@ -1,7 +1,8 @@
 @layout('layout')
 
 
-
+@section('bodyclass')
+new@endsection
 
 
 @section('title')
@@ -138,7 +139,6 @@ Georigami - build your own
 
 @section('script')           
         <script>
-
             Georigami.area= {
                 
                     lat:{{$lat}},
@@ -151,9 +151,5 @@ Georigami - build your own
                     hSlices:{{$hSlices}},
                     sampling:{{$sampling}}                    
             };
-
-  
-            $(function() {  Georigami.initNew();    });
-
         </script>
 @endsection      

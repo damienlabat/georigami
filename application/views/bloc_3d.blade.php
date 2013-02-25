@@ -1,7 +1,8 @@
 @layout('bloc_layout')
 
 
-
+@section('bodyclass')
+bloc3d@endsection
 
 
 @section('title')
@@ -56,16 +57,9 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 
           
 
-@section('script')         
-
-        <script>
-            
+@section('script')     
+        <script>            
             Georigami.bloc={{ $bloc_json }};
-            Georigami.face='{{ $face }}';
-            
-           $(function() {  Georigami.initBloc();    });
-           
-
+            Georigami.face='{{ $face }}';        
         </script>
-
 @endsection      

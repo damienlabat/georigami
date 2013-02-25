@@ -177,8 +177,8 @@ function createMarker(name, latlng, icon, shadow) {
       infowindow.open(map, marker);
     });
     google.maps.event.addListener(marker, "mouseover", function() {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){marker.setAnimation(null)}, 750*3);
+      /*marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){marker.setAnimation(null)}, 750*3);*/
     });
     marker.setAnimation(google.maps.Animation.DROP);
     return marker;

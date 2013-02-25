@@ -75,7 +75,24 @@ $(function() {
 	
 
   if(typeof Georigami == 'undefined') Georigami={};
-Georigami.verticalScale=1;
+	Georigami.verticalScale=1;
+
+
+
+
+
+
+
+
+
+
+// INIT
+
+if ($('body').hasClass('bloc3d'))      		Georigami.initBloc();
+
+if ($('body').hasClass('location'))      	Georigami.initLocation();
+if ($('body').hasClass('map'))      		Georigami.initMap();
+if ($('body').hasClass('new'))      		Georigami.initNew();
 
 
 

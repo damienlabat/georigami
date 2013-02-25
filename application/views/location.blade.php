@@ -1,7 +1,8 @@
 @layout('layout')
 
 
-
+@section('bodyclass')
+location@endsection
 
 
 @section('title')
@@ -109,14 +110,7 @@ Georigami - {{$location->name}}
           
 
 @section('script')         
-
-        <script>
-            
+        <script>            
              Georigami.location={{$location_json}}; 
-            
-            $(function() {  Georigami.initLocation();    });
-           
-
         </script>
-
 @endsection      

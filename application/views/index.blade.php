@@ -1,7 +1,8 @@
 @layout('layout')
 
 
-
+@section('bodyclass')
+index@endsection
 
 
 @section('title')
@@ -58,12 +59,3 @@ Georigami
     
 
 @endsection
-
-
-
-
-          
-
-@section('script')    
-
-@endsection      

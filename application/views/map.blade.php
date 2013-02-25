@@ -1,7 +1,8 @@
 @layout('layout')
 
 
-
+@section('bodyclass')
+map@endsection
 
 
 @section('title')
@@ -109,11 +110,8 @@ Georigami - Map
 
           
 
-@section('script')    
-
-     
+@section('script')         
         <script>
-            Georigami.location_list={{ $locations_json }};
-            $(function() {  Georigami.initMap();    });
+            Georigami.location_list={{ $locations_json }};            
         </script>
 @endsection      

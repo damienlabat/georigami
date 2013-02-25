@@ -27,6 +27,12 @@
     margin-top:8px;
 }
 
+#status .text {
+    font-size: 1.5em;
+    margin-top: 25px;
+    text-align: center;
+}
+
 
 #map-canvas {
 	height:500px; 
@@ -184,10 +190,14 @@ input[type='range'] {
 
 
 
+/* SVG */
 
 
 
-
+    svg.svgprint {  width:100%; border:none; margin:8px 0; }
+    svg.svgprint .svgslice { stroke:#000; fill: white; stroke-width:0.15; stroke-linecap:round }
+    svg.svgprint .svgcut   { stroke:#000; fill: none; stroke-width:0.15; stroke-linecap:round; stroke-dasharray: 1,1 }
+    svg.svgprint text {fill:#000;  font-family:'Josefin Sans'; font-size:2px; letter-spacing: 10}
 
 
 
@@ -209,10 +219,12 @@ input[type='range'] {
 
 
 
-    svg.svgprint {  width:100%; border:none; margin:8px 0; }
-    svg.svgprint .svgslice { stroke:#000; fill: white; stroke-width:0.15; stroke-linecap:round }
-    svg.svgprint .svgcut   { stroke:#000; fill: none; stroke-width:0.15; stroke-linecap:round; stroke-dasharray: 1,1 }
-    svg.svgprint text {fill:#000;  font-family:'Josefin Sans'; font-size:2px; letter-spacing: 10}
+
+
+
+
+
+
 
 @media print{
 

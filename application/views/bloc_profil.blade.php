@@ -1,7 +1,8 @@
 @layout('bloc_layout')
 
 
-
+@section('bodyclass')
+profil@endsection
 
 
 @section('title')
@@ -89,17 +90,4 @@ foreach ($coords as $slice) {
           <li class="active"><a href="">profil</a></li>
           <li class=""><a href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
           <li class=""><a href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
-@endsection
-
-
-
-
-
-          
-
-@section('script')         
-
-        <script>
-        </script>
-
-@endsection      
+@endsection   
