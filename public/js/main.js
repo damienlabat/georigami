@@ -47,7 +47,7 @@ $(function() {
 			});
 
 			divnumber.change(function() {	target.val( divnumber.val() );	});
-			divnumber.keypress(function() {	setTimeout( function() {target.val( divnumber.val() )},1);	});
+			divnumber.keypress(function() {	setTimeout( function() {target.val( divnumber.val() )},1);	});			
 
 		}
 		else // jqueryUI
@@ -63,6 +63,7 @@ $(function() {
 
 				slide:  function( event, ui ) {									
 					target.val( ui.value );
+					target.trigger('change');
 				}
 
 			});
@@ -86,14 +87,13 @@ $(function() {
 
 
 
-// INIT
+	// INIT
 
-if ($('body').hasClass('bloc3d'))      		Georigami.initBloc();
+	if ($('body').hasClass('bloc3d'))      		Georigami.initBloc();
 
-if ($('body').hasClass('location'))      	Georigami.initLocation();
-if ($('body').hasClass('map'))      		Georigami.initMap();
-if ($('body').hasClass('new'))      		Georigami.initNew();
-
+	if ($('body').hasClass('location'))      	Georigami.initLocation();
+	if ($('body').hasClass('map'))      		Georigami.initMap();
+	if ($('body').hasClass('new'))      		Georigami.initNew();
 
 
 });

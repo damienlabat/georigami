@@ -221,6 +221,7 @@ $('#input-search').change( function(){
 
     $('.livechange').keypress( function(){    setTimeout('Georigami.update()',1);    });
     $('.livechange').mouseup( function(){     Georigami.update()    });
+    $('.livechange').change( function(){     Georigami.update()    });
 
 
     $('#update-btn').mousedown( function(){
