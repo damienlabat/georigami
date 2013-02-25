@@ -125,6 +125,7 @@ Georigami - build your own
             	<div id="map-canvas"></div>                
 
 			    <button id="start-btn" class="btn btn-primary btn-large span4">Load data</button>
+                <button id="cancel-btn" class="btn btn-small span2 disabled">Cancel</button>
                 <div id="status"><p class='text'></p></div>
                 <div id="resultats"></div>
 @endsection

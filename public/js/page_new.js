@@ -1,5 +1,7 @@
 $(function() {
 
+  Georigami.status=null;
+
 
   /*******************/
  /*   initNew       */
@@ -9,9 +11,31 @@ $(function() {
 
     var gridObj=null;
 
-     $('#start-btn').hide();
+     
 
 
+
+
+ Georigami.setStatus= function (status) {
+
+  if (status=='ready') {
+    $('#start-btn').removeClass('disabled');
+    $('#cancel-btn').addClass('disabled');
+  }
+  else
+  {
+    $('#start-btn').addClass('disabled');   
+  }
+
+  if (status=='loading')  $('#cancel-btn').removeClass('disabled');
+
+  Georigami.status=status;
+ }
+
+
+
+
+Georigami.setStatus(null);
 
 
 
@@ -94,7 +118,7 @@ $('#input-search').change( function(){
       $('#input-height').val( Georigami.rectangle.height );
       drawSlices(  getParams()  );
 
-      if ((Georigami.rectangle.lat!=0)||(Georigami.rectangle.lng!=0)) $('#start-btn').slideDown();        
+     
     }
 
 
@@ -124,6 +148,10 @@ $('#input-search').change( function(){
       
       $('#request-count').html((res.vSlices+res.hSlices) + ' request (max by day: 2 500)');
       $('#location-count').html((res.vSlices*res.vSamples+res.hSlices*res.hSamples) + ' points (max by day: 25 000)');
+
+       if ((Georigami.rectangle.lat!=0)||(Georigami.rectangle.lng!=0)) {
+          if (Georigami.status!='loading') Georigami.setStatus('ready');
+       }
 
       return res;
     }
@@ -253,6 +281,7 @@ $('#input-search').change( function(){
       var samples;
       showLoading( 'loading slice '+(i+1)+'/'+result.slices.length, (i+1)/result.slices.length );
 
+
       var path=[];
       $.each( slice.path, function(i2, pt) {
             if (pathstr!='') pathstr=pathstr+'|';
@@ -269,8 +298,15 @@ $('#input-search').change( function(){
             'samples': samples
           }
 
-      elevator = new google.maps.ElevationService();
-      elevator.getElevationAlongPath(pathRequest, plotElevation);
+      if (Georigami.status!='cancel') {
+        elevator = new google.maps.ElevationService();
+        elevator.getElevationAlongPath(pathRequest, plotElevation);
+      }
+      else {
+        showLoading('');
+        Georigami.setStatus('ready');
+      }
+
 
 
 
@@ -278,7 +314,8 @@ $('#input-search').change( function(){
        function plotElevation(results, status) {
            if (status!='OK') {
             Georigami.alert('GOOGLE ELEVATION API ERROR',status );
-            $('#start-btn').slideDown();
+            showLoading('');
+            Georigami.setStatus('ready');
             return
           }
 
@@ -317,10 +354,23 @@ $('#input-search').change( function(){
 
 
     $('#start-btn').click( function(){
-        var data={params:getParams(),slices:gridObj.getData() };
-        startWork( data );        
+      if (Georigami.status=='ready') {
+          var data={params:getParams(),slices:gridObj.getData() };
+          startWork( data );        
+          Georigami.setStatus('loading');
+        }
+        else 
+          if (Georigami.status=='loading') Georigami.alert('Please wait', 'Work in progress');
+            else Georigami.alert('but where ?', 'Please select an area');
         return false;
      });
+
+
+    $('#cancel-btn').click( function(){
+      if (Georigami.status=='loading') {
+        Georigami.setStatus('cancel');
+      }
+    });
 
 
   var showLoading= function(content, pp) {
@@ -335,7 +385,8 @@ $('#input-search').change( function(){
 
 
 var startWork= function(data) {
-    $('#start-btn').slideUp();
+    $('.div3Dview').hide();
+    Georigami.setStatus('loading');
     Georigami.loadSlice(data,0);
 } 
 
@@ -354,50 +405,34 @@ var startWork= function(data) {
 
 
   var visuSlice= function(id,data,obj) {
-    $('#start-btn').slideDown();
+    Georigami.setStatus('ready');
     
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
-     /* '<div class="row">'+
-      '<div class="span8 resultcontent"><div class="div3Dview"></div><div class="divPaperBtn"></div></div>'+
-      '<div class="span3">'+
-      '<table class="table">'+             
-        '<tbody>' +
-        '<tr> <td>place</td><td class="placename"><a href="'+Georigami.baseurl+'/location'+data.location.id+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
-        '<tr> <td>latitude</td><td>'+data.lat+'</td></tr>'+
-        '<tr> <td>longitude</td><td>'+data.lng+'</td></tr>'+
-        '<tr> <td>altitude</td><td>'+Math.round(data.min)+'m to '+Math.round(data.max)+'m</td></tr>'+
-        '<tr> <td>width</td><td>'+data.width+'m</td></tr>'+
-        '<tr> <td>height</td><td>'+data.height+'m</td></tr>'+
-        '<tr> <td>vSlices</td><td>'+data.vslices+'</td></tr>'+
-        '<tr> <td>hSlices</td><td>'+data.hslices+'</td></tr>'+
-        '<tr> <td>vertical scale</td><td><input class="vs-input span1" type="number" step="0.1" min="0.1" value="'+Georigami.verticalScale+'"></td></tr>'+
-        '</tbody>'+
-            
-      '</table>'+
-      '</div>'+
-      '</div>'+*/
       '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
-      '<a href="'+data.url+'" class="row">'+
-        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'N.svg" class="span2"/>'+
-        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'E.svg" class="span2"/>'+
-        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'S.svg" class="span2"/>'+
-        '<img src="'+Georigami.baseurl+'/bloc'+data.id+'W.svg" class="span2"/>'+
-        '<div class="span2">'+
-          'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>'+
-          data.width+'m x '+data.height+'m<br/>'+
-          'rotation: '+data.rotate+'m<br/>'+
-          'slices: '+data.hslices+' x '+data.vslices+'<br/>'+
-          (data.vslices*data.vsamples + data.hslices*data.hsamples)+' samples<br/>'+
-          data.created_at+        
-        '</div>'+
-      '</a>'+
+      '<div class="row">'+
+        '<a href="'+data.url+'">'+
+          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'N.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'E.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'S.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'W.svg" class="span2"/>'+
+          '<div class="span2">'+
+            'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>'+
+            data.width+'m x '+data.height+'m<br/>'+
+            'rotation: '+data.rotate+'m<br/>'+
+            'slices: '+data.hslices+' x '+data.vslices+'<br/>'+
+            (data.vslices*data.vsamples + data.hslices*data.hsamples)+' samples<br/>'+
+            data.created_at+        
+          '</div>'+
+        '</a>'+        
+      "</div>"+
+      '<div class="div3Dview"></div>'+
       '</div>';
 
-      console.log(data);
+     
 
     var bloc=$(html).prependTo(obj); 
-
+    var view3D= load3D( data, bloc.find('.div3Dview'), Georigami.verticalScale );
 
   }
 

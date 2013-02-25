@@ -62,12 +62,12 @@ Route::get('/new', array('as' => 'new', function()
 {
     $lat=       Input::get('lat',       0);
     $lng=       Input::get('lng',       0);
-    $width=     Input::get('width',     10000);
-    $height=    Input::get('height',    10000);
+    $width=     Input::get('width',     5000);
+    $height=    Input::get('height',    5000);
     $rotate=    Input::get('rotate',    0);
 
-    $hslices=   Input::get('hslices',   11);
-    $vslices=   Input::get('vslices',   11);
+    $hslices=   Input::get('hslices',   15);
+    $vslices=   Input::get('vslices',   15);
     $sampling=  Input::get('sampling',  5);
 
 

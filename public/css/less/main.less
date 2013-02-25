@@ -18,16 +18,18 @@
 }
 
 #start-btn,
+#cancel-btn,
 #update-btn {
     display: block;
     float: none;
     margin: auto;
     clear:both;
+    margin-top:8px;
 }
 
 
 #map-canvas {
-	height:600px; 
+	height:500px; 
 	margin:40px auto;
 }
 
@@ -58,13 +60,17 @@
     margin: 15px 0;
     padding: 39px 19px 14px;
     position: relative;
+
+    .index {
+    //todo
+    }
 }
 
 
 
 .div3Dview {
   height:500px;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+ /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);*/
   background-color: #fff;
 }
 
@@ -206,7 +212,7 @@ input[type='range'] {
     svg.svgprint {  width:100%; border:none; margin:8px 0; }
     svg.svgprint .svgslice { stroke:#000; fill: white; stroke-width:0.15; stroke-linecap:round }
     svg.svgprint .svgcut   { stroke:#000; fill: none; stroke-width:0.15; stroke-linecap:round; stroke-dasharray: 1,1 }
-    svg.svgprint text {fill:#000;  font-family:'Helvetica'; font-size:2px; letter-spacing: 10}
+    svg.svgprint text {fill:#000;  font-family:'Josefin Sans'; font-size:2px; letter-spacing: 10}
 
 @media print{
 
