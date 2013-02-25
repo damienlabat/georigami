@@ -14,7 +14,7 @@
 
 <?php
 
-$maxPoints=50;
+$maxPoints=40;
 
 foreach ($coords as $slice) {
 

@@ -6,7 +6,7 @@ class Bloc_Controller extends Base_Controller {
 
 
 	public function action_index()
-	{	$per_page=4*4;
+	{	$per_page=4*5;
 
 		$face=       	Input::get('face',       'N');
 
