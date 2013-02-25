@@ -14,11 +14,20 @@
 
 <?php
 
-
+$maxPoints=50;
 
 foreach ($coords as $slice) {
+
+  $div=floor( count($slice->c) / $maxPoints )+1;
 	$coord='';
-	foreach ($slice->c as $c) $coord.=($c[0]+(0.5-$dim/2)).','.($max-$c[1]).',';
+
+ // print_r($div);
+
+	foreach ($slice->c as $k=>$c) 
+    if ($k%$div==0) $coord.=($c[0]+(0.5-$dim/2)).','.($max-$c[1]).',';
+
+  $coord.=($c[0]+(0.5-$dim/2)).','.($max-$c[1]).',';
+
 	echo "<polygon  points='".$coord . (0.5+$dim/2).",0,".(0.5+$dim/2).",".($max+0.1).",".(0.5-$dim/2).",".($max+0.1).",".(0.5-$dim/2).",0' style='fill:url(#glow);stroke:none' />
 	      <polyline points='".$coord."' style='fill:none; stroke:black;stroke-width:".$strokewidth."' />
 	      ";
