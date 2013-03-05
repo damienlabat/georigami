@@ -32,7 +32,10 @@ print@endsection
 
 
 
-
+      <form method='get' class='form-inline'>
+        vertical scale <input class="vs-input span1" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
+        <input type='submit' value='update' class='vs-update btn'/>
+      </form>
 
   <h4>horizontal</h4>
   <div class='row'>
@@ -99,11 +102,6 @@ print@endsection
 
 
 
-<br/>
-      <form method='get' class='form-inline'>
-        vertical scale <input class="vs-input span1" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
-        <input type='submit' value='update' class='btn'/>
-      </form>
 
 
 @endsection
@@ -111,7 +109,7 @@ print@endsection
 
 
 @section('bloc_menu')
-          <li class=""><a href="{{ $bloc->get_url('profil') }}?vscale={{$vscale}}&face={{$face}}">profil</a></li>
-          <li class=""><a href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
+          <li class=""><a data-action="profil"  href="{{ $bloc->get_url('profil') }}?vscale={{$vscale}}&face={{$face}}">profil</a></li>
+          <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
           <li class="active"><a href="#">print</a></li>
 @endsection

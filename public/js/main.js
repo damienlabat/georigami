@@ -26,7 +26,9 @@ $(function() {
 
 	$('input[type="number"]').each( function(k,obj){ 
 		if (obj.type!='number') {
-			$(this).spinner();
+			var target=$(this);
+			target.spinner();
+			target.on('spin', function(event,ui) { setTimeout( function() { target.trigger('change'); },1); });
 
 		}
 	});
@@ -89,7 +91,9 @@ $(function() {
 
 	// INIT
 
-	if ($('body').hasClass('bloc3d'))      		Georigami.initBloc();
+	if ($('body').hasClass('bloc3d'))      		Georigami.initBloc('3d');
+	if ($('body').hasClass('print'))      		Georigami.initBloc('print');
+	if ($('body').hasClass('profil'))      		Georigami.initBloc('profil');
 
 	if ($('body').hasClass('location'))      	Georigami.initLocation();
 	if ($('body').hasClass('map'))      		Georigami.initMap();

@@ -35,10 +35,10 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
 
 
 
-        <div class='row'>
+        <div id='blocinfo' class='row' data-id='{{$bloc->id}}' data-vscale='{{$vscale}}' data-face='{{$face}}' data-view='{{$show}}'>
    
             <div class="span2">
-               <img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{$face}} view"  class="hidden-phone">
+               <img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{$face}} view"  class="hidden-phone bloc-face">
             </div>
             <div class="span2">
               <a href='{{ $bloc->location->get_url() }}'>
@@ -65,7 +65,7 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
 <div class='navbar'>
   <div class="navbar-inner">
     <a class="brand" href="#">Bloc N°{{$bloc->id}}</a>
-    <ul class="nav">@yield('bloc_menu')</ul>
+    <ul class="nav" id="bloc-menu">@yield('bloc_menu')</ul>
   </div>
 </div>
 

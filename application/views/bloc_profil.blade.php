@@ -65,7 +65,7 @@ foreach ($coords as $slice) {
       <form method='get' class='form-inline'>
         <input type='hidden' name='face' value='{{$face}}'/>
         vertical scale <input class="vs-input span1" name='vscale' value="{{$vscale}}" type="number" step="0.1" min="0.1">
-        <input type='submit' value='update' class='btn'/>
+        <input type='submit' value='update' class='vs-update btn'/>
       </form>
   </div>
 
@@ -88,6 +88,6 @@ foreach ($coords as $slice) {
 
 @section('bloc_menu')          
           <li class="active"><a href="">profil</a></li>
-          <li class=""><a href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
-          <li class=""><a href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
+          <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
+          <li class=""><a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
 @endsection   
