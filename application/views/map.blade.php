@@ -87,12 +87,12 @@ Georigami - Map
        ?>
       
           
-            <li><a href="{{ $location->get_url() }}"> <img src='{{URL::base()}}/img/ico/{{$location->icon}}.png' title='{{$location->fcodename()}}'/>{{$location->fcode}} <?php 
+            <li><a href="{{  $location->get_url() }}" title="{{$location->name}} ({{$location->fcodename()}})"><?php 
             if ($location->name!='')  echo $location->name; 
             elseif  ($location->adminname4!='')  echo $location->adminname4; 
             elseif  ($location->adminname3!='')  echo $location->adminname3; 
             else echo 'unnamed';
-            ?>{{ HTML::showcount( $location->blocs()->count() ) }}</a></li>
+            ?> {{ HTML::showcount( $location->blocs()->count() ) }}</a></li>
           
      
        

@@ -2973,29 +2973,14 @@ return array(
 	/* TODO add mountains... icons */
 	'icons' => "{
 		\"A\": \"white\", 
-		\"H\": \"blue\",
-		\"L\": \"grey\",
-		\"P\": \"grey\",
-		\"R\": \"grey\",
-		\"S\": \"grey\",
+		\"H\": \"white\",
+		\"L\": \"white\",
+		\"P\": \"white\",
+		\"R\": \"white\",
+		\"S\": \"white\",
 		\"T\": \"green\",
-		\"U\": \"deepblue\",
-		\"V\": \"green\",
-
-		\"PK\": 	\"peak\",	
-		\"MT\": 	\"mountains\",
-		\"RDGE\": 	\"canyon-2\",
-		\"CRQ\": 	\"mountains\",
-
-		\"VLC\": 	\"volcano-2\",
-
-		\"STM\": 	\"river-2\",
-
-		
-
-		\"PPL\": \"office-building\",		
-		\"RUIN\": \"ruins-2\",
-
+		\"U\": \"blue\",
+		\"V\": \"white\",
 
 		\"default\":\"white\"
 	}",

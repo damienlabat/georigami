@@ -128,6 +128,7 @@ Georigami - build your own
 			    <button id="start-btn" class="btn btn-primary btn-large span4">Load data</button>
                 <button id="cancel-btn" class="btn btn-small span2 disabled">Cancel</button>
                 <div id="status"><p class='text'></p></div>
+                <div id="canvas"></div>
                 <div id="resultats"></div>
 @endsection
 

@@ -5,48 +5,6 @@ var infowindow;
 
 
 
-findTile= function(map, latlng) {
-
-    var maxZoomService = new google.maps.MaxZoomService();
-
-
-  maxZoomService.getMaxZoomAtLatLng(latlng, function(response) {
-    if (response.status != google.maps.MaxZoomStatus.OK) {
-      alert("Error in MaxZoomService");
-      return;
-    } else {
-      //console.log("The maximum zoom at this location is: " + response.zoom);
-      if (response.zoom>15) response.zoom=15;
-      var pt= map.getProjection().fromLatLngToPoint(latlng);
-      var x= pt.x;
-      var y= pt.y;
-
-    //  response.zoom=response.zoom-1
-      var cell= Math.pow( 2, response.zoom);
-
-      console.log(x,y,cell);
-
-      url='https://khms0.googleapis.com/kh?v=125&x='+ Math.floor(x/256*cell) +'&y='+ Math.floor(y/256*cell) +'&z='+ response.zoom;
-      console.log(url);
-    }
-  });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -135,7 +93,6 @@ draggableRectangle= function( map, lat, lng, width, height, options ) {
           DR.updateCenter( event.latLng.lat() , event.latLng.lng() );
           changeFunction();
 
-			//console.log( findTile( map, event.latLng  ) );
 
         });
         
@@ -158,16 +115,16 @@ function createMarker(name, latlng, icon, shadow) {
     var options={position: latlng, map: map};
     
     if (icon!=null) options.icon=new google.maps.MarkerImage(icon,
-        new google.maps.Size(32.0, 37.0),
+        new google.maps.Size(18.0, 28.0),
         new google.maps.Point(0, 0),
-        new google.maps.Point(16.0, 18.0)
+        new google.maps.Point(9.0, 28.0)
     );
 
     if (shadow!=null) options.shadow=new google.maps.MarkerImage(
         shadow,
-        new google.maps.Size(51.0, 37.0),
+        new google.maps.Size(33.0, 28.0),
         new google.maps.Point(0, 0),
-        new google.maps.Point(16.0, 18.0)
+        new google.maps.Point(9.0, 28.0)
     );;
 
     var marker = new google.maps.Marker(options);
@@ -199,21 +156,23 @@ function grid(map,lat,lng,width,height,vSlices,hSlices,rotate) {
 
   if (rotate==null) rotate=0;
   rotate=parseFloat(rotate);
-	var grid={};
+	var grid={ lat:lat, lng:lng, width:width, height:height, vSlices:vSlices, hSlices:hSlices, rotate:rotate };
 	var slices=[];
 	var slicesData=[];
 	var cadre=null;	   
+
+
        
 	var center= new google.maps.LatLng( lat , lng );    
 
-    var NE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0+rotate),   width/2, 90+rotate); // NE
-    var SE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180+rotate), width/2, 90+rotate); // SE
-    var NW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0+rotate),   width/2, -90+rotate); // NW
-    var SW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180+rotate), width/2, -90+rotate); // SW
+    grid.NE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0+rotate),   width/2, 90+rotate); // NE
+    grid.SE= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180+rotate), width/2, 90+rotate); // SE
+    grid.NW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 0+rotate),   width/2, -90+rotate); // NW
+    grid.SW= google.maps.geometry.spherical.computeOffset( google.maps.geometry.spherical.computeOffset(center, height/2, 180+rotate), width/2, -90+rotate); // SW
 
 
     cadre = new google.maps.Polygon({
-              path: [NE,SE,SW,NW],
+              path: [grid.NE,grid.SE,grid.SW,grid.NW],
               strokeColor: "#000000",
               strokeOpacity: 1.0,
               strokeWeight: 0.25,   
@@ -229,8 +188,8 @@ function grid(map,lat,lng,width,height,vSlices,hSlices,rotate) {
         var nbL= parseInt(vSlices);
         for (var i = 1; i<=nbL; i++) {
            var lineCoord = [
-              google.maps.geometry.spherical.interpolate(NW, NE, i/(nbL+1) ),
-              google.maps.geometry.spherical.interpolate(SW, SE, i/(nbL+1) )
+              google.maps.geometry.spherical.interpolate( grid.NW, grid.NE, i/(nbL+1) ),
+              google.maps.geometry.spherical.interpolate( grid.SW, grid.SE, i/(nbL+1) )
             ]
 
             var slicePath = new google.maps.Polyline({
@@ -257,8 +216,8 @@ function grid(map,lat,lng,width,height,vSlices,hSlices,rotate) {
         nbL= parseInt(hSlices);
         for (var i = 1; i<=nbL; i++) {
            var lineCoord = [
-              google.maps.geometry.spherical.interpolate(NW, SW, i/(nbL+1) ),
-              google.maps.geometry.spherical.interpolate(NE, SE, i/(nbL+1) )
+              google.maps.geometry.spherical.interpolate(grid.NW, grid.SW, i/(nbL+1) ),
+              google.maps.geometry.spherical.interpolate(grid.NE, grid.SE, i/(nbL+1) )
             ]
 
             var slicePath = new google.maps.Polyline({
@@ -304,13 +263,29 @@ function grid(map,lat,lng,width,height,vSlices,hSlices,rotate) {
 
 
     grid.getBounds=function() {
-    	return new google.maps.LatLngBounds( SW,NE );
+    	return new google.maps.LatLngBounds( grid.SW,grid.NE );
+      // erreur il faut ajouter l autre bounds
     }
 
 
     grid.getData=function() {
     	return slicesData;
     }  
+
+    grid.getArray=function() {
+      res=[];
+
+      nbL= parseInt(hSlices);
+        for (var i = 0; i<=nbL; i++) {
+              pt1=google.maps.geometry.spherical.interpolate(grid.NW, grid.SW, i/(nbL+1) );
+              pt2=google.maps.geometry.spherical.interpolate(grid.NE, grid.SE, i/(nbL+1) );
+              var nbC= parseInt(vSlices);
+              for (var n = 0; n<=nbC; n++) 
+                res.push( google.maps.geometry.spherical.interpolate(pt1, pt2, n/(nbC+1) ) );
+        } 
+
+      return res;
+    }
 
   	
 	return grid

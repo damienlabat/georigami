@@ -42,7 +42,7 @@ Georigami - {{$location->name}}
           
           <h4>{{$location->name}}</h4>
                   <img src="{{URL::base()}}/img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ $location->countryname}}</a><br/>
-                  <h4 title="{{$location->fcodedetail()}}"><img src='{{URL::base()}}/img/ico/{{$location->icon}}.png' title='{{$location->fcodename()}}'/> {{$location->fcodename()}}</h4>
+                  <h4 title="{{$location->fcodedetail()}}">{{$location->fcodename()}}</h4>
                   {{$location->fclassname()}}<br/>
                   {{$location->adminname1}}<br/>
                   {{$location->adminname2}}<br/>
