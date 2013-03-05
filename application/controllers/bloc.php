@@ -70,8 +70,7 @@ class Bloc_Controller extends Base_Controller {
 
 		$face=       	Input::get('face',       'N');
 		$vscale=     	Input::get('vscale',     1);
-		$strokewidth= 	Input::get('strokewidth', '2');
-		$color=       	Input::get('color',       'black');
+		$color=       	Input::get('color',      '#aaa');
 
 		if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
@@ -92,12 +91,12 @@ class Bloc_Controller extends Base_Controller {
 			'prev'=>$blocPrev, 
 			'next'=>$blocNext, 
 			'vscale'=>$vscale, 
-			'face'=>$face 
+			'face'=>$face,
 		);
 
 		if ($show=='profil') {
 
-			$data['strokewidth']= $strokewidth/100;
+			$data['color']= $color;
 			$data=array_merge($data, $bloc->profil_data($face) );
 
 		}
@@ -129,12 +128,10 @@ class Bloc_Controller extends Base_Controller {
 
 	public function action_svg($id,$face)
 	{
-		$color=       Input::get('color',       'black');
-		$strokewidth= Input::get('strokewidth', '2');
-
+		$color=       Input::get('color',       '#aaa');
 		if (!$bloc=Bloc::find($id)) return Response::error('404');
 
-		$data=array('strokewidth'=> $strokewidth/1000 );
+		$data=array('id'=>$id, 'color'=> $color );
 
 		$data=array_merge($data, $bloc->profil_data($face) );
 

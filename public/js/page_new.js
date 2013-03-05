@@ -336,7 +336,7 @@ $('#input-search').change( function(){
           }
 
           slice.data=results;
-          //console.log("delay: "+requestDelay*(samples/500)+'ms');
+
           if (i+1<result.slices.length) setTimeout(function(){ Georigami.loadSlice(result,i+1) }, requestDelay*(samples/500)  ); // too be kind with google api
             else {
              // showLoading( 'building geom' );

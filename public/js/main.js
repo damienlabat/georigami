@@ -41,11 +41,14 @@ $(function() {
 		var target=$(this);
 
 		if (obj.type=='range') { //HTML5
+			var step=obj.step;
+			if (step==null) step=1;
 
-			var divnumber= $('<input type="number" value="'+target.val()+'" min="'+obj.min+'" max="'+obj.max+'" step="1" class="'+target.attr('class')+'"></div>').insertAfter(target);
+			var divnumber= $('<input type="number" value="'+target.val()+'" min="'+obj.min+'" max="'+obj.max+'" step="'+step+'" class="'+target.attr('class')+'"></div>').insertAfter(target);
 			$('<br/>').insertAfter(target);
 			target.removeClass().change(function(){
 				divnumber.val( target.val() );
+				divnumber.trigger('change');
 			});
 
 			divnumber.change(function() {	target.val( divnumber.val() );	});
@@ -57,11 +60,15 @@ $(function() {
 			obj.type='number';
 
 			var divslider= $('<div class="slider"></div>').insertBefore(target);
+			var step=obj.step;
+			if (step==null) step=1;
+			step=parseFloat(step);
 
 			var slider= divslider.slider({ 
 				value: 	parseFloat(target.val()),
 				min: 	parseFloat(obj.min),
 				max: 	parseFloat(obj.max),
+				step:   step, 
 
 				slide:  function( event, ui ) {									
 					target.val( ui.value );

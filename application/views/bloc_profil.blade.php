@@ -16,21 +16,22 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 @section('bloc_content')
 
 
-  <!------------>
 <?php
 
   $svg_hscale= 100;
   $svg_vscale= $vscale * $svg_hscale;
 
+ // if ($max<1) $max=1;
+
 ?>
 
-    <!--img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="North face"-->
+
 
    <svg viewBox="{{ -0.01*$svg_hscale }} {{ -0.01*$svg_vscale }} {{ 1.02*$svg_hscale }} {{ ($max+0.12)*$svg_vscale }}" >
 
    <defs>
       <linearGradient id="glow" x1="0%" x2="0%" y1="0" y2="100%">
-        <stop offset="0%" stop-color="#AAA" stop-opacity="1" />
+        <stop offset="0%" stop-color="{{$color}}" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="1" />
       </linearGradient>
     </defs>
@@ -41,10 +42,15 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 
 
 foreach ($coords as $slice) {
+
+
   $coord='';
+  
   foreach ($slice->c as $c) $coord.=($c[0]+(0.5-$dim/2))*$svg_hscale.','.($max-$c[1])*$svg_vscale.',';
-  echo "<polygon  points='".$coord . (0.5+$dim/2)*$svg_hscale.",0,".(0.5+$dim/2)*$svg_hscale.",".($max+0.1)*$svg_vscale.",".(0.5-$dim/2)*$svg_hscale.",".($max+0.1)*$svg_vscale.",".(0.5-$dim/2)*$svg_hscale.",0' style='fill:url(#glow);stroke:none' />
-        <polyline points='".$coord."' style='fill:none; stroke:black;stroke-width:".$strokewidth."' />
+  echo "<g>
+        <polygon  points='".$coord . (0.5+$dim/2)*$svg_hscale.",0,".(0.5+$dim/2)*$svg_hscale.",".($max+0.1)*$svg_vscale.",".(0.5-$dim/2)*$svg_hscale.",".($max+0.1)*$svg_vscale.",".(0.5-$dim/2)*$svg_hscale.",0' style='fill:url(#glow);stroke:none' />
+        <polyline points='".$coord."' style='fill:none; stroke:black;stroke-width:0.02' />
+        </g>
         ";
 }
 ?>
@@ -57,7 +63,6 @@ foreach ($coords as $slice) {
 </svg>
 
 
-    <!------------>
  <div class='row'>   
 
 
@@ -91,3 +96,11 @@ foreach ($coords as $slice) {
           <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
           <li class=""><a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
 @endsection   
+
+
+
+@section('script')     
+        <script>            
+            Georigami.bloc={{ $bloc_json }};
+        </script>
+@endsection      

@@ -24,7 +24,7 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
   <div class="span6">
       <form method='get' class='form-inline'>
         <input type='hidden' name='face' value='{{ $face }}'/>
-        vertical scale <input class="vs-input span1" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
+        vertical scale <input class="vs-input span1" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0" max="5">
         <input type='submit' value='update' class='vs-update btn'/>
       </form>
   </div>
@@ -60,6 +60,5 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 @section('script')     
         <script>            
             Georigami.bloc={{ $bloc_json }};
-            Georigami.face='{{ $face }}';        
         </script>
 @endsection      

@@ -16,7 +16,6 @@ $(function() {
       var new_url= 'bloc' + blocid + '_' + $('#blocinfo').data( 'view' ) + '?vscale=' + vscale + '&face=' + face ;
       if (Modernizr.history) history.replaceState(null, null, new_url);
 
-      //console.log(face,vscale);
 
       $('input[name=face]').val(face);
 
@@ -51,6 +50,7 @@ $(function() {
 /* view == 3D */
 
     if (view=='3d') {
+
       var view3D= load3D( Georigami.bloc, $('.div3Dview'), $('.vs-input').val() );
 
       var viewFace= function(face) {
@@ -61,8 +61,7 @@ $(function() {
         if (face=='doabarrelroll') view3D.setRotation(6*Math.PI/2);
       }
 
-      viewFace(Georigami.face);
-    }
+      viewFace( getBlocFace() );    
 
 
 
@@ -88,15 +87,11 @@ $(function() {
 
     $('.vs-update').hide();
 
-    
-   // $('.vs-input').val(Georigami.verticalScale);
-
-   /* $('.vs-input').change( function(){
-        paperBtn.setVerticalScale( $('.vs-input').val() );
-        view3D.setVerticalScale( $('.vs-input').val() );
-    });*/
-
   }
+
+    
+ 
+}
 
 
 
