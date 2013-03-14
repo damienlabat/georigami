@@ -10,6 +10,6 @@ welcome@endsection
                 <h1>Georigami</h1>
                 <p>Un machin pour faire des montagnes en papier</p>
             </div>
-   
+
             Hello
 @endsection

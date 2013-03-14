@@ -56,7 +56,7 @@ print@endsection
       }
 
     ?>
-      <text x="{{ 0.01*$svg_hscale }}" y="{{ ($slice->m+0.01)*$svg_vscale }}" transform="rotate(90,{{0.01*$svg_hscale}},{{ ($slice->m+0.01)*$svg_vscale }})">{{$slice->t}}</text>
+      <text x="0" y="0" transform="translate( {{0.003*$svg_hscale}}, {{($slice->m+0.04)*$svg_vscale}}), rotate(90)">{{$slice->t}}</text>
     </svg>
   </div>
 
@@ -86,7 +86,7 @@ print@endsection
       }
 
     ?>
-       <text x="{{ 0.01*$svg_hscale }}" y="{{ ($slice->m+0.01)*$svg_vscale }}" transform="rotate(90,{{0.01*$svg_hscale}},{{ ($slice->m+0.01)*$svg_vscale }})">{{$slice->t}}</text>
+       <text x="0" y="0" transform="translate( {{0.003*$svg_hscale}}, {{($slice->m+0.04)*$svg_vscale}}), rotate(90)">{{$slice->t}}</text>
     </svg>
   </div>
 

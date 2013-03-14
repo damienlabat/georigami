@@ -10,6 +10,20 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 @endsection
 
 
+<?php
+
+$style_list=array(
+
+  ''=>            'default',
+  'white'=>       'white',
+  'fillstyle2'=>  'fillstyle2',
+  'fillstyle3'=>  'fillstyle3',
+  'fillstyle4'=>  'fillstyle4',
+  'lines'=>       'lines',
+  'joydiv'=>      'joy division'
+  );
+
+?>
 
 
 
@@ -18,70 +32,92 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 
 <?php
 
-  $svg_hscale= 100;
-  $svg_vscale= $vscale * $svg_hscale;
+
 
  // if ($max<1) $max=1;
 
 ?>
 
 
+<div class='row'>
 
-   <svg viewBox="{{ -0.01*$svg_hscale }} {{ -0.01*$svg_vscale }} {{ 1.02*$svg_hscale }} {{ ($max+0.12)*$svg_vscale }}" >
+  <div class='span8'>
 
-   <defs>
-      <linearGradient id="glow" x1="0%" x2="0%" y1="0" y2="100%">
-        <stop offset="0%" stop-color="{{$color}}" stop-opacity="1" />
-        <stop offset="100%" stop-color="#fff" stop-opacity="1" />
-      </linearGradient>
-    </defs>
+   @render('svg.style')
+
+    {{ $svg }}
+
+  </div>
 
 
+    <div class="span4">
+
+     <div id='facepicker' class="btn-group">
+        <a href='?vscale={{ $vscale }}&face=N' class="btn@if ($face=='N') active@endif">North face</a>
+        <a href='?vscale={{ $vscale }}&face=W' class="btn@if ($face=='W') active@endif">West face</a>
+        <a href='?vscale={{ $vscale }}&face=S' class="btn@if ($face=='S') active@endif">South face</a>
+        <a href='?vscale={{ $vscale }}&face=E' class="btn@if ($face=='E') active@endif">East face</a>
+    </div>
+
+  <div class=''>
+      <form method='get' class='form-inline'>
+        <fieldset>
+        <input type='hidden' name='face' value='{{ $face }}'/>
+
+        <div>
+          <label  for="vscale">vertical scale</label>
+          <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0" max="5">
+        </div><br/>
+
+
+
+
+
+        <div>
+          <label  for="dx">translate X</label>
+          <input type="range" step="0.01" min="-5" max="5" id="input-translateX" name='dx' value='{{ $dx }}'/>
+        </div><br/>
+
+        <div>
+          <label  for="dy">translate Y</label>
+          <input type="range" step="0.01" min="-2.5" max="5" id="input-translateY" name='dy' value='{{ $dy }}'/>
+        </div><br/>
+
+        <div>
+          <label  for="dscale">perspective</label>
+          <input type="range" step="0.001" min="0" max="1" id="input-scale" name='dscale' value='{{ $dscale }}'/>
+        </div><br/>
+
+
+        <div>
+          <label for="style">style</label>
+          <select id='styleswicther' name='style'>
 <?php
 
-
-
-foreach ($coords as $slice) {
-
-
-  $coord='';
-  
-  foreach ($slice->c as $c) $coord.=($c[0]+(0.5-$dim/2))*$svg_hscale.','.($max-$c[1])*$svg_vscale.',';
-  echo "<g>
-        <polygon  points='".$coord . (0.5+$dim/2)*$svg_hscale.",0,".(0.5+$dim/2)*$svg_hscale.",".($max+0.1)*$svg_vscale.",".(0.5-$dim/2)*$svg_hscale.",".($max+0.1)*$svg_vscale.",".(0.5-$dim/2)*$svg_hscale.",0' style='fill:url(#glow);stroke:none' />
-        <polyline points='".$coord."' style='fill:none; stroke:black;stroke-width:0.02' />
-        </g>
-        ";
+foreach ($style_list as $key => $value) {
+  echo "<option value='".$key."'";
+  if ($style==$key) echo " selected";
+  echo ">".$value."</option>".PHP_EOL;
 }
+
 ?>
+          </select>
+        </div><br/>
 
- <!--rect x='-100' y='-100' width='100' height='300' fill='white' />
- <rect x='1' y='-100' width='100' height='300' fill='white' />
- <rect x='-100' y='<?php echo $max+0.1; ?>' width='300' height='300' fill='white' /-->
-
-
-</svg>
-
-
- <div class='row'>   
-
-
-  <div class="span6">
-      <form method='get' class='form-inline'>
-        <input type='hidden' name='face' value='{{$face}}'/>
-        vertical scale <input class="vs-input span1" name='vscale' value="{{$vscale}}" type="number" step="0.1" min="0.1">
         <input type='submit' value='update' class='vs-update btn'/>
+      </fieldset>
       </form>
+
+    </div>
+
+
+
+
+
+
   </div>
 
 
-
-  <div class="btn-group span6">
-    <a href='?vscale={{$vscale}}&face=N' class="btn@if ($face=='N') active@endif">North face</a>
-    <a href='?vscale={{$vscale}}&face=W' class="btn@if ($face=='W') active@endif">West face</a>
-    <a href='?vscale={{$vscale}}&face=S' class="btn@if ($face=='S') active@endif">South face</a>
-    <a href='?vscale={{$vscale}}&face=E' class="btn@if ($face=='E') active@endif">East face</a>
-  </div>
 
 </div>
 
@@ -91,16 +127,16 @@ foreach ($coords as $slice) {
 
 
 
-@section('bloc_menu')          
+@section('bloc_menu')
           <li class="active"><a href="">profil</a></li>
           <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
           <li class=""><a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
-@endsection   
+@endsection
 
 
-
-@section('script')     
-        <script>            
-            Georigami.bloc={{ $bloc_json }};
+@section('script')
+        <script>
+            Georigami.profil={{ json_encode( $profil_data ) }};
+            Georigami.svg_hscale={{ $svg_hscale }};
         </script>
-@endsection      
+@endsection

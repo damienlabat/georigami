@@ -9,11 +9,11 @@
         <title>@yield('title')</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        
+
         {{--HTML::style("/css/bootstrap.min.css")--}}
 
         {{HTML::style("/css/main.css")}}
-        
+
         <style>
             body {
                 padding-top: 60px;
@@ -48,13 +48,13 @@
                             <li>{{HTML::link_to_route('index', 'Last ones')}}</li>
                             <li>{{HTML::link_to_route('map', 'Map')}}</li>
                             <li>{{HTML::link_to_route('new', 'Build your own')}}</li>
-                        </ul>                        
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container row-fluid">
 
             @yield('content')
             <hr class="clearfix">
@@ -77,7 +77,7 @@
 
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
         {{HTML::script("js/markerclusterer.js")}}
-        
+
   		<!--script src="https://raw.github.com/mrdoob/three.js/master/build/three.js"></script-->
         <script>Georigami={baseurl:'{{URL::base()}}'};</script>
         {{HTML::script("js/vendor/three.min.js")}}

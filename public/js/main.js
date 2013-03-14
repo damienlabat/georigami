@@ -42,7 +42,7 @@ $(function() {
 
 		if (obj.type=='range') { //HTML5
 			var step=obj.step;
-			if (step==null) step=1;
+			if (null===step) step=1;
 
 			var divnumber= $('<input type="number" value="'+target.val()+'" min="'+obj.min+'" max="'+obj.max+'" step="'+step+'" class="'+target.attr('class')+'"></div>').insertAfter(target);
 			$('<br/>').insertAfter(target);
@@ -84,15 +84,14 @@ $(function() {
 	
 	
 
+
+
+
+
+
+
   if(typeof Georigami == 'undefined') Georigami={};
-	Georigami.verticalScale=1;
-
-
-
-
-
-
-
+	//Georigami.verticalScale=1;
 
 
 

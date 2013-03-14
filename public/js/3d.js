@@ -8,8 +8,8 @@
 
     var model3Dobj= {data:data.coords, verticalScale:verticalScale};
     var maxDim= Math.max(data.width,data.height);
-    
-    var container,W,H;
+
+    var W,H;
 
     var camera, scene, renderer, dirLight, hemiLight, parent;
 
@@ -29,15 +29,15 @@
     var camerazoom=35;
 
     var windowHalfX = 0;
-    var windowHalfY = 0;  
+    var windowHalfY = 0;
     slicesObjs=[];
 
 
 
 
-    model3Dobj.setVerticalScale= function(vs) { 
-      model3Dobj.verticalScale=vs; 
-      
+    model3Dobj.setVerticalScale= function(vs) {
+      model3Dobj.verticalScale=vs;
+
       for (var i = 0; i< slicesObjs.length; i++) {
         parent.remove( slicesObjs[i] );
       }
@@ -45,57 +45,59 @@
       slicesObjs.length=0;
       model3Dobj.renderSlices();
 
-    }
+    };
 
 
-    model3Dobj.setRotation= function(rotX,rotY) { 
+    model3Dobj.setRotation= function(rotX,rotY) {
       //if (rotY==null) rotY=Math.PI/8;
       targetRotationX=rotX;
-      if (rotY!=null) targetRotationY=rotY;
-    }
- 
+      if (rotY!==null) targetRotationY=rotY;
+    };
+
 
 
     model3Dobj.addShape= function( shape, x, y, z, rx, ry, rz ) {
 
           var scale=300;
-          var extrudeSettings = { amount: 0.2/scale , bevelSegments: 1, steps: 1 , bevelSegments: 1, bevelSize: 0.2/scale, bevelThickness:0.2/scale };
+          var extrudeSettings = { amount: 0.2/scale ,  steps: 1 , bevelSegments: 1, bevelSize: 0.2/scale, bevelThickness:0.2/scale };
           var color = 0xffffff;
           var material= new THREE.MeshLambertMaterial( { color: color } );
           var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
 
-          var mesh= new THREE.Mesh( geometry, material )
+          var mesh= new THREE.Mesh( geometry, material );
           mesh.scale.set( scale, scale, scale );
           mesh.position.set( x*scale, y*scale, z*scale );
-          mesh.rotation.set( rx, ry, rz );        
+          mesh.rotation.set( rx, ry, rz );
           mesh.castShadow = true;
-          mesh.receiveShadow = true;  
+          mesh.receiveShadow = true;
           parent.add( mesh );
           slicesObjs.push(mesh);
 
-  
 
-        }
+
+        };
 
 
     model3Dobj.renderSlices= function() {
         // Slices
 
+        var slicePts, sl;
+
           for (var i = 0; i< model3Dobj.data.h.length; i++) {
-            var slicePts = [ new THREE.Vector2 ( data.width/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
-            var sl=model3Dobj.data.h[i];
+            slicePts = [ new THREE.Vector2 ( data.width/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
+            sl=model3Dobj.data.h[i];
             for (var n = 0; n<sl.c.length; n++)  slicePts.push( new THREE.Vector2 ( sl.c[n][0], sl.c[n][1]*model3Dobj.verticalScale+0.1 ) );
             var sliceShape = new THREE.Shape( slicePts );
-            var dx= -(data.width/maxDim)/2;         
+            var dx= -(data.width/maxDim)/2;
             var dy= -0.1;
             var dz= -(data.height/maxDim)/2 + (i+1)*(data.height/maxDim) / ( model3Dobj.data.h.length+1 );
 
             model3Dobj.addShape( sliceShape, dx, dy, dz, 0, 0, 0 );
           }
 
-          for (var i = 0; i< model3Dobj.data.v.length; i++) {
-            var slicePts = [ new THREE.Vector2 ( data.height/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
-            var sl=model3Dobj.data.v[i];
+          for ( i = 0; i< model3Dobj.data.v.length; i++) {
+            slicePts = [ new THREE.Vector2 ( data.height/maxDim, 0 ), new THREE.Vector2 ( 0, 0 )];
+            sl=model3Dobj.data.v[i];
             for (var n = 0; n<sl.c.length; n++)  slicePts.push( new THREE.Vector2 ( sl.c[n][0], sl.c[n][1]*model3Dobj.verticalScale+0.1 ) );
             var sliceShape = new THREE.Shape( slicePts );
             var dx= (data.height/maxDim)/2;
@@ -104,7 +106,7 @@
             model3Dobj.addShape( sliceShape, dz, dy, -dx, 0, -Math.PI/2, 0 );
           }
 
-    }
+    };
 
 
     model3Dobj.init= function() {
@@ -124,14 +126,14 @@
         renderer.shadowMapCullFace = THREE.CullFaceBack;
 
         container[0].appendChild( renderer.domElement );
-        
+
         camera = new THREE.PerspectiveCamera( 50, W / H, 1, 1000 );
         camera.position.set( 0, 150, 500 );
 
-        camera.setLens(camerazoom); 
+        camera.setLens(camerazoom);
 
         scene = new THREE.Scene();
-      /* 
+      /*
         scene.fog = new THREE.Fog( 0xfafafa, 1000, 10000 );
         scene.fog.color.setHSV( 0.6, 0.125, 1 );
       */
@@ -139,7 +141,7 @@
       // LIGHTS
 
         dirLight1 = new THREE.DirectionalLight( 0xffffff, 0.4 );
-       
+
         dirLight1.position.set( 1, 0, 1 );
         dirLight1.position.multiplyScalar( 500 );
         scene.add( dirLight1 );
@@ -148,7 +150,7 @@
         //
 
         dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
-       
+
         dirLight.position.set( -1, 1, 1 );
         dirLight.position.multiplyScalar( 500 );
         scene.add( dirLight );
@@ -174,10 +176,10 @@
         parent = new THREE.Object3D();
         parent.position.y = 100;
         scene.add( parent );
-     
-    
 
-        
+
+
+
         model3Dobj.renderSlices();
 
         container[0].addEventListener( 'mousedown', model3Dobj.onDocumentMouseDown, false );
@@ -218,7 +220,7 @@
 
         container[0].addEventListener( 'mousemove', model3Dobj.onDocumentMouseMove, false );
         container[0].addEventListener( 'mouseup', model3Dobj.onDocumentMouseUp, false );
-        container[0].addEventListener( 'mouseout', model3Dobj.onDocumentMouseOut, false );        
+        container[0].addEventListener( 'mouseout', model3Dobj.onDocumentMouseOut, false );
 
         mouseXOnMouseDown = event.clientX - windowHalfX;
         targetRotationXOnMouseDown = targetRotationX;

@@ -24,13 +24,13 @@ class Bloc extends BaseModel {
 
         if ($show==null)
             return URL::to_route('get', array( Str::slug($this->location->name),  $this->location->id, $this->id ));
-        else 
+        else
             return URL::to_route('getplus', array( Str::slug($this->location->name),  $this->location->id, $this->id, $show ));
     }
 
 
 
-    public function profil_data($face) 
+    public function profil_data($face)
     {
         $data=array();
 
@@ -47,27 +47,37 @@ class Bloc extends BaseModel {
         else    $data['dim']=$this->height/max($this->height,$this->width);
 
         $data['max']=0;
-        
-        foreach ($data['coords'] as &$slice) {
-            if ($slice->m > $data['max']) $data['max']=$slice->m;
 
+        foreach ($data['coords'] as &$slice) {
+            $smax=0;
+            if ($slice->m > $data['max'])   $data['max']=$slice->m;
             if (($face=='N')||($face=='E')) {
                 $slice->c=array_reverse($slice->c);
                 foreach ($slice->c as &$cpt) $cpt[0]=$data['dim']-$cpt[0];
             }
-
         }
 
-        $data['max']=(floor($data['max']*1000)+1 ) / 1000;
+       // $data['max']=(floor($data['max']*1000)+1 ) / 1000;
 
         return $data;
     }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 	static function validate_coords($coordsJson)
     {
-    	$coords=json_decode($coordsJson);   
+    	$coords=json_decode($coordsJson);
 
     	if ( (!is_array($coords->v)) || (!is_array($coords->h)) ) return FALSE;
     	$res=array('v'=>array(), 'h'=>array() );
@@ -75,7 +85,7 @@ class Bloc extends BaseModel {
     	foreach ($coords->v as $key => $value) {
 
     		if ($key==count($coords->v)-1) $slice['t']='West';
-    		else $slice['t']='W'.(count($coords->v)-$key);    		
+    		else $slice['t']='W'.(count($coords->v)-$key);
 
     		$slice['m']=-9999999;
     		$slice['c']=array();
@@ -96,7 +106,7 @@ class Bloc extends BaseModel {
 			$slice=array();
 
     		if ($key==0) $slice['t']='North';
-    		else $slice['t']='N'.($key+1);   
+    		else $slice['t']='N'.($key+1);
 
     		$slice['m']=-9999999;
     		$slice['c']=array();
@@ -148,14 +158,14 @@ class Bloc extends BaseModel {
     {
         $count=0;
         $locations = Location::with('blocs');
-        foreach ($array_field as $key => $value) 
+        foreach ($array_field as $key => $value)
             $locations = $locations->where( $key,'=',$value );
-        
+
         $locations = $locations->get();
 
-        foreach ($locations as $location) 
+        foreach ($locations as $location)
             $count+= count($location->blocs);
-    
+
         return $count;
     }
 

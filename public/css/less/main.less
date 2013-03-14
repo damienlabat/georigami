@@ -3,7 +3,9 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+.container.row-fluid {
+    max-width:90%;
+}
 
 
 .pager li > a, .pager li > span {
@@ -11,7 +13,8 @@
 }
 
 #area-form{
-	background-color: #eee;
+    background-color: #eee;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 0 0 16px;
@@ -35,12 +38,12 @@
 
 
 #map-canvas {
-	height:500px; 
-	margin:40px auto;
+    height:500px;
+    margin:40px auto;
 }
 
 #map-canvas2 {
-    height:400px; 
+    height:400px;
     margin-bottom:40px;
 }
 
@@ -50,7 +53,7 @@
 #map-canvas img,
 #map-canvas2 img
  {
-	max-width: none !important;
+    max-width: none !important;
 }
 
 #map-canvas a:hover,
@@ -76,15 +79,18 @@
 
 .div3Dview {
   height:500px;
- /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);*/
-  background-color: #fff;
+    /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+    */
+    background-color: #fff;
 }
 
-#search-result {    
-    display: block;    
-   /* margin-left: 172px;*/
+#search-result {
+    display: block;
+    /* margin-left: 172px;
+    */
     /*max-height: 100px;
-    overflow: auto;*/
+    overflow: auto;
+    */
     padding: 8px;
 }
 
@@ -97,6 +103,7 @@
 #search-result ul {
     padding: 8px;
     list-style: none outside none;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     margin:0;
@@ -105,19 +112,20 @@
 div.bloc,
 div.bloc2 {
     border-radius: 3px 3px 3px 3px;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     margin-bottom: 30px;
     padding: 1px;
-    
+
 }
 
 div.bloc {
     overflow: hidden;
     float: left;
-    width: 268px;    
+    width: 268px;
     position:relative;
-    min-height: 268px;    
+    min-height: 268px;
     margin-left: 30px;
     line-height: 268px;
 }
@@ -129,7 +137,7 @@ div.bloc {
 
 
 
-div.bloc a {    
+div.bloc a {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
     line-height: 20px;
     display: block;
@@ -150,9 +158,10 @@ div.bloc:hover a{
 }
 
 div.bloc a {
-    -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
@@ -160,6 +169,7 @@ div.bloc a {
 div.locations>.row {
 
     border-radius: 3px 3px 3px 3px;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     margin-bottom: 30px;
@@ -188,16 +198,46 @@ input[type='range'] {
     margin:8px 0;
 }
 
+#facepicker {
+    margin-bottom:18px;
+}
+
+
+ @import "svg_profil.less";
 
 
 /* SVG */
 
 
 
-    svg.svgprint {  width:100%; border:none; margin:8px 0; }
-    svg.svgprint .svgslice { stroke:#000; fill: white; stroke-width:0.15; stroke-linecap:round }
-    svg.svgprint .svgcut   { stroke:#000; fill: none; stroke-width:0.15; stroke-linecap:round; stroke-dasharray: 1,1 }
-    svg.svgprint text {fill:#000;  font-family:'Josefin Sans'; font-size:2px; letter-spacing: 10}
+    svg.svgprint {
+    width:100%;
+        border:none;
+        margin:8px 0;
+        }
+
+    svg.svgprint .svgslice {
+    stroke:#000;
+        fill: white;
+        stroke-width:0.15;
+        stroke-linecap:round
+        }
+
+    svg.svgprint .svgcut   {
+    stroke:#000;
+        fill: none;
+        stroke-width:0.15;
+        stroke-linecap:round;
+        stroke-dasharray: 0.75,0.5
+        }
+
+    svg.svgprint text {
+    fill:#000;
+        font-family:'Josefin Sans';
+        font-size:2px;
+        letter-spacing: 10;
+        font-weight:bold;
+        }
 
 
 
@@ -228,7 +268,7 @@ input[type='range'] {
 
 @media print{
 
-    body.print .container {width:95%;} 
+    body.print .container {width:95%;}
 
     body.print .navbar,
     body.print .pager,

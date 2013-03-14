@@ -30,11 +30,13 @@ class Location extends BaseModel {
     }
 
     public function fcodename() {
-        return Geoname::getFCode($this->fcode)[0];
+        $fcode=Geoname::getFCode($this->fcode);
+        return $fcode[0];
     }
 
     public function fcodedetail() {
-        return Geoname::getFCode($this->fcode)[1];
+        $fcode=Geoname::getFCode($this->fcode);
+        return $fcode[1];
     }
 
     public function fclassname() {

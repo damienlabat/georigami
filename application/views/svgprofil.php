@@ -9,7 +9,7 @@
 
 
  <defs>
-      <linearGradient id="glow" x1="0%" x2="0%" y1="0" y2="100%">
+      <linearGradient id="greygradient" x1="0%" x2="0%" y1="0" y2="100%">
         <stop offset="0%" stop-color="<?=$color?>" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="1" />
       </linearGradient>
@@ -37,8 +37,10 @@ foreach ($coords as $slice) {
 
   $coord.=($c[0]+(0.5-$dim/2)).','.($max-$c[1]).',';
 
-	echo "<polygon  points='".$coord . (0.5+$dim/2).",0,".(0.5+$dim/2).",".($max+0.1).",".(0.5-$dim/2).",".($max+0.1).",".(0.5-$dim/2).",0' style='fill:url(#glow);stroke:none' />
+	echo "<g>
+        <polygon  points='".$coord . (0.5+$dim/2).",0,".(0.5+$dim/2).",".($max+0.1).",".(0.5-$dim/2).",".($max+0.1).",".(0.5-$dim/2).",0' style='fill:url(#greygradient);stroke:none' />
 	      <polyline points='".$coord."' style='fill:none; stroke:black;stroke-width:0.002' />
+        </g>
 	      ";
 }
 ?>
