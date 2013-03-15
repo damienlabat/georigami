@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="tests/example.test.old.php" hash="8130f103a2dd4de869479d682799bafb" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <name>TestExample</name>
+      <full_name>\TestExample</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="10" package="Default">
+        <name>testSomethingIsTrue</name>
+        <full_name>testSomethingIsTrue</full_name>
+        <docblock line="5">
+          <description>Test that a given condition is met.</description>
+          <long-description/>
+          <tag line="5" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tests/example.test.old.php</error>
+      <error line="3" code="50000">No DocBlock was found for \TestExample</error>
+    </parse_markers>
+  </file>
+  <file path="tests/geoname.test.php" hash="8139e0f2915395b9ac2637c2186edb45" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <name>TestGeoname</name>
+      <full_name>\TestGeoname</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+        <name>testFindTheBest</name>
+        <full_name>testFindTheBest</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="17" package="Default">
+        <name>testSearch</name>
+        <full_name>testSearch</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tests/geoname.test.php</error>
+      <error line="3" code="50000">No DocBlock was found for \TestGeoname</error>
+      <error line="5" code="50010">No DocBlock was found for method testFindTheBest()</error>
+      <error line="17" code="50010">No DocBlock was found for method testSearch()</error>
+    </parse_markers>
+  </file>
+  <file path="migrations/2013_02_04_112237_create_blocs_table.php" hash="5b0c23e301c1ab536dcc60c28fd9ccf1" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends/>
+      <name>Create_Blocs_Table</name>
+      <full_name>\Create_Blocs_Table</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="10" package="Default">
+        <name>up</name>
+        <full_name>up</full_name>
+        <docblock line="5">
+          <description>Make changes to the database.</description>
+          <long-description/>
+          <tag line="5" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="74" package="Default">
+        <name>down</name>
+        <full_name>down</full_name>
+        <docblock line="69">
+          <description>Revert the changes to the database.</description>
+          <long-description/>
+          <tag line="69" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file migrations/2013_02_04_112237_create_blocs_table.php</error>
+      <error line="3" code="50000">No DocBlock was found for \Create_Blocs_Table</error>
+    </parse_markers>
+  </file>
+  <file path="models/bloc.php" hash="87e3ef28114a7c31cda4bdb8c3eeac21" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\BaseModel</extends>
+      <name>bloc</name>
+      <full_name>\bloc</full_name>
+      <property final="false" static="true" visibility="public" line="5" namespace="global" package="Default">
+        <name>$timestamps</name>
+        <default>true</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="7" package="Default">
+        <name>location</name>
+        <full_name>location</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="12" package="Default">
+        <name>getDirectory</name>
+        <full_name>getDirectory</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="24" package="Default">
+        <name>get_url</name>
+        <full_name>get_url</full_name>
+        <docblock line="19">
+          <description>get url to block view</description>
+          <long-description/>
+          <tag line="19" name="param" description="[description]" type="\['3d'|\'profil'|\'print']" variable="$show">
+            <type by_reference="false">\['3d'</type>
+            <type by_reference="false">\'profil'</type>
+            <type by_reference="false">\'print']</type>
+          </tag>
+          <tag line="19" name="return" description="url" type="\[string]">
+            <type by_reference="false">\[string]</type>
+          </tag>
+        </docblock>
+        <argument line="24">
+          <name>$show</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="32" package="Default">
+        <name>profil_data</name>
+        <full_name>profil_data</full_name>
+        <argument line="32">
+          <name>$face</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="62" package="Default">
+        <name>validate_coords</name>
+        <full_name>validate_coords</full_name>
+        <argument line="62">
+          <name>$coordsJson</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="108" package="Default">
+        <name>save_coords</name>
+        <full_name>save_coords</full_name>
+        <argument line="108">
+          <name>$coords</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="116" package="Default">
+        <name>get_coords</name>
+        <full_name>get_coords</full_name>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="123" package="Default">
+        <name>count_with</name>
+        <full_name>count_with</full_name>
+        <argument line="123">
+          <name>$array_field</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file models/bloc.php</error>
+      <error line="3" code="50000">No DocBlock was found for \bloc</error>
+      <error line="5" code="50018">No DocBlock was found for property $timestamps</error>
+      <error line="7" code="50010">No DocBlock was found for method location()</error>
+      <error line="12" code="50010">No DocBlock was found for method getDirectory()</error>
+      <error line="32" code="50010">No DocBlock was found for method profil_data()</error>
+      <error line="62" code="50010">No DocBlock was found for method validate_coords()</error>
+      <error line="108" code="50010">No DocBlock was found for method save_coords()</error>
+      <error line="116" code="50010">No DocBlock was found for method get_coords()</error>
+      <error line="123" code="50010">No DocBlock was found for method count_with()</error>
+    </parse_markers>
+  </file>
+  <file path="models/location.php" hash="03175395affacb05e1dd0feabd7d878a" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\BaseModel</extends>
+      <name>location</name>
+      <full_name>\location</full_name>
+      <property final="false" static="true" visibility="public" line="5" namespace="global" package="Default">
+        <name>$timestamps</name>
+        <default>true</default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="7" package="Default">
+        <name>blocs</name>
+        <full_name>blocs</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="Default">
+        <name>get_url</name>
+        <full_name>get_url</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="18" package="Default">
+        <name>get_countryname</name>
+        <full_name>get_countryname</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="23" package="Default">
+        <name>get_icon</name>
+        <full_name>get_icon</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="28" package="Default">
+        <name>continentname</name>
+        <full_name>continentname</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="33" package="Default">
+        <name>fcodename</name>
+        <full_name>fcodename</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="40" package="Default">
+        <name>fcodedetail</name>
+        <full_name>fcodedetail</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="47" package="Default">
+        <name>fclassname</name>
+        <full_name>fclassname</full_name>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="52" package="Default">
+        <name>getorcreate</name>
+        <full_name>getorcreate</full_name>
+        <argument line="52">
+          <name>$lat</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$lng</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="67" package="Default">
+        <name>create</name>
+        <full_name>create</full_name>
+        <argument line="67">
+          <name>$data</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file models/location.php</error>
+      <error line="3" code="50000">No DocBlock was found for \location</error>
+      <error line="5" code="50018">No DocBlock was found for property $timestamps</error>
+      <error line="7" code="50010">No DocBlock was found for method blocs()</error>
+      <error line="13" code="50010">No DocBlock was found for method get_url()</error>
+      <error line="18" code="50010">No DocBlock was found for method get_countryname()</error>
+      <error line="23" code="50010">No DocBlock was found for method get_icon()</error>
+      <error line="28" code="50010">No DocBlock was found for method continentname()</error>
+      <error line="33" code="50010">No DocBlock was found for method fcodename()</error>
+      <error line="40" code="50010">No DocBlock was found for method fcodedetail()</error>
+      <error line="47" code="50010">No DocBlock was found for method fclassname()</error>
+      <error line="52" code="50010">No DocBlock was found for method getorcreate()</error>
+      <error line="67" code="50010">No DocBlock was found for method create()</error>
+    </parse_markers>
+  </file>
+  <file path="controllers/geoname.php" hash="f4d15050c1f6aa50a28c508332bd4768" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\Base_Controller</extends>
+      <name>Geoname_Controller</name>
+      <full_name>\Geoname_Controller</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+        <name>action_search</name>
+        <full_name>action_search</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="10" package="Default">
+        <name>action_startwith</name>
+        <full_name>action_startwith</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file controllers/geoname.php</error>
+      <error line="3" code="50000">No DocBlock was found for \Geoname_Controller</error>
+      <error line="5" code="50010">No DocBlock was found for method action_search()</error>
+      <error line="10" code="50010">No DocBlock was found for method action_startwith()</error>
+    </parse_markers>
+  </file>
+  <file path="controllers/bloc.php" hash="ec634f904548744034e8a69928a9714c" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\Base_Controller</extends>
+      <name>Bloc_Controller</name>
+      <full_name>\Bloc_Controller</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+        <name>action_index</name>
+        <full_name>action_index</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="15" package="Default">
+        <name>action_map</name>
+        <full_name>action_map</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="35" package="Default">
+        <name>action_location</name>
+        <full_name>action_location</full_name>
+        <argument line="35">
+          <name>$locname</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="35">
+          <name>$locationid</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="51" package="Default">
+        <name>action_get</name>
+        <full_name>action_get</full_name>
+        <argument line="51">
+          <name>$locname</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="51">
+          <name>$locid</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="51">
+          <name>$blocid</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="51">
+          <name>$show</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="101" package="Default">
+        <name>profil_svg</name>
+        <full_name>profil_svg</full_name>
+        <argument line="101">
+          <name>$profil_data</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="101">
+          <name>$options</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="119" package="Default">
+        <name>action_getJson</name>
+        <full_name>action_getJson</full_name>
+        <argument line="119">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="119">
+          <name>$with_data</name>
+          <default>FALSE</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="130" package="Default">
+        <name>action_svg</name>
+        <full_name>action_svg</full_name>
+        <argument line="130">
+          <name>$id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="130">
+          <name>$face</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="146" package="Default">
+        <name>action_store</name>
+        <full_name>action_store</full_name>
+      </method>
+    </class>
+    <markers>
+      <todo line="179">better error message</todo>
+    </markers>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file controllers/bloc.php</error>
+      <error line="3" code="50000">No DocBlock was found for \Bloc_Controller</error>
+      <error line="5" code="50010">No DocBlock was found for method action_index()</error>
+      <error line="15" code="50010">No DocBlock was found for method action_map()</error>
+      <error line="35" code="50010">No DocBlock was found for method action_location()</error>
+      <error line="51" code="50010">No DocBlock was found for method action_get()</error>
+      <error line="101" code="50010">No DocBlock was found for method profil_svg()</error>
+      <error line="119" code="50010">No DocBlock was found for method action_getJson()</error>
+      <error line="130" code="50010">No DocBlock was found for method action_svg()</error>
+      <error line="146" code="50010">No DocBlock was found for method action_store()</error>
+    </parse_markers>
+  </file>
+  <file path="controllers/base.php" hash="8fce5114c9608d243b749e75747961bd" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\Controller</extends>
+      <name>Base_Controller</name>
+      <full_name>\Base_Controller</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="12" package="Default">
+        <name>__call</name>
+        <full_name>__call</full_name>
+        <docblock line="5">
+          <description>Catch-all method for requests that can't be matched.</description>
+          <long-description/>
+          <tag line="5" name="param" description="" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="5" name="param" description="" type="array" variable="$parameters">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="5" name="return" description="" type="\Response">
+            <type by_reference="false">\Response</type>
+          </tag>
+        </docblock>
+        <argument line="12">
+          <name>$method</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="12">
+          <name>$parameters</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file controllers/base.php</error>
+      <error line="3" code="50000">No DocBlock was found for \Base_Controller</error>
+    </parse_markers>
+  </file>
+  <file path="macros/html.php" hash="6eabea8ffafb6645664885931671c510" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file macros/html.php</error>
+    </parse_markers>
+  </file>
+  <file path="start.php" hash="cc67bb0701e3c8b57bb6bf7797bde52f" package="Default">
+    <include line="179" type="Require" package="Default">
+      <name/>
+    </include>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file start.php</error>
+    </parse_markers>
+  </file>
+  <file path="libraries/geoname.php" hash="1d277cc9bc600d3bb0786b151f143da1" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends/>
+      <name>geoname</name>
+      <full_name>\geoname</full_name>
+      <property final="false" static="true" visibility="protected" line="5" namespace="global" package="Default">
+        <name>$base_url</name>
+        <default>'http://api.geonames.org/'</default>
+      </property>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="7" package="Default">
+        <name>search</name>
+        <full_name>search</full_name>
+        <argument line="7">
+          <name>$req</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="7">
+          <name>$featureClass</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="7">
+          <name>$maxRows</name>
+          <default>50</default>
+          <type/>
+        </argument>
+        <argument line="7">
+          <name>$style</name>
+          <default>'short'</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="31" package="Default">
+        <name>startwith</name>
+        <full_name>startwith</full_name>
+        <argument line="31">
+          <name>$req</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$featureClass</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$maxRows</name>
+          <default>5</default>
+          <type/>
+        </argument>
+        <argument line="31">
+          <name>$style</name>
+          <default>'short'</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="52" package="Default">
+        <name>findNearby</name>
+        <full_name>findNearby</full_name>
+        <argument line="52">
+          <name>$lat</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$lng</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$featureClass</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$radius</name>
+          <default>1</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="65" package="Default">
+        <name>findCountrySubdivision</name>
+        <full_name>findCountrySubdivision</full_name>
+        <argument line="65">
+          <name>$lat</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="65">
+          <name>$lng</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="77" package="Default">
+        <name>findOcean</name>
+        <full_name>findOcean</full_name>
+        <argument line="77">
+          <name>$lat</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="77">
+          <name>$lng</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="86" package="Default">
+        <name>findTheBest</name>
+        <full_name>findTheBest</full_name>
+        <argument line="86">
+          <name>$lat</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="86">
+          <name>$lng</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="101" package="Default">
+        <name>getISO3166</name>
+        <full_name>getISO3166</full_name>
+        <argument line="101">
+          <name>$code</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="109" package="Default">
+        <name>getFCode</name>
+        <full_name>getFCode</full_name>
+        <argument line="109">
+          <name>$code</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="117" package="Default">
+        <name>getFcl</name>
+        <full_name>getFcl</full_name>
+        <argument line="117">
+          <name>$code</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="125" package="Default">
+        <name>continentCode</name>
+        <full_name>continentCode</full_name>
+        <argument line="125">
+          <name>$code</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="133" package="Default">
+        <name>getIcon</name>
+        <full_name>getIcon</full_name>
+        <argument line="133">
+          <name>$code</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="133">
+          <name>$code2</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="133">
+          <name>$code3</name>
+          <default>'default'</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file libraries/geoname.php</error>
+      <error line="3" code="50000">No DocBlock was found for \geoname</error>
+      <error line="5" code="50018">No DocBlock was found for property $base_url</error>
+      <error line="7" code="50010">No DocBlock was found for method search()</error>
+      <error line="31" code="50010">No DocBlock was found for method startwith()</error>
+      <error line="52" code="50010">No DocBlock was found for method findNearby()</error>
+      <error line="65" code="50010">No DocBlock was found for method findCountrySubdivision()</error>
+      <error line="77" code="50010">No DocBlock was found for method findOcean()</error>
+      <error line="86" code="50010">No DocBlock was found for method findTheBest()</error>
+      <error line="101" code="50010">No DocBlock was found for method getISO3166()</error>
+      <error line="109" code="50010">No DocBlock was found for method getFCode()</error>
+      <error line="117" code="50010">No DocBlock was found for method getFcl()</error>
+      <error line="125" code="50010">No DocBlock was found for method continentCode()</error>
+      <error line="133" code="50010">No DocBlock was found for method getIcon()</error>
+    </parse_markers>
+  </file>
+  <file path="libraries/basemodel.php" hash="bfb6459e2d4716b45ca9d80499b59e49" package="Default">
+    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+      <extends>\Eloquent</extends>
+      <name>basemodel</name>
+      <full_name>\basemodel</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+        <name>presenter</name>
+        <full_name>presenter</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="21" package="Default">
+        <name>starts_with</name>
+        <full_name>starts_with</full_name>
+        <argument line="21">
+          <name>$haystack</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="21">
+          <name>$needle</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file libraries/basemodel.php</error>
+      <error line="3" code="50000">No DocBlock was found for \basemodel</error>
+      <error line="5" code="50010">No DocBlock was found for method presenter()</error>
+      <error line="21" code="50010">No DocBlock was found for method starts_with()</error>
+    </parse_markers>
+  </file>
+  <file path="routes.php" hash="87f93658a245093a5095c5235fce25bf" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file routes.php</error>
+    </parse_markers>
+  </file>
+  <file path="bundles.php" hash="c32a44ad411e365b4b7c4460f9b758e7" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file bundles.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/svgprofil.php" hash="328a60bd62abafff83632f91aab00130" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/svgprofil.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/layout.blade.php" hash="5a508f47ad70d927624a39c72b097b78" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/layout.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/bloc_layout.blade.php" hash="98cc2edfd459d4fd075ba6827730a7c5" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_layout.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/bloc_3d.blade.php" hash="62becdb9d2c7e86a29fe619beb3afe83" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_3d.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/welcome.blade.php" hash="1066280a19e5bef3a2c9a394ec3f4432" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/welcome.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/location.blade.php" hash="e2044d18c9a6a5765ba51d3cd9d6b6d0" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/location.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/index.blade.php" hash="43602a145403a492e69e05dfc0781403" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/index.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/error/500.php" hash="a02f476bae635074b7f3b4bc15414943" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/error/500.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/error/404.php" hash="34c7dde2f5462609becbe52b6f207916" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/error/404.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/new.blade.php" hash="f932ea815d1c370aea27067447d2d75b" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/new.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/map.blade.php" hash="7dafb53f1729161ac8a6a5e13a9a60ec" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/bloc_print.blade.php" hash="a297891a86467e32b3c80695c5857b9d" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/svg/profil.blade.php" hash="84c682ce28690d53caf960faa7736f38" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/svg/profil.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/svg/style.blade.php" hash="b34c5b435bb0673ae07ed2e210027f84" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/svg/style.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/svg/defs.blade.php" hash="6a8f73cdf1c5621755e06d990320c6f6" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/svg/defs.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/bloc_profil.blade.php" hash="0275f979690ee970696c587b10c952f4" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_profil.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/fi/pagination.php" hash="1c8ccbd91a99b33dabd05931c47a64b7" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/fi/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/fi/validation.php" hash="015fb9ccdf1f01a8a4e41b0e038912f7" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/fi/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/sr/pagination.php" hash="fda1869c318be6eccef8f26818603c99" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/sr/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/sr/validation.php" hash="295e09aeb3e0a47a01e84282a710ab37" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/sr/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/de/pagination.php" hash="2d19fe096d95ec16d6673daffe0f615c" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/de/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/de/validation.php" hash="b907ce375b4b50b5e4eadfc1a9683919" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/de/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/ru/pagination.php" hash="1716c22f4dff997ec3b01fdfd1a78067" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/ru/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/ru/validation.php" hash="a7f915330e476d038eca1c8bb6acedf0" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/ru/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/en/pagination.php" hash="f3b91fcd5010d69e18cf51dad6cb6f6d" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/en/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/en/validation.php" hash="8138b38223208bf43ae127b1d138ce94" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/en/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/ja/pagination.php" hash="0ef654579430c821a5baa54de5527910" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/ja/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/ja/validation.php" hash="09cb05bc79165534ba384aec917df87c" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/ja/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/id/pagination.php" hash="c1dac3900afa66457a0e44ed72307efb" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/id/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/id/validation.php" hash="41015e2df678b49868bdf0bc679bc4dd" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/id/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/pt/pagination.php" hash="21308acd0716862d5071c5c84837caca" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/pt/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/pt/validation.php" hash="5c8dc46aad38a1838a4695ab38ef0429" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/pt/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/fr/pagination.php" hash="48fa823c2703849a16c384a5bfcabdf2" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/fr/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/fr/validation.php" hash="d88b535ae9f86d80473241ae3685c006" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/fr/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/bg/pagination.php" hash="83b7d41e35ae692b720da86309c262eb" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/bg/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/bg/validation.php" hash="f1a2846d1ab6b40e56ffe486c57bdf55" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/bg/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/ar/pagination.php" hash="88f0d27f7735999b6ef154d7af3fca17" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/ar/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/ar/validation.php" hash="f343b57f913caa4db57a5e091a763549" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/ar/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/tr/pagination.php" hash="008a60c54feed60c52a0ff3aeb84abe0" package="Language">
+    <docblock line="3">
+      <description>Laravel - A PHP Framework For Web Artisans</description>
+      <long-description/>
+      <tag line="3" name="package" description="Language"/>
+      <tag line="3" name="version" description="3.2.3"/>
+      <tag line="3" name="author" description="Sinan Eldem &lt;sinan@sinaneldem.com.tr&gt;"/>
+      <tag line="3" name="link" description="http://sinaneldem.com.tr" link="http://sinaneldem.com.tr"/>
+    </docblock>
+  </file>
+  <file path="language/tr/validation.php" hash="478a58c79180da78339b6f938cbd32a0" package="Language">
+    <docblock line="3">
+      <description>Laravel - A PHP Framework For Web Artisans</description>
+      <long-description/>
+      <tag line="3" name="package" description="Language"/>
+      <tag line="3" name="version" description="3.2.3"/>
+      <tag line="3" name="author" description="Sinan Eldem &lt;sinan@sinaneldem.com.tr&gt;"/>
+      <tag line="3" name="link" description="http://sinaneldem.com.tr" link="http://sinaneldem.com.tr"/>
+    </docblock>
+  </file>
+  <file path="language/sq/pagination.php" hash="33ffc57dde79ca00755ddbf23c688966" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/sq/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/sq/validation.php" hash="5f97f01514c4c5d13b0bb0bee3de3d86" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/sq/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/he/pagination.php" hash="b3c2ffeccfcc55868520127c38dde3ed" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/he/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/he/validation.php" hash="bdf5c763c5ba027c96d71c207ff9c3e3" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/he/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/it/pagination.php" hash="8ce4c6f935fe26159859a558e1ed81c2" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/it/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/it/validation.php" hash="43c18375b5402b23d81b54b4944ff09d" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/it/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/hu/pagination.php" hash="cb7a0b4652d276635025dcff36443514" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/hu/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/hu/validation.php" hash="866edaac9ed75ad402ed0e57239bc752" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/hu/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/pl/pagination.php" hash="35f97522a781e2bba4fc555798337daf" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/pl/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/pl/validation.php" hash="ddf1f5c708b50f3712d7ee1b3e1bc90c" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/pl/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/nl/pagination.php" hash="d1b04c9e990871b1477609d090474659" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/nl/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/nl/validation.php" hash="5f400eb67487c106ff664427405e238b" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/nl/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/sv/pagination.php" hash="e5d730d56f2a1f9cf4822c1ac9af989e" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/sv/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/sv/validation.php" hash="3466c870a00cd02fa78073bb97c71f2b" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/sv/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/da/pagination.php" hash="0df1a377c8b9ceecb957d40b89612fa7" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/da/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/da/validation.php" hash="c43a61ab5a7383deb5eb417ad72d911c" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/da/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/el/pagination.php" hash="192de3d5e2efd63f8f6b0a763a9f47f7" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/el/pagination.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/el/validation.php" hash="012e64d666838cb38eba27cdc46a2fd0" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/el/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/server/application.php" hash="e6970f96def8351dee41c38c475e8ab1" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/server/application.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/server/database.php" hash="4411d09ac41d25174a6ac2dbbe138e5f" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/server/database.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/strings.php" hash="48abe1bc13378157c4f2ade41fcbfbbe" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/strings.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/local/application.php" hash="9cb7e5c6968cd7f5f5d8e4a3fe46e961" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/local/application.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/local/geoname.php" hash="6789cd35e71e832751104765dd21c8f3" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/local/geoname.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/local/database.php" hash="bd2c41e31032634ebfb1d5aff60ae870" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/local/database.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/session.php" hash="259a3361803ab0248da5d740156b91d5" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/session.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/application.php" hash="bf4c684abe8d3bb4578729579a74f43c" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/application.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/geoname.php" hash="f3ee98c79a6455ec38e0fa2c731f72c3" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/geoname.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/auth.php" hash="e85c0a0a635ec5552e8fdbfeb4c2a074" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/auth.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/testing/application.php" hash="9cb7e5c6968cd7f5f5d8e4a3fe46e961" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/testing/application.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/testing/geoname.php" hash="6789cd35e71e832751104765dd21c8f3" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/testing/geoname.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/testing/database.php" hash="bd2c41e31032634ebfb1d5aff60ae870" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/testing/database.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/cache.php" hash="91255ffdbd33a8e9e8c7404052abec80" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/cache.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/database.php" hash="51a468050c83baf7b7c394af32c4eebd" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/database.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/error.php" hash="8dc7a42046a6fd321a8a8cb5c80566e5" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/error.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/mimes.php" hash="22464f5fcf386533b08485843d748fbd" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/mimes.php</error>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="Language" full_name="Language"/>
+  <namespace name="global" full_name="global"/>
+  <marker count="1">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>

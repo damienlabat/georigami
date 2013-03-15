@@ -1,0 +1,1938 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="css/template.css" rel="stylesheet" media="all">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="js/bootstrap.js" type="text/javascript"></script><script src="js/template.js" type="text/javascript"></script><script src="js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">142</span></a></li>
+<li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">1</span>
+</li></ul></a></li>
+<li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4"><ul class="side-nav nav nav-list">
+<li class="nav-header">Filter type</li>
+<li><div class="btn-group type-filter" data-toggle="buttons-checkbox">
+<button class="btn critical">Critical</button><button class="btn error">Error</button><button class="btn notice">Notice</button>
+</div></li>
+<li class="nav-header">Navigation</li>
+<li><a href="#tests/example.test.old.php"><i class="icon-file"></i>tests/example.test.old.php</a></li>
+<li><a href="#tests/geoname.test.php"><i class="icon-file"></i>tests/geoname.test.php</a></li>
+<li><a href="#migrations/2013_02_04_112237_create_blocs_table.php"><i class="icon-file"></i>migrations/2013_02_04_112237_create_blocs_table.php</a></li>
+<li><a href="#models/bloc.php"><i class="icon-file"></i>models/bloc.php</a></li>
+<li><a href="#models/location.php"><i class="icon-file"></i>models/location.php</a></li>
+<li><a href="#controllers/geoname.php"><i class="icon-file"></i>controllers/geoname.php</a></li>
+<li><a href="#controllers/bloc.php"><i class="icon-file"></i>controllers/bloc.php</a></li>
+<li><a href="#controllers/base.php"><i class="icon-file"></i>controllers/base.php</a></li>
+<li><a href="#macros/html.php"><i class="icon-file"></i>macros/html.php</a></li>
+<li><a href="#start.php"><i class="icon-file"></i>start.php</a></li>
+<li><a href="#libraries/geoname.php"><i class="icon-file"></i>libraries/geoname.php</a></li>
+<li><a href="#libraries/basemodel.php"><i class="icon-file"></i>libraries/basemodel.php</a></li>
+<li><a href="#routes.php"><i class="icon-file"></i>routes.php</a></li>
+<li><a href="#bundles.php"><i class="icon-file"></i>bundles.php</a></li>
+<li><a href="#views/svgprofil.php"><i class="icon-file"></i>views/svgprofil.php</a></li>
+<li><a href="#views/layout.blade.php"><i class="icon-file"></i>views/layout.blade.php</a></li>
+<li><a href="#views/bloc_layout.blade.php"><i class="icon-file"></i>views/bloc_layout.blade.php</a></li>
+<li><a href="#views/bloc_3d.blade.php"><i class="icon-file"></i>views/bloc_3d.blade.php</a></li>
+<li><a href="#views/welcome.blade.php"><i class="icon-file"></i>views/welcome.blade.php</a></li>
+<li><a href="#views/location.blade.php"><i class="icon-file"></i>views/location.blade.php</a></li>
+<li><a href="#views/index.blade.php"><i class="icon-file"></i>views/index.blade.php</a></li>
+<li><a href="#views/error/500.php"><i class="icon-file"></i>views/error/500.php</a></li>
+<li><a href="#views/error/404.php"><i class="icon-file"></i>views/error/404.php</a></li>
+<li><a href="#views/new.blade.php"><i class="icon-file"></i>views/new.blade.php</a></li>
+<li><a href="#views/map.blade.php"><i class="icon-file"></i>views/map.blade.php</a></li>
+<li><a href="#views/bloc_print.blade.php"><i class="icon-file"></i>views/bloc_print.blade.php</a></li>
+<li><a href="#views/svg/profil.blade.php"><i class="icon-file"></i>views/svg/profil.blade.php</a></li>
+<li><a href="#views/svg/style.blade.php"><i class="icon-file"></i>views/svg/style.blade.php</a></li>
+<li><a href="#views/svg/defs.blade.php"><i class="icon-file"></i>views/svg/defs.blade.php</a></li>
+<li><a href="#views/bloc_profil.blade.php"><i class="icon-file"></i>views/bloc_profil.blade.php</a></li>
+<li><a href="#language/fi/pagination.php"><i class="icon-file"></i>language/fi/pagination.php</a></li>
+<li><a href="#language/fi/validation.php"><i class="icon-file"></i>language/fi/validation.php</a></li>
+<li><a href="#language/sr/pagination.php"><i class="icon-file"></i>language/sr/pagination.php</a></li>
+<li><a href="#language/sr/validation.php"><i class="icon-file"></i>language/sr/validation.php</a></li>
+<li><a href="#language/de/pagination.php"><i class="icon-file"></i>language/de/pagination.php</a></li>
+<li><a href="#language/de/validation.php"><i class="icon-file"></i>language/de/validation.php</a></li>
+<li><a href="#language/ru/pagination.php"><i class="icon-file"></i>language/ru/pagination.php</a></li>
+<li><a href="#language/ru/validation.php"><i class="icon-file"></i>language/ru/validation.php</a></li>
+<li><a href="#language/en/pagination.php"><i class="icon-file"></i>language/en/pagination.php</a></li>
+<li><a href="#language/en/validation.php"><i class="icon-file"></i>language/en/validation.php</a></li>
+<li><a href="#language/ja/pagination.php"><i class="icon-file"></i>language/ja/pagination.php</a></li>
+<li><a href="#language/ja/validation.php"><i class="icon-file"></i>language/ja/validation.php</a></li>
+<li><a href="#language/id/pagination.php"><i class="icon-file"></i>language/id/pagination.php</a></li>
+<li><a href="#language/id/validation.php"><i class="icon-file"></i>language/id/validation.php</a></li>
+<li><a href="#language/pt/pagination.php"><i class="icon-file"></i>language/pt/pagination.php</a></li>
+<li><a href="#language/pt/validation.php"><i class="icon-file"></i>language/pt/validation.php</a></li>
+<li><a href="#language/fr/pagination.php"><i class="icon-file"></i>language/fr/pagination.php</a></li>
+<li><a href="#language/fr/validation.php"><i class="icon-file"></i>language/fr/validation.php</a></li>
+<li><a href="#language/bg/pagination.php"><i class="icon-file"></i>language/bg/pagination.php</a></li>
+<li><a href="#language/bg/validation.php"><i class="icon-file"></i>language/bg/validation.php</a></li>
+<li><a href="#language/ar/pagination.php"><i class="icon-file"></i>language/ar/pagination.php</a></li>
+<li><a href="#language/ar/validation.php"><i class="icon-file"></i>language/ar/validation.php</a></li>
+<li><a href="#language/sq/pagination.php"><i class="icon-file"></i>language/sq/pagination.php</a></li>
+<li><a href="#language/sq/validation.php"><i class="icon-file"></i>language/sq/validation.php</a></li>
+<li><a href="#language/he/pagination.php"><i class="icon-file"></i>language/he/pagination.php</a></li>
+<li><a href="#language/he/validation.php"><i class="icon-file"></i>language/he/validation.php</a></li>
+<li><a href="#language/it/pagination.php"><i class="icon-file"></i>language/it/pagination.php</a></li>
+<li><a href="#language/it/validation.php"><i class="icon-file"></i>language/it/validation.php</a></li>
+<li><a href="#language/hu/pagination.php"><i class="icon-file"></i>language/hu/pagination.php</a></li>
+<li><a href="#language/hu/validation.php"><i class="icon-file"></i>language/hu/validation.php</a></li>
+<li><a href="#language/pl/pagination.php"><i class="icon-file"></i>language/pl/pagination.php</a></li>
+<li><a href="#language/pl/validation.php"><i class="icon-file"></i>language/pl/validation.php</a></li>
+<li><a href="#language/nl/pagination.php"><i class="icon-file"></i>language/nl/pagination.php</a></li>
+<li><a href="#language/nl/validation.php"><i class="icon-file"></i>language/nl/validation.php</a></li>
+<li><a href="#language/sv/pagination.php"><i class="icon-file"></i>language/sv/pagination.php</a></li>
+<li><a href="#language/sv/validation.php"><i class="icon-file"></i>language/sv/validation.php</a></li>
+<li><a href="#language/da/pagination.php"><i class="icon-file"></i>language/da/pagination.php</a></li>
+<li><a href="#language/da/validation.php"><i class="icon-file"></i>language/da/validation.php</a></li>
+<li><a href="#language/el/pagination.php"><i class="icon-file"></i>language/el/pagination.php</a></li>
+<li><a href="#language/el/validation.php"><i class="icon-file"></i>language/el/validation.php</a></li>
+<li><a href="#config/server/application.php"><i class="icon-file"></i>config/server/application.php</a></li>
+<li><a href="#config/server/database.php"><i class="icon-file"></i>config/server/database.php</a></li>
+<li><a href="#config/strings.php"><i class="icon-file"></i>config/strings.php</a></li>
+<li><a href="#config/local/application.php"><i class="icon-file"></i>config/local/application.php</a></li>
+<li><a href="#config/local/geoname.php"><i class="icon-file"></i>config/local/geoname.php</a></li>
+<li><a href="#config/local/database.php"><i class="icon-file"></i>config/local/database.php</a></li>
+<li><a href="#config/session.php"><i class="icon-file"></i>config/session.php</a></li>
+<li><a href="#config/application.php"><i class="icon-file"></i>config/application.php</a></li>
+<li><a href="#config/geoname.php"><i class="icon-file"></i>config/geoname.php</a></li>
+<li><a href="#config/auth.php"><i class="icon-file"></i>config/auth.php</a></li>
+<li><a href="#config/testing/application.php"><i class="icon-file"></i>config/testing/application.php</a></li>
+<li><a href="#config/testing/geoname.php"><i class="icon-file"></i>config/testing/geoname.php</a></li>
+<li><a href="#config/testing/database.php"><i class="icon-file"></i>config/testing/database.php</a></li>
+<li><a href="#config/cache.php"><i class="icon-file"></i>config/cache.php</a></li>
+<li><a href="#config/database.php"><i class="icon-file"></i>config/database.php</a></li>
+<li><a href="#config/error.php"><i class="icon-file"></i>config/error.php</a></li>
+<li><a href="#config/mimes.php"><i class="icon-file"></i>config/mimes.php</a></li>
+</ul></div>
+<div class="span8">
+<ul class="breadcrumb">
+<li>
+<a href=""><i class="icon-remove-sign"></i></a><span class="divider">\</span>
+</li>
+<li>Compilation Errors</li>
+</ul>
+<div class="package-contents">
+<a name="tests/example.test.old.php" id="tests/example.test.old.php"></a><h3>
+<i class="icon-file"></i>tests/example.test.old.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file tests/example.test.old.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \TestExample</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="tests/geoname.test.php" id="tests/geoname.test.php"></a><h3>
+<i class="icon-file"></i>tests/geoname.test.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file tests/geoname.test.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \TestGeoname</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for method testFindTheBest()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>17</td>
+<td>No DocBlock was found for method testSearch()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="migrations/2013_02_04_112237_create_blocs_table.php" id="migrations/2013_02_04_112237_create_blocs_table.php"></a><h3>
+<i class="icon-file"></i>migrations/2013_02_04_112237_create_blocs_table.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file migrations/2013_02_04_112237_create_blocs_table.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \Create_Blocs_Table</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="models/bloc.php" id="models/bloc.php"></a><h3>
+<i class="icon-file"></i>models/bloc.php<small style="float: right;padding-right: 10px;">10</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file models/bloc.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \bloc</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for property $timestamps</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>7</td>
+<td>No DocBlock was found for method location()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>12</td>
+<td>No DocBlock was found for method getDirectory()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>32</td>
+<td>No DocBlock was found for method profil_data()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>62</td>
+<td>No DocBlock was found for method validate_coords()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>108</td>
+<td>No DocBlock was found for method save_coords()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>116</td>
+<td>No DocBlock was found for method get_coords()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>123</td>
+<td>No DocBlock was found for method count_with()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="models/location.php" id="models/location.php"></a><h3>
+<i class="icon-file"></i>models/location.php<small style="float: right;padding-right: 10px;">13</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file models/location.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \location</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for property $timestamps</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>7</td>
+<td>No DocBlock was found for method blocs()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>13</td>
+<td>No DocBlock was found for method get_url()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No DocBlock was found for method get_countryname()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for method get_icon()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method continentname()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No DocBlock was found for method fcodename()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>40</td>
+<td>No DocBlock was found for method fcodedetail()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>47</td>
+<td>No DocBlock was found for method fclassname()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>52</td>
+<td>No DocBlock was found for method getorcreate()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>67</td>
+<td>No DocBlock was found for method create()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="controllers/geoname.php" id="controllers/geoname.php"></a><h3>
+<i class="icon-file"></i>controllers/geoname.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file controllers/geoname.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \Geoname_Controller</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for method action_search()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>10</td>
+<td>No DocBlock was found for method action_startwith()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="controllers/bloc.php" id="controllers/bloc.php"></a><h3>
+<i class="icon-file"></i>controllers/bloc.php<small style="float: right;padding-right: 10px;">10</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file controllers/bloc.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \Bloc_Controller</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for method action_index()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>15</td>
+<td>No DocBlock was found for method action_map()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>35</td>
+<td>No DocBlock was found for method action_location()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>51</td>
+<td>No DocBlock was found for method action_get()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>101</td>
+<td>No DocBlock was found for method profil_svg()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>119</td>
+<td>No DocBlock was found for method action_getJson()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>130</td>
+<td>No DocBlock was found for method action_svg()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>146</td>
+<td>No DocBlock was found for method action_store()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="controllers/base.php" id="controllers/base.php"></a><h3>
+<i class="icon-file"></i>controllers/base.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file controllers/base.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \Base_Controller</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="macros/html.php" id="macros/html.php"></a><h3>
+<i class="icon-file"></i>macros/html.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file macros/html.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="start.php" id="start.php"></a><h3>
+<i class="icon-file"></i>start.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file start.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="libraries/geoname.php" id="libraries/geoname.php"></a><h3>
+<i class="icon-file"></i>libraries/geoname.php<small style="float: right;padding-right: 10px;">14</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file libraries/geoname.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \geoname</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for property $base_url</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>7</td>
+<td>No DocBlock was found for method search()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>31</td>
+<td>No DocBlock was found for method startwith()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>52</td>
+<td>No DocBlock was found for method findNearby()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>65</td>
+<td>No DocBlock was found for method findCountrySubdivision()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>77</td>
+<td>No DocBlock was found for method findOcean()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>86</td>
+<td>No DocBlock was found for method findTheBest()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>101</td>
+<td>No DocBlock was found for method getISO3166()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>109</td>
+<td>No DocBlock was found for method getFCode()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>117</td>
+<td>No DocBlock was found for method getFcl()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>125</td>
+<td>No DocBlock was found for method continentCode()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>133</td>
+<td>No DocBlock was found for method getIcon()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="libraries/basemodel.php" id="libraries/basemodel.php"></a><h3>
+<i class="icon-file"></i>libraries/basemodel.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file libraries/basemodel.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \basemodel</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for method presenter()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>21</td>
+<td>No DocBlock was found for method starts_with()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="routes.php" id="routes.php"></a><h3>
+<i class="icon-file"></i>routes.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file routes.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="bundles.php" id="bundles.php"></a><h3>
+<i class="icon-file"></i>bundles.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file bundles.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/svgprofil.php" id="views/svgprofil.php"></a><h3>
+<i class="icon-file"></i>views/svgprofil.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/svgprofil.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/layout.blade.php" id="views/layout.blade.php"></a><h3>
+<i class="icon-file"></i>views/layout.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/layout.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/bloc_layout.blade.php" id="views/bloc_layout.blade.php"></a><h3>
+<i class="icon-file"></i>views/bloc_layout.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/bloc_layout.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/bloc_3d.blade.php" id="views/bloc_3d.blade.php"></a><h3>
+<i class="icon-file"></i>views/bloc_3d.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/bloc_3d.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/welcome.blade.php" id="views/welcome.blade.php"></a><h3>
+<i class="icon-file"></i>views/welcome.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/welcome.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/location.blade.php" id="views/location.blade.php"></a><h3>
+<i class="icon-file"></i>views/location.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/location.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/index.blade.php" id="views/index.blade.php"></a><h3>
+<i class="icon-file"></i>views/index.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/index.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/error/500.php" id="views/error/500.php"></a><h3>
+<i class="icon-file"></i>views/error/500.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/error/500.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/error/404.php" id="views/error/404.php"></a><h3>
+<i class="icon-file"></i>views/error/404.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/error/404.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/new.blade.php" id="views/new.blade.php"></a><h3>
+<i class="icon-file"></i>views/new.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/new.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/map.blade.php" id="views/map.blade.php"></a><h3>
+<i class="icon-file"></i>views/map.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/map.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/bloc_print.blade.php" id="views/bloc_print.blade.php"></a><h3>
+<i class="icon-file"></i>views/bloc_print.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/bloc_print.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/svg/profil.blade.php" id="views/svg/profil.blade.php"></a><h3>
+<i class="icon-file"></i>views/svg/profil.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/svg/profil.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/svg/style.blade.php" id="views/svg/style.blade.php"></a><h3>
+<i class="icon-file"></i>views/svg/style.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/svg/style.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/svg/defs.blade.php" id="views/svg/defs.blade.php"></a><h3>
+<i class="icon-file"></i>views/svg/defs.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/svg/defs.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/bloc_profil.blade.php" id="views/bloc_profil.blade.php"></a><h3>
+<i class="icon-file"></i>views/bloc_profil.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/bloc_profil.blade.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/fi/pagination.php" id="language/fi/pagination.php"></a><h3>
+<i class="icon-file"></i>language/fi/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/fi/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/fi/validation.php" id="language/fi/validation.php"></a><h3>
+<i class="icon-file"></i>language/fi/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/fi/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/sr/pagination.php" id="language/sr/pagination.php"></a><h3>
+<i class="icon-file"></i>language/sr/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/sr/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/sr/validation.php" id="language/sr/validation.php"></a><h3>
+<i class="icon-file"></i>language/sr/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/sr/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/de/pagination.php" id="language/de/pagination.php"></a><h3>
+<i class="icon-file"></i>language/de/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/de/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/de/validation.php" id="language/de/validation.php"></a><h3>
+<i class="icon-file"></i>language/de/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/de/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/ru/pagination.php" id="language/ru/pagination.php"></a><h3>
+<i class="icon-file"></i>language/ru/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/ru/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/ru/validation.php" id="language/ru/validation.php"></a><h3>
+<i class="icon-file"></i>language/ru/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/ru/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/en/pagination.php" id="language/en/pagination.php"></a><h3>
+<i class="icon-file"></i>language/en/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/en/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/en/validation.php" id="language/en/validation.php"></a><h3>
+<i class="icon-file"></i>language/en/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/en/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/ja/pagination.php" id="language/ja/pagination.php"></a><h3>
+<i class="icon-file"></i>language/ja/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/ja/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/ja/validation.php" id="language/ja/validation.php"></a><h3>
+<i class="icon-file"></i>language/ja/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/ja/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/id/pagination.php" id="language/id/pagination.php"></a><h3>
+<i class="icon-file"></i>language/id/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/id/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/id/validation.php" id="language/id/validation.php"></a><h3>
+<i class="icon-file"></i>language/id/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/id/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/pt/pagination.php" id="language/pt/pagination.php"></a><h3>
+<i class="icon-file"></i>language/pt/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/pt/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/pt/validation.php" id="language/pt/validation.php"></a><h3>
+<i class="icon-file"></i>language/pt/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/pt/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/fr/pagination.php" id="language/fr/pagination.php"></a><h3>
+<i class="icon-file"></i>language/fr/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/fr/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/fr/validation.php" id="language/fr/validation.php"></a><h3>
+<i class="icon-file"></i>language/fr/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/fr/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/bg/pagination.php" id="language/bg/pagination.php"></a><h3>
+<i class="icon-file"></i>language/bg/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/bg/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/bg/validation.php" id="language/bg/validation.php"></a><h3>
+<i class="icon-file"></i>language/bg/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/bg/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/ar/pagination.php" id="language/ar/pagination.php"></a><h3>
+<i class="icon-file"></i>language/ar/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/ar/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/ar/validation.php" id="language/ar/validation.php"></a><h3>
+<i class="icon-file"></i>language/ar/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/ar/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="language/sq/pagination.php" id="language/sq/pagination.php"></a><h3>
+<i class="icon-file"></i>language/sq/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/sq/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/sq/validation.php" id="language/sq/validation.php"></a><h3>
+<i class="icon-file"></i>language/sq/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/sq/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/he/pagination.php" id="language/he/pagination.php"></a><h3>
+<i class="icon-file"></i>language/he/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/he/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/he/validation.php" id="language/he/validation.php"></a><h3>
+<i class="icon-file"></i>language/he/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/he/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/it/pagination.php" id="language/it/pagination.php"></a><h3>
+<i class="icon-file"></i>language/it/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/it/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/it/validation.php" id="language/it/validation.php"></a><h3>
+<i class="icon-file"></i>language/it/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/it/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/hu/pagination.php" id="language/hu/pagination.php"></a><h3>
+<i class="icon-file"></i>language/hu/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/hu/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/hu/validation.php" id="language/hu/validation.php"></a><h3>
+<i class="icon-file"></i>language/hu/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/hu/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/pl/pagination.php" id="language/pl/pagination.php"></a><h3>
+<i class="icon-file"></i>language/pl/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/pl/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/pl/validation.php" id="language/pl/validation.php"></a><h3>
+<i class="icon-file"></i>language/pl/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/pl/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/nl/pagination.php" id="language/nl/pagination.php"></a><h3>
+<i class="icon-file"></i>language/nl/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/nl/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/nl/validation.php" id="language/nl/validation.php"></a><h3>
+<i class="icon-file"></i>language/nl/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/nl/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/sv/pagination.php" id="language/sv/pagination.php"></a><h3>
+<i class="icon-file"></i>language/sv/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/sv/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/sv/validation.php" id="language/sv/validation.php"></a><h3>
+<i class="icon-file"></i>language/sv/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/sv/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/da/pagination.php" id="language/da/pagination.php"></a><h3>
+<i class="icon-file"></i>language/da/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/da/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/da/validation.php" id="language/da/validation.php"></a><h3>
+<i class="icon-file"></i>language/da/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/da/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/el/pagination.php" id="language/el/pagination.php"></a><h3>
+<i class="icon-file"></i>language/el/pagination.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/el/pagination.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="language/el/validation.php" id="language/el/validation.php"></a><h3>
+<i class="icon-file"></i>language/el/validation.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file language/el/validation.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/server/application.php" id="config/server/application.php"></a><h3>
+<i class="icon-file"></i>config/server/application.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/server/application.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/server/database.php" id="config/server/database.php"></a><h3>
+<i class="icon-file"></i>config/server/database.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/server/database.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/strings.php" id="config/strings.php"></a><h3>
+<i class="icon-file"></i>config/strings.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/strings.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/local/application.php" id="config/local/application.php"></a><h3>
+<i class="icon-file"></i>config/local/application.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/local/application.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/local/geoname.php" id="config/local/geoname.php"></a><h3>
+<i class="icon-file"></i>config/local/geoname.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/local/geoname.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/local/database.php" id="config/local/database.php"></a><h3>
+<i class="icon-file"></i>config/local/database.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/local/database.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/session.php" id="config/session.php"></a><h3>
+<i class="icon-file"></i>config/session.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/session.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/application.php" id="config/application.php"></a><h3>
+<i class="icon-file"></i>config/application.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/application.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/geoname.php" id="config/geoname.php"></a><h3>
+<i class="icon-file"></i>config/geoname.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/geoname.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/auth.php" id="config/auth.php"></a><h3>
+<i class="icon-file"></i>config/auth.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/auth.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/testing/application.php" id="config/testing/application.php"></a><h3>
+<i class="icon-file"></i>config/testing/application.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/testing/application.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/testing/geoname.php" id="config/testing/geoname.php"></a><h3>
+<i class="icon-file"></i>config/testing/geoname.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/testing/geoname.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/testing/database.php" id="config/testing/database.php"></a><h3>
+<i class="icon-file"></i>config/testing/database.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/testing/database.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/cache.php" id="config/cache.php"></a><h3>
+<i class="icon-file"></i>config/cache.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/cache.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/database.php" id="config/database.php"></a><h3>
+<i class="icon-file"></i>config/database.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/database.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/error.php" id="config/error.php"></a><h3>
+<i class="icon-file"></i>config/error.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/error.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="config/mimes.php" id="config/mimes.php"></a><h3>
+<i class="icon-file"></i>config/mimes.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file config/mimes.php</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-03-15T15:06:06+01:00.<br></footer></div>
+</div>
+</body>
+</html>

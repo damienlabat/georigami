@@ -193,7 +193,7 @@
 
         window.addEventListener( 'resize', model3Dobj.onWindowResize, false );
 
-      }// fin init
+      };// fin init
 
 
 
@@ -210,7 +210,7 @@
 
         renderer.setSize( W, H );
 
-      }
+      };
 
       //
 
@@ -228,7 +228,7 @@
         mouseYOnMouseDown = event.clientY - windowHalfY;
         targetRotationYOnMouseDown = targetRotationY;
 
-      }
+      };
 
       model3Dobj.onDocumentMouseMove= function( event ) {
 
@@ -238,7 +238,7 @@
         targetRotationX = targetRotationXOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
         targetRotationY = targetRotationYOnMouseDown + ( mouseY - mouseYOnMouseDown ) * 0.02;
 
-      }
+      };
 
       model3Dobj.onDocumentMouseUp= function( event ) {
 
@@ -246,7 +246,7 @@
         container[0].removeEventListener( 'mouseup', model3Dobj.onDocumentMouseUp, false );
         container[0].removeEventListener( 'mouseout', model3Dobj.onDocumentMouseOut, false );
 
-      }
+      };
 
       model3Dobj.onDocumentMouseOut= function( event ) {
 
@@ -254,7 +254,7 @@
         container[0].removeEventListener( 'mouseup', model3Dobj.onDocumentMouseUp, false );
         container[0].removeEventListener( 'mouseout', model3Dobj.onDocumentMouseOut, false );
 
-      }
+      };
 
       model3Dobj.onDocumentTouchStart= function( event ) {
 
@@ -270,7 +270,7 @@
 
         }
 
-      }
+      };
 
       model3Dobj.onDocumentTouchMove= function( event ) {
 
@@ -286,7 +286,7 @@
 
         }
 
-      }
+      };
 
 
       model3Dobj.mousewheel= function( event ) {
@@ -312,7 +312,7 @@
 
           camera.setLens(camerazoom);
 
-        }
+        };
 
       //
 
@@ -321,7 +321,7 @@
         requestAnimationFrame( model3Dobj.animate );
         model3Dobj.render();
 
-      }
+      };
 
        model3Dobj.render=function() {
 
@@ -334,7 +334,7 @@
 
         renderer.render( scene, camera );
 
-      }
+      };
 
 
       model3Dobj.init();

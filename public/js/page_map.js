@@ -13,14 +13,14 @@ $(function() {
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
 
-    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);  
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 
 
     google.maps.event.addListener(map, 'click', function(event) {
 
-        
-        
+
+
         var html= 'lat: '+event.latLng.lat()+'<br/>lng: '+event.latLng.lng()+'<br/><br/>';
         html= html+'<a href="'+Georigami.baseurl+'/new?lat='+event.latLng.lat()+'&lng='+event.latLng.lng()+'" class="btn btn-primary btn-small"/>build a new on here</a>';
 
@@ -29,13 +29,13 @@ $(function() {
          infowindow.open(map);
 
         });
-    
+
 
     google.maps.event.addListener(map, 'zoom_changed', function() {
 
       if (( map.zoom>15 )&&( map.getMapTypeId()==google.maps.MapTypeId.TERRAIN )) map.setMapTypeId( google.maps.MapTypeId.ROADMAP );
 
-      if ( map.zoom>19 ) map.setMapTypeId( google.maps.MapTypeId.ROADMAP );        
+      if ( map.zoom>19 ) map.setMapTypeId( google.maps.MapTypeId.ROADMAP );
 
       if (map.zoom<=15) map.setMapTypeId( google.maps.MapTypeId.TERRAIN );
 
@@ -57,18 +57,18 @@ $(function() {
         html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'E.svg" title="Est" width="100px">';*/
         html =html+'</div>';
         html =html+'</a>';
-        };
+        }
        // TODO
-            
+
       var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+data.icon+'.png', Georigami.baseurl+'/img/ico/shadow.png');
 
       markers.push(marker);
     }
 
-    var mcOptions = {gridSize: 50, maxZoom: 15 }; 
-    var mapCluster = new MarkerClusterer(map, markers, mcOptions); 
+    var mcOptions = {gridSize: 50, maxZoom: 15 };
+    var mapCluster = new MarkerClusterer(map, markers, mcOptions);
 
-  }
+  };
 
 
 });

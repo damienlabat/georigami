@@ -16,6 +16,11 @@ class bloc extends BaseModel
         return $dir;
     }
 
+    /**
+     * get url to block view
+     * @param  ['3d'|'profil'|'print'] $show [description]
+     * @return [string]                url
+     */
     public function get_url($show=null)
     {
         if ($show==null)

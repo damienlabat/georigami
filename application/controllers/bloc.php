@@ -17,11 +17,11 @@ class Bloc_Controller extends Base_Controller
         $locations=Location::with('blocs')
         //->order_by('continentCode', 'asc') ERROR IN GEONAME DATABASE SOME COUNTRY WITH 2 CONTINENTS (ie. russian federation)
         ->order_by('countryCode', 'asc')
-        ->order_by('adminName1', 'asc')
-        ->order_by('adminName2', 'asc')
-        ->order_by('adminName3', 'asc')
-        ->order_by('adminName4', 'asc')
-        ->order_by('name', 'asc')
+        ->order_by('adminName1',  'asc')
+        ->order_by('adminName2',  'asc')
+        ->order_by('adminName3',  'asc')
+        ->order_by('adminName4',  'asc')
+        ->order_by('name',        'asc')
         ->get();
 
         $locations_array=array();
@@ -68,26 +68,26 @@ class Bloc_Controller extends Base_Controller
         $location=$bloc->location;
 
         $data=array(
-            'show'=>$show,
-            'bloc'=>$bloc,
-            'bloc_json'=> json_encode( $blocArray ),
-            'prev'=>$blocPrev,
-            'next'=>$blocNext,
-            'vscale'=>$vscale,
-            'face'=>$face,
+            'show'=>       $show,
+            'bloc'=>       $bloc,
+            'bloc_json'=>  json_encode( $blocArray ),
+            'prev'=>       $blocPrev,
+            'next'=>       $blocNext,
+            'vscale'=>     $vscale,
+            'face'=>       $face,
         );
 
         if ($show=='profil') {
 
             $profil_data=$bloc->profil_data($face);
 
-            $data['style']= Input::get('style',   '');
-            $data['dx']= 	Input::get('dx',      0);
-            $data['dy']= 	Input::get('dy',      0);
-            $data['dscale']= Input::get('dscale', 0);
+            $data['style']=       Input::get('style',   '');
+            $data['dx']=          Input::get('dx',      0);
+            $data['dy']=          Input::get('dy',      0);
+            $data['dscale']=      Input::get('dscale', 0);
 
-            $data['svg']= self::profil_svg($profil_data, $data );
-            $data['svg_hscale']= 100;
+            $data['svg']=         self::profil_svg($profil_data, $data );
+            $data['svg_hscale']=  100;
             $data['profil_data']= $profil_data;
 
             $data=array_merge($data, $profil_data );
@@ -183,24 +183,24 @@ class Bloc_Controller extends Base_Controller
 
         $bloc = new Bloc;
 
-        $bloc->lat = $input['lat'];
-        $bloc->lng = $input['lng'];
+        $bloc->lat =      $input['lat'];
+        $bloc->lng =      $input['lng'];
 
         $bloc->hSamples = $input['hSamples'];
         $bloc->vSamples = $input['vSamples'];
 
-        $bloc->hSlices = $input['hSlices'];
-        $bloc->vSlices = $input['vSlices'];
+        $bloc->hSlices =  $input['hSlices'];
+        $bloc->vSlices =  $input['vSlices'];
 
-        $bloc->rotate = $input['rotate'];
+        $bloc->rotate =   $input['rotate'];
 
-        $bloc->height = $input['height'];
-        $bloc->width = $input['width'];
+        $bloc->height =   $input['height'];
+        $bloc->width =    $input['width'];
 
-        $bloc->min = $input['min'];
-        $bloc->max = $input['max'];
+        $bloc->min =      $input['min'];
+        $bloc->max =      $input['max'];
 
-        $bloc->bbox = $input['bbox'];
+        $bloc->bbox =     $input['bbox'];
 
         $bloc= $location->blocs()->insert( $bloc );
 
