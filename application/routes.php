@@ -58,8 +58,7 @@ Route::get('/map', array(
 
 
 
-Route::get('/new', array('as' => 'new', function()
-{
+Route::get('/new', array('as' => 'new', function() {
     $lat=       Input::get('lat',       0);
     $lng=       Input::get('lng',       0);
     $width=     Input::get('width',     5000);
@@ -73,19 +72,19 @@ Route::get('/new', array('as' => 'new', function()
 
 
     $data=array(
-        'lat'       =>$lat, 
+        'lat'       =>$lat,
         'lng'       =>$lng,
-        'width'     =>$width, 
+        'width'     =>$width,
         'height'    =>$height,
         'rotate'    =>$rotate,
 
-        'hSlices'   =>$hslices, 
+        'hSlices'   =>$hslices,
         'vSlices'   =>$vslices,
         'sampling'  =>$sampling,
-        
+
         );
 
-	return View::make('new')->with($data);
+    return View::make('new')->with($data);
 }));
 
 
@@ -167,14 +166,12 @@ Route::POST('/search', array(
 |
 */
 
-Event::listen('404', function()
-{
-	return Response::error('404');
+Event::listen('404', function() {
+    return Response::error('404');
 });
 
-Event::listen('500', function()
-{
-	return Response::error('500');
+Event::listen('500', function() {
+    return Response::error('500');
 });
 
 /*
@@ -205,23 +202,18 @@ Event::listen('500', function()
 |
 */
 
-Route::filter('before', function()
-{
-	// Do stuff before every request to your application...
+Route::filter('before', function() {
+    // Do stuff before every request to your application...
 });
 
-Route::filter('after', function($response)
-{
-	// Do stuff after every request to your application...
+Route::filter('after', function($response) {
+    // Do stuff after every request to your application...
 });
 
-Route::filter('csrf', function()
-{
-	if (Request::forged()) return Response::error('500');
+Route::filter('csrf', function() {
+    if (Request::forged()) return Response::error('500');
 });
 
-Route::filter('auth', function()
-{
-	if (Auth::guest()) return Redirect::to('login');
+Route::filter('auth', function() {
+    if (Auth::guest()) return Redirect::to('login');
 });
-

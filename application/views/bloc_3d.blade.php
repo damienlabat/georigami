@@ -1,26 +1,17 @@
 @layout('bloc_layout')
 
-
 @section('bodyclass')
 bloc3d@endsection
-
 
 @section('title')
 Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 @endsection
-
-
-
-
 
 @section('bloc_content')
 
 <div class='row'>
 
   <div class="div3Dview span8"></div>
-
-
-
 
   <div class="span4">
 
@@ -40,31 +31,17 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
       </form>
     </div>
 
-
-
-
-
-
   </div>
 
 </div>
 
-
 @endsection
-
-
 
 @section('bloc_menu')
           <li class=""><a data-action="profil" href="{{ $bloc->get_url('profil') }}?vscale={{ $vscale }}&face={{ $face }}">profil</a></li>
           <li class="active"><a href="#">preview 3D</a></li>
           <li class=""><a data-action="print" href="{{ $bloc->get_url('print') }}?vscale={{ $vscale }}&face={{ $face }}">print</a></li>
 @endsection
-
-
-
-
-
-
 
 @section('script')
         <script>

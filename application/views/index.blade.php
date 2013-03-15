@@ -1,30 +1,20 @@
 @layout('layout')
 
-
 @section('bodyclass')
 index@endsection
-
 
 @section('title')
 Georigami
 @endsection
 
-
-
-
-
 @section('content')
 <h1>Last blocks</h1>
 <div class="row">
-  
 
- @foreach ($blocs->results as $bloc) 
-   
+ @foreach ($blocs->results as $bloc)
+
             <div class=' bloc clearfix'>
               <img src="{{URL::to_route('svg', array($bloc->id,'N')) }}" title="North view"></a>
-
-
-
 
               <a href='{{ $bloc->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4>
@@ -36,26 +26,16 @@ Georigami
                 rotation: {{$bloc->rotate}}°<br/>
                 slices: {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
-                {{$bloc->created_at}}<br/> 
+                {{$bloc->created_at}}<br/>
 
               </a>
 
             </div>
 
-               
-
-
-
-      
-    @endforeach   
+    @endforeach
 
 </div>
 
     {{ $blocs->links(1, Paginator::ALIGN_CENTER); }}
-
-
-
-
-    
 
 @endsection

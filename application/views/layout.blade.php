@@ -66,19 +66,16 @@
 
         </div> <!-- /container -->
 
-
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
 
         {{HTML::script("js/vendor/bootstrap.min.js")}}
         {{HTML::script("js/vendor/jquery-ui-1.10.1.custom.min.js")}}
 
-
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
         {{HTML::script("js/markerclusterer.js")}}
 
-  		<!--script src="https://raw.github.com/mrdoob/three.js/master/build/three.js"></script-->
+          <!--script src="https://raw.github.com/mrdoob/three.js/master/build/three.js"></script-->
         <script>Georigami={baseurl:'{{URL::base()}}'};</script>
         {{HTML::script("js/vendor/three.min.js")}}
 
@@ -89,7 +86,6 @@
         {{HTML::script("js/page_map.js")}}
         {{HTML::script("js/page_location.js")}}
         {{HTML::script("js/page_bloc.js")}}
-
 
         <!-- TODO compile JS files -->
 

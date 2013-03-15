@@ -1,0 +1,84 @@
+
+/* DEFAULT */
+
+#svgprofil {
+
+
+  width:100%;
+  height: 700px;
+
+
+
+	rect.rectbackground {
+	  fill: none;
+	  stroke:none;
+	}
+
+	 polyline.topline {  
+	  stroke:black;
+	  stroke-width:0.05;
+	  fill: none;
+	 }
+
+	  polyline.baseline {  
+	  stroke:black;
+	  stroke-width:0.01;
+	  fill: none;
+	 }
+
+	 polygon {
+	  fill: white; 
+	  stroke:none;
+	 }
+
+
+
+	/* white */
+	 &.white polygon {  fill:url(#greygradient);   }
+
+
+	/* lines */
+	&.lines {
+		rect.rectbackground {  fill:white;  }
+		polygon {  fill:white; fill-opacity:0.2  }
+		polyline.baseline { stroke:none }
+		polyline.topline { stroke:black; stroke-width:0.15; }
+	}
+
+
+	/* FILLSTYLE */
+	 &.fillstyle polygon {  fill:url(#fillstyle);  }
+
+
+
+
+	/* FILLSTYLE2 */
+	 &.fillstyle2 polygon {  fill:url(#fillstyle2);  }
+
+
+
+
+	/* FILLSTYLE3 */
+	 &.fillstyle3 polygon {  fill:url(#fillstyle3);  }
+
+
+
+
+	/* FILLSTYLE4 */
+	 &.fillstyle4 polygon {  fill:url(#fillstyle4);  }
+
+
+
+
+	/* JOY DIVISION */
+	 &.joydiv {
+	 	rect.rectbackground {  fill:black;  }
+	 	polygon {  fill:black;  }
+	 	polyline.topline { stroke:white; stroke-width:0.3; }
+	 }
+
+
+
+
+
+ } /* fin */

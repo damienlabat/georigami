@@ -1,14 +1,11 @@
 @layout('bloc_layout')
 
-
 @section('bodyclass')
 profil@endsection
-
 
 @section('title')
 Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 @endsection
-
 
 <?php
 
@@ -25,19 +22,13 @@ $style_list=array(
 
 ?>
 
-
-
 @section('bloc_content')
 
-
 <?php
-
-
 
  // if ($max<1) $max=1;
 
 ?>
-
 
 <div class='row'>
 
@@ -48,7 +39,6 @@ $style_list=array(
     {{ $svg }}
 
   </div>
-
 
     <div class="span4">
 
@@ -69,10 +59,6 @@ $style_list=array(
           <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0" max="5">
         </div><br/>
 
-
-
-
-
         <div>
           <label  for="dx">translate X</label>
           <input type="range" step="0.01" min="-5" max="5" id="input-translateX" name='dx' value='{{ $dx }}'/>
@@ -88,16 +74,16 @@ $style_list=array(
           <input type="range" step="0.001" min="0" max="1" id="input-scale" name='dscale' value='{{ $dscale }}'/>
         </div><br/>
 
-
         <div>
           <label for="style">style</label>
           <select id='styleswicther' name='style'>
 <?php
 
 foreach ($style_list as $key => $value) {
-  echo "<option value='".$key."'";
-  if ($style==$key) echo " selected";
-  echo ">".$value."</option>".PHP_EOL;
+    echo "<option value='".$key."'";
+    if ($style==$key)
+        echo " selected";
+    echo ">".$value."</option>".PHP_EOL;
 }
 
 ?>
@@ -110,29 +96,17 @@ foreach ($style_list as $key => $value) {
 
     </div>
 
-
-
-
-
-
   </div>
-
-
 
 </div>
 
-
-
 @endsection
-
-
 
 @section('bloc_menu')
           <li class="active"><a href="">profil</a></li>
           <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
           <li class=""><a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
 @endsection
-
 
 @section('script')
         <script>

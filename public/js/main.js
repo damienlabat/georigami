@@ -16,7 +16,7 @@ $(function() {
 				'<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>'+
 			'</div>'+
 		'</div>';
-		
+
 		$(html).modal('show');
 	}
 
@@ -24,7 +24,7 @@ $(function() {
 
 
 
-	$('input[type="number"]').each( function(k,obj){ 
+	$('input[type="number"]').each( function(k,obj){
 		if (obj.type!='number') {
 			var target=$(this);
 			target.spinner();
@@ -37,7 +37,7 @@ $(function() {
 
 
 
-	$('input[type="range"]').each( function(k,obj){ 
+	$('input[type="range"]').each( function(k,obj){
 		var target=$(this);
 
 		if (obj.type=='range') { //HTML5
@@ -52,7 +52,7 @@ $(function() {
 			});
 
 			divnumber.change(function() {	target.val( divnumber.val() );	});
-			divnumber.keypress(function() {	setTimeout( function() {target.val( divnumber.val() )},1);	});			
+			divnumber.keypress(function() {	setTimeout( function() {target.val( divnumber.val() )},1);	});
 
 		}
 		else // jqueryUI
@@ -64,13 +64,13 @@ $(function() {
 			if (step==null) step=1;
 			step=parseFloat(step);
 
-			var slider= divslider.slider({ 
+			var slider= divslider.slider({
 				value: 	parseFloat(target.val()),
 				min: 	parseFloat(obj.min),
 				max: 	parseFloat(obj.max),
-				step:   step, 
+				step:   step,
 
-				slide:  function( event, ui ) {									
+				slide:  function( event, ui ) {
 					target.val( ui.value );
 					target.trigger('change');
 				}
@@ -81,8 +81,8 @@ $(function() {
 			target.keypress(function() {	setTimeout( function() {divslider.slider( "option", "value", target.val() ) },1);	});
 		}
 	});
-	
-	
+
+
 
 
 

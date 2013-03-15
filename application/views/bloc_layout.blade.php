@@ -1,23 +1,15 @@
 @layout('layout')
 
-
-
-
-
 @section('title')
 Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
 @endsection
 
-
-
-
-
 @section('content')
 
-         <ul class="pager">            
+         <ul class="pager">
               @if ($prev!=null)
               <li class="previous">
-                  <a href="{{ $prev->get_url($show) }}?face={{$face}}" title="{{$prev->location->name}}">&larr; Older</a>              
+                  <a href="{{ $prev->get_url($show) }}?face={{$face}}" title="{{$prev->location->name}}">&larr; Older</a>
               @else
               <li class="previous disabled">
                   <a href="#">&larr; Older</a>
@@ -25,7 +17,7 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
               </li>
               @if ($next!=null)
               <li class="next">
-                  <a href="{{ $next->get_url($show) }}?face={{$face}}" title="{{$next->location->name}}">Newer &rarr;</a>         
+                  <a href="{{ $next->get_url($show) }}?face={{$face}}" title="{{$next->location->name}}">Newer &rarr;</a>
               @else
               <li class="next disabled">
                   <a href="#">Newer &rarr;</a>
@@ -33,10 +25,8 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
               </li>
           </ul>
 
-
-
         <div id='blocinfo' class='row' data-id='{{$bloc->id}}' data-vscale='{{$vscale}}' data-face='{{$face}}' data-view='{{$show}}'>
-   
+
             <div class="span2">
                <img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{$face}} view"  class="hidden-phone bloc-face">
             </div>
@@ -55,10 +45,9 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
                 rotation: {{$bloc->rotate}}°<br/>
                 slices: {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
-                {{$bloc->created_at}}<br/> 
+                {{$bloc->created_at}}<br/>
             </div>
       </div>
-
 
 <br/>
 
@@ -69,28 +58,10 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
   </div>
 </div>
 
-      
       @yield('bloc_content')
-
-
-
-       
-
-
-                     
-
-
- 
-
 
 @endsection
 
+@section('script')
 
-
-
-
-          
-
-@section('script') 
-
-@endsection      
+@endsection

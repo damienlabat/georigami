@@ -1,8 +1,8 @@
 <?php
 
-class Location extends BaseModel {
-
-	public static $timestamps = true;
+class location extends BaseModel
+{
+    public static $timestamps = true;
 
     public function blocs()
     {
@@ -10,67 +10,69 @@ class Location extends BaseModel {
             ->order_by('updated_at', 'desc');
     }
 
-
-    public function get_url() {
+    public function get_url()
+    {
         return URL::to_route('location', array( Str::slug($this->name),  $this->id ));
     }
 
-
-    public function get_countryname() {
+    public function get_countryname()
+    {
         return Geoname::getISO3166($this->countrycode);
     }
 
-    public function get_icon() {
+    public function get_icon()
+    {
         return Geoname::getIcon($this->fcode, $this->fcl);
     }
 
-
-    public function continentname() {
+    public function continentname()
+    {
         return Geoname::continentCode($this->continentcode);
     }
 
-    public function fcodename() {
+    public function fcodename()
+    {
         $fcode=Geoname::getFCode($this->fcode);
+
         return $fcode[0];
     }
 
-    public function fcodedetail() {
+    public function fcodedetail()
+    {
         $fcode=Geoname::getFCode($this->fcode);
+
         return $fcode[1];
     }
 
-    public function fclassname() {
+    public function fclassname()
+    {
         return Geoname::getFcl($this->fcl);
     }
 
-
-
-    public static function getorcreate($lat,$lng) {
-
+    public static function getorcreate($lat,$lng)
+    {
         $data_json=Geoname::findTheBest( $lat,$lng) ;
 
         if (!isset($data_json['lat'])) {
             $data_json['lat']=number_format($lat, 5, '.', '');
             $data_json['lng']=number_format($lng, 5, '.', '');
         }
-        
+
         if ($location= self::where('lat', '=', $data_json['lat'])->where('lng', '=', $data_json['lng'])->first() )
             return $location;
-        else return self::create( $data_json );   	
+        else return self::create( $data_json );
 
     }
 
-
-
     public static function create($data)
-    { 
+    {
 
         $location = new Location;
 
         $location->lat=$data['lat'];
         $location->lng=$data['lng'];
 
-    	if (isset($data['geonameId']))      $location->geonameId 	    = $data['geonameId'];
+        if (isset($data['geonameId']))      $location->geonameId 	    = $data['geonameId'];
 
         if (isset($data['name']))           $location->name             = $data['name'];
             else                                   $location->name      = 'unknown place';
@@ -83,10 +85,9 @@ class Location extends BaseModel {
         if (isset($data['fcl']))            $location->fcl              = $data['fcl'];
         if (isset($data['fcode']))          $location->fcode            = $data['fcode'];
         if (isset($data['continentCode']))  $location->continentCode    = $data['continentCode'];
-    	
-    	
-    	$location->save();       
-        
+
+        $location->save();
+
         return $location;
     }
 }

@@ -1,19 +1,18 @@
 <?php
 
-class Geoname {
-
+class geoname
+{
     protected static $base_url = 'http://api.geonames.org/';
 
-
-    static function search($req,$featureClass=null,$maxRows=50,$style='short')
-    {        
+    public static function search($req,$featureClass=null,$maxRows=50,$style='short')
+    {
 
         $url = self::$base_url.'searchJSON?name='.urlencode( utf8_encode( $req ) );
         if ($maxRows!=null) $url.= '&maxRows='.$maxRows;
         if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
         if ($style!=null) $url.= '&style='.$style;
         $url.= '&username='.Config::get('geoname.username');
-        
+
         $res = json_decode(file_get_contents($url), TRUE );
 
         if (isset($res['geonames'])) {
@@ -29,20 +28,15 @@ class Geoname {
         return $res;
     }
 
-
-
-
-
-
-    static function startwith($req,$featureClass=null,$maxRows=5,$style='short')
-    {        
+    public static function startwith($req,$featureClass=null,$maxRows=5,$style='short')
+    {
 
         $url = self::$base_url.'searchJSON?name_startsWith='.utf8_encode( $req );
         if ($maxRows!=null) $url.= '&maxRows='.$maxRows;
         if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
         if ($style!=null) $url.= '&style='.$style;
         $url.= '&username='.Config::get('geoname.username');
-        
+
         $res = json_decode(file_get_contents($url), TRUE );
 
         foreach ($res['geonames'] as &$o) {
@@ -55,37 +49,24 @@ class Geoname {
         return $res;
     }
 
-
-
-
-
-
-
-
-	static function findNearby($lat,$lng,$featureClass=null,$radius=1) // plus bbox ?
+    public static function findNearby($lat,$lng,$featureClass=null,$radius=1) // plus bbox ?
     {
         $url = self::$base_url.'findNearbyJSON?lat='.$lat.'&lng='.$lng;
         if ($featureClass!=null) $url.= '&featureClass='.$featureClass;
         $url.= '&style=full&localCountry=false&radius='.$radius.'&username='.Config::get('geoname.username');
 
         $res = json_decode(file_get_contents($url), TRUE );
-       
+
         if (!isset($res['geonames'])) return false;
         if (count($res['geonames'])==0) return false;
             else return $res['geonames'][0];
     }
 
-
-
-
-
-
-
-    static function findCountrySubdivision($lat,$lng)
+    public static function findCountrySubdivision($lat,$lng)
     {
-        $url = self::$base_url.'countrySubdivisionJSON?lat='.$lat.'&lng='.$lng;  
+        $url = self::$base_url.'countrySubdivisionJSON?lat='.$lat.'&lng='.$lng;
         $url.= '&username='.Config::get('geoname.username');
-        $res = json_decode(file_get_contents($url), TRUE );       
+        $res = json_decode(file_get_contents($url), TRUE );
 
         if (isset($res['status']))
             if($res['status']['value']==15) return false;
@@ -93,28 +74,18 @@ class Geoname {
         return $res;
     }
 
-
-
-
-
-
-
-
-    static function findOcean($lat,$lng)
+    public static function findOcean($lat,$lng)
     {
         $url = self::$base_url.'oceanJSON?lat='.$lat.'&lng='.$lng;
         $url.= '&username='.Config::get('geoname.username');
-        $res = json_decode(file_get_contents($url), TRUE );       
+        $res = json_decode(file_get_contents($url), TRUE );
 
         return $res;
     }
 
-
-
-
-    static function findTheBest($lat,$lng) {
-
-        $res= self::findNearby(  $lat,$lng, 'T' ,5 );        
+    public static function findTheBest($lat,$lng)
+    {
+        $res= self::findNearby(  $lat,$lng, 'T' ,5 );
         if (!$res) $res= self::findNearby(  $lat,$lng, null, 5 );
         if (!$res) $res= self::findCountrySubdivision(  $lat,$lng );
         if ($res==null) {
@@ -127,50 +98,46 @@ class Geoname {
 
     }
 
-    
-
-
-    static  function getISO3166( $code ) {
+    public static function getISO3166( $code )
+    {
         $list= json_decode( Config::get('geoname.iso_countries'), TRUE );
 
-        if (isset($list[$code])) return $list[$code]; 
+        if (isset($list[$code])) return $list[$code];
             return $code;
     }
 
-
-    static  function getFCode( $code ) {
+    public static function getFCode( $code )
+    {
         $list= json_decode( Config::get('geoname.fcodes'), TRUE );
 
-        if (isset($list[$code])) return $list[$code]; 
+        if (isset($list[$code])) return $list[$code];
             return array($code,'');
     }
 
-    static  function getFcl( $code ) {
+    public static function getFcl( $code )
+    {
         $list= json_decode( Config::get('geoname.fcl'), TRUE );
 
-        if (isset($list[$code])) return $list[$code]; 
+        if (isset($list[$code])) return $list[$code];
             return $code;
     }
 
-
-    static  function continentCode( $code ) {
+    public static function continentCode( $code )
+    {
         $list= json_decode( Config::get('geoname.continentcodes'), TRUE );
 
-        if (isset($list[$code])) return $list[$code]; 
+        if (isset($list[$code])) return $list[$code];
             return $code;
     }
 
-
-    static  function getIcon( $code, $code2=false, $code3='default' ) {
+    public static function getIcon( $code, $code2=false, $code3='default' )
+    {
         $list= json_decode( Config::get('geoname.icons'), TRUE );
 
         if (isset($list[$code])) return $list[$code];
             elseif (isset($list[$code2])) return $list[$code2];
                 elseif (isset($list[$code3])) return $list[$code3];
-
         return false;
     }
-
-
 
 }

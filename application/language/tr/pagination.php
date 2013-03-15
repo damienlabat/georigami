@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Laravel - A PHP Framework For Web Artisans
@@ -11,18 +11,18 @@
 
 return array(
 
-	/*
-	|--------------------------------------------------------------------------
-	| Pagination Language Lines
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines are used by the paginator library to build
-	| the pagination links. You're free to change them to anything you want.
-	| If you come up with something more exciting, let us know.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Pagination Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used by the paginator library to build
+    | the pagination links. You're free to change them to anything you want.
+    | If you come up with something more exciting, let us know.
+    |
+    */
 
-	'previous' => '&laquo; Önceki',
-	'next'     => 'Sonraki &raquo;',
+    'previous' => '&laquo; Önceki',
+    'next'     => 'Sonraki &raquo;',
 
 );

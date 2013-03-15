@@ -1,25 +1,18 @@
 @layout('layout')
 
-
 @section('bodyclass')
 location@endsection
-
 
 @section('title')
 Georigami - {{$location->name}}
 @endsection
 
-
-
-
-
 @section('content')
 
-
-         <ul class="pager">            
+         <ul class="pager">
               @if ($prev!=null)
-              <li class="previous">   
-                  <a href="{{ $prev->get_url() }}" title="{{$prev->name}}">&larr; Older</a>               
+              <li class="previous">
+                  <a href="{{ $prev->get_url() }}" title="{{$prev->name}}">&larr; Older</a>
               @else
               <li class="previous disabled">
                   <a href="#">&larr; Older</a>
@@ -27,7 +20,7 @@ Georigami - {{$location->name}}
               </li>
               @if ($next!=null)
               <li class="next">
-                  <a href="{{ $next->get_url() }}" title="{{$next->name}}">Newer &rarr;</a>                  
+                  <a href="{{ $next->get_url() }}" title="{{$next->name}}">Newer &rarr;</a>
               @else
               <li class="next disabled">
                   <a href="#">Newer &rarr;</a>
@@ -35,11 +28,10 @@ Georigami - {{$location->name}}
               </li>
           </ul>
 
-
       <div class="row">
-      
+
         <div class="span4">
-          
+
           <h4>{{$location->name}}</h4>
                   <img src="{{URL::base()}}/img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ $location->countryname}}</a><br/>
                   <h4 title="{{$location->fcodedetail()}}">{{$location->fcodename()}}</h4>
@@ -64,14 +56,10 @@ Georigami - {{$location->name}}
 
       <div class='row'>
 
-  @foreach ($location->blocs as $bloc) 
-        <a href='{{$bloc->get_url() }}' class='span6'> 
+  @foreach ($location->blocs as $bloc)
+        <a href='{{$bloc->get_url() }}' class='span6'>
             <div class=' bloc2 clearfix'>
               <div class='span2'><img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{ $face }} face"></div>
-
-
-
-
 
               <div class='span3'>
                 <br/>
@@ -80,37 +68,20 @@ Georigami - {{$location->name}}
                 slices: {{$bloc->vslices}} x {{$bloc->hslices}}<br/>
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
                 <br/>
-                {{$bloc->created_at}}<br/> 
+                {{$bloc->created_at}}<br/>
               </div>
             </div>
               </a>
 
-            
-               
-
-
-
-      
-    @endforeach 
+    @endforeach
   </div>
-  
 
  <a href='{{ URL::to('new') }}?lat={{$location->lat}}&lng={{$location->lng}}' class='btn btn-primary'>Build a new one</a>
 
-
- 
-
-
 @endsection
 
-
-
-
-
-          
-
-@section('script')         
-        <script>            
-             Georigami.location={{$location_json}}; 
+@section('script')
+        <script>
+             Georigami.location={{$location_json}};
         </script>
-@endsection      
+@endsection
