@@ -1,7 +1,14 @@
 <?php
-
+/**
+ * add autoload function starting with _get to Eloquent
+ */
 class basemodel extends Eloquent
 {
+
+    /**
+     * return object to_array with _get method
+     * @return array
+     */
     public function presenter()
     {
         $rval = $this->to_array();
@@ -18,6 +25,11 @@ class basemodel extends Eloquent
         return $rval;
     }
 
+    /**
+     * @param  string $haystack
+     * @param  string $needle
+     * @return boolean
+     */
     private function starts_with($haystack, $needle)
     {
         $length = strlen($needle);

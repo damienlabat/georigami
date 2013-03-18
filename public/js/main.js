@@ -1,5 +1,12 @@
 $(function() {
 
+
+	defaultParam= function( var_name, default_value) {
+		return (typeof var_name === "undefined") ? default_value : var_name;
+	};
+
+
+
 	Georigami.alert= function(title,html) {
 
 
@@ -96,6 +103,11 @@ $(function() {
 
 
 	// INIT
+
+
+
+
+
 
 	if ($('body').hasClass('bloc3d'))      		Georigami.initBloc('3d');
 	if ($('body').hasClass('print'))      		Georigami.initBloc('print');

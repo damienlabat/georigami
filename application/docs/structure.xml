@@ -249,139 +249,243 @@
       <error line="67" code="50010">No DocBlock was found for method create()</error>
     </parse_markers>
   </file>
-  <file path="controllers/geoname.php" hash="f4d15050c1f6aa50a28c508332bd4768" package="Default">
-    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+  <file path="controllers/geoname.php" hash="6ca132da782cfd6d85bca57436a2d307" package="Default">
+    <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Geoname_Controller</name>
       <full_name>\Geoname_Controller</full_name>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+      <docblock line="2">
+        <description>Main controler for geoname ajax call</description>
+        <long-description></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="Default">
         <name>action_search</name>
         <full_name>action_search</full_name>
+        <docblock line="8">
+          <description>return geoname searchJson</description>
+          <long-description></long-description>
+          <tag line="8" name="return" description="geoname search JSON" type="\Response">
+            <type by_reference="false">\Response</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="10" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="22" package="Default">
         <name>action_startwith</name>
         <full_name>action_startwith</full_name>
+        <docblock line="18">
+          <description>return geoname startwith search</description>
+          <long-description></long-description>
+          <tag line="18" name="return" description="geoname startwith JSON" type="\Response">
+            <type by_reference="false">\Response</type>
+          </tag>
+        </docblock>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/geoname.php</error>
-      <error line="3" code="50000">No DocBlock was found for \Geoname_Controller</error>
-      <error line="5" code="50010">No DocBlock was found for method action_search()</error>
-      <error line="10" code="50010">No DocBlock was found for method action_startwith()</error>
     </parse_markers>
   </file>
-  <file path="controllers/bloc.php" hash="ec634f904548744034e8a69928a9714c" package="Default">
-    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+  <file path="controllers/bloc.php" hash="d92bb6f45f8efddc7c257fdd76378577" package="Default">
+    <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Bloc_Controller</name>
       <full_name>\Bloc_Controller</full_name>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+      <docblock line="2">
+        <description>Main controler for bloc</description>
+        <long-description/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="Default">
         <name>action_index</name>
         <full_name>action_index</full_name>
+        <docblock line="8">
+          <description>return  index page with last blocs</description>
+          <long-description/>
+          <tag line="8" name="return" description="" type="\View">
+            <type by_reference="false">\View</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="15" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="28" package="Default">
         <name>action_map</name>
         <full_name>action_map</full_name>
+        <docblock line="23">
+          <description>return map page</description>
+          <long-description/>
+          <tag line="23" name="return" description="" type="\View">
+            <type by_reference="false">\View</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="35" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="56" package="Default">
         <name>action_location</name>
         <full_name>action_location</full_name>
-        <argument line="35">
+        <docblock line="49">
+          <description>return location page</description>
+          <long-description/>
+          <tag line="49" name="param" description="location name" type="string" variable="$locname">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="49" name="param" description="location id" type="int" variable="$locationid">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="49" name="return" description="" type="\View">
+            <type by_reference="false">\View</type>
+          </tag>
+        </docblock>
+        <argument line="56">
           <name>$locname</name>
           <default/>
           <type/>
         </argument>
-        <argument line="35">
+        <argument line="56">
           <name>$locationid</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="51" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="90" package="Default">
         <name>action_get</name>
         <full_name>action_get</full_name>
-        <argument line="51">
+        <docblock line="81">
+          <description>return bloc page</description>
+          <long-description/>
+          <tag line="81" name="param" description="location name" type="string" variable="$locname">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="param" description="location id" type="int" variable="$locid">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="81" name="param" description="bloc id" type="int" variable="$blocid">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="81" name="param" description="tab to show (profil|3d|print)" type="string" variable="$show">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="return" description="" type="\View">
+            <type by_reference="false">\View</type>
+          </tag>
+        </docblock>
+        <argument line="90">
           <name>$locname</name>
           <default/>
           <type/>
         </argument>
-        <argument line="51">
+        <argument line="90">
           <name>$locid</name>
           <default/>
           <type/>
         </argument>
-        <argument line="51">
+        <argument line="90">
           <name>$blocid</name>
           <default/>
           <type/>
         </argument>
-        <argument line="51">
+        <argument line="90">
           <name>$show</name>
           <default>null</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="101" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="149" package="Default">
         <name>profil_svg</name>
         <full_name>profil_svg</full_name>
-        <argument line="101">
-          <name>$profil_data</name>
+        <docblock line="140">
+          <description>return svg profil image</description>
+          <long-description/>
+          <tag line="140" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="140" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="140" name="return" description="" type="\View">
+            <type by_reference="false">\View</type>
+          </tag>
+          <tag line="140" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
+        </docblock>
+        <argument line="149">
+          <name>$profilData</name>
           <default/>
           <type/>
         </argument>
-        <argument line="101">
+        <argument line="149">
           <name>$options</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="119" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="174" package="Default">
         <name>action_getJson</name>
         <full_name>action_getJson</full_name>
-        <argument line="119">
+        <docblock line="167">
+          <description>return bloc json data</description>
+          <long-description/>
+          <tag line="167" name="param" description="bloc id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="167" name="param" description="add profil data to json" type="boolean" variable="$withData">
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="167" name="return" description="Json response" type="\Response">
+            <type by_reference="false">\Response</type>
+          </tag>
+        </docblock>
+        <argument line="174">
           <name>$id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="119">
-          <name>$with_data</name>
+        <argument line="174">
+          <name>$withData</name>
           <default>FALSE</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="130" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="192" package="Default">
         <name>action_svg</name>
         <full_name>action_svg</full_name>
-        <argument line="130">
+        <docblock line="185">
+          <description>return reduce profil svg image</description>
+          <long-description/>
+          <tag line="185" name="param" description="bloc id" type="int" variable="$id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="185" name="param" description="face to show (N|W|S|E)" type="string" variable="$face">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="185" name="return" description="SVG" type="\Response">
+            <type by_reference="false">\Response</type>
+          </tag>
+        </docblock>
+        <argument line="192">
           <name>$id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="130">
+        <argument line="192">
           <name>$face</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="146" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="219" package="Default">
         <name>action_store</name>
         <full_name>action_store</full_name>
+        <docblock line="214">
+          <description>Validate and add new bloc to database</description>
+          <long-description/>
+          <tag line="214" name="return" description="Bloc Json response" type="\Response">
+            <type by_reference="false">\Response</type>
+          </tag>
+        </docblock>
       </method>
     </class>
     <markers>
-      <todo line="179">better error message</todo>
+      <todo line="194">use profil_svg</todo>
+      <todo line="252">better error message</todo>
     </markers>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/bloc.php</error>
-      <error line="3" code="50000">No DocBlock was found for \Bloc_Controller</error>
-      <error line="5" code="50010">No DocBlock was found for method action_index()</error>
-      <error line="15" code="50010">No DocBlock was found for method action_map()</error>
-      <error line="35" code="50010">No DocBlock was found for method action_location()</error>
-      <error line="51" code="50010">No DocBlock was found for method action_get()</error>
-      <error line="101" code="50010">No DocBlock was found for method profil_svg()</error>
-      <error line="119" code="50010">No DocBlock was found for method action_getJson()</error>
-      <error line="130" code="50010">No DocBlock was found for method action_svg()</error>
-      <error line="146" code="50010">No DocBlock was found for method action_store()</error>
     </parse_markers>
   </file>
   <file path="controllers/base.php" hash="8fce5114c9608d243b749e75747961bd" package="Default">
@@ -435,179 +539,186 @@
       <error line="0" code="50007">No page-level DocBlock was found in file start.php</error>
     </parse_markers>
   </file>
-  <file path="libraries/geoname.php" hash="1d277cc9bc600d3bb0786b151f143da1" package="Default">
+  <file path="libraries/geoname.php" hash="04cfaa4854ebaa2a35d8eccd2384233f" package="Default">
     <class final="false" abstract="false" namespace="global" line="3" package="Default">
       <extends/>
       <name>geoname</name>
       <full_name>\geoname</full_name>
-      <property final="false" static="true" visibility="protected" line="5" namespace="global" package="Default">
-        <name>$base_url</name>
+      <property final="false" static="true" visibility="protected" line="9" namespace="global" package="Default">
+        <name>$_baseUrl</name>
         <default>'http://api.geonames.org/'</default>
+        <docblock line="5">
+          <description>geoname API url</description>
+          <long-description></long-description>
+          <tag line="5" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="7" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="11" package="Default">
         <name>search</name>
         <full_name>search</full_name>
-        <argument line="7">
+        <argument line="11">
           <name>$req</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="7">
+        <argument line="11">
           <name>$featureClass</name>
           <default>null</default>
           <type/>
         </argument>
-        <argument line="7">
+        <argument line="11">
           <name>$maxRows</name>
           <default>50</default>
           <type/>
         </argument>
-        <argument line="7">
+        <argument line="11">
           <name>$style</name>
           <default>'short'</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="31" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="35" package="Default">
         <name>startwith</name>
         <full_name>startwith</full_name>
-        <argument line="31">
+        <argument line="35">
           <name>$req</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="31">
+        <argument line="35">
           <name>$featureClass</name>
           <default>null</default>
           <type/>
         </argument>
-        <argument line="31">
+        <argument line="35">
           <name>$maxRows</name>
           <default>5</default>
           <type/>
         </argument>
-        <argument line="31">
+        <argument line="35">
           <name>$style</name>
           <default>'short'</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="52" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="56" package="Default">
         <name>findNearby</name>
         <full_name>findNearby</full_name>
-        <argument line="52">
+        <argument line="56">
           <name>$lat</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="52">
+        <argument line="56">
           <name>$lng</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="52">
+        <argument line="56">
           <name>$featureClass</name>
           <default>null</default>
           <type/>
         </argument>
-        <argument line="52">
+        <argument line="56">
           <name>$radius</name>
           <default>1</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="65" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="69" package="Default">
         <name>findCountrySubdivision</name>
         <full_name>findCountrySubdivision</full_name>
-        <argument line="65">
+        <argument line="69">
           <name>$lat</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="65">
+        <argument line="69">
           <name>$lng</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="77" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="81" package="Default">
         <name>findOcean</name>
         <full_name>findOcean</full_name>
-        <argument line="77">
+        <argument line="81">
           <name>$lat</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="77">
+        <argument line="81">
           <name>$lng</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="86" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="90" package="Default">
         <name>findTheBest</name>
         <full_name>findTheBest</full_name>
-        <argument line="86">
+        <argument line="90">
           <name>$lat</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="86">
+        <argument line="90">
           <name>$lng</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="101" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="105" package="Default">
         <name>getISO3166</name>
         <full_name>getISO3166</full_name>
-        <argument line="101">
+        <argument line="105">
           <name>$code</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="109" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="113" package="Default">
         <name>getFCode</name>
         <full_name>getFCode</full_name>
-        <argument line="109">
+        <argument line="113">
           <name>$code</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="117" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="121" package="Default">
         <name>getFcl</name>
         <full_name>getFcl</full_name>
-        <argument line="117">
+        <argument line="121">
           <name>$code</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="125" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="129" package="Default">
         <name>continentCode</name>
         <full_name>continentCode</full_name>
-        <argument line="125">
+        <argument line="129">
           <name>$code</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="133" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="137" package="Default">
         <name>getIcon</name>
         <full_name>getIcon</full_name>
-        <argument line="133">
+        <argument line="137">
           <name>$code</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="133">
+        <argument line="137">
           <name>$code2</name>
           <default>false</default>
           <type/>
         </argument>
-        <argument line="133">
+        <argument line="137">
           <name>$code3</name>
           <default>'default'</default>
           <type/>
@@ -617,49 +728,70 @@
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file libraries/geoname.php</error>
       <error line="3" code="50000">No DocBlock was found for \geoname</error>
-      <error line="5" code="50018">No DocBlock was found for property $base_url</error>
-      <error line="7" code="50010">No DocBlock was found for method search()</error>
-      <error line="31" code="50010">No DocBlock was found for method startwith()</error>
-      <error line="52" code="50010">No DocBlock was found for method findNearby()</error>
-      <error line="65" code="50010">No DocBlock was found for method findCountrySubdivision()</error>
-      <error line="77" code="50010">No DocBlock was found for method findOcean()</error>
-      <error line="86" code="50010">No DocBlock was found for method findTheBest()</error>
-      <error line="101" code="50010">No DocBlock was found for method getISO3166()</error>
-      <error line="109" code="50010">No DocBlock was found for method getFCode()</error>
-      <error line="117" code="50010">No DocBlock was found for method getFcl()</error>
-      <error line="125" code="50010">No DocBlock was found for method continentCode()</error>
-      <error line="133" code="50010">No DocBlock was found for method getIcon()</error>
+      <error line="11" code="50010">No DocBlock was found for method search()</error>
+      <error line="35" code="50010">No DocBlock was found for method startwith()</error>
+      <error line="56" code="50010">No DocBlock was found for method findNearby()</error>
+      <error line="69" code="50010">No DocBlock was found for method findCountrySubdivision()</error>
+      <error line="81" code="50010">No DocBlock was found for method findOcean()</error>
+      <error line="90" code="50010">No DocBlock was found for method findTheBest()</error>
+      <error line="105" code="50010">No DocBlock was found for method getISO3166()</error>
+      <error line="113" code="50010">No DocBlock was found for method getFCode()</error>
+      <error line="121" code="50010">No DocBlock was found for method getFcl()</error>
+      <error line="129" code="50010">No DocBlock was found for method continentCode()</error>
+      <error line="137" code="50010">No DocBlock was found for method getIcon()</error>
     </parse_markers>
   </file>
-  <file path="libraries/basemodel.php" hash="bfb6459e2d4716b45ca9d80499b59e49" package="Default">
-    <class final="false" abstract="false" namespace="global" line="3" package="Default">
+  <file path="libraries/basemodel.php" hash="b923ae1c429e102b8db89d32fe3bcdda" package="Default">
+    <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Eloquent</extends>
       <name>basemodel</name>
       <full_name>\basemodel</full_name>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="5" package="Default">
+      <docblock line="2">
+        <description>add autoload function starting with _get to Eloquent</description>
+        <long-description></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="12" package="Default">
         <name>presenter</name>
         <full_name>presenter</full_name>
+        <docblock line="8">
+          <description>return object to_array with _get method</description>
+          <long-description></long-description>
+          <tag line="8" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="21" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="33" package="Default">
         <name>starts_with</name>
         <full_name>starts_with</full_name>
-        <argument line="21">
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+          <tag line="28" name="param" description="" type="string" variable="$haystack">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="28" name="param" description="" type="string" variable="$needle">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="28" name="return" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+        <argument line="33">
           <name>$haystack</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="21">
+        <argument line="33">
           <name>$needle</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file libraries/basemodel.php</error>
-      <error line="3" code="50000">No DocBlock was found for \basemodel</error>
-      <error line="5" code="50010">No DocBlock was found for method presenter()</error>
-      <error line="21" code="50010">No DocBlock was found for method starts_with()</error>
+      <error line="28" code="50012">No short description for method starts_with()</error>
     </parse_markers>
   </file>
   <file path="routes.php" hash="87f93658a245093a5095c5235fce25bf" package="Default">
@@ -1060,7 +1192,7 @@
   <package name="Default" full_name="Default"/>
   <package name="Language" full_name="Language"/>
   <namespace name="global" full_name="global"/>
-  <marker count="1">todo</marker>
+  <marker count="2">todo</marker>
   <marker count="0">fixme</marker>
   <deprecated count="0"/>
 </project>

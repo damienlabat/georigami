@@ -49,9 +49,9 @@
 
 
     model3Dobj.setRotation= function(rotX,rotY) {
-      //if (rotY==null) rotY=Math.PI/8;
+      rotY = defaultParam(rotY,targetRotationY);
       targetRotationX=rotX;
-      if (rotY!==null) targetRotationY=rotY;
+      targetRotationY=rotY;
     };
 
 

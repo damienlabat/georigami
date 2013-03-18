@@ -1,59 +1,98 @@
 <?php
-
+/**
+ *  Main controler for bloc
+ */
 class Bloc_Controller extends Base_Controller
 {
+
+    /**
+     * return  index page with last blocs
+     *
+     * @return View
+     */
     public function action_index()
-    {	$per_page=4*5;
+    {	$perPage=4*5;
 
-        $face=       	Input::get('face',       'N');
+        $face= Input::get('face', 'N');
 
-        $blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($per_page);
+        $blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($perPage);
 
         return View::make('index')->with(array('blocs'=>$blocs, 'face'=>$face ));
     }
 
+    /**
+     * return map page
+     *
+     * @return View
+     */
     public function action_map()
     {
         $locations=Location::with('blocs')
-        //->order_by('continentCode', 'asc') ERROR IN GEONAME DATABASE SOME COUNTRY WITH 2 CONTINENTS (ie. russian federation)
+        /*->order_by('continentCode', 'asc')
+        ERROR IN GEONAME DATABASE SOME COUNTRY WITH 2 CONTINENTS (ie. russian federation) */
         ->order_by('countryCode', 'asc')
-        ->order_by('adminName1',  'asc')
-        ->order_by('adminName2',  'asc')
-        ->order_by('adminName3',  'asc')
-        ->order_by('adminName4',  'asc')
-        ->order_by('name',        'asc')
+        ->order_by('adminName1', 'asc')
+        ->order_by('adminName2', 'asc')
+        ->order_by('adminName3', 'asc')
+        ->order_by('adminName4', 'asc')
+        ->order_by('name', 'asc')
         ->get();
 
-        $locations_array=array();
+        $locationsArray=array();
 
         foreach($locations as $b)
-             $locations_array[] = $b->presenter();
+             $locationsArray[] = $b->presenter();
 
-        return View::make('map')->with( array( 'locations'=>$locations, 'locations_json'=>json_encode( $locations_array ) ));
+        return View::make('map')->with(array('locations'=>$locations, 'locations_json'=>json_encode($locationsArray) ));
     }
 
+    /**
+     * return location page
+     *
+     * @param  string  $locname    location name
+     * @param  int $locationid location id
+     * @return View
+     */
     public function action_location($locname,$locationid)
     {
-        $face=       	Input::get('face',       'N');
+        $face= Input::get('face', 'N');
 
         if (!$location=Location::with('blocs')->find($locationid)) return Response::error('404');
 
-        if (Str::slug($location->name)!=$locname)  return Redirect::to_route('location', array(Str::slug($location->name),$locationid));
+        if (Str::slug($location->name)!=$locname)
+            return Redirect::to_route('location', array(Str::slug($location->name),$locationid));
 
-        $locationPrev= Location::with('blocs')->where('id','<',$locationid)->order_by('id', 'desc')->first();
-        $locationNext= Location::with('blocs')->where('id','>',$locationid)->order_by('id', 'asc')->first();
+        $locationPrev= Location::with('blocs')->where('id', '<', $locationid)->order_by('id', 'desc')->first();
+        $locationNext= Location::with('blocs')->where('id', '>', $locationid)->order_by('id', 'asc')->first();
 
         $locationArray=$location->presenter();
 
-        return View::make('location')->with(array('location'=>$location , 'location_json'=> json_encode( $locationArray ),'face'=>$face, 'prev'=>$locationPrev, 'next'=>$locationNext));
+        return View::make('location')->with(
+            array(
+                'location'=>$location,
+                'location_json'=> json_encode($locationArray),
+                'face'=>$face,
+                'prev'=>$locationPrev,
+                'next'=>$locationNext
+            )
+        );
     }
 
+    /**
+     * return bloc page
+     *
+     * @param  string  $locname location name
+     * @param  int $locid   location id
+     * @param  int $blocid  bloc id
+     * @param  string  $show    tab to show (profil|3d|print)
+     * @return View
+     */
     public function action_get($locname,$locid,$blocid, $show=null)
     {
         if ($show==null) return Redirect::to_route('getplus', array($locname,$locid,$blocid,'profil'));
 
-        $face=       	Input::get('face',       'N');
-        $vscale=     	Input::get('vscale',     1);
+        $face= Input::get('face', 'N');
+        $vscale= Input::get('vscale', 1);
 
         if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
@@ -62,15 +101,15 @@ class Bloc_Controller extends Base_Controller
 
         $blocArray=$bloc->presenter();
 
-        $blocPrev= Bloc::with('location')->where('id','<',$blocid)->order_by('id', 'desc')->first();
-        $blocNext= Bloc::with('location')->where('id','>',$blocid)->order_by('id', 'asc')->first();
+        $blocPrev= Bloc::with('location')->where('id', '<', $blocid)->order_by('id', 'desc')->first();
+        $blocNext= Bloc::with('location')->where('id', '>', $blocid)->order_by('id', 'asc')->first();
 
         $location=$bloc->location;
 
         $data=array(
             'show'=>       $show,
             'bloc'=>       $bloc,
-            'bloc_json'=>  json_encode( $blocArray ),
+            'bloc_json'=>  json_encode($blocArray),
             'prev'=>       $blocPrev,
             'next'=>       $blocNext,
             'vscale'=>     $vscale,
@@ -79,18 +118,18 @@ class Bloc_Controller extends Base_Controller
 
         if ($show=='profil') {
 
-            $profil_data=$bloc->profil_data($face);
+            $profilData=$bloc->profil_data($face);
 
-            $data['style']=       Input::get('style',   '');
-            $data['dx']=          Input::get('dx',      0);
-            $data['dy']=          Input::get('dy',      0);
+            $data['style']=       Input::get('style', '');
+            $data['dx']=          Input::get('dx', 0);
+            $data['dy']=          Input::get('dy', 0);
             $data['dscale']=      Input::get('dscale', 0);
 
-            $data['svg']=         self::profil_svg($profil_data, $data );
+            $data['svg']=         self::profil_svg($profilData, $data);
             $data['svg_hscale']=  100;
-            $data['profil_data']= $profil_data;
+            $data['profil_data']= $profilData;
 
-            $data=array_merge($data, $profil_data );
+            $data=array_merge($data, $profilData);
 
         }
 
@@ -98,7 +137,16 @@ class Bloc_Controller extends Base_Controller
 
     }
 
-    private function profil_svg($profil_data, $options=array() )
+    /**
+     * return svg profil image
+     *
+     * @param  array $profilData see Bloc::profil_data
+     * @param  array $options    option: vscale, style, dx, dy, dscale, header, svg_hscale
+     * @return View
+     *
+     * @see Bloc::profil_data()
+     */
+    private function profil_svg($profilData, $options=array() )
     {
         if (!isset($options['vscale'])) $options['vscale']=1;
         if (!isset($options['style']))  $options['style']='';
@@ -108,7 +156,7 @@ class Bloc_Controller extends Base_Controller
         if (!isset($options['header'])) $options['header']='';
         if (!isset($options['svg_hscale'])) $options['svg_hscale']=100;
 
-        $data=array_merge($profil_data, $options);
+        $data=array_merge($profilData, $options);
 
           $data['svg_vscale']= $data['vscale'] * $data['svg_hscale'];
 
@@ -116,33 +164,58 @@ class Bloc_Controller extends Base_Controller
 
     }
 
-    public function action_getJson($id, $with_data=FALSE)
+    /**
+     * return bloc json data
+     *
+     * @param  int  $id       bloc id
+     * @param  boolean  $withData add profil data to json
+     * @return Response Json response
+     */
+    public function action_getJson($id, $withData=FALSE)
     {
         if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
         $res=$bloc->presenter();
         $res['location']=$bloc->location->presenter();
         $res['location']['countryname']=Geoname::getISO3166($res['location']['countrycode']);
 
-        if ($with_data) $res['coords']= $bloc->get_coords();
-        return  Response::json( $res );
+        if ($withData) $res['coords']= $bloc->get_coords();
+        return  Response::json($res);
     }
 
+    /**
+     * return reduce profil svg image
+     *
+     * @param  int  $id   bloc id
+     * @param  string   $face face to show (N|W|S|E)
+     * @return Response SVG
+     */
     public function action_svg($id,$face)
     {
-        $color=       Input::get('color',       '#aaa');
+        //TODO use profil_svg
+        $color=       Input::get('color', '#aaa');
         if (!$bloc=Bloc::find($id)) return Response::error('404');
 
         $data=array('id'=>$id, 'color'=> $color );
 
-        $data=array_merge($data, $bloc->profil_data($face) );
+        $data=array_merge($data, $bloc->profil_data($face));
 
-         Event::override('laravel.done', function(){}); // No profiler
-         $svg=View::make(  'svgprofil' )->with($data);
+         Event::override(
+             'laravel.done', function(){
+                // No profiler
+             }
+         );
+
+         $svg=View::make('svgprofil')->with($data);
 
          return Response::make($svg, 200, array('Content-Type' => 'image/svg+xml'));
 
     }
 
+    /**
+     * Validate and add new bloc to database
+     *
+     * @return Response Bloc Json response
+     */
     public function action_store()
     {
         $input = Input::all();
@@ -179,7 +252,7 @@ class Bloc_Controller extends Base_Controller
             return 'INVALID COORDS'; // TODO better error message
         }
 
-        $location= Location::getorcreate( $input['lat'], $input['lng'] );
+        $location= Location::getorcreate($input['lat'], $input['lng']);
 
         $bloc = new Bloc;
 
@@ -202,11 +275,11 @@ class Bloc_Controller extends Base_Controller
 
         $bloc->bbox =     $input['bbox'];
 
-        $bloc= $location->blocs()->insert( $bloc );
+        $bloc= $location->blocs()->insert($bloc);
 
-        $bloc->save_coords( $coords );
+        $bloc->save_coords($coords);
 
-        return self::action_getJson( $bloc->id, TRUE );
+        return self::action_getJson($bloc->id, TRUE);
 
     }
 

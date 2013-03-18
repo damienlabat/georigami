@@ -67,7 +67,7 @@ $(function() {
 
       var view3D= load3D( Georigami.bloc, $('.div3Dview'), $('.vs-input').val() );
 
-      var viewFace= function(face) {
+     var viewFace= function(face) {
         if (face=='W') view3D.setRotation(Math.PI/2);
         if (face=='N') view3D.setRotation(Math.PI);
         if (face=='E') view3D.setRotation(3*Math.PI/2);
