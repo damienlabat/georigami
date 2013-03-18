@@ -256,14 +256,14 @@
       <full_name>\Geoname_Controller</full_name>
       <docblock line="2">
         <description>Main controler for geoname ajax call</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="Default">
         <name>action_search</name>
         <full_name>action_search</full_name>
         <docblock line="8">
           <description>return geoname searchJson</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="8" name="return" description="geoname search JSON" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
@@ -274,7 +274,7 @@
         <full_name>action_startwith</full_name>
         <docblock line="18">
           <description>return geoname startwith search</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="18" name="return" description="geoname startwith JSON" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
@@ -549,7 +549,7 @@
         <default>'http://api.geonames.org/'</default>
         <docblock line="5">
           <description>geoname API url</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="5" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
@@ -560,7 +560,7 @@
         <full_name>search</full_name>
         <argument line="11">
           <name>$req</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="11">
@@ -584,7 +584,7 @@
         <full_name>startwith</full_name>
         <argument line="35">
           <name>$req</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="35">
@@ -608,12 +608,12 @@
         <full_name>findNearby</full_name>
         <argument line="56">
           <name>$lat</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="56">
           <name>$lng</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="56">
@@ -632,12 +632,12 @@
         <full_name>findCountrySubdivision</full_name>
         <argument line="69">
           <name>$lat</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="69">
           <name>$lng</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -646,12 +646,12 @@
         <full_name>findOcean</full_name>
         <argument line="81">
           <name>$lat</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="81">
           <name>$lng</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -660,12 +660,12 @@
         <full_name>findTheBest</full_name>
         <argument line="90">
           <name>$lat</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="90">
           <name>$lng</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -674,7 +674,7 @@
         <full_name>getISO3166</full_name>
         <argument line="105">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -683,7 +683,7 @@
         <full_name>getFCode</full_name>
         <argument line="113">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -692,7 +692,7 @@
         <full_name>getFcl</full_name>
         <argument line="121">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -701,7 +701,7 @@
         <full_name>continentCode</full_name>
         <argument line="129">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -710,7 +710,7 @@
         <full_name>getIcon</full_name>
         <argument line="137">
           <name>$code</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="137">
@@ -748,14 +748,14 @@
       <full_name>\basemodel</full_name>
       <docblock line="2">
         <description>add autoload function starting with _get to Eloquent</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="12" package="Default">
         <name>presenter</name>
         <full_name>presenter</full_name>
         <docblock line="8">
           <description>return object to_array with _get method</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="8" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
@@ -765,8 +765,8 @@
         <name>starts_with</name>
         <full_name>starts_with</full_name>
         <docblock line="28">
-          <description></description>
-          <long-description></long-description>
+          <description/>
+          <long-description/>
           <tag line="28" name="param" description="" type="string" variable="$haystack">
             <type by_reference="false">string</type>
           </tag>
@@ -779,12 +779,12 @@
         </docblock>
         <argument line="33">
           <name>$haystack</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="33">
           <name>$needle</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
