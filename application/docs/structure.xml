@@ -879,7 +879,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/defs.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_profil.blade.php" hash="0275f979690ee970696c587b10c952f4" package="Default">
+  <file path="views/bloc_profil.blade.php" hash="08fe440809f92a336b56506b60ccb907" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_profil.blade.php</error>
     </parse_markers>

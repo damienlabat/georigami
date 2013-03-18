@@ -9,8 +9,7 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 
 <?php
 
-$style_list=array(
-
+$styleList=array(
   ''=>            'default',
   'white'=>       'white',
   'fillstyle2'=>  'fillstyle2',
@@ -43,16 +42,16 @@ $style_list=array(
     <div class="span4">
 
      <div id='facepicker' class="btn-group">
-        <a href='?vscale={{ $vscale }}&face=N' class="btn@if ($face=='N') active@endif">North face</a>
-        <a href='?vscale={{ $vscale }}&face=W' class="btn@if ($face=='W') active@endif">West face</a>
-        <a href='?vscale={{ $vscale }}&face=S' class="btn@if ($face=='S') active@endif">South face</a>
-        <a href='?vscale={{ $vscale }}&face=E' class="btn@if ($face=='E') active@endif">East face</a>
+        <a data-face='N' href='?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='N') active@endif">North face</a>
+        <a data-face='W' href='?vscale={{ $vscale }}&face=W&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='W') active@endif">West face</a>
+        <a data-face='S' href='?vscale={{ $vscale }}&face=S&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='S') active@endif">South face</a>
+        <a data-face='E' href='?vscale={{ $vscale }}&face=E&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='E') active@endif">East face</a>
     </div>
 
   <div class=''>
       <form method='get' class='form-inline'>
         <fieldset>
-        <input type='hidden' name='face' value='{{ $face }}'/>
+        <input type='hidden' id='input-face' name='face' value='{{ $face }}'/>
 
         <div>
           <label  for="vscale">vertical scale</label>
@@ -79,7 +78,7 @@ $style_list=array(
           <select id='styleswicther' name='style'>
 <?php
 
-foreach ($style_list as $key => $value) {
+foreach ($styleList as $key => $value) {
     echo "<option value='".$key."'";
     if ($style==$key)
         echo " selected";
@@ -103,9 +102,15 @@ foreach ($style_list as $key => $value) {
 @endsection
 
 @section('bloc_menu')
-          <li class="active"><a href="">profil</a></li>
-          <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
-          <li class=""><a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a></li>
+          <li class="active">
+            <a href="">profil</a>
+          </li>
+          <li class="">
+            <a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a>
+          </li>
+          <li class="">
+            <a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a>
+          </li>
 @endsection
 
 @section('script')

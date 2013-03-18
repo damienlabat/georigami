@@ -323,12 +323,14 @@ $(function() {
       $('#input-translateY').val( $('#input-translateY').val()*1+dy );
       $('#input-translateX').trigger('change');
       $('#input-translateY').trigger('change');
-    }
+    };
 
     profilobj.updateDScale= function(dscale) {
       $('#input-scale').val( $('#input-scale').val()*1+dscale );
       $('#input-scale').trigger('change');
-    }
+    };
+
+
 
     return profilobj;
   }; // fin profil
@@ -347,12 +349,12 @@ $(function() {
 
 
 
-  $('#styleswicther').change(     function(){ profilObj.changeStyle( $(this).val() );  });
+  $('#styleswicther').change(     function(){ profilObj.changeStyle( $(this).val() ); updateUrls(); });
   $('#input-translateX').change(  function() { updateSlicesTransform(); });
   $('#input-translateY').change(  function() { updateSlicesTransform(); });
   $('#input-scale').change(       function() { updateSlicesTransform(); });
 
-  $('.vs-input').change(          function() { profilObj.updateVScale( $(this).val() ); });
+  $('.vs-input').change(          function() { profilObj.updateVScale( $(this).val() ); updateUrls(); });
 
 
 
@@ -361,9 +363,34 @@ var updateSlicesTransform= function() {
   var dY= parseFloat( $('#input-translateY').val() );
   var dscale= parseFloat( $('#input-scale').val() );
   profilObj.setSlicesTransform(dX,dY,dscale);
+  updateUrls();
 };
 
 
+var updateUrls=function(){
+      var face=   $('#input-face').val();
+      var vscale= $('.vs-input').val();
+      var dx=     $('#input-translateX').val();
+      var dy=     $('#input-translateY').val();
+      var dscale= $('#input-scale').val();
+      var style=  $('#styleswicther').val();
+      var blocid= $('#blocinfo').data( 'id' );
+
+      var new_url= 'bloc' + blocid + '_' + $('#blocinfo').data( 'view' ) + '?vscale=' + vscale + '&face=' + face  + '&dx=' + dx  + '&dy=' + dy  + '&dscale=' + dscale  + '&style=' + style  ;
+      if (Modernizr.history) history.replaceState(null, null, new_url);
+
+
+      $('#facepicker a').each(function(){
+        $(this).attr('href','?vscale='+vscale+'&face='+ $(this).data('face')+ '&dx=' + dx  + '&dy=' + dy  + '&dscale=' + dscale  + '&style=' + style );
+      });
+
+      $('#bloc-menu a').each(function(){
+        var action=$(this).data('action');
+        if (action!==null)
+          $(this).attr('href', 'bloc' + blocid + '_' + action + '?vscale=' + vscale + '&face=' + face  );
+      });
+
+    };
 
 
 
