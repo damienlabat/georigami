@@ -172,14 +172,15 @@ class Bloc_Controller extends Base_Controller
      * @return Response Json response
      */
     public function action_getJson($id, $withData=FALSE)
-    {
+    {   if (Cache::has($cacheName))    return Cache::get($cacheName);
+
         if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
         $res=$bloc->presenter();
         $res['location']=$bloc->location->presenter();
         $res['location']['countryname']=Geoname::getISO3166($res['location']['countrycode']);
 
         if ($withData) $res['coords']= $bloc->get_coords();
-        return  Response::json($res);
+        return Response::json($res);
     }
 
     /**
@@ -191,6 +192,16 @@ class Bloc_Controller extends Base_Controller
      */
     public function action_svg($id,$face)
     {
+        $cacheName='action_svg'.$id.$face;
+
+        Event::override(
+            'laravel.done', function(){
+                // No profiler
+            }
+        );
+
+        if (Cache::has($cacheName))    return Cache::get($cacheName);
+
         //TODO use profil_svg
         $color=       Input::get('color', '#aaa');
         if (!$bloc=Bloc::find($id)) return Response::error('404');
@@ -199,15 +210,14 @@ class Bloc_Controller extends Base_Controller
 
         $data=array_merge($data, $bloc->profil_data($face));
 
-         Event::override(
-             'laravel.done', function(){
-                // No profiler
-             }
-         );
+
 
          $svg=View::make('svgprofil')->with($data);
+         $response= Response::make($svg, 200, array('Content-Type' => 'image/svg+xml'));
 
-         return Response::make($svg, 200, array('Content-Type' => 'image/svg+xml'));
+         Cache::forever($cacheName, $response);
+
+         return  $response;
 
     }
 
