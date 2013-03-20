@@ -285,7 +285,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/geoname.php</error>
     </parse_markers>
   </file>
-  <file path="controllers/bloc.php" hash="d92bb6f45f8efddc7c257fdd76378577" package="Default">
+  <file path="controllers/bloc.php" hash="a396fed86ee29a824b5ed5b942f58bcd" package="Default">
     <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Bloc_Controller</name>
@@ -441,48 +441,48 @@
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="192" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="191" package="Default">
         <name>action_svg</name>
         <full_name>action_svg</full_name>
-        <docblock line="185">
+        <docblock line="184">
           <description>return reduce profil svg image</description>
           <long-description/>
-          <tag line="185" name="param" description="bloc id" type="int" variable="$id">
+          <tag line="184" name="param" description="bloc id" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="185" name="param" description="face to show (N|W|S|E)" type="string" variable="$face">
+          <tag line="184" name="param" description="face to show (N|W|S|E)" type="string" variable="$face">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="185" name="return" description="SVG" type="\Response">
+          <tag line="184" name="return" description="SVG" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
-        <argument line="192">
+        <argument line="191">
           <name>$id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="192">
+        <argument line="191">
           <name>$face</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="219" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="227" package="Default">
         <name>action_store</name>
         <full_name>action_store</full_name>
-        <docblock line="214">
+        <docblock line="222">
           <description>Validate and add new bloc to database</description>
           <long-description/>
-          <tag line="214" name="return" description="Bloc Json response" type="\Response">
+          <tag line="222" name="return" description="Bloc Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
       </method>
     </class>
     <markers>
-      <todo line="194">use profil_svg</todo>
-      <todo line="252">better error message</todo>
+      <todo line="203">use profil_svg</todo>
+      <todo line="260">better error message</todo>
     </markers>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/bloc.php</error>
@@ -849,7 +849,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/error/404.php</error>
     </parse_markers>
   </file>
-  <file path="views/new.blade.php" hash="f932ea815d1c370aea27067447d2d75b" package="Default">
+  <file path="views/new.blade.php" hash="6427eb207cb2922328bb32aeb2d0a4c3" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/new.blade.php</error>
     </parse_markers>

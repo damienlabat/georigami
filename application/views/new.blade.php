@@ -27,15 +27,15 @@ Georigami - build your own
 
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-latitude">Latitude</label>
-                                    <div class="controls"><input type="number" step="any" min="-90" max="90" id="input-latitude" class="span2"></div>
+                                    <div class="controls"><input type="number" step="any" min="-90" max="90" id="input-latitude"></div>
                                 </div>
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-longitude">Longitude</label>
-                                    <div class="controls"><input type="number" step="any" min="-180" max="180" id="input-longitude" class="span2"></div>
+                                    <div class="controls"><input type="number" step="any" min="-180" max="180" id="input-longitude"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-search">Search by name</label>
-                                    <div class="controls"><input type="text" id="input-search" placeholder="Type something…" class="span2" value=""></div>
+                                    <div class="controls"><input type="text" id="input-search" placeholder="Type something…" value=""></div>
                                     <div id="search-result"></div>
                                 </div>
 
@@ -44,15 +44,15 @@ Georigami - build your own
                             <div class="span5">
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-width">Width</label>
-                                    <div class="controls"><input type="number" step="1" min="1"  id="input-width" class="span1"> m</div>
+                                    <div class="controls"><input type="number" step="1" min="1"  id="input-width"> m</div>
                                 </div>
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-height">Height</label>
-                                    <div class="controls"><input type="number" step="1" min="1" id="input-height" class="span1"> m</div>
+                                    <div class="controls"><input type="number" step="1" min="1" id="input-height"> m</div>
                                 </div>
                                  <div class='control-group livechange'>
                                     <label class="control-label" for="input-rotate">Rotate</label>
-                                    <div class="controls"><input type="range" step="1" min="-45" max="45" id="input-rotate" class='span1'> °</div>
+                                    <div class="controls"><input type="range" step="1" min="-45" max="45" id="input-rotate"> °</div>
                                 </div>
                             </div>
 
@@ -85,11 +85,11 @@ Georigami - build your own
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
-                                    <div class="controls"><input type="text" id="input-horizontal-samples" class="span1 uneditable-input" readonly="readonly"> (max 512)</div>
+                                    <div class="controls"><input type="text" id="input-horizontal-samples" class="uneditable-input" readonly="readonly"> (max 512)</div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-vertical-samples">vertical slices samples</label>
-                                    <div class="controls"><input type="text" id="input-vertical-samples" class="span1 uneditable-input"  readonly="readonly"> (max 512)</div>
+                                    <div class="controls"><input type="text" id="input-vertical-samples" class="uneditable-input"  readonly="readonly"> (max 512)</div>
                                 </div>
                             </div>
                         </div>

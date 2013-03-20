@@ -160,7 +160,7 @@ class Bloc_Controller extends Base_Controller
 
           $data['svg_vscale']= $data['vscale'] * $data['svg_hscale'];
 
-        return View::make('svg/profil')->with($data);;
+        return View::make('svg/profil')->with($data);
 
     }
 
@@ -172,9 +172,7 @@ class Bloc_Controller extends Base_Controller
      * @return Response Json response
      */
     public function action_getJson($id, $withData=FALSE)
-    {   if (Cache::has($cacheName))    return Cache::get($cacheName);
-
-        if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
+    {   if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
         $res=$bloc->presenter();
         $res['location']=$bloc->location->presenter();
         $res['location']['countryname']=Geoname::getISO3166($res['location']['countrycode']);
@@ -289,7 +287,9 @@ class Bloc_Controller extends Base_Controller
 
         $bloc->save_coords($coords);
 
-        return self::action_getJson($bloc->id, TRUE);
+        return Redirect::to_route('getJson', array($bloc->id));
+
+       // return self::action_getJson($bloc->id, TRUE);
 
     }
 
