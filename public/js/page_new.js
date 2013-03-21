@@ -7,15 +7,15 @@ $(function() {
 
   var showLoading= function(content, pp) {
       $('#status .text').html(content);
-      if (pp!=null) {
-          if (!$('#status .progress').length) $('<div class="progress progress-striped active"><div class="bar" style="width: '+(pp*100)+'%;"></div></div>').appendTo( $('#status') );      
+      if (pp!==null) {
+          if (!$('#status .progress').length) $('<div class="progress progress-striped active"><div class="bar" style="width: '+(pp*100)+'%;"></div></div>').appendTo( $('#status') );
           else $('#status .progress .bar').css('width',(pp*100)+'%');
 
           if (pp==1) $('#status .progress').addClass('progress-success');
         }
         else $('#status .progress').remove();
 
-  }
+  };
 
 
   /*******************/
@@ -26,7 +26,7 @@ $(function() {
 
     var gridObj=null;
 
-     
+
 
 
 
@@ -39,13 +39,13 @@ $(function() {
   }
   else
   {
-    $('#start-btn').addClass('disabled');   
+    $('#start-btn').addClass('disabled');
   }
 
   if (status=='loading')  $('#cancel-btn').removeClass('disabled');
 
   Georigami.status=status;
- }
+ };
 
 
 
@@ -58,7 +58,7 @@ $('#input-search').change( function(){
 
   var req=$('#input-search').val();
 
-  if (req=='') {
+  if (req==='') {
     $('#search-result').html('');
     return false;
   }
@@ -78,28 +78,28 @@ $('#input-search').change( function(){
 
                  for (var i = 0; i< data.geonames.length; i++) {
                     var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
-                    if (data.geonames[i].country!='') html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
+                    if (data.geonames[i].country!=='') html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
                     html=html+data.geonames[i].name;
-                    if (data.geonames[i].feature!='') html=html+' ('+data.geonames[i].feature[0]+')';
+                    if (data.geonames[i].feature!=='') html=html+' ('+data.geonames[i].feature[0]+')';
                     html=html+'</a></li>';
 
                     $(html).appendTo( $('#search-result>ul') );
-                 };
+                 }
 
-                 $('#search-result a').on("click", function(){                    
-                  
+                 $('#search-result a').on("click", function(){
+
                     $('#input-latitude').val(  $(this).data("lat") );
                     $('#input-longitude').val( $(this).data("lng") );
 
                     Georigami.update();
 
-                    return false
+                    return false;
                   });
 
 
-                },
+                }
               });
-  return false
+  return false;
 });
 
 
@@ -120,7 +120,7 @@ $('#input-search').change( function(){
         mapTypeId: google.maps.MapTypeId.TERRAIN
       };
 
-    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);    
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 
 
@@ -133,8 +133,8 @@ $('#input-search').change( function(){
       $('#input-height').val( Georigami.rectangle.height );
       drawSlices(  getParams()  );
 
-     
-    }
+
+    };
 
 
 
@@ -160,16 +160,16 @@ $('#input-search').change( function(){
       res.hSamples= parseFloat( $('#input-horizontal-samples').val() );*/
 
       res.bbox= Georigami.rectangle.getBounds(true);
-      
+
       $('#request-count').html((res.vSlices+res.hSlices) + ' request (max by day: 2 500)');
       $('#location-count').html((res.vSlices*res.vSamples+res.hSlices*res.hSamples) + ' points (max by day: 25 000)');
 
-       if ((Georigami.rectangle.lat!=0)||(Georigami.rectangle.lng!=0)) {
+       if ((Georigami.rectangle.lat!==0)||(Georigami.rectangle.lng!==0)) {
           if (Georigami.status!='loading') Georigami.setStatus('ready');
        }
 
       return res;
-    }
+    };
 
 
 
@@ -183,45 +183,45 @@ $('#input-search').change( function(){
       $('#input-sampling').val( params.sampling );
       $('#input-rotate').val( params.rotate );
       $('input').trigger('change');
-    }
+    };
 
 
 
 
 
   var drawSlices= function(params) {
-    if (gridObj!=null) gridObj.clear();
+    if (gridObj!==null) gridObj.clear();
     gridObj= grid(map,params.lat,params.lng,params.width,params.height,params.vSlices,params.hSlices,params.rotate);
-  }
+  };
 
   Georigami.update= function() {
         Georigami.rectangle.updateCenter( $('#input-latitude').val() , $('#input-longitude').val() );
         Georigami.rectangle.updateDimensions( $('#input-width').val() , $('#input-height').val() );
         drawSlices( getParams() );
-        map.fitBounds(Georigami.rectangle.getBounds());       
-    }
+        map.fitBounds(Georigami.rectangle.getBounds());
+    };
 
 
 
     //init params
     initParams(Georigami.area);
 
-    Georigami.rectangle= draggableRectangle(map, Georigami.area.lat , Georigami.area.lng, Georigami.area.width, Georigami.area.height, { 
-        onChange: updateForm 
+    Georigami.rectangle= draggableRectangle(map, Georigami.area.lat , Georigami.area.lng, Georigami.area.width, Georigami.area.height, {
+        onChange: updateForm
       });
 
     updateForm();
-    if ((Georigami.area.lat!=0)||(Georigami.area.lng!=0)) Georigami.update();
+    if ((Georigami.area.lat!==0)||(Georigami.area.lng!==0)) Georigami.update();
 
 
-    
+
 
     //map.fitBounds(Georigami.rectangle.getBounds());
 
 
     $('.livechange').keypress( function(){    setTimeout('Georigami.update()',1);    });
-    $('.livechange').mouseup( function(){     Georigami.update()    });
-    $('.livechange').change( function(){     Georigami.update()    });
+    $('.livechange').mouseup( function(){     Georigami.update();    });
+    $('.livechange').change( function(){     Georigami.update();    });
 
 
     $('#update-btn').mousedown( function(){
@@ -229,16 +229,16 @@ $('#input-search').change( function(){
         return false;
     });
 
-    $('#paramform').submit( function(){       
+    $('#paramform').submit( function(){
         return false;
     });
 
 
-    
 
 
 
-    var buildSlices= function(result) {     
+
+    var buildSlices= function(result) {
 
       var data=result.params;
 
@@ -247,35 +247,35 @@ $('#input-search').change( function(){
       data.min= Infinity;
       data.max= -Infinity;
       var x,y,z;
-      var maxDim= Math.max(data.width,data.height); 
+      var maxDim= Math.max(data.width,data.height);
 
       // get min and max
       for (var i = 0; i< result.slices.length; i++)
-        for (var n = 0; n< result.slices[i].data.length; n++) {          
+        for (var n = 0; n< result.slices[i].data.length; n++) {
           z=result.slices[i].data[n].elevation;
           if (z<data.min) data.min=z;
           if (z>data.max) data.max=z;
         }
 
-      for (var i = 0; i< result.slices.length; i++) {
+      for ( i = 0; i< result.slices.length; i++) {
         var s=result.slices[i];
-        var sCoords=[];        
-        for (var n = 0; n< s.data.length; n++) { 
+        var sCoords=[];
+        for (var n = 0; n< s.data.length; n++) {
           z=s.data[n].elevation;
-          if (s.type=='vertical') 
+          if (s.type=='vertical')
             x= n/(s.data.length-1)*data.height/maxDim;
           else
             x= n/(s.data.length-1)*data.width/maxDim;
-          y=(z-data.min)/maxDim;         
+          y=(z-data.min)/maxDim;
           sCoords.push([x,y]);
         }
-        
+
         if (s.type=='vertical') {
-          var n=data.vSlicesObj.length;
-          data.vSlicesObj.push(sCoords);          
+          //var n=data.vSlicesObj.length;
+          data.vSlicesObj.push(sCoords);
         }
         else {
-          var n=data.hSlicesObj.length;
+          //var n=data.hSlicesObj.length;
           data.hSlicesObj.push(sCoords);
         }
 
@@ -284,8 +284,8 @@ $('#input-search').change( function(){
       data.vSlicesObj= data.vSlicesObj.reverse();
 
       return data;
-      
-    }
+
+    };
 
 
 
@@ -300,7 +300,7 @@ $('#input-search').change( function(){
 
       var path=[];
       $.each( slice.path, function(i2, pt) {
-            if (pathstr!='') pathstr=pathstr+'|';
+            if (pathstr!=='') pathstr=pathstr+'|';
             pathstr=pathstr+pt.lat()+','+pt.lng();
             path.push( new google.maps.LatLng( pt.lat() , pt.lng() ) );
         });
@@ -312,7 +312,7 @@ $('#input-search').change( function(){
        var pathRequest={
             'path': path,
             'samples': samples
-          }
+          };
 
       if (Georigami.status!='cancel') {
         elevator = new google.maps.ElevationService();
@@ -332,12 +332,12 @@ $('#input-search').change( function(){
             Georigami.alert('GOOGLE ELEVATION API ERROR',status );
             showLoading('');
             Georigami.setStatus('ready');
-            return
+            return;
           }
 
           slice.data=results;
 
-          if (i+1<result.slices.length) setTimeout(function(){ Georigami.loadSlice(result,i+1) }, requestDelay*(samples/500)  ); // too be kind with google api
+          if (i+1<result.slices.length) setTimeout(function(){ Georigami.loadSlice(result,i+1);}, requestDelay*(samples/500)  ); // too be kind with google api
             else {
              // showLoading( 'building geom' );
 
@@ -355,27 +355,27 @@ $('#input-search').change( function(){
 
                   showLoading( 'show result' );
                   var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
-                  Georigami.results.push( { data:data } );  
+                  Georigami.results.push( { data:data } );
                   showLoading( '' );
 
-                  },
+                  }
                 });
-              
+
               }
        }
 
 
-    }
+    };
 
 
 
     $('#start-btn').click( function(){
       if (Georigami.status=='ready') {
           var data={params:getParams(),slices:gridObj.getData() };
-          startWork( data );        
+          startWork( data );
           Georigami.setStatus('loading');
         }
-        else 
+        else
           if (Georigami.status=='loading') Georigami.alert('Please wait', 'Work in progress');
             else Georigami.alert('but where ?', 'Please select an area');
         return false;
@@ -389,22 +389,22 @@ $('#input-search').change( function(){
     });
 
 
-  
+
 
 
 var startWork= function(data) {
     $('.div3Dview').hide();
     Georigami.setStatus('loading');
     Georigami.loadSlice(data,0);
-} 
+}
 
 
 
 
 
-    
 
-} //fin init
+
+}; //fin init
 
   /********************/
   /*     visuSlice    */
@@ -414,7 +414,7 @@ var startWork= function(data) {
 
   var visuSlice= function(id,data,obj) {
     Georigami.setStatus('ready');
-    
+
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
       '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
@@ -430,20 +430,20 @@ var startWork= function(data) {
             'rotation: '+data.rotate+'m<br/>'+
             'slices: '+data.hslices+' x '+data.vslices+'<br/>'+
             (data.vslices*data.vsamples + data.hslices*data.hsamples)+' samples<br/>'+
-            data.created_at+        
+            data.created_at+
           '</div>'+
-        '</a>'+        
+        '</a>'+
       "</div>"+
-      '<div class="div3Dview"></div>'+
+      //'<div class="div3Dview"></div>'+
       '</div>';
 
-     
-
-    var bloc=$(html).prependTo(obj); 
-    var view3D= load3D( data, bloc.find('.div3Dview'), Georigami.verticalScale );
-
-  }
 
 
+    var bloc=$(html).prependTo(obj);
+    //var view3D= load3D( data, bloc.find('.div3Dview'), Georigami.verticalScale );
 
-});  
+  };
+
+
+
+});

@@ -9,8 +9,8 @@ $viewbox=array( 'left'=>1000, 'right'=>0, 'top'=>1000, 'bottom'=>0 );
 foreach ($coords as $k=>$slice) {
     $SCALE= 1-$dscale*((($slCount-1)-$k)/$slCount);
 
-    $bottom= ($k-$slCount/2) *$dy + $max/2*$svg_vscale;
-    $top= 	 ($k-$slCount/2) *$dy + $max/2*$svg_vscale - $slice->m*$svg_vscale*$SCALE;
+    $bottom= ($k-$slCount/2) *$dy + $max*$svg_vscale;
+    $top= 	 ($k-$slCount/2) *$dy + $max*$svg_vscale - $slice->m*$svg_vscale*$SCALE;
 
     $left= 	 ($k-$slCount/2) *$dx + $dim/2*$svg_hscale - $dim/2*$svg_hscale*$SCALE;
     $right=  ($k-$slCount/2) *$dx + $dim/2*$svg_hscale + $dim/2*$svg_hscale*$SCALE;
@@ -30,7 +30,7 @@ foreach ($coords as $k=>$slice) {
     $viewbox['right'] += $width*0.05;
 
     $viewbox['top']  -= $height*0.05;
-    $viewbox['bottom'] += $height*0.05;
+    $viewbox['bottom'] += $height*0.10;
 
 $VB= $viewbox['left'].' '.$viewbox['top'].' '.($viewbox['right']-$viewbox['left']).' '.($viewbox['bottom']-$viewbox['top']);
 

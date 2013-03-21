@@ -85,11 +85,11 @@ Georigami - build your own
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
-                                    <div class="controls"><input type="text" id="input-horizontal-samples" class="uneditable-input" readonly="readonly"> (max 512)</div>
+                                    <div class="controls"><input type="text" id="input-horizontal-samples" class="uneditable-input"> (max 512)</div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-vertical-samples">vertical slices samples</label>
-                                    <div class="controls"><input type="text" id="input-vertical-samples" class="uneditable-input"  readonly="readonly"> (max 512)</div>
+                                    <div class="controls"><input type="text" id="input-vertical-samples" class="uneditable-input"> (max 512)</div>
                                 </div>
                             </div>
                         </div>
