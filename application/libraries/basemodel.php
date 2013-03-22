@@ -18,7 +18,6 @@ class basemodel extends Eloquent
             if ($this->starts_with($method->name, "get_") && !$this->starts_with($method->class, "Laravel")) {
                 $method = new ReflectionMethod($this, $method->name);
                 $rval[substr($method->name, 4)] = $method->invoke($this);
-                Log::info('toto');
             }
         }
 

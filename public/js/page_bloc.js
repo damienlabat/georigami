@@ -248,10 +248,12 @@ $(function() {
 
     var updateCoords= function() {
 
+      var svg_vscale= Georigami.svg_hscale*profilobj.vscale;
+
       for (var id =0, len= data.coords.length; id < len; id++) {
         var slObj= svgobj.find('#slice'+id);
 
-        var svg_vscale= Georigami.svg_hscale*profilobj.vscale;
+
         var coord='';
         for (var idCoord=0, lenCoord=data.coords[id].c.length; idCoord<lenCoord; idCoord++ ) {
 
@@ -278,13 +280,12 @@ $(function() {
 
       for (var id =0, len= data.coords.length; id < len; id++) {
 
-        var SCALE= 1-profilobj.dscale*(((len-1)-id)/len);
 
-/*        var bottom= (id-len/2) *profilobj.dy + data.max/2*svg_vscale;
-        var top=    (id-len/2) *profilobj.dy + data.max/2*svg_vscale - data.coords[id].m*svg_vscale*SCALE;*/
+       var SCALE= 1-profilobj.dscale*(((len-1)-id)/len);
 
-        var bottom= (id-len/2) *profilobj.dy + data.max*svg_vscale;
-        var top=    (id-len/2) *profilobj.dy + data.max*svg_vscale - data.coords[id].m*svg_vscale*SCALE;
+       var bottom= (id-len/2) *profilobj.dy + data.max*Georigami.svg_hscale;
+       var top=    (id-len/2) *profilobj.dy + data.max*Georigami.svg_hscale - data.coords[id].m*svg_vscale*SCALE;
+
 
         var left=   (id-len/2) *profilobj.dx + data.dim/2*Georigami.svg_hscale - data.dim/2*Georigami.svg_hscale*SCALE;
         var right=  (id-len/2) *profilobj.dx + data.dim/2*Georigami.svg_hscale + data.dim/2*Georigami.svg_hscale*SCALE;
@@ -304,9 +305,7 @@ $(function() {
       viewbox.right=  viewbox.right + width*0.05;
 
       viewbox.top=    viewbox.top    - height*0.05;
-      viewbox.bottom= viewbox.bottom + height*0.10;
-
-
+      viewbox.bottom= viewbox.bottom + height*0.05;
 
       var VB= viewbox.left + ' ' + viewbox.top + ' ' + (viewbox.right-viewbox.left) + ' ' + (viewbox.bottom-viewbox.top);
       svgobj[0].setAttribute( 'viewBox', VB );
