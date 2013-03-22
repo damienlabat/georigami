@@ -113,11 +113,10 @@ Route::get('/(:any)_(:num)/bloc(:num)', array(
         'uses'   => 'bloc@get'
      ));
 
-Route::get('/(:any)_(:num)/bloc(:num)_(profil|print|3d)', array(
+Route::get('/(:any)_(:num)/bloc(:num)_(profil|print|3d|download)', array(
         'as'     => 'getplus',
         'uses'   => 'bloc@get'
      ));
-
 
 
 

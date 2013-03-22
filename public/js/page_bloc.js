@@ -392,6 +392,8 @@ var updateUrls=function(){
           $(this).attr('href', 'bloc' + blocid + '_' + action + '?vscale=' + vscale + '&face=' + face  );
       });
 
+      $('#profildownload').attr('href', 'bloc' + blocid + '_download' + '?vscale=' + vscale + '&face=' + face  + '&dx=' + dx  + '&dy=' + dy  + '&dscale=' + dscale  + '&style=' + style   );
+
     };
 
 

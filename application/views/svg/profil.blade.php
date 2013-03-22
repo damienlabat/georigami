@@ -38,6 +38,7 @@ foreach ($coords as $k=>$slice) {
 $VB= $viewbox['left'].' '.$viewbox['top'].' '.($viewbox['right']-$viewbox['left']).' '.($viewbox['bottom']-$viewbox['top']);
 
 ?><svg id='svgprofil' class='{{$style}}' viewBox="<?= $VB ?>" >
+@render('svg.style')
 <rect class='rectbackground' x='-1000' y='-1000' width='5000' height='5000'/>
 @render('svg.defs')
 <?php

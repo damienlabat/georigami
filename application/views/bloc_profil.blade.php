@@ -33,7 +33,6 @@ $styleList=array(
 
   <div class='span8'>
 
-   @render('svg.style')
 
     {{ $svg }}
 
@@ -92,6 +91,7 @@ foreach ($styleList as $key => $value) {
         <input type='submit' value='update' class='vs-update btn'/>
       </fieldset>
       </form>
+      <a id='profildownload' class='btn' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>download</a>
 
     </div>
 

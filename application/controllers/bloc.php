@@ -116,7 +116,7 @@ class Bloc_Controller extends Base_Controller
             'face'=>       $face,
         );
 
-        if ($show=='profil') {
+        if (($show=='profil')||($show=='download')) {
 
             $profilData=$bloc->profil_data($face);
 
@@ -130,6 +130,20 @@ class Bloc_Controller extends Base_Controller
             $data['profil_data']= $profilData;
 
             $data=array_merge($data, $profilData);
+
+        }
+
+        if ($show=='download') {
+
+            Event::override(
+                'laravel.done', function(){
+                    // No profiler
+                }
+            );
+            return Response::make($data['svg'], 200, array(
+                'Content-Type' => 'image/svg+xml',
+                'Content-Disposition' => 'attachment; filename="'.$locname.$locid.$data['face'].'.svg"'
+                ));
 
         }
 
@@ -162,6 +176,13 @@ class Bloc_Controller extends Base_Controller
 
         return View::make('svg/profil')->with($data);
 
+    }
+
+
+
+    public function action_download_profil($locname,$locid,$blocid)
+    {
+        return 'yep';
     }
 
     /**
