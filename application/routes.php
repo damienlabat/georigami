@@ -65,9 +65,10 @@ Route::get('/new', array('as' => 'new', function() {
     $height=    Input::get('height',    5000);
     $rotate=    Input::get('rotate',    0);
 
-    $hslices=   Input::get('hslices',   15);
-    $vslices=   Input::get('vslices',   15);
-    $sampling=  Input::get('sampling',  5);
+    $hslices=   Input::get('hslices',   9);
+    $vslices=   Input::get('vslices',   9);
+    $hsampling=  Input::get('hsampling',  3);
+    $vsampling=  Input::get('vsampling',  3);
 
 
 
@@ -80,7 +81,8 @@ Route::get('/new', array('as' => 'new', function() {
 
         'hSlices'   =>$hslices,
         'vSlices'   =>$vslices,
-        'sampling'  =>$sampling,
+        'hsampling' =>$hsampling,
+        'vsampling' =>$vsampling,
 
         );
 

@@ -147,13 +147,14 @@ $('#input-search').change( function(){
       res.height= parseFloat( $('#input-height').val() );
       res.vSlices= parseFloat( $('#input-vertical-slices').val() );
       res.hSlices= parseFloat( $('#input-horizontal-slices').val() );
-      res.sampling= parseFloat( $('#input-sampling').val() );
+      res.vSampling= parseFloat( $('#input-vsampling').val() );
+      res.hSampling= parseFloat( $('#input-hsampling').val() );
       res.rotate= parseFloat( $('#input-rotate').val() );
 
-      res.vSamples= res.sampling* (res.hSlices+2);
+      res.vSamples= res.vSampling* (res.hSlices+1) + 1;
       $('#input-vertical-samples').val(res.vSamples);
 
-      res.hSamples= res.sampling* (res.vSlices+2);
+      res.hSamples= res.hSampling* (res.vSlices+1) + 1;
       $('#input-horizontal-samples').val(res.hSamples);
 
      /* res.vSamples= parseFloat( $('#input-vertical-samples').val() );
@@ -180,7 +181,8 @@ $('#input-search').change( function(){
       $('#input-height').val( params.height );
       $('#input-vertical-slices').val( params.vSlices );
       $('#input-horizontal-slices').val( params.hSlices );
-      $('#input-sampling').val( params.sampling );
+      $('#input-hsampling').val( params.hsampling );
+      $('#input-vsampling').val( params.vsampling );
       $('#input-rotate').val( params.rotate );
       $('input').trigger('change');
     };

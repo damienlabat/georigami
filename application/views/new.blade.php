@@ -80,12 +80,16 @@ Georigami - build your own
                             <div class="span5">
 
                                 <div class='control-group livechange'>
-                                    <label class="control-label" for="input-sampling">X sampling</label>
-                                    <div class="controls"><input type="range" id="input-sampling" step="1" min="1" max="20"></div>
+                                    <label class="control-label" for="input-hsampling">horizontal X sampling</label>
+                                    <div class="controls"><input type="range" id="input-hsampling" step="1" min="1" max="20"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
                                     <div class="controls"><input type="text" id="input-horizontal-samples" class="uneditable-input"> (max 512)</div>
+                                </div>
+                                <div class='control-group livechange'>
+                                    <label class="control-label" for="input-vsampling">vertical X sampling</label>
+                                    <div class="controls"><input type="range" id="input-vsampling" step="1" min="1" max="20"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-vertical-samples">vertical slices samples</label>
@@ -126,7 +130,8 @@ Georigami - build your own
 
                     vSlices:{{$vSlices}},
                     hSlices:{{$hSlices}},
-                    sampling:{{$sampling}}
+                    hsampling:{{$hsampling}},
+                    vsampling:{{$vsampling}}
             };
         </script>
 @endsection

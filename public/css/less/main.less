@@ -216,20 +216,19 @@ input[type='range'] {
 
 
     svg.svgprint {
-    width:100%;
         border:none;
-        margin:8px 0;
+        margin:0;
         }
 
     svg.svgprint .svgslice {
-    stroke:#000;
+        stroke:#000;
         fill: white;
         stroke-width:0.15;
         stroke-linecap:round
         }
 
     svg.svgprint .svgcut   {
-    stroke:#000;
+        stroke:#000;
         fill: none;
         stroke-width:0.15;
         stroke-linecap:round;
@@ -237,7 +236,7 @@ input[type='range'] {
         }
 
     svg.svgprint text {
-    fill:#000;
+        fill:#000;
         font-family:'Josefin Sans';
         font-size:2px;
         letter-spacing: 10;
@@ -266,20 +265,15 @@ input[type='range'] {
 
 
 
-
-
-
-
-
 @media print{
+
 
     body.print .container {width:95%;}
 
     body.print .navbar,
     body.print .pager,
     body.print .nav,
-    body.print form,
-    body.print #blocinfo {
+    body.print form{
         display: none;
     }
 
@@ -299,8 +293,23 @@ input[type='range'] {
     }
 
 
+    svg.svgprint {
+        border:none;
+        margin:0;
+        }
 
+    body.print h4 {
+        font-size:13px;
+    }
 
+    body.print #blocinfo {
+        font-size:8px;
+        line-height:9px;
+    }
+
+    body.print #blocinfo div:first-child { display:none };
+
+    body.print #blocinfo .span2 {width:40%;}
 
 
 

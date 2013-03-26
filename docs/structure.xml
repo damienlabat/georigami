@@ -814,7 +814,7 @@
       <error line="27" code="50012">No short description for method starts_with()</error>
     </parse_markers>
   </file>
-  <file path="routes.php" hash="fe7ef4ca5cb1e893c66d82c81fa58537" package="Default">
+  <file path="routes.php" hash="a07fff83d816e08585c52cd05a9dc4d4" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file routes.php</error>
     </parse_markers>
@@ -869,7 +869,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/error/404.php</error>
     </parse_markers>
   </file>
-  <file path="views/new.blade.php" hash="0c381a728db586fbf7eea7ed8ee9b948" package="Default">
+  <file path="views/new.blade.php" hash="bb649006f9cdab2fe751d282131b0d19" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/new.blade.php</error>
     </parse_markers>
@@ -879,7 +879,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_print.blade.php" hash="a297891a86467e32b3c80695c5857b9d" package="Default">
+  <file path="views/bloc_print.blade.php" hash="f8c0ec9d1afebcbef110ccc3a897cdd6" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>
