@@ -81,7 +81,7 @@ Georigami - build your own
 
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-hsampling">horizontal X sampling</label>
-                                    <div class="controls"><input type="range" id="input-hsampling" step="1" min="1" max="20"></div>
+                                    <div class="controls"><input type="range" id="input-hsampling" step="1" min="1" max="170"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-horizontal-samples">horizontal slices samples</label>
@@ -89,7 +89,7 @@ Georigami - build your own
                                 </div>
                                 <div class='control-group livechange'>
                                     <label class="control-label" for="input-vsampling">vertical X sampling</label>
-                                    <div class="controls"><input type="range" id="input-vsampling" step="1" min="1" max="20"></div>
+                                    <div class="controls"><input type="range" id="input-vsampling" step="1" min="1" max="170"></div>
                                 </div>
                                 <div class='control-group'>
                                     <label class="control-label" for="input-vertical-samples">vertical slices samples</label>

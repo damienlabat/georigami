@@ -23,7 +23,7 @@ print@endsection
         <input type='submit' value='update' class='vs-update btn'/>
       </form>
 
-  <div class='pull-left'>
+  <div class='pull-left span12'>
   <h4>horizontal</h4>
 
   @foreach ($bloc->coords->h as $slice)
@@ -47,7 +47,7 @@ print@endsection
   @endforeach
   </div>
 
-  <div>
+  <div class='pull-left span12'>
   <h4>vertical</h4>
 
     <?php $reverse_vslices=array_reverse($bloc->coords->v)  ?>
