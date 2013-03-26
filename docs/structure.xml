@@ -879,7 +879,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_print.blade.php" hash="6987f41d7a79184ad059be4ca4f584ab" package="Default">
+  <file path="views/bloc_print.blade.php" hash="b3cbd982f121cb025a45351a570dff20" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>

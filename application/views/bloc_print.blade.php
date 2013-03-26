@@ -27,7 +27,6 @@ print@endsection
   <h4>horizontal</h4>
 
   @foreach ($bloc->coords->h as $slice)
-
     <svg  width='{{$svgobj_width}}px' height='{{$svgobj_width*((($slice->m+0.12)*$svg_vscale)/( 1.02*$svg_hscale ))}}px'  class='svgprint pull-left' viewBox="{{ -0.01*$svg_hscale }} {{ -0.01*$svg_vscale }} {{ 1.02*$svg_hscale }} {{ ($slice->m+0.12)*$svg_vscale }}">
     <?php
 
@@ -35,7 +34,7 @@ print@endsection
       foreach ($slice->c as $c) $coord.=($w-$c[0])*$svg_hscale.','.($slice->m-$c[1])*$svg_vscale.',';
       echo "<polygon class='svgslice'  points='" . $coord . " ".(0*$svg_hscale).",".($slice->m+0.1)*$svg_vscale.",".($w*$svg_hscale).",".($slice->m+0.1)*$svg_vscale."'/>";
 
-      $di=round( count($slice->c)/($bloc->vslices+2 ));
+      $di=round( count($slice->c)/($bloc->vslices+1 ));
       for ($i=$di; $i <= $bloc->vslices*$di; $i=$i+$di) {
          echo "<line class='svgcut'  x1='".(($w-$slice->c[$i][0])*$svg_hscale-0.1)."' x2='".(($w-$slice->c[$i][0])*$svg_hscale-0.1)."' y1='".($slice->m-($slice->c[$i][1]-0.1)/2)*$svg_vscale."' y2='".($slice->m+0.1)*$svg_vscale."'  />";
          echo "<line class='svgcut'  x1='".(($w-$slice->c[$i][0])*$svg_hscale+0.1)."' x2='".(($w-$slice->c[$i][0])*$svg_hscale+0.1)."' y1='".($slice->m-($slice->c[$i][1]-0.1)/2)*$svg_vscale."' y2='".($slice->m+0.1)*$svg_vscale."'  />";
@@ -59,7 +58,7 @@ print@endsection
       foreach ($slice->c as $c) $coord.=($c[0])*$svg_hscale.','.($slice->m-$c[1])*$svg_vscale.',';
       echo "<polygon class='svgslice'  points='" . $coord . " ".($h*$svg_hscale).",".($slice->m+0.1)*$svg_vscale.",".(0*$svg_hscale).",".($slice->m+0.1)*$svg_vscale."'/>";
 
-      $di=round( count($slice->c)/($bloc->hslices+2 ));
+      $di=round( count($slice->c)/($bloc->hslices+1 ));
       for ($i=$di; $i <= $bloc->hslices*$di; $i=$i+$di) {
          echo "<line class='svgcut'  x1='".(($slice->c[$i][0])*$svg_hscale-0.1)."' x2='".(($slice->c[$i][0])*$svg_hscale-0.1)."' y1='".($slice->m-($slice->c[$i][1]-0.1)/2)*$svg_vscale."' y2='".($slice->m-($slice->c[$i][1]))*$svg_vscale."'  />";
          echo "<line class='svgcut'  x1='".(($slice->c[$i][0])*$svg_hscale+0.1)."' x2='".(($slice->c[$i][0])*$svg_hscale+0.1)."' y1='".($slice->m-($slice->c[$i][1]-0.1)/2)*$svg_vscale."' y2='".($slice->m-($slice->c[$i][1]))*$svg_vscale."'  />";
