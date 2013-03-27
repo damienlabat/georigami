@@ -162,8 +162,9 @@ $('#input-search').change( function(){
 
       res.bbox= Georigami.rectangle.getBounds(true);
 
-      $('#request-count').html((res.vSlices+res.hSlices) + ' request (max by day: 2 500)');
-      $('#location-count').html((res.vSlices*res.vSamples+res.hSlices*res.hSamples) + ' points (max by day: 25 000)');
+      //$('#request-count').html((res.vSlices+res.hSlices) + ' request (max by day: 2 500)');
+      //$('#location-count').html((res.vSlices*res.vSamples+res.hSlices*res.hSamples) + ' points (max by day: 25 000)');
+      // TODO estimate time
 
        if ((Georigami.rectangle.lat!==0)||(Georigami.rectangle.lng!==0)) {
           if (Georigami.status!='loading') Georigami.setStatus('ready');

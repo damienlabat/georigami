@@ -33,7 +33,9 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
             <div class="span2">
               <a href='{{ $bloc->location->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4></a>
-                <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ $bloc->location->countryname }}</a><br/>
+               @if ($bloc->location->countrycode!=='')
+                <img class="flag" src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ $bloc->location->countryname }}</a><br/>
+              @endif
                 <span title="{{ $bloc->location->fcodedetail() }}">{{ $bloc->location->fcodename() }}</span><br/>
 
                 {{$bloc->location->adminname1}}<br/>

@@ -37,8 +37,11 @@ Georigami - Map
         if ($countryCode!==null) echo "</div>";
 
         echo '<div class="row"><a name="'.strtolower($location->countrycode).'" class="anchor"></a>'
-        .'<h2><img src="'.URL::base().'/img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>'
-        .($location->countryname!=''?$location->countryname:'ocean')
+        .'<h2>';
+        if ($location->countryname!=='')
+          echo '<img class="flag" src="'.URL::base().'/img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>';
+
+        echo ($location->countryname!=''?$location->countryname:'ocean')
         .HTML::showcount( Bloc::count_with( array('countrycode'=>$location->countrycode) ) ). '</h2>';
 
         $countryCode=$location->countrycode;

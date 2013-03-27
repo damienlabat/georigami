@@ -18,7 +18,9 @@ Georigami
 
               <a href='{{ $bloc->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4>
-                <img src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
+                @if ($bloc->location->countrycode!=='')
+                <img class='flag' src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
+                @endif
                 {{Geoname::getISO3166($bloc->location->countrycode)}}<br/>
                 {{$bloc->location->adminname1}}<br/>
                 altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>

@@ -204,7 +204,7 @@ $(function() {
         mouseX = event.clientX ;
         mouseY = event.clientY ;
 
-        profilobj.updateDxDy( (mouseX-mouseXOnMouseDown) /5000, (mouseY-mouseYOnMouseDown) /10000 );
+        profilobj.updateDxDy( (mouseX-mouseXOnMouseDown) /3000, (mouseY-mouseYOnMouseDown) /3000 );
 
       };
 
