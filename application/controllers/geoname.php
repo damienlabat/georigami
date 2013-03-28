@@ -13,11 +13,11 @@ class Geoname_Controller extends Base_Controller
     public function action_search()
     {
         $res=Geoname::search(  Input::get('q'), 'T', 50, 'short' );
-        if ($res['totalResultsCount']<10) {
-            $res2=Geoname::search(  Input::get('q'), null, 50, 'short' );
-            $res['totalResultsCount']=$res['totalResultsCount']+$res2['totalResultsCount'];
-            $res['geonames']=array_merge($res['geonames'],$res2['geonames']);
-            }
+        if ($res['totalResultsCount']<50)      $res2=Geoname::search(  Input::get('q'), null, 50-$res['totalResultsCount'], 'short' );
+            else  $res2=Geoname::search(  Input::get('q'), null, 50, 'short' );
+        $res['totalResultsCount']=$res['totalResultsCount']+$res2['totalResultsCount'];
+        $res['geonames']=array_merge($res['geonames'],$res2['geonames']);
+
 
         return Response::json( $res );
     }

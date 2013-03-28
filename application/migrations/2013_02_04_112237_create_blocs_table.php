@@ -14,8 +14,8 @@ class Create_Blocs_Table
 
             $table->increments('id')->unsigned();
 
-            $table->decimal('lat',18,14);
-            $table->decimal('lng',18,14);
+            $table->decimal('lat', 18, 14);
+            $table->decimal('lng', 18, 14);
 
             $table->integer('geonameId');
 
@@ -26,11 +26,11 @@ class Create_Blocs_Table
             $table->string('adminName3');
             $table->string('adminName4');
 
-            $table->string('countryCode',2);
+            $table->string('countryCode', 2);
 
-            $table->string('fcl',1);
-            $table->string('fcode',5);
-            $table->string('continentCode',2);
+            $table->string('fcl', 1);
+            $table->string('fcode', 5);
+            $table->string('continentCode', 2);
 
             $table->timestamps();
         });
@@ -64,6 +64,20 @@ class Create_Blocs_Table
             $table->timestamps();
         });
 
+
+
+        Schema::create('savedviews',function($table){
+
+            $table->increments('id')->unsigned();
+
+            $table->integer('bloc_id')->unsigned();
+            $table->foreign('bloc_id')->references('id')->on('blocs');
+            $table->string('params');
+
+            $table->timestamps();
+        });
+
+
     }
 
     /**
@@ -75,6 +89,7 @@ class Create_Blocs_Table
     {
         Schema::drop('blocs');
         Schema::drop('locations');
+        Schema::drop('savedviews');
 
     }
 

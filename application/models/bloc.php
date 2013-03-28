@@ -9,6 +9,12 @@ class bloc extends BaseModel
         return $this->belongs_to('Location');
     }
 
+    public function saved_views()
+    {
+        return $this->has_many('SavedView')
+            ->order_by('updated_at', 'desc');
+    }
+
     public function getDirectoryNum()
     {
         return floor($this->id/100);

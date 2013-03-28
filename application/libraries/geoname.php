@@ -89,7 +89,8 @@ class geoname
 
     public static function findTheBest($lat,$lng)
     {
-        $res= self::findNearby($lat, $lng, 'T', 5);
+        //$res= self::findNearby($lat, $lng, 'T', 5);
+        $res=false;
         if (!$res) $res= self::findNearby($lat, $lng, null, 5);
         if (!$res) $res= self::findCountrySubdivision($lat, $lng);
         if ($res===null) {

@@ -14,7 +14,7 @@ Georigami
  @foreach ($blocs->results as $bloc)
 
             <div class=' bloc clearfix'>
-              <img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} view"></a>
+              <img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} view">
 
               <a href='{{ $bloc->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4>

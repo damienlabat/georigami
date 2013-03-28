@@ -20,6 +20,22 @@ class Bloc_Controller extends Base_Controller
         return View::make('index')->with(array('blocs'=>$blocs, 'face'=>$face ));
     }
 
+
+    /**
+     * return  index page with last saved profiles
+     *
+     * @return View
+     */
+    public function action_saved()
+    {   $perPage=7*5;
+
+
+        $saved=Savedview::with('bloc')->order_by('updated_at', 'desc')->paginate($perPage);
+        //print_r($saved);
+
+       return View::make('saved')->with(array('savedviews'=>$saved));
+    }
+
     /**
      * return map page
      *
@@ -145,6 +161,10 @@ class Bloc_Controller extends Base_Controller
                     // No profiler
                 }
             );
+
+            $params=Input::get();
+            self::save_view($bloc,$profilData, $params);
+
             return Response::make(
                 $data['svg'], 200, array(
                 'Content-Type' => 'image/svg+xml',
@@ -221,9 +241,9 @@ class Bloc_Controller extends Base_Controller
             $data['dx']=          0;
 
             if (($face=='N')||($face=='S'))
-                $data['dy']=      30/$bloc->hslices;
+                $data['dy']=      30/$bloc->hSlices;
             else
-                $data['dy']=      30/$bloc->vslices;
+                $data['dy']=      30/$bloc->vSlices;
 
             $data['dscale']=      0.2;
             $data['header']=      true;
@@ -232,6 +252,29 @@ class Bloc_Controller extends Base_Controller
             $svg= self::profil_svg($profilData, $data);
 
             File::put($bloc->getDirectory('svg').'bloc'.$bloc->id.$face.'.svg', $svg );
+    }
+
+
+     /**save reduce profil svg image
+     * @param  Bloc $bloc
+     * @param  string $params face to show (N|W|S|E)
+     * @param  array $profilData
+     * @return void
+     */
+    private function save_view($bloc,$profilData,$params)
+    {
+            if (!$saved_view=Savedview::where('bloc_id', '=', $bloc->id)->where('params','=',json_encode($params))->first()) {
+                $saved_view = new Savedview;
+                $saved_view->params = json_encode($params);
+                $bloc->saved_views()->insert($saved_view);
+            }
+
+            $params['header']=      true;
+            $params['reduce']=      true;
+
+            $svg= self::profil_svg($profilData, $params);
+
+            File::put($saved_view->getDirectory().'view'.$saved_view->id.'.svg', $svg );
     }
 
 

@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">128</span></a></li>
+                <span class="label label-info">137</span></a></li>
 <li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
                 <span class="label label-info">1</span>
@@ -61,6 +61,7 @@
 <li><a href="#migrations/2013_02_04_112237_create_blocs_table.php"><i class="icon-file"></i>migrations/2013_02_04_112237_create_blocs_table.php</a></li>
 <li><a href="#models/bloc.php"><i class="icon-file"></i>models/bloc.php</a></li>
 <li><a href="#models/location.php"><i class="icon-file"></i>models/location.php</a></li>
+<li><a href="#models/savedview.php"><i class="icon-file"></i>models/savedview.php</a></li>
 <li><a href="#controllers/geoname.php"><i class="icon-file"></i>controllers/geoname.php</a></li>
 <li><a href="#controllers/bloc.php"><i class="icon-file"></i>controllers/bloc.php</a></li>
 <li><a href="#controllers/base.php"><i class="icon-file"></i>controllers/base.php</a></li>
@@ -70,6 +71,7 @@
 <li><a href="#libraries/basemodel.php"><i class="icon-file"></i>libraries/basemodel.php</a></li>
 <li><a href="#routes.php"><i class="icon-file"></i>routes.php</a></li>
 <li><a href="#bundles.php"><i class="icon-file"></i>bundles.php</a></li>
+<li><a href="#views/saved.blade.php"><i class="icon-file"></i>views/saved.blade.php</a></li>
 <li><a href="#views/layout.blade.php"><i class="icon-file"></i>views/layout.blade.php</a></li>
 <li><a href="#views/bloc_layout.blade.php"><i class="icon-file"></i>views/bloc_layout.blade.php</a></li>
 <li><a href="#views/bloc_3d.blade.php"><i class="icon-file"></i>views/bloc_3d.blade.php</a></li>
@@ -234,7 +236,7 @@
 </div>
 <div class="package-contents">
 <a name="models/bloc.php" id="models/bloc.php"></a><h3>
-<i class="icon-file"></i>models/bloc.php<small style="float: right;padding-right: 10px;">11</small>
+<i class="icon-file"></i>models/bloc.php<small style="float: right;padding-right: 10px;">12</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -266,36 +268,41 @@
 <tr class="error">
 <td>error</td>
 <td>12</td>
+<td>No DocBlock was found for method saved_views()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
 <td>No DocBlock was found for method getDirectoryNum()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>17</td>
+<td>23</td>
 <td>No DocBlock was found for method getDirectory()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>38</td>
+<td>44</td>
 <td>No DocBlock was found for method profil_data()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>68</td>
+<td>74</td>
 <td>No DocBlock was found for method validate_coords()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>114</td>
+<td>120</td>
 <td>No DocBlock was found for method save_coords()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>122</td>
+<td>128</td>
 <td>No DocBlock was found for method get_coords()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>129</td>
+<td>135</td>
 <td>No DocBlock was found for method count_with()</td>
 </tr>
 </tbody>
@@ -381,6 +388,50 @@
 </table></div>
 </div>
 <div class="package-contents">
+<a name="models/savedview.php" id="models/savedview.php"></a><h3>
+<i class="icon-file"></i>models/savedview.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file models/savedview.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>3</td>
+<td>No DocBlock was found for \savedview</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for property $timestamps</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>7</td>
+<td>No DocBlock was found for method bloc()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>12</td>
+<td>No DocBlock was found for method getDirectoryNum()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>17</td>
+<td>No DocBlock was found for method getDirectory()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
 <a name="controllers/geoname.php" id="controllers/geoname.php"></a><h3>
 <i class="icon-file"></i>controllers/geoname.php<small style="float: right;padding-right: 10px;">1</small>
 </h3>
@@ -399,7 +450,7 @@
 </div>
 <div class="package-contents">
 <a name="controllers/bloc.php" id="controllers/bloc.php"></a><h3>
-<i class="icon-file"></i>controllers/bloc.php<small style="float: right;padding-right: 10px;">2</small>
+<i class="icon-file"></i>controllers/bloc.php<small style="float: right;padding-right: 10px;">3</small>
 </h3>
 <div><table class="table markers table-bordered">
 <thead><tr>
@@ -415,8 +466,13 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>215</td>
+<td>235</td>
 <td>No DocBlock was found for method save_svg()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>264</td>
+<td>No DocBlock was found for method save_view()</td>
 </tr>
 </tbody>
 </table></div>
@@ -532,27 +588,27 @@
 </tr>
 <tr class="error">
 <td>error</td>
-<td>105</td>
+<td>106</td>
 <td>No DocBlock was found for method getISO3166()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>113</td>
+<td>114</td>
 <td>No DocBlock was found for method getFCode()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>121</td>
+<td>122</td>
 <td>No DocBlock was found for method getFcl()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>129</td>
+<td>130</td>
 <td>No DocBlock was found for method continentCode()</td>
 </tr>
 <tr class="error">
 <td>error</td>
-<td>137</td>
+<td>138</td>
 <td>No DocBlock was found for method getIcon()</td>
 </tr>
 </tbody>
@@ -613,6 +669,23 @@
 <td>error</td>
 <td>0</td>
 <td>No page-level DocBlock was found in file bundles.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="views/saved.blade.php" id="views/saved.blade.php"></a><h3>
+<i class="icon-file"></i>views/saved.blade.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file views/saved.blade.php</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -1847,7 +1920,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-28T15:14:33+01:00.<br></footer></div>
+            generated on 2013-03-28T20:29:48+01:00.<br></footer></div>
 </div>
 </body>
 </html>

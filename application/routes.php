@@ -45,6 +45,12 @@ Route::get('/last', array(
      ));
 
 
+Route::get('/saved', array(
+        'as'     => 'saved',
+        'uses'   => 'bloc@saved'
+     ));
+
+
 
 
 

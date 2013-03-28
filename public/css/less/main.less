@@ -141,6 +141,23 @@ div.bloc2 {
         }
 }
 
+div.bloc3 {
+    overflow: hidden;
+    float: left;
+    position:relative;
+    width: 226px;
+    height: 226px;
+    line-height: 226px;
+    border-radius: 3px 3px 3px 3px;
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding:30px;
+    margin:15px;
+    margin-bottom:30px;
+}
+
+
 
 
 
@@ -157,7 +174,7 @@ img.flag {
 
 
 
-div.bloc a {
+div.bloc a, div.bloc3 a {
     background: none repeat scroll 0 0 rgba(240, 240, 240, 0.75);
     line-height: 20px;
     display: block;
@@ -173,12 +190,16 @@ div.bloc a {
     font-size:0.8em;
 }
 
+div.bloc3 a {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
+    }
 
-div.bloc:hover a{
+
+div.bloc:hover a, div.bloc3:hover a{
     left: 0;
 }
 
-div.bloc a {
+div.bloc a, div.bloc3 a {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
