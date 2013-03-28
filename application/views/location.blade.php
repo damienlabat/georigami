@@ -57,21 +57,19 @@ Georigami - {{$location->name}}
       <div class='row'>
 
   @foreach ($location->blocs as $bloc)
-        <a href='{{$bloc->get_url() }}' class='span6'>
-            <div class=' bloc2 clearfix'>
-              <div class='span2'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} face"></div>
 
-              <div class='span3'>
-                <br/>
-                altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>
-                {{$bloc->width}}m x {{$bloc->height}}m<br/>
-                slices: {{$bloc->vslices}} x {{$bloc->hslices}}<br/>
+            <div class='bloc2 clearfix'>
+            <div class='title'><a href='{{$bloc->get_url() }}'>altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m |
+                {{$bloc->width}}m x {{$bloc->height}}m |
+                slices: {{$bloc->vslices}} x {{$bloc->hslices}} |
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
-                <br/>
-                {{$bloc->created_at}}<br/>
+                {{$bloc->created_at}}</a></div>
+              <div class='row'>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=N'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}N.svg" title="North face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=W'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}W.svg" title="West face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=S'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}S.svg" title="South face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=E'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}E.svg" title="Est face"></a></div>
               </div>
-            </div>
-              </a>
 
     @endforeach
   </div>

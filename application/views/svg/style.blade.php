@@ -28,7 +28,7 @@
 
     /* preview */
     #svgprofil.preview polygon {
-      fill: url(#preview);
+      fill: white;
     }
 
     #svgprofil.preview polyline.topline {
@@ -108,6 +108,16 @@
       fill: black;
     }
     #svgprofil.joydiv2 polyline.topline {
+      stroke: white;
+      stroke-width: 0.1;
+    }
+
+            /* JOY DIVISION 3 */
+
+    #svgprofil.joydiv3 polygon {
+      fill: black;
+    }
+    #svgprofil.joydiv3 polyline.topline {
       stroke: white;
       stroke-width: 0.1;
     }

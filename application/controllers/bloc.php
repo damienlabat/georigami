@@ -11,7 +11,7 @@ class Bloc_Controller extends Base_Controller
      * @return View
      */
     public function action_index()
-    {	$perPage=4*5;
+    {	$perPage=7*5;
 
         $face= Input::get('face', 'N');
 
@@ -219,7 +219,12 @@ class Bloc_Controller extends Base_Controller
 
             $data['style']=       'preview';
             $data['dx']=          0;
-            $data['dy']=          0.75;
+
+            if (($face=='N')||($face=='S'))
+                $data['dy']=      30/$bloc->hslices;
+            else
+                $data['dy']=      30/$bloc->vslices;
+
             $data['dscale']=      0.2;
             $data['header']=      true;
             $data['reduce']=      true;
