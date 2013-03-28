@@ -131,6 +131,11 @@ class Bloc_Controller extends Base_Controller
 
             $data=array_merge($data, $profilData);
 
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg')) self::save_svg($bloc,'N');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg')) self::save_svg($bloc,'E');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg')) self::save_svg($bloc,'S');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg')) self::save_svg($bloc,'W');
+
         }
 
         if ($show=='download') {
@@ -140,10 +145,12 @@ class Bloc_Controller extends Base_Controller
                     // No profiler
                 }
             );
-            return Response::make($data['svg'], 200, array(
+            return Response::make(
+                $data['svg'], 200, array(
                 'Content-Type' => 'image/svg+xml',
                 'Content-Disposition' => 'attachment; filename="'.$locname.$locid.$data['face'].'.svg"'
-                ));
+                )
+            );
 
         }
 
@@ -167,8 +174,9 @@ class Bloc_Controller extends Base_Controller
         if (!isset($options['dx']))     $options['dx']=0;
         if (!isset($options['dy']))     $options['dy']=0;
         if (!isset($options['dscale'])) $options['dscale']=0;
-        if (!isset($options['header'])) $options['header']='';
+        if (!isset($options['header'])) $options['header']=false;
         if (!isset($options['svg_hscale'])) $options['svg_hscale']=100;
+        if (!isset($options['reduce'])) $options['reduce']=false;
 
         $data=array_merge($profilData, $options);
 
@@ -179,11 +187,6 @@ class Bloc_Controller extends Base_Controller
     }
 
 
-
-    public function action_download_profil($locname,$locid,$blocid)
-    {
-        return 'yep';
-    }
 
     /**
      * return bloc json data
@@ -202,43 +205,30 @@ class Bloc_Controller extends Base_Controller
         return Response::json($res);
     }
 
-    /**
-     * return reduce profil svg image
-     *
-     * @param  int  $id   bloc id
-     * @param  string   $face face to show (N|W|S|E)
-     * @return Response SVG
+
+
+    /**save reduce profil svg image
+     * @param  Bloc $bloc
+     * @param  string $face face to show (N|W|S|E)
+     * @return void
      */
-    public function action_svg($id,$face)
+    private function save_svg($bloc,$face)
     {
-        $cacheName='action_svg'.$id.$face;
 
-        Event::override(
-            'laravel.done', function(){
-                // No profiler
-            }
-        );
+            $profilData=$bloc->profil_data($face);
 
-        if (Cache::has($cacheName))    return Cache::get($cacheName);
+            $data['style']=       'preview';
+            $data['dx']=          0;
+            $data['dy']=          0.75;
+            $data['dscale']=      0.2;
+            $data['header']=      true;
+            $data['reduce']=      true;
 
-        //TODO use profil_svg
-        $color=       Input::get('color', '#aaa');
-        if (!$bloc=Bloc::find($id)) return Response::error('404');
+            $svg= self::profil_svg($profilData, $data);
 
-        $data=array('id'=>$id, 'color'=> $color );
-
-        $data=array_merge($data, $bloc->profil_data($face));
-
-
-
-         $svg=View::make('svgprofil')->with($data);
-         $response= Response::make($svg, 200, array('Content-Type' => 'image/svg+xml'));
-
-         Cache::forever($cacheName, $response);
-
-         return  $response;
-
+            File::put($bloc->getDirectory('svg').'bloc'.$bloc->id.$face.'.svg', $svg );
     }
+
 
     /**
      * Validate and add new bloc to database
@@ -307,6 +297,11 @@ class Bloc_Controller extends Base_Controller
         $bloc= $location->blocs()->insert($bloc);
 
         $bloc->save_coords($coords);
+
+        self::save_svg($bloc,'N');
+        self::save_svg($bloc,'E');
+        self::save_svg($bloc,'S');
+        self::save_svg($bloc,'W');
 
         return Redirect::to_route('getJson', array($bloc->id));
 

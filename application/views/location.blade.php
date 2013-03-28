@@ -59,7 +59,7 @@ Georigami - {{$location->name}}
   @foreach ($location->blocs as $bloc)
         <a href='{{$bloc->get_url() }}' class='span6'>
             <div class=' bloc2 clearfix'>
-              <div class='span2'><img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{ $face }} face"></div>
+              <div class='span2'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} face"></div>
 
               <div class='span3'>
                 <br/>

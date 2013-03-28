@@ -51,7 +51,7 @@ $(function() {
       for (var j = 0; j < data.blocs.length; j++) {
         var bloc=data.blocs[j];
         html =html+'<div>';
-        html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'N.svg" title="North" width="64px">';
+        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(bloc.id/100)+'/bloc'+bloc.id+'N.svg" title="North" width="64px">';
        /* html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'W.svg" title="West" width="100px">';
         html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'S.svg" title="South" width="100px">';
         html =html+'<img src="'+Georigami.baseurl+'/bloc'+bloc.id+'E.svg" title="Est" width="100px">';*/

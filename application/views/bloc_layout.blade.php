@@ -28,7 +28,7 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
         <div id='blocinfo' class='row' data-id='{{$bloc->id}}' data-vscale='{{$vscale}}' data-face='{{$face}}' data-view='{{$show}}'>
 
             <div class="span2">
-               <img src="{{URL::to_route('svg', array($bloc->id,$face)) }}" title="{{$face}} view"  class="hidden-phone bloc-face">
+               <img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{$face}} view"  class="hidden-phone bloc-face">
             </div>
             <div class="span2">
               <a href='{{ $bloc->location->get_url() }}'>

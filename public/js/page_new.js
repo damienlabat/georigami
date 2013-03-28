@@ -423,10 +423,10 @@ var startWork= function(data) {
       '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
       '<div class="row">'+
         '<a href="'+data.url+'">'+
-          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'N.svg" class="span2"/>'+
-          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'E.svg" class="span2"/>'+
-          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'S.svg" class="span2"/>'+
-          '<img src="'+Georigami.baseurl+'/bloc'+data.id+'W.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'E.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" class="span2"/>'+
+          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" class="span2"/>'+
           '<div class="span2">'+
             'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>'+
             data.width+'m x '+data.height+'m<br/>'+

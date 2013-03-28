@@ -130,15 +130,6 @@ Route::get('/bloc(:num).json', array(
      ));
 
 
-Route::get('/bloc(:num)(N|S|W|E).svg', array(
-        'as'     => 'svg',
-        'uses'   => 'bloc@svg'
-     ));
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 <?php
-echo $header;
+if ($header) echo HTML::SVG_header();
 
 $slCount= count($coords);
 
@@ -37,7 +37,9 @@ foreach ($coords as $k=>$slice) {
 
 $VB= $viewbox['left'].' '.$viewbox['top'].' '.($viewbox['right']-$viewbox['left']).' '.($viewbox['bottom']-$viewbox['top']);
 
-?><svg id='svgprofil' class='{{$style}}' viewBox="<?= $VB ?>" shape-rendering="geometricPrecision">
+?><svg id='svgprofil' class='{{$style}}' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   width="100%" height="100%" viewBox="<?= $VB ?>" shape-rendering="geometricPrecision" xml:space="preserve" >
+
 @render('svg.style')
 <rect class='rectbackground' x='-1000' y='-1000' width='5000' height='5000'/>
 @render('svg.defs')
@@ -49,13 +51,17 @@ foreach ($coords as $k=>$slice) {
   $Y=($k-$slCount/2) *$dy;
   $SCALE= 1-$dscale*((($slCount-1)-$k)/$slCount);
 
-  foreach ($slice->c as $m=>$c) $coord.=($c[0]-($dim/2))*$svg_hscale.','.(-$c[1])*$svg_vscale.',';
+  $di=1;
+  if ($reduce) $di=floor( count($slice->c)/50 )+1;
+
+  foreach ($slice->c as $m=>$c)
+    if ($m%$di==0) $coord.=($c[0]-($dim/2))*$svg_hscale.','.(-$c[1])*$svg_vscale.',';
 
   echo "
       <g id='slice".$k."' class='gslice' transform='translate(".$X.",".$Y.")'>
           <g transform='translate(".($dim/2)*$svg_hscale.",".$max*$svg_hscale.")'>
               <g class='gscale' transform='scale(".$SCALE.")'>
-                <polygon  points='".$coord . ($dim/2)*$svg_hscale.",".(0)*$svg_vscale.",".-($dim/2)*$svg_hscale.",".(0)*$svg_vscale."' fill='white'/>
+                <polygon  points='".$coord . ($dim/2)*$svg_hscale.",".(0.025)*$svg_vscale.",".-($dim/2)*$svg_hscale.",".(0.025)*$svg_vscale."' fill='white'/>
                 <polyline class='topline' points='".$coord."'/>
             </g>
         </g>

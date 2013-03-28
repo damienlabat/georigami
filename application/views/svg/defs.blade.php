@@ -1,4 +1,11 @@
-      <defs>
+    <defs>
+      <linearGradient id="preview" x1="0%" x2="0%" y1="0" y2="100%">
+        <stop offset="20%"    stop-color="#fff" stop-opacity="1" />
+        <stop offset="80%"  stop-color="#aaa" stop-opacity="1" />
+      </linearGradient>
+    </defs>
+
+    <defs>
       <linearGradient id="greygradient" x1="0%" x2="0%" y1="0" y2="100%">
         <stop offset="0%" stop-color="#aaa" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="1" />

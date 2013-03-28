@@ -9,9 +9,15 @@ class bloc extends BaseModel
         return $this->belongs_to('Location');
     }
 
-    private function getDirectory()
+    public function getDirectoryNum()
     {
-        $dir= path('public').'../data/'.floor( $this->id/100 ).'/';
+        return floor($this->id/100);
+    }
+
+    public function getDirectory($type='data')
+    {
+        if ($type=='svg') $dir= path('public').'./svg/'.$this->getDirectoryNum() .'/';
+            else $dir= path('public').'../data/'.$this->getDirectoryNum() .'/';
         if (!is_dir($dir)) mkdir($dir, 0777);
         return $dir;
     }

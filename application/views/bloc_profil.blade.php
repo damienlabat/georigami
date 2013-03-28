@@ -16,7 +16,8 @@ $styleList=array(
   'fillstyle3'=>  'fillstyle3',
   'fillstyle4'=>  'fillstyle4',
   'lines'=>       'lines',
-  'joydiv'=>      'joy division'
+  'joydiv'=>      'joy division',
+  'joydiv2'=>      'joy division 2'
   );
 
 ?>
