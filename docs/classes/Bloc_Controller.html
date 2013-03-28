@@ -34,7 +34,7 @@
                 <span class="label label-info">128</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul><li>todo 
-                <span class="label label-info">2</span>
+                <span class="label label-info">1</span>
 </li></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
@@ -59,19 +59,20 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public inherited"><a href="#method___call" title="__call :: Catch-all method for requests that can't be matched."><span class="description">Catch-all method for requests that can't be matched.</span><pre>__call()</pre></a></li>
-<li class="method public "><a href="#method_action_download_profil" title="action_download_profil :: "><span class="description">action_download_profil()
-        </span><pre>action_download_profil()</pre></a></li>
 <li class="method public "><a href="#method_action_get" title="action_get :: return bloc page"><span class="description">return bloc page</span><pre>action_get()</pre></a></li>
 <li class="method public "><a href="#method_action_getJson" title="action_getJson :: return bloc json data"><span class="description">return bloc json data</span><pre>action_getJson()</pre></a></li>
 <li class="method public "><a href="#method_action_index" title="action_index :: return  index page with last blocs"><span class="description">return  index page with last blocs</span><pre>action_index()</pre></a></li>
 <li class="method public "><a href="#method_action_location" title="action_location :: return location page"><span class="description">return location page</span><pre>action_location()</pre></a></li>
 <li class="method public "><a href="#method_action_map" title="action_map :: return map page"><span class="description">return map page</span><pre>action_map()</pre></a></li>
 <li class="method public "><a href="#method_action_store" title="action_store :: Validate and add new bloc to database"><span class="description">Validate and add new bloc to database</span><pre>action_store()</pre></a></li>
-<li class="method public "><a href="#method_action_svg" title="action_svg :: return reduce profil svg image"><span class="description">return reduce profil svg image</span><pre>action_svg()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method_profil_svg" title="profil_svg :: return svg profil image"><span class="description">return svg profil image</span><pre>profil_svg()</pre></a></li></ul>
+                    <ul>
+<li class="method private "><a href="#method_profil_svg" title="profil_svg :: return svg profil image"><span class="description">return svg profil image</span><pre>profil_svg()</pre></a></li>
+<li class="method private "><a href="#method_save_svg" title="save_svg :: "><span class="description">save_svg()
+        </span><pre>save_svg()</pre></a></li>
+</ul>
 </li>
 </ul>
 </div>
@@ -112,19 +113,6 @@
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>\Response</code></div>
-</div></div>
-</div>
-<a id="method_action_download_profil"></a><div class="element clickable method public method_action_download_profil" data-toggle="collapse" data-target=".method_action_download_profil .collapse">
-<h2>action_download_profil()
-        </h2>
-<pre>action_download_profil($locname, $locid, $blocid) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$locname</h4></div>
-<div class="subelement argument"><h4>$locid</h4></div>
-<div class="subelement argument"><h4>$blocid</h4></div>
 </div></div>
 </div>
 <a id="method_action_get"></a><div class="element clickable method public method_action_get" data-toggle="collapse" data-target=".method_action_get .collapse">
@@ -217,25 +205,6 @@
 <code>\Response</code>Bloc Json response</div>
 </div></div>
 </div>
-<a id="method_action_svg"></a><div class="element clickable method public method_action_svg" data-toggle="collapse" data-target=".method_action_svg .collapse">
-<h2>return reduce profil svg image</h2>
-<pre>action_svg(int $id, string $face) : \Response</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$id</h4>
-<code>int</code><p>bloc id</p></div>
-<div class="subelement argument">
-<h4>$face</h4>
-<code>string</code><p>face to show (N|W|S|E)</p>
-</div>
-<h3>Returns</h3>
-<div class="subelement response">
-<code>\Response</code>SVG</div>
-</div></div>
-</div>
 <a id="method_profil_svg"></a><div class="element clickable method private method_profil_svg" data-toggle="collapse" data-target=".method_profil_svg .collapse">
 <h2>return svg profil image</h2>
 <pre>profil_svg(array $profilData, array $options) : \View</pre>
@@ -257,6 +226,18 @@
 <div class="subelement response"><code>\View</code></div>
 </div></div>
 </div>
+<a id="method_save_svg"></a><div class="element clickable method private method_save_svg" data-toggle="collapse" data-target=".method_save_svg .collapse">
+<h2>save_svg()
+        </h2>
+<pre>save_svg($bloc, $face) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$bloc</h4></div>
+<div class="subelement argument"><h4>$face</h4></div>
+</div></div>
+</div>
 </div>
 </div>
 </div>
@@ -264,7 +245,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-03-27T10:20:51+01:00.<br></footer></div>
+            generated on 2013-03-28T11:44:19+01:00.<br></footer></div>
 </div>
 </body>
 </html>
