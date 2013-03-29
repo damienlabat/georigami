@@ -42,10 +42,6 @@ Georigami - {{$location->name}}
                   {{$location->adminname4}}<br/>
                   <a href='http://toolserver.org/~geohack/geohack.php?params={{$location->lat}}___N_{{$location->lng}}___E'/>{{$location->lat}}, {{$location->lng}}</a><br/>
 
-                  <br/>
-                  <h4>Nearest locations:</h4>
-                  TODO
-
         </div>
 
         <div class="span8">
@@ -70,6 +66,7 @@ Georigami - {{$location->name}}
                 <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=S'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}S.svg" title="South face"></a></div>
                 <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=E'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}E.svg" title="Est face"></a></div>
               </div>
+            </div>
 
     @endforeach
   </div>

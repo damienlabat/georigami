@@ -14,12 +14,12 @@ Georigami
  @foreach ($blocs->results as $bloc)
 
             <div class=' bloc clearfix'>
-              <img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} view">
+              <img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} view">
 
               <a href='{{ $bloc->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4>
                 @if ($bloc->location->countrycode!=='')
-                <img class='flag' src="{{URL::base()}}img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
+                <img class='flag' src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
                 @endif
                 {{Geoname::getISO3166($bloc->location->countrycode)}}<br/>
                 {{$bloc->location->adminname1}}<br/>

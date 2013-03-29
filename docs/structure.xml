@@ -888,12 +888,12 @@
       <error line="0" code="50007">No page-level DocBlock was found in file bundles.php</error>
     </parse_markers>
   </file>
-  <file path="views/saved.blade.php" hash="6726fdf353bf87c4d26e8a39eaaeb064" package="Default">
+  <file path="views/saved.blade.php" hash="6af9acb2cecbbc1dffff6ea91b15b27f" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/saved.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/layout.blade.php" hash="bff428b7447922ba3d524878c4e1d27b" package="Default">
+  <file path="views/layout.blade.php" hash="f07c523ea8b0b7fb88050a56249a7e25" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/layout.blade.php</error>
     </parse_markers>
@@ -913,12 +913,12 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/location.blade.php" hash="2934221699cb2f113dd7783edaa6fb32" package="Default">
+  <file path="views/location.blade.php" hash="7750fc1a8ec57cdfa30354d73135e11d" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/location.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/index.blade.php" hash="140e34a919fea9bfc652ce5abd82b1fc" package="Default">
+  <file path="views/index.blade.php" hash="634d80baaebdd36a88e05bc4b8618850" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/index.blade.php</error>
     </parse_markers>
@@ -948,12 +948,12 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/profil.blade.php" hash="f403e8ba4485a8e9e35f349ecce0951b" package="Default">
+  <file path="views/svg/profil.blade.php" hash="3b6c937cae54535334f003e333447813" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/profil.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/style.blade.php" hash="7ad73e76fccbbd0e754c3167be294c82" package="Default">
+  <file path="views/svg/style.blade.php" hash="644a2c9e354feb3b3b75dc23f029c031" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/style.blade.php</error>
     </parse_markers>

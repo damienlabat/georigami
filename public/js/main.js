@@ -55,10 +55,10 @@ $(function() {
 			$('<br/>').insertAfter(target);
 			target.removeClass().change(function(){
 				divnumber.val( target.val() );
-				divnumber.trigger('change');
+				//divnumber.trigger('change');
 			});
 
-			divnumber.change(function() {	target.val( divnumber.val() );	});
+			divnumber.change(function() {	target.val( divnumber.val() ); target.trigger('change');	});
 			divnumber.keypress(function() {	setTimeout( function() {target.val( divnumber.val() )},1);	});
 
 		}
@@ -116,6 +116,13 @@ $(function() {
 	if ($('body').hasClass('location'))      	Georigami.initLocation();
 	if ($('body').hasClass('map'))      		Georigami.initMap();
 	if ($('body').hasClass('new'))      		Georigami.initNew();
+
+
+
+	//reload cropped svg ( usefull with chrome )
+	setTimeout(function(){		$('body.savedindex img.profil').width( function(){ return $(this).width()-1; } );		},500	);
+	setTimeout(function(){		$('body.savedindex img.profil').width( function(){ return $(this).width()+1; } );		},510	);
+
 
 
 });
