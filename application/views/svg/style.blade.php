@@ -38,7 +38,7 @@
 
 
     /* white */
-    #svgprofil.white polygon {
+    #svgprofil.grey polygon {
       fill: url(#greygradient);
     }
 
@@ -56,11 +56,28 @@
     }
 
 
+  /*beetlejuice*/
+
+    #svgprofil.beetlejuice polygon {
+      fill: white;
+    }
+
+    #svgprofil.beetlejuice .odd polygon {
+      fill: black;
+    }
+
+    #svgprofil.beetlejuice polyline.topline {
+      stroke: none;
+    }
+
 
 
     /* FILLSTYLE */
     #svgprofil.fillstyle polygon {
       fill: url(#fillstyle);
+    }
+    #svgprofil.fillstyle polyline.topline {
+      stroke: none;
     }
 
 
@@ -69,6 +86,9 @@
     #svgprofil.fillstyle2 polygon {
       fill: url(#fillstyle2);
     }
+    #svgprofil.fillstyle2 polyline.topline {
+      stroke: none;
+    }
 
 
 
@@ -76,12 +96,18 @@
     #svgprofil.fillstyle3 polygon {
       fill: url(#fillstyle3);
     }
+    #svgprofil.fillstyle3 polyline.topline {
+      stroke: none;
+    }
 
 
 
     /* FILLSTYLE4 */
     #svgprofil.fillstyle4 polygon {
       fill: url(#fillstyle4);
+    }
+    #svgprofil.fillstyle4 polyline.topline {
+      stroke: none;
     }
 
 
@@ -114,12 +140,16 @@
 
             /* JOY DIVISION 3 */
 
+    #svgprofil.joydiv3 rect.rectbackground {
+      fill: black;
+    }
+
     #svgprofil.joydiv3 polygon {
       fill: black;
     }
     #svgprofil.joydiv3 polyline.topline {
       stroke: white;
-      stroke-width: 0.1;
+      stroke-width: 0.033;
     }
 
 

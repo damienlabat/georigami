@@ -60,7 +60,9 @@ foreach ($coords as $k=>$slice) {
     if ($m%$di==0) $coord.=($c[0]-($dim/2))*$svg_hscale.','.(-$c[1])*$svg_vscale.',';
 
   echo "
-      <g id='slice".$k."' class='gslice' transform='translate(".$X.",".$Y.")'>
+      <g id='slice".$k."' class='gslice";
+      if ($k%2==1) echo " odd";
+      echo "' transform='translate(".$X.",".$Y.")'>
           <g transform='translate(".($dim/2)*$svg_hscale.",".$max*$svg_hscale.")'>
               <g class='gscale' transform='scale(".$SCALE.")'>
                 <polygon  points='".$coord . ($dim/2)*$svg_hscale.",".(0.025)*$svg_vscale.",".-($dim/2)*$svg_hscale.",".(0.025)*$svg_vscale."' fill='white'/>

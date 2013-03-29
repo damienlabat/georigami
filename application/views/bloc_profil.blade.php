@@ -11,10 +11,11 @@ Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
 
 $styleList=array(
   ''=>            'default',
-  'white'=>       'white',
+  'grey'=>       'grey',
   'fillstyle2'=>  'fillstyle2',
   'fillstyle3'=>  'fillstyle3',
   'fillstyle4'=>  'fillstyle4',
+  'beetlejuice'=>  'beetlejuice',
   'lines'=>       'lines',
   'joydiv'=>      'joy division',
   'joydiv2'=>      'joy division 2',

@@ -343,14 +343,14 @@
       <full_name>\Bloc_Controller</full_name>
       <docblock line="2">
         <description>Main controler for bloc</description>
-        <long-description></long-description>
+        <long-description/>
       </docblock>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="Default">
         <name>action_index</name>
         <full_name>action_index</full_name>
         <docblock line="8">
           <description>return  index page with last blocs</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="8" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
@@ -361,7 +361,7 @@
         <full_name>action_saved</full_name>
         <docblock line="24">
           <description>return  index page with last saved profiles</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="24" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
@@ -372,12 +372,12 @@
         <full_name>action_saved_show</full_name>
         <argument line="39">
           <name>$locname</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="39">
           <name>$id</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -386,7 +386,7 @@
         <full_name>action_map</full_name>
         <docblock line="48">
           <description>return map page</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="48" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
@@ -397,7 +397,7 @@
         <full_name>action_location</full_name>
         <docblock line="74">
           <description>return location page</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="74" name="param" description="location name" type="string" variable="$locname">
             <type by_reference="false">string</type>
           </tag>
@@ -410,12 +410,12 @@
         </docblock>
         <argument line="81">
           <name>$locname</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="81">
           <name>$locationid</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -424,7 +424,7 @@
         <full_name>action_get</full_name>
         <docblock line="106">
           <description>return bloc page</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="106" name="param" description="location name" type="string" variable="$locname">
             <type by_reference="false">string</type>
           </tag>
@@ -443,17 +443,17 @@
         </docblock>
         <argument line="115">
           <name>$locname</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="115">
           <name>$locid</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="115">
           <name>$blocid</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="115">
@@ -467,7 +467,7 @@
         <full_name>profil_svg</full_name>
         <docblock line="195">
           <description>return svg profil image</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="195" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
             <type by_reference="false">array</type>
           </tag>
@@ -481,7 +481,7 @@
         </docblock>
         <argument line="204">
           <name>$profilData</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="204">
@@ -495,7 +495,7 @@
         <full_name>action_getJson</full_name>
         <docblock line="226">
           <description>return bloc json data</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="226" name="param" description="bloc id" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
@@ -508,7 +508,7 @@
         </docblock>
         <argument line="233">
           <name>$id</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="233">
@@ -522,12 +522,12 @@
         <full_name>save_svg</full_name>
         <argument line="250">
           <name>$bloc</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="250">
           <name>$face</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -536,17 +536,17 @@
         <full_name>save_view</full_name>
         <argument line="279">
           <name>$bloc</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="279">
           <name>$profilData</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
         <argument line="279">
           <name>$params</name>
-          <default></default>
+          <default/>
           <type/>
         </argument>
       </method>
@@ -555,7 +555,7 @@
         <full_name>action_store</full_name>
         <docblock line="297">
           <description>Validate and add new bloc to database</description>
-          <long-description></long-description>
+          <long-description/>
           <tag line="297" name="return" description="Bloc Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
@@ -943,17 +943,17 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_print.blade.php" hash="75a7b5a8442a121ccf92f2037b028c7d" package="Default">
+  <file path="views/bloc_print.blade.php" hash="0b5ab62539bfb2f3d3bfc29329b20af0" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/profil.blade.php" hash="25176d9389d63232ea0a210578095b43" package="Default">
+  <file path="views/svg/profil.blade.php" hash="f403e8ba4485a8e9e35f349ecce0951b" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/profil.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/style.blade.php" hash="e5c15d2db09e5a57206cc8c6c302afe1" package="Default">
+  <file path="views/svg/style.blade.php" hash="7ad73e76fccbbd0e754c3167be294c82" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/style.blade.php</error>
     </parse_markers>
@@ -963,7 +963,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/defs.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_profil.blade.php" hash="8f12a157d7542fd312a2771444864243" package="Default">
+  <file path="views/bloc_profil.blade.php" hash="861d463e8285009b101bfd036f2bfbd7" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_profil.blade.php</error>
     </parse_markers>
