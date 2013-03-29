@@ -7,11 +7,11 @@ $(function() {
 
   var showLoading= function(content, pp) {
       $('#status .text').html(content);
-      if (pp!==null) {
+      if (pp!==undefined) {
           if (!$('#status .progress').length) $('<div class="progress progress-striped active"><div class="bar" style="width: '+(pp*100)+'%;"></div></div>').appendTo( $('#status') );
           else $('#status .progress .bar').css('width',(pp*100)+'%');
 
-          if (pp==1) $('#status .progress').addClass('progress-success');
+          //if (pp==1) $('#status .progress').addClass('progress-success');
         }
         else $('#status .progress').remove();
 
@@ -326,10 +326,6 @@ $('#input-search').change( function(){
         Georigami.setStatus('ready');
       }
 
-
-
-
-
        function plotElevation(results, status) {
            if (status!='OK') {
             Georigami.alert('GOOGLE ELEVATION API ERROR',status );
@@ -349,14 +345,14 @@ $('#input-search').change( function(){
               delete post.vSlicesObj;
               delete post.hSlicesObj;
 
-
+              showLoading( 'show result' );
               $.ajax({
                 url: Georigami.baseurl+'/new',
                 type: "POST",
                 data: post,
                 success: function(data){
 
-                  showLoading( 'show result' );
+
                   var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
                   Georigami.results.push( { data:data } );
                   showLoading( '' );
@@ -365,10 +361,12 @@ $('#input-search').change( function(){
                 });
 
               }
-       }
-
+       };
 
     };
+
+
+
 
 
 
