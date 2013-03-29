@@ -37,9 +37,14 @@
 
 
 
-    /* white */
+    /* grey */
     #svgprofil.grey polygon {
       fill: url(#greygradient);
+    }
+
+    #svgprofil.grey polyline.topline {
+      stroke: black;
+      stroke-width: 0.005;
     }
 
      /* lines */
