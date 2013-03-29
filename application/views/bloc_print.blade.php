@@ -22,7 +22,7 @@ print@endsection
         <fieldset>
           vertical scale <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
           <label class="checkbox">
-            <input type='checkbox' name='hidecut' <?php if ($hidecut=='on') echo "checked='checked'" ?>/> hide cut
+            <input type='checkbox' name='hidecut' <?php if ($hidecut=='on') echo "checked='checked'" ?>/> hide cut lines
           </label>
           <label class="checkbox">
             <input type='checkbox' name='hidetext' <?php if ($hidetext=='on') echo "checked='checked'" ?>/> hide text
