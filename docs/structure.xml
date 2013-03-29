@@ -336,21 +336,21 @@
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/geoname.php</error>
     </parse_markers>
   </file>
-  <file path="controllers/bloc.php" hash="d08fd178801819086fa29155ac8f5110" package="Default">
+  <file path="controllers/bloc.php" hash="37edab37873bbee33eaf28894b51f4e3" package="Default">
     <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Bloc_Controller</name>
       <full_name>\Bloc_Controller</full_name>
       <docblock line="2">
         <description>Main controler for bloc</description>
-        <long-description/>
+        <long-description></long-description>
       </docblock>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="13" package="Default">
         <name>action_index</name>
         <full_name>action_index</full_name>
         <docblock line="8">
           <description>return  index page with last blocs</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="8" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
@@ -361,7 +361,7 @@
         <full_name>action_saved</full_name>
         <docblock line="24">
           <description>return  index page with last saved profiles</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="24" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
@@ -372,12 +372,12 @@
         <full_name>action_saved_show</full_name>
         <argument line="39">
           <name>$locname</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="39">
           <name>$id</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -386,7 +386,7 @@
         <full_name>action_map</full_name>
         <docblock line="48">
           <description>return map page</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="48" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
@@ -397,7 +397,7 @@
         <full_name>action_location</full_name>
         <docblock line="74">
           <description>return location page</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="74" name="param" description="location name" type="string" variable="$locname">
             <type by_reference="false">string</type>
           </tag>
@@ -410,12 +410,12 @@
         </docblock>
         <argument line="81">
           <name>$locname</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="81">
           <name>$locationid</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
@@ -424,7 +424,7 @@
         <full_name>action_get</full_name>
         <docblock line="106">
           <description>return bloc page</description>
-          <long-description/>
+          <long-description></long-description>
           <tag line="106" name="param" description="location name" type="string" variable="$locname">
             <type by_reference="false">string</type>
           </tag>
@@ -443,17 +443,17 @@
         </docblock>
         <argument line="115">
           <name>$locname</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="115">
           <name>$locid</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="115">
           <name>$blocid</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
         <argument line="115">
@@ -462,114 +462,114 @@
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="199" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="204" package="Default">
         <name>profil_svg</name>
         <full_name>profil_svg</full_name>
-        <docblock line="190">
+        <docblock line="195">
           <description>return svg profil image</description>
-          <long-description/>
-          <tag line="190" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
+          <long-description></long-description>
+          <tag line="195" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="190" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
+          <tag line="195" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="190" name="return" description="" type="\View">
+          <tag line="195" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
-          <tag line="190" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
+          <tag line="195" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
         </docblock>
-        <argument line="199">
+        <argument line="204">
           <name>$profilData</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="199">
+        <argument line="204">
           <name>$options</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="228" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="233" package="Default">
         <name>action_getJson</name>
         <full_name>action_getJson</full_name>
-        <docblock line="221">
+        <docblock line="226">
           <description>return bloc json data</description>
-          <long-description/>
-          <tag line="221" name="param" description="bloc id" type="int" variable="$id">
+          <long-description></long-description>
+          <tag line="226" name="param" description="bloc id" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="221" name="param" description="add profil data to json" type="boolean" variable="$withData">
+          <tag line="226" name="param" description="add profil data to json" type="boolean" variable="$withData">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="221" name="return" description="Json response" type="\Response">
+          <tag line="226" name="return" description="Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
-        <argument line="228">
+        <argument line="233">
           <name>$id</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="228">
+        <argument line="233">
           <name>$withData</name>
           <default>FALSE</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="245" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="250" package="Default">
         <name>save_svg</name>
         <full_name>save_svg</full_name>
-        <argument line="245">
+        <argument line="250">
           <name>$bloc</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="245">
+        <argument line="250">
           <name>$face</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="274" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="279" package="Default">
         <name>save_view</name>
         <full_name>save_view</full_name>
-        <argument line="274">
+        <argument line="279">
           <name>$bloc</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="274">
+        <argument line="279">
           <name>$profilData</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
-        <argument line="274">
+        <argument line="279">
           <name>$params</name>
-          <default/>
+          <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="297" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="302" package="Default">
         <name>action_store</name>
         <full_name>action_store</full_name>
-        <docblock line="292">
+        <docblock line="297">
           <description>Validate and add new bloc to database</description>
-          <long-description/>
-          <tag line="292" name="return" description="Bloc Json response" type="\Response">
+          <long-description></long-description>
+          <tag line="297" name="return" description="Bloc Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
       </method>
     </class>
     <markers>
-      <todo line="330">better error message</todo>
+      <todo line="335">better error message</todo>
     </markers>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/bloc.php</error>
       <error line="39" code="50010">No DocBlock was found for method action_saved_show()</error>
-      <error line="245" code="50010">No DocBlock was found for method save_svg()</error>
-      <error line="274" code="50010">No DocBlock was found for method save_view()</error>
+      <error line="250" code="50010">No DocBlock was found for method save_svg()</error>
+      <error line="279" code="50010">No DocBlock was found for method save_view()</error>
     </parse_markers>
   </file>
   <file path="controllers/base.php" hash="8fce5114c9608d243b749e75747961bd" package="Default">
@@ -943,7 +943,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_print.blade.php" hash="e1be18bfa0c34e8a46ac0dddba1616b2" package="Default">
+  <file path="views/bloc_print.blade.php" hash="75a7b5a8442a121ccf92f2037b028c7d" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>

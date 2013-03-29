@@ -178,7 +178,7 @@ img.flag {
 
 
 div.bloc a, div.bloc3 a {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.85);
     line-height: 20px;
     display: block;
     height: 58%;
@@ -266,7 +266,12 @@ input[type='range'] {
         stroke-linecap:round
         }
 
-    svg.svgprint .svgcut   {
+    svg.svgprint .svgcut  {
+        stroke:none;
+        fill: none;
+        }
+
+    .showcut svg.svgprint .svgcut   {
         stroke:#000;
         fill: none;
         stroke-width:0.15;
@@ -274,7 +279,12 @@ input[type='range'] {
         stroke-dasharray: 0.75,0.5
         }
 
-    svg.svgprint text {
+    svg.svgprint text  {
+        stroke:none;
+        fill: none;
+        }
+
+    .showtext svg.svgprint text {
         fill:#000;
         font-family:'Josefin Sans';
         font-size:2px;
@@ -312,6 +322,7 @@ input[type='range'] {
     body.print .navbar,
     body.print .pager,
     body.print .nav,
+    body.print .btn,
     body.print form{
         display: none;
     }

@@ -19,12 +19,23 @@ print@endsection
 ?>
       <a id='profildownload' class='btn pull-right' href='#' onclick="window.print();return false;">print</a>
       <form method='get' class='form-inline'>
-        vertical scale <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
-        <input type='submit' value='update' class='vs-update btn'/>
+        <fieldset>
+          vertical scale <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
+          <label class="checkbox">
+            <input type='checkbox' name='hidecut' <?php if ($hidecut=='on') echo "checked='checked'" ?>/> hide cut
+          </label>
+          <label class="checkbox">
+            <input type='checkbox' name='hidetext' <?php if ($hidetext=='on') echo "checked='checked'" ?>/> hide text
+          </label>
+          <input type='submit' value='update' class='vs-update btn'/>
+        </fieldset>
       </form>
 
 
-  <div class='pull-left span12'>
+  <div class='pull-left span12<?php
+    if ($hidecut!='on') echo ' showcut';
+    if ($hidetext!='on') echo ' showtext';
+  ?>'>
   <h4>horizontal</h4>
 
   @foreach ($bloc->coords->h as $slice)
@@ -47,7 +58,10 @@ print@endsection
   @endforeach
   </div>
 
-  <div class='pull-left span12'>
+  <div class='pull-left span12<?php
+    if ($hidecut!='on') echo ' showcut';
+    if ($hidetext!='on') echo ' showtext';
+  ?>'>
   <h4>vertical</h4>
 
     <?php $reverse_vslices=array_reverse($bloc->coords->v)  ?>

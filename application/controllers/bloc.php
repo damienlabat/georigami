@@ -141,6 +141,11 @@ class Bloc_Controller extends Base_Controller
             'face'=>       $face,
         );
 
+        if ($show=='print') {
+            $data['hidecut']=       Input::get('hidecut', null);
+            $data['hidetext']=      Input::get('hidetext',null);
+        }
+
         if (($show=='profil')||($show=='download')) {
 
             $profilData=$bloc->profil_data($face);
