@@ -17,11 +17,12 @@ print@endsection
   $w= $bloc->width  / max( $bloc->width, $bloc->height );
   $h= $bloc->height / max( $bloc->width, $bloc->height );
 ?>
-
+      <a id='profildownload' class='btn pull-right' href='#' onclick="window.print();return false;">print</a>
       <form method='get' class='form-inline'>
         vertical scale <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
         <input type='submit' value='update' class='vs-update btn'/>
       </form>
+
 
   <div class='pull-left span12'>
   <h4>horizontal</h4>

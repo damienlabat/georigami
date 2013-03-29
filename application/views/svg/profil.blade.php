@@ -38,7 +38,9 @@ foreach ($coords as $k=>$slice) {
 $VB= $viewbox['left'].' '.$viewbox['top'].' '.($viewbox['right']-$viewbox['left']).' '.($viewbox['bottom']-$viewbox['top']);
 
 ?><svg id='svgprofil' class='{{$style}}' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-   width="100%" height="100%" viewBox="<?= $VB ?>" shape-rendering="geometricPrecision" xml:space="preserve" >
+   width="100%" height="100%" viewBox="<?= $VB ?>" shape-rendering="geometricPrecision" xml:space="preserve"<?php
+   if ($crop) echo '  preserveAspectRatio="xMidYMid slice"';
+?>>
 
 @render('svg.style')
 <rect class='rectbackground' x='-1000' y='-1000' width='5000' height='5000'/>

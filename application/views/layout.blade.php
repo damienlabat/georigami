@@ -46,6 +46,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li>{{HTML::link_to_route('index', 'Last ones')}}</li>
+                            <li>{{HTML::link_to_route('saved', 'Last saved')}}</li>
                             <li>{{HTML::link_to_route('map', 'Map')}}</li>
                             <li>{{HTML::link_to_route('new', 'Build your own')}}</li>
                         </ul>

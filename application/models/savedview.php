@@ -21,4 +21,9 @@ class savedview extends BaseModel
         return $dir;
     }
 
+    public function get_url()
+    {
+            return URL::to_route('saved_show', array( Str::slug($this->bloc->location->name),  $this->id ));
+    }
+
 }

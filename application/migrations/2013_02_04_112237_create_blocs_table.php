@@ -87,9 +87,9 @@ class Create_Blocs_Table
      */
     public function down()
     {
+        Schema::drop('savedviews');
         Schema::drop('blocs');
         Schema::drop('locations');
-        Schema::drop('savedviews');
 
     }
 

@@ -11,7 +11,7 @@ class Bloc_Controller extends Base_Controller
      * @return View
      */
     public function action_index()
-    {	$perPage=7*5;
+    {	$perPage=24;
 
         $face= Input::get('face', 'N');
 
@@ -27,13 +27,22 @@ class Bloc_Controller extends Base_Controller
      * @return View
      */
     public function action_saved()
-    {   $perPage=7*5;
-
+    {   $perPage=12;
 
         $saved=Savedview::with('bloc')->order_by('updated_at', 'desc')->paginate($perPage);
-        //print_r($saved);
 
-       return View::make('saved')->with(array('savedviews'=>$saved));
+        return View::make('saved')->with(array('savedviews'=>$saved));
+    }
+
+
+
+    public function action_saved_show($locname,$id)
+    {
+        if (!$saved= Savedview::with('bloc')->find($id)) return Response::error('404');
+        if (Str::slug($saved->bloc->location->name)!=$locname) return Response::error('404');
+
+        $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
+        return Redirect::to($url);
     }
 
     /**
@@ -197,6 +206,7 @@ class Bloc_Controller extends Base_Controller
         if (!isset($options['header'])) $options['header']=false;
         if (!isset($options['svg_hscale'])) $options['svg_hscale']=100;
         if (!isset($options['reduce'])) $options['reduce']=false;
+        if (!isset($options['crop']))   $options['crop']=false;
 
         $data=array_merge($profilData, $options);
 
@@ -241,9 +251,9 @@ class Bloc_Controller extends Base_Controller
             $data['dx']=          0;
 
             if (($face=='N')||($face=='S'))
-                $data['dy']=      30/$bloc->hSlices;
+                $data['dy']=      30/$bloc->hslices;
             else
-                $data['dy']=      30/$bloc->vSlices;
+                $data['dy']=      30/$bloc->vslices;
 
             $data['dscale']=      0.2;
             $data['header']=      true;
@@ -270,6 +280,7 @@ class Bloc_Controller extends Base_Controller
             }
 
             $params['header']=      true;
+            $params['crop']=      true;
             $params['reduce']=      true;
 
             $svg= self::profil_svg($profilData, $params);
@@ -326,11 +337,11 @@ class Bloc_Controller extends Base_Controller
         $bloc->lat =      $input['lat'];
         $bloc->lng =      $input['lng'];
 
-        $bloc->hSamples = $input['hSamples'];
-        $bloc->vSamples = $input['vSamples'];
+        $bloc->hsamples = $input['hSamples'];
+        $bloc->vsamples = $input['vSamples'];
 
-        $bloc->hSlices =  $input['hSlices'];
-        $bloc->vSlices =  $input['vSlices'];
+        $bloc->hslices =  $input['hSlices'];
+        $bloc->vslices =  $input['vSlices'];
 
         $bloc->rotate =   $input['rotate'];
 

@@ -50,6 +50,11 @@ Route::get('/saved', array(
         'uses'   => 'bloc@saved'
      ));
 
+Route::get('/saved/(:any)_(:num)', array(
+        'as'     => 'saved_show',
+        'uses'   => 'bloc@saved_show'
+     ));
+
 
 
 
