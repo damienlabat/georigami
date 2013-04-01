@@ -19,7 +19,7 @@
       fill: none;
     }
 
-    #svgprofil polygon {
+    #svgprofil polygon,#svgprofil .gslice rect {
       fill: white;
       stroke: none;
     }
@@ -51,7 +51,7 @@
     #svgprofil.lines rect.rectbackground {
       fill: white;
     }
-    #svgprofil.lines polygon {
+    #svgprofil.lines polygon, #svgprofil.lines .gslice rect {
       fill: white;
       fill-opacity: 0.2;
     }
@@ -63,11 +63,11 @@
 
   /*beetlejuice*/
 
-    #svgprofil.beetlejuice polygon {
+    #svgprofil.beetlejuice polygon, #svgprofil.beetlejuice .gslice rect {
       fill: white;
     }
 
-    #svgprofil.beetlejuice .odd polygon {
+    #svgprofil.beetlejuice .odd polygon,#svgprofil.beetlejuice .gslice.odd rect {
       fill: black;
     }
 
@@ -95,6 +95,10 @@
       stroke: none;
     }
 
+    #svgprofil.fillstyle2 .gslice rect {
+      fill: black;
+    }
+
 
 
     /* FILLSTYLE3 */
@@ -103,6 +107,9 @@
     }
     #svgprofil.fillstyle3 polyline.topline {
       stroke: none;
+    }
+    #svgprofil.fillstyle3 .gslice rect {
+      fill: #E1645D;
     }
 
 
@@ -114,6 +121,9 @@
     #svgprofil.fillstyle4 polyline.topline {
       stroke: none;
     }
+    #svgprofil.fillstyle4 .gslice rect {
+      fill: #45836C;
+    }
 
 
 
@@ -121,7 +131,7 @@
     #svgprofil.joydiv rect.rectbackground {
       fill: black;
     }
-    #svgprofil.joydiv polygon {
+    #svgprofil.joydiv polygon, #svgprofil.joydiv .gslice rect {
       fill: black;
     }
     #svgprofil.joydiv polyline.topline {
@@ -135,7 +145,7 @@
     #svgprofil.joydiv2 rect.rectbackground {
       fill: black;
     }
-    #svgprofil.joydiv2 polygon {
+    #svgprofil.joydiv2 polygon, #svgprofil.joydiv2 .gslice rect {
       fill: black;
     }
     #svgprofil.joydiv2 polyline.topline {
@@ -149,7 +159,7 @@
       fill: black;
     }
 
-    #svgprofil.joydiv3 polygon {
+    #svgprofil.joydiv3 polygon, #svgprofil.joydiv3 .gslice rect {
       fill: black;
     }
     #svgprofil.joydiv3 polyline.topline {

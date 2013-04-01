@@ -65,8 +65,10 @@ foreach ($coords as $k=>$slice) {
       echo "' transform='translate(".$X.",".$Y.")'>
           <g transform='translate(".($dim/2)*$svg_hscale.",".$max*$svg_hscale.")'>
               <g class='gscale' transform='scale(".$SCALE.")'>
+                <rect x='".-($svg_hscale/2)."' y='".-$svg_vscale*0.002."' width='".$svg_hscale."' height='".$svg_vscale*0.1."'/>
                 <polygon  points='".$coord . ($dim/2)*$svg_hscale.",".(0)*$svg_vscale.",".-($dim/2)*$svg_hscale.",".(0)*$svg_vscale."' fill='white'/>
                 <polyline class='topline' points='".$coord."'/>
+
             </g>
         </g>
     </g>".PHP_EOL;
