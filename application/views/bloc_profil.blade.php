@@ -57,17 +57,17 @@ $styleList=array(
 
         <div>
           <label  for="vscale">vertical scale</label>
-          <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0" max="5">
+          <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0">
         </div><br/>
 
         <div>
           <label  for="dx">translate X</label>
-          <input type="range" step="0.01" min="-5" max="5" id="input-translateX" name='dx' value='{{ $dx }}'/>
+          <input type="range" step="0.01" min="-8" max="8" id="input-translateX" name='dx' value='{{ $dx }}'/>
         </div><br/>
 
         <div>
           <label  for="dy">translate Y</label>
-          <input type="range" step="0.01" min="-2.5" max="5" id="input-translateY" name='dy' value='{{ $dy }}'/>
+          <input type="range" step="0.01" min="-4" max="8" id="input-translateY" name='dy' value='{{ $dy }}'/>
         </div><br/>
 
         <div>

@@ -30,7 +30,7 @@ $(function() {
           $(this).attr('href', 'bloc' + blocid + '_' + action + '?vscale=' + vscale + '&face=' + face);
       });
 
-      $('#blocinfo img.bloc-face').attr('src',Georigami.baseurl+'/bloc' + blocid + face + '.svg');
+      $('#blocinfo img.bloc-face').attr('src',Georigami.baseurl+'/svg/'+Math.floor(blocid/100)+'/bloc' + blocid + face + '.svg');
 
     };
 

@@ -55,7 +55,6 @@ $(function() {
 			$('<br/>').insertAfter(target);
 			target.removeClass().change(function(){
 				divnumber.val( target.val() );
-				//divnumber.trigger('change');
 			});
 
 			divnumber.change(function() {	target.val( divnumber.val() ); target.trigger('change');	});
