@@ -41,6 +41,10 @@ class Bloc_Controller extends Base_Controller
         if (!$saved= Savedview::with('bloc')->find($id)) return Response::error('404');
         if (Str::slug($saved->bloc->location->name)!=$locname) return Response::error('404');
 
+        $params=json_decode($saved->params, true);
+        if (!file_exists($saved->getDirectory().'view'.$saved->id.'.svg'))
+            self::save_view($saved->bloc, $saved->bloc->profil_data($params['face']), $params);
+
         $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
         return Redirect::to($url);
     }
