@@ -67,7 +67,7 @@ class bloc extends BaseModel
             }
         }
 
-       // $data['max']=(floor($data['max']*1000)+1 ) / 1000;
+        //$data['max']=(floor($data['max']*1000)+1 ) / 1000;
         return $data;
     }
 
