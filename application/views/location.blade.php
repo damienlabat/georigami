@@ -33,7 +33,7 @@ Georigami - {{$location->name}}
         <div class="span4">
 
           <h4>{{$location->name}}</h4>
-                  <img src="{{URL::base()}}/img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ $location->countryname}}</a><br/>
+                  <img src="{{URL::base()}}img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ $location->countryname}}</a><br/>
                   <h4 title="{{$location->fcodedetail()}}">{{$location->fcodename()}}</h4>
                   {{$location->fclassname()}}<br/>
                   {{$location->adminname1}}<br/>
@@ -61,10 +61,10 @@ Georigami - {{$location->name}}
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
                 {{$bloc->created_at}}</a></div>
               <div class='row'>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=N'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}N.svg" title="North face"></a></div>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=W'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}W.svg" title="West face"></a></div>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=S'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}S.svg" title="South face"></a></div>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=E'><img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}E.svg" title="Est face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=N'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}N.svg" title="North face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=W'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}W.svg" title="West face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=S'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}S.svg" title="South face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=E'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}E.svg" title="Est face"></a></div>
               </div>
             </div>
 

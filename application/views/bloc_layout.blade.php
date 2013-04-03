@@ -28,13 +28,13 @@ Georigami - {{$bloc->location->name}} (bloc n° {{$bloc->id}})
         <div id='blocinfo' class='row' data-id='{{$bloc->id}}' data-vscale='{{$vscale}}' data-face='{{$face}}' data-view='{{$show}}'>
 
             <div class="span2">
-               <img src="{{URL::base()}}/svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{$face}} view"  class="hidden-phone bloc-face">
+               <img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{$face}} view"  class="hidden-phone bloc-face">
             </div>
             <div class="span2">
               <a href='{{ $bloc->location->get_url() }}'>
                <h4>{{$bloc->location->name}}</h4></a>
                @if ($bloc->location->countrycode!=='')
-                <img class="flag" src="{{URL::base()}}/img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ $bloc->location->countryname }}</a><br/>
+                <img class="flag" src="{{URL::base()}}img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ $bloc->location->countrycode }}" alt="" />  <a href='{{URL::to_route('map')}}#{{strtolower($bloc->location->countrycode)}}'>{{ $bloc->location->countryname }}</a><br/>
               @endif
                 <span title="{{ $bloc->location->fcodedetail() }}">{{ $bloc->location->fcodename() }}</span><br/>
 

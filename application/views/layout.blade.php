@@ -54,9 +54,9 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{__('georigami.currentlang')}} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                               @if (Config::get('application.language')!='en')
-                              <li><a href="{{URL::base()}}/en"><img src="{{URL::base()}}/img/flags/gb.png" alt=""/> English</a></li>@endif
+                              <li><a href="{{URL::base()}}"><img src="{{URL::base()}}img/flags/gb.png" alt=""/> English</a></li>@endif
                               @if (Config::get('application.language')!='fr')
-                              <li><a href="{{URL::base()}}"><img src="{{URL::base()}}/img/flags/fr.png" alt=""/> Français</a></li>@endif
+                              <li><a href="{{URL::base()}}fr"><img src="{{URL::base()}}img/flags/fr.png" alt=""/> Français</a></li>@endif
 
                             </ul>
                           </li>
