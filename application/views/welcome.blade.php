@@ -6,8 +6,7 @@ welcome@endsection
 @section('content')
             <div class="hero-unit">
                 <h1>Georigami</h1>
-                <p>Un machin pour faire des montagnes en papier</p>
+                <p>{{__('georigami.welcome')}}</p>
             </div>
 
-            Hello
 @endsection
