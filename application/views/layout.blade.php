@@ -44,10 +44,22 @@
                     <a class="brand" href="{{URL::home()}}" title='pas très fier de ce jeu de mot :s'>Georigami</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li>{{HTML::link_to_route('index', 'Last ones')}}</li>
-                            <li>{{HTML::link_to_route('saved', 'Last saved')}}</li>
-                            <li>{{HTML::link_to_route('map', 'Map')}}</li>
-                            <li>{{HTML::link_to_route('new', 'Build your own')}}</li>
+                            <li>{{HTML::link_to_route('index',  __('georigami.lastones'))}}</li>
+                            <li>{{HTML::link_to_route('saved',  __('georigami.lastsaved'))}}</li>
+                            <li>{{HTML::link_to_route('map',    __('georigami.map'))}}</li>
+                            <li>{{HTML::link_to_route('new',    __('georigami.build'))}}</li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{__('georigami.currentlang')}} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              @if (Config::get('application.language')!='en')
+                              <li><a href="{{URL::base()}}/en"><img src="{{URL::base()}}/img/flags/gb.png" alt=""/> English</a></li>@endif
+                              @if (Config::get('application.language')!='fr')
+                              <li><a href="{{URL::base()}}"><img src="{{URL::base()}}/img/flags/fr.png" alt=""/> Français</a></li>@endif
+
+                            </ul>
+                          </li>
                         </ul>
                     </div>
                 </div>

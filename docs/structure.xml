@@ -76,7 +76,7 @@
       <error line="3" code="50000">No DocBlock was found for \Create_Blocs_Table</error>
     </parse_markers>
   </file>
-  <file path="models/bloc.php" hash="b929421e180799722154fcfc1f396853" package="Default">
+  <file path="models/bloc.php" hash="1733f55cbebf6798d43d91247936113b" package="Default">
     <class final="false" abstract="false" namespace="global" line="3" package="Default">
       <extends>\BaseModel</extends>
       <name>bloc</name>
@@ -336,7 +336,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/geoname.php</error>
     </parse_markers>
   </file>
-  <file path="controllers/bloc.php" hash="37edab37873bbee33eaf28894b51f4e3" package="Default">
+  <file path="controllers/bloc.php" hash="c2f9d97198be411b2eca2c4f010d6cfa" package="Default">
     <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Bloc_Controller</name>
@@ -381,195 +381,195 @@
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="53" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="57" package="Default">
         <name>action_map</name>
         <full_name>action_map</full_name>
-        <docblock line="48">
+        <docblock line="52">
           <description>return map page</description>
           <long-description/>
-          <tag line="48" name="return" description="" type="\View">
+          <tag line="52" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="85" package="Default">
         <name>action_location</name>
         <full_name>action_location</full_name>
-        <docblock line="74">
+        <docblock line="78">
           <description>return location page</description>
           <long-description/>
-          <tag line="74" name="param" description="location name" type="string" variable="$locname">
+          <tag line="78" name="param" description="location name" type="string" variable="$locname">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="74" name="param" description="location id" type="int" variable="$locationid">
+          <tag line="78" name="param" description="location id" type="int" variable="$locationid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="74" name="return" description="" type="\View">
+          <tag line="78" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
         </docblock>
-        <argument line="81">
+        <argument line="85">
           <name>$locname</name>
           <default/>
           <type/>
         </argument>
-        <argument line="81">
+        <argument line="85">
           <name>$locationid</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="115" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="119" package="Default">
         <name>action_get</name>
         <full_name>action_get</full_name>
-        <docblock line="106">
+        <docblock line="110">
           <description>return bloc page</description>
           <long-description/>
-          <tag line="106" name="param" description="location name" type="string" variable="$locname">
+          <tag line="110" name="param" description="location name" type="string" variable="$locname">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="106" name="param" description="location id" type="int" variable="$locid">
+          <tag line="110" name="param" description="location id" type="int" variable="$locid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="106" name="param" description="bloc id" type="int" variable="$blocid">
+          <tag line="110" name="param" description="bloc id" type="int" variable="$blocid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="106" name="param" description="tab to show (profil|3d|print)" type="string" variable="$show">
+          <tag line="110" name="param" description="tab to show (profil|3d|print)" type="string" variable="$show">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="106" name="return" description="" type="\View">
+          <tag line="110" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
         </docblock>
-        <argument line="115">
+        <argument line="119">
           <name>$locname</name>
           <default/>
           <type/>
         </argument>
-        <argument line="115">
+        <argument line="119">
           <name>$locid</name>
           <default/>
           <type/>
         </argument>
-        <argument line="115">
+        <argument line="119">
           <name>$blocid</name>
           <default/>
           <type/>
         </argument>
-        <argument line="115">
+        <argument line="119">
           <name>$show</name>
           <default>null</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="204" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="208" package="Default">
         <name>profil_svg</name>
         <full_name>profil_svg</full_name>
-        <docblock line="195">
+        <docblock line="199">
           <description>return svg profil image</description>
           <long-description/>
-          <tag line="195" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
+          <tag line="199" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="195" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
+          <tag line="199" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="195" name="return" description="" type="\View">
+          <tag line="199" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
-          <tag line="195" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
+          <tag line="199" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
         </docblock>
-        <argument line="204">
+        <argument line="208">
           <name>$profilData</name>
           <default/>
           <type/>
         </argument>
-        <argument line="204">
+        <argument line="208">
           <name>$options</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="233" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="237" package="Default">
         <name>action_getJson</name>
         <full_name>action_getJson</full_name>
-        <docblock line="226">
+        <docblock line="230">
           <description>return bloc json data</description>
           <long-description/>
-          <tag line="226" name="param" description="bloc id" type="int" variable="$id">
+          <tag line="230" name="param" description="bloc id" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="226" name="param" description="add profil data to json" type="boolean" variable="$withData">
+          <tag line="230" name="param" description="add profil data to json" type="boolean" variable="$withData">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="226" name="return" description="Json response" type="\Response">
+          <tag line="230" name="return" description="Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
-        <argument line="233">
+        <argument line="237">
           <name>$id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="233">
+        <argument line="237">
           <name>$withData</name>
           <default>FALSE</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="250" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="254" package="Default">
         <name>save_svg</name>
         <full_name>save_svg</full_name>
-        <argument line="250">
+        <argument line="254">
           <name>$bloc</name>
           <default/>
           <type/>
         </argument>
-        <argument line="250">
+        <argument line="254">
           <name>$face</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="279" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="283" package="Default">
         <name>save_view</name>
         <full_name>save_view</full_name>
-        <argument line="279">
+        <argument line="283">
           <name>$bloc</name>
           <default/>
           <type/>
         </argument>
-        <argument line="279">
+        <argument line="283">
           <name>$profilData</name>
           <default/>
           <type/>
         </argument>
-        <argument line="279">
+        <argument line="283">
           <name>$params</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="302" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="306" package="Default">
         <name>action_store</name>
         <full_name>action_store</full_name>
-        <docblock line="297">
+        <docblock line="301">
           <description>Validate and add new bloc to database</description>
           <long-description/>
-          <tag line="297" name="return" description="Bloc Json response" type="\Response">
+          <tag line="301" name="return" description="Bloc Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
       </method>
     </class>
     <markers>
-      <todo line="335">better error message</todo>
+      <todo line="339">better error message</todo>
     </markers>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/bloc.php</error>
       <error line="39" code="50010">No DocBlock was found for method action_saved_show()</error>
-      <error line="250" code="50010">No DocBlock was found for method save_svg()</error>
-      <error line="279" code="50010">No DocBlock was found for method save_view()</error>
+      <error line="254" code="50010">No DocBlock was found for method save_svg()</error>
+      <error line="283" code="50010">No DocBlock was found for method save_view()</error>
     </parse_markers>
   </file>
   <file path="controllers/base.php" hash="8fce5114c9608d243b749e75747961bd" package="Default">
@@ -878,7 +878,7 @@
       <error line="27" code="50012">No short description for method starts_with()</error>
     </parse_markers>
   </file>
-  <file path="routes.php" hash="f6d476cbb8ef633050d997bcbb0fcd9a" package="Default">
+  <file path="routes.php" hash="b3116ee33bba4187a87ec8762b1968be" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file routes.php</error>
     </parse_markers>
@@ -893,7 +893,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/saved.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/layout.blade.php" hash="bc8f8af437f1aef7794126fb90798679" package="Default">
+  <file path="views/layout.blade.php" hash="7fc88eef1f739f3f5c67afedf8de871d" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/layout.blade.php</error>
     </parse_markers>
@@ -908,7 +908,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_3d.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/welcome.blade.php" hash="1066280a19e5bef3a2c9a394ec3f4432" package="Default">
+  <file path="views/welcome.blade.php" hash="ad674a4d65ea8f81d0f7aac13abbe399" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome.blade.php</error>
     </parse_markers>
@@ -948,7 +948,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/profil.blade.php" hash="1cba6e7bed21ea3de8114b2bc4b16196" package="Default">
+  <file path="views/svg/profil.blade.php" hash="fecae5f8bcf61893923ae59c98af4525" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/profil.blade.php</error>
     </parse_markers>
@@ -1018,6 +1018,11 @@
       <error line="0" code="50007">No page-level DocBlock was found in file language/en/validation.php</error>
     </parse_markers>
   </file>
+  <file path="language/en/georigami.php" hash="6982785b8944e2261bfb80a7f6a7c1db" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/en/georigami.php</error>
+    </parse_markers>
+  </file>
   <file path="language/ja/pagination.php" hash="0ef654579430c821a5baa54de5527910" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file language/ja/pagination.php</error>
@@ -1056,6 +1061,11 @@
   <file path="language/fr/validation.php" hash="d88b535ae9f86d80473241ae3685c006" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file language/fr/validation.php</error>
+    </parse_markers>
+  </file>
+  <file path="language/fr/georigami.php" hash="9455456e3759cd5324c2a519f0b89717" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file language/fr/georigami.php</error>
     </parse_markers>
   </file>
   <file path="language/bg/pagination.php" hash="83b7d41e35ae692b720da86309c262eb" package="Default">
@@ -1203,7 +1213,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file config/strings.php</error>
     </parse_markers>
   </file>
-  <file path="config/local/application.php" hash="9cb7e5c6968cd7f5f5d8e4a3fe46e961" package="Default">
+  <file path="config/local/application.php" hash="a9b625b66adbae349654bd1756998487" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file config/local/application.php</error>
     </parse_markers>
