@@ -1,7 +1,5 @@
 @layout('bloc_layout')
 
-@section('title')
-Georigami - {{ $bloc->location->name }} (bloc n° {{$bloc->id }})@endsection
 
 @section('bodyclass')
 print@endsection
@@ -17,17 +15,17 @@ print@endsection
   $w= $bloc->width  / max( $bloc->width, $bloc->height );
   $h= $bloc->height / max( $bloc->width, $bloc->height );
 ?>
-      <a id='profildownload' class='btn pull-right' href='#' onclick="window.print();return false;">print</a>
+      <a id='profildownload' class='btn pull-right' href='#' onclick="window.print();return false;">{{__('georigami.print')}}</a>
       <form method='get' class='form-inline'>
         <fieldset>
-          vertical scale <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
+          {{__('georigami.verticalscale')}} <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
           <label class="checkbox">
-            <input type='checkbox' name='hidecut' <?php if ($hidecut=='on') echo "checked='checked'" ?>/> hide cut lines
+            <input type='checkbox' name='hidecut' <?php if ($hidecut=='on') echo "checked='checked'" ?>/> {{__('georigami.hidecutlines')}}
           </label>
           <label class="checkbox">
-            <input type='checkbox' name='hidetext' <?php if ($hidetext=='on') echo "checked='checked'" ?>/> hide text
+            <input type='checkbox' name='hidetext' <?php if ($hidetext=='on') echo "checked='checked'" ?>/> {{__('georigami.hidetext')}}
           </label>
-          <input type='submit' value='update' class='vs-update btn'/>
+          &nbsp;<input type='submit' value='{{__('georigami.update')}}' class='vs-update btn'/>
         </fieldset>
       </form>
 
@@ -36,7 +34,7 @@ print@endsection
     if ($hidecut!='on') echo ' showcut';
     if ($hidetext!='on') echo ' showtext';
   ?>'>
-  <h4>horizontal</h4>
+  <h4>{{__('georigami.horizontal')}}</h4>
 
   @foreach ($bloc->coords->h as $slice)
     <svg  width='{{$svgobj_width}}px' height='{{$svgobj_width*((($slice->m+0.12)*$svg_vscale)/( 1.02*$svg_hscale ))}}px'  class='svgprint pull-left' viewBox="{{ -0.01*$svg_hscale }} {{ -0.01*$svg_vscale }} {{ 1.02*$svg_hscale }} {{ ($slice->m+0.12)*$svg_vscale }}">
@@ -62,7 +60,7 @@ print@endsection
     if ($hidecut!='on') echo ' showcut';
     if ($hidetext!='on') echo ' showtext';
   ?>'>
-  <h4>vertical</h4>
+  <h4>{{__('georigami.vertical')}}</h4>
 
     <?php $reverse_vslices=array_reverse($bloc->coords->v)  ?>
   @foreach ($reverse_vslices as $slice)
@@ -88,7 +86,7 @@ print@endsection
 @endsection
 
 @section('bloc_menu')
-          <li class=""><a data-action="profil"  href="{{ $bloc->get_url('profil') }}?vscale={{$vscale}}&face={{$face}}">profil</a></li>
-          <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a></li>
-          <li class="active"><a href="#">print</a></li>
+          <li class=""><a data-action="profil"  href="{{ $bloc->get_url('profil') }}?vscale={{$vscale}}&face={{$face}}">{{__('georigami.profil')}}</a></li>
+          <li class=""><a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">{{__('georigami.3dview')}}</a></li>
+          <li class="active"><a href="#">{{__('georigami.printmodel')}}</a></li>
 @endsection

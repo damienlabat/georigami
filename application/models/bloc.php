@@ -28,6 +28,12 @@ class bloc extends BaseModel
         return $dir;
     }
 
+
+    public function get_created_at_localized()
+    {
+        return  date( Lang::line('date.complete')->get() ,strtotime($this->created_at) );
+    }
+
     /**
      * get url to block view
      * @param  ['3d'|'profil'|'print'] $show [description]

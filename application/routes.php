@@ -34,10 +34,8 @@
 
 
 
-
-
 Route::get('/', function(){
-        return View::make('welcome');
+        return View::make('welcome_'.Config::get('application.language'));
      });
 
 

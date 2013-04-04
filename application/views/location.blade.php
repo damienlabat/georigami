@@ -4,7 +4,7 @@
 location@endsection
 
 @section('title')
-Georigami - {{$location->name}}
+{{__('georigami.title')}} - {{$location->name}}
 @endsection
 
 @section('content')
@@ -33,9 +33,8 @@ Georigami - {{$location->name}}
         <div class="span4">
 
           <h4>{{$location->name}}</h4>
-                  <img src="{{URL::base()}}img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}">{{ $location->countryname}}</a><br/>
-                  <h4 title="{{$location->fcodedetail()}}">{{$location->fcodename()}}</h4>
-                  {{$location->fclassname()}}<br/>
+                  <img src="{{URL::base()}}img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}" class="countryname">{{ $location->countryname}}</a><br/>
+                  {{$location->fclname}}<br/>
                   {{$location->adminname1}}<br/>
                   {{$location->adminname2}}<br/>
                   {{$location->adminname3}}<br/>

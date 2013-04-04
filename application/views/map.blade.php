@@ -4,10 +4,11 @@
 map@endsection
 
 @section('title')
-Georigami - Map
+{{__('georigami.title')}} - {{__('georigami.map')}}
 @endsection
 
 @section('content')
+<h1>{{__('georigami.map')}}</h1>
 
 <?php
 /*$continentCode=null;*/ $countryCode=null; $adminName1=null; $adminName2=null; $adminName3=null; $adminName4=null; $ulopen=false;
@@ -19,16 +20,6 @@ Georigami - Map
     @foreach ($locations as $location)
 
        <?php
-       /*if ($continentCode!==$location->continentcode) {
-
-        if ($ulopen) { echo '</ul>'; $ulopen=false; }
-        if ($adminName1!==null) echo "</div>";
-        if ($countryCode!==null) echo "</div>";
-
-        echo '<h1>'. Geoname::continentCode($location->continentcode) .'</h1>';
-        $continentCode=$location->continentcode;
-        $countryCode=null; $adminName1=null; $adminName2plus=null;
-       }*/
 
        if ($countryCode!==$location->countrycode) {
 
@@ -37,11 +28,11 @@ Georigami - Map
         if ($countryCode!==null) echo "</div>";
 
         echo '<div class="row"><a name="'.strtolower($location->countrycode).'" class="anchor"></a>'
-        .'<h2>';
-        if ($location->countryname!=='')
+        .'<h2 class="countryname">';
+        if ($location->countrycode!=='')
           echo '<img class="flag" src="'.URL::base().'img/flags/'.strtolower($location->countrycode) .'.png" style="width:32px"><br/>';
 
-        echo ($location->countryname!=''?$location->countryname:'ocean')
+        echo ($location->countrycode!=''?$location->countryname:__('georigami.ocean'))
         .HTML::showcount( Bloc::count_with( array('countrycode'=>$location->countrycode) ) ). '</h2>';
 
         $countryCode=$location->countrycode;
@@ -64,27 +55,15 @@ Georigami - Map
         $adminName2=$location->adminname2;
        }
 
-    /*   if ($adminName3!==$location->adminname3) {
-        if ($ulopen) { echo '</ul>'; $ulopen=false; }
-        echo '<span>'. $location->adminname3 .'</span>';
-        $adminName3=$location->adminname3;
-       }
-
-       if ($adminName4!==$location->adminname4) {
-        if ($ulopen) { echo '</ul>'; $ulopen=false; }
-        echo '<span>'. $location->adminname4 .'</span>';
-        $adminName4=$location->adminname4;
-       }
-    */
 
        if (!$ulopen) { echo '<ul>'; $ulopen=true; }
        ?>
 
-            <li><a href="{{  $location->get_url() }}" title="{{$location->name}} ({{$location->fcodename()}})"><?php
-            if ($location->name!='')  echo $location->name;
+            <li><a href="{{  $location->get_url() }}" title="{{$location->name}}"><?php
+            if ($location->name!='unknown place')  echo $location->name;
             elseif  ($location->adminname4!='')  echo $location->adminname4;
             elseif  ($location->adminname3!='')  echo $location->adminname3;
-            else echo 'unnamed';
+            else echo __('georigami.unnamed');
             ?> {{ HTML::showcount( $location->blocs()->count() ) }}</a></li>
 
     @endforeach

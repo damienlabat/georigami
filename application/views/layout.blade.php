@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang='{{Config::get('application.language')}}' class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang='{{Config::get('application.language')}}' class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang='{{Config::get('application.language')}}' class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang='{{Config::get('application.language')}}' class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -84,7 +84,7 @@
         {{HTML::script("js/vendor/bootstrap.min.js")}}
         {{HTML::script("js/vendor/jquery-ui-1.10.1.custom.min.js")}}
 
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false&language={{Config::get('application.language')}}"></script>
         <!--{{HTML::script("js/markerclusterer.js")}} -->
 
           <!--script src="https://raw.github.com/mrdoob/three.js/master/build/three.js"></script-->

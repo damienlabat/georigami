@@ -4,11 +4,11 @@
 savedindex@endsection
 
 @section('title')
-Georigami
+{{__('georigami.title')}} - {{__('georigami.lastsaved')}}
 @endsection
 
 @section('content')
-<h1>Last saved profiles</h1>
+<h1>{{__('georigami.lastsaved')}}</h1>
 <div class="row">
 
  @foreach ($savedviews->results as $savedview)
@@ -19,9 +19,9 @@ Georigami
               <a href='{{ $savedview->get_url() }}'>
                <h4>{{$savedview->bloc->location->name}}</h4>
                 @if ($savedview->bloc->location->countrycode!=='')
-                <img class='flag' src="{{URL::base()}}img/flags/{{ strtolower($savedview->bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($savedview->bloc->location->countrycode) }}" alt=""/><br/>
+                <img class='flag' src="{{URL::base()}}img/flags/{{ strtolower($savedview->bloc->location->countrycode) }}.png" title="{{$savedview->bloc->location->countryname}}" alt=""/><br/>
                 @endif
-                {{Geoname::getISO3166($savedview->bloc->location->countrycode)}}<br/>
+                <span class='countryname'>{{$savedview->bloc->location->countryname}}</span><br/>
                 {{$savedview->bloc->location->adminname1}}<br/>
                <br/>
                 {{$savedview->created_at}}<br/>

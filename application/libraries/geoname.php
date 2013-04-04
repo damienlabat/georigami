@@ -19,16 +19,6 @@ class geoname
 
         $res = json_decode(file_get_contents($url), TRUE);
 
-        if (isset($res['geonames'])) {
-
-            foreach ($res['geonames'] as &$o) {
-                if (isset($o['countryCode']))   $o['country']= Geoname::getISO3166($o['countryCode']);
-                    else $o['country']='';
-                if (isset($o['fcode']))         $o['feature']= Geoname::getFCode($o['fcode']);
-                    else $o['feature']='';
-            }
-        }
-
         return $res;
     }
 
@@ -42,13 +32,6 @@ class geoname
         $url.= '&username='.Config::get('geoname.username');
 
         $res = json_decode(file_get_contents($url), TRUE);
-
-        foreach ($res['geonames'] as &$o) {
-            if (isset($o['countryCode']))   $o['country']= Geoname::getISO3166($o['countryCode']);
-                else $o['country']='';
-            if (isset($o['fcode']))         $o['feature']= Geoname::getFCode($o['fcode']);
-                else $o['feature']='';
-        }
 
         return $res;
     }
@@ -101,38 +84,6 @@ class geoname
 
         return $res;
 
-    }
-
-    public static function getISO3166( $code )
-    {
-        $list= json_decode(Config::get('geoname.iso_countries'), TRUE);
-
-        if (isset($list[$code])) return $list[$code];
-            return $code;
-    }
-
-    public static function getFCode( $code )
-    {
-        $list= json_decode(Config::get('geoname.fcodes'), TRUE);
-
-        if (isset($list[$code])) return $list[$code];
-            return array($code,'');
-    }
-
-    public static function getFcl( $code )
-    {
-        $list= json_decode(Config::get('geoname.fcl'), TRUE);
-
-        if (isset($list[$code])) return $list[$code];
-            return $code;
-    }
-
-    public static function continentCode( $code )
-    {
-        $list= json_decode(Config::get('geoname.continentcodes'), TRUE);
-
-        if (isset($list[$code])) return $list[$code];
-            return $code;
     }
 
     public static function getIcon( $code, $code2=false, $code3='default' )

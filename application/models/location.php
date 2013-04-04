@@ -17,7 +17,12 @@ class location extends BaseModel
 
     public function get_countryname()
     {
-        return Geoname::getISO3166($this->countrycode);
+        return Lang::line('geoname.'.$this->countrycode)->get();
+    }
+
+    public function get_fclname()
+    {
+        return Lang::line('geoname.fcl_'.$this->fcl)->get();
     }
 
     public function get_icon()
@@ -25,29 +30,6 @@ class location extends BaseModel
         return Geoname::getIcon($this->fcode, $this->fcl);
     }
 
-    public function continentname()
-    {
-        return Geoname::continentCode($this->continentcode);
-    }
-
-    public function fcodename()
-    {
-        $fcode=Geoname::getFCode($this->fcode);
-
-        return $fcode[0];
-    }
-
-    public function fcodedetail()
-    {
-        $fcode=Geoname::getFCode($this->fcode);
-
-        return $fcode[1];
-    }
-
-    public function fclassname()
-    {
-        return Geoname::getFcl($this->fcl);
-    }
 
     public static function getorcreate($lat,$lng)
     {

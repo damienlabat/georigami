@@ -4,11 +4,11 @@
 index@endsection
 
 @section('title')
-Georigami
+{{__('georigami.title')}} - {{__('georigami.lastones')}}
 @endsection
 
 @section('content')
-<h1>Last blocks</h1>
+<h1>{{__('georigami.lastones')}}</h1>
 <div class="row">
 
  @foreach ($blocs->results as $bloc)
@@ -17,19 +17,23 @@ Georigami
               <img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} view">
 
               <a href='{{ $bloc->get_url() }}'>
-               <h4>{{$bloc->location->name}}</h4>
+               <h4><?php
+            if ($bloc->location->name!='unknown place')  echo $bloc->location->name;
+            elseif  ($bloc->location->adminname4!='')  echo $bloc->location->adminname4;
+            elseif  ($bloc->location->adminname3!='')  echo $bloc->location->adminname3;
+            else echo __('georigami.unnamed');
+               ?></h4>
                 @if ($bloc->location->countrycode!=='')
-                <img class='flag' src="{{URL::base()}}img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{ Geoname::getISO3166($bloc->location->countrycode) }}" alt=""/><br/>
+                <img class='flag' src="{{URL::base()}}img/flags/{{ strtolower($bloc->location->countrycode) }}.png" title="{{$bloc->location->countryname}}" alt=""/><br/>
                 @endif
-                {{Geoname::getISO3166($bloc->location->countrycode)}}<br/>
+                <span class='countryname'>{{$bloc->location->countryname}}</span><br/>
                 {{$bloc->location->adminname1}}<br/>
-                altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m<br/>
+                {{__('georigami.altitude',array('from'=>round($bloc->min), 'to'=>round($bloc->max)))}}<br/>
                 {{$bloc->width}}m x {{$bloc->height}}m<br/>
-                rotation: {{$bloc->rotate}}°<br/>
-                slices: {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
-                {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
-                {{$bloc->created_at}}<br/>
-
+                {{__('georigami.rotation')}}: {{$bloc->rotate}}°<br/>
+                {{__('georigami.slices')}}: {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
+                {{__('georigami.samples')}}: {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}}<br/>
+                {{$bloc->created_at_localized}}
               </a>
 
             </div>

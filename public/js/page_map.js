@@ -47,7 +47,7 @@ $(function() {
       var data=Georigami.location_list[i];
       var latLng = new google.maps.LatLng( data.lat,data.lng );
 
-      var html='<a href="'+data.url+'"><h3 title="'+data.feature+'">'+data.name+'</h3><img src="'+Georigami.baseurl+'/img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> '+data.countryname+' '+data.adminname1+'<br/>';
+      var html='<a href="'+data.url+'"><h3 title="'+data.feature+'">'+data.name+'</h3><img src="'+Georigami.baseurl+'/img/flags/'+data.countrycode.toLowerCase()+'.png" title="'+data.countryname+'"/> <span class="countryname">'+data.countryname+'</span> '+data.adminname1+'<br/>';
       for (var j = 0; j < data.blocs.length; j++) {
         var bloc=data.blocs[j];
         html =html+'<div>';

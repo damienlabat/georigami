@@ -3,9 +3,6 @@
 @section('bodyclass')
 profil@endsection
 
-@section('title')
-Georigami - {{ $bloc->location->name }} (bloc n° {{ $bloc->id }})
-@endsection
 
 <?php
 
@@ -26,11 +23,6 @@ $styleList=array(
 
 @section('bloc_content')
 
-<?php
-
- // if ($max<1) $max=1;
-
-?>
 
 <div class='row'>
 
@@ -42,12 +34,16 @@ $styleList=array(
   </div>
 
     <div class="span4">
-
+{{__('georigami.title')}}
      <div id='facepicker' class="btn-group">
-        <a data-face='N' href='?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='N') active@endif">North face</a>
-        <a data-face='W' href='?vscale={{ $vscale }}&face=W&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='W') active@endif">West face</a>
-        <a data-face='S' href='?vscale={{ $vscale }}&face=S&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='S') active@endif">South face</a>
-        <a data-face='E' href='?vscale={{ $vscale }}&face=E&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='E') active@endif">East face</a>
+        <a data-face='N' href='?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='N')
+        active@endif">{{__('georigami.nface')}}</a>
+        <a data-face='W' href='?vscale={{ $vscale }}&face=W&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='W') active
+        @endif">{{__('georigami.wface')}}</a>
+        <a data-face='S' href='?vscale={{ $vscale }}&face=S&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='S') active
+        @endif">{{__('georigami.sface')}}</a>
+        <a data-face='E' href='?vscale={{ $vscale }}&face=E&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='E') active
+        @endif">{{__('georigami.eface')}}</a>
     </div>
 
   <div class=''>
@@ -56,27 +52,27 @@ $styleList=array(
         <input type='hidden' id='input-face' name='face' value='{{ $face }}'/>
 
         <div>
-          <label  for="vscale">vertical scale</label>
+          <label  for="vscale">{{__('georigami.verticalscale')}}</label>
           <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0">
         </div><br/>
 
         <div>
-          <label  for="dx">translate X</label>
+          <label  for="dx">{{__('georigami.xtranslate')}}</label>
           <input type="range" step="0.01" min="-8" max="8" id="input-translateX" name='dx' value='{{ $dx }}'/>
         </div><br/>
 
         <div>
-          <label  for="dy">translate Y</label>
+          <label  for="dy">{{__('georigami.ytranslate')}}</label>
           <input type="range" step="0.01" min="-4" max="8" id="input-translateY" name='dy' value='{{ $dy }}'/>
         </div><br/>
 
         <div>
-          <label  for="dscale">perspective</label>
+          <label  for="dscale">{{__('georigami.perspective')}}</label>
           <input type="range" step="0.001" min="0" max="1" id="input-scale" name='dscale' value='{{ $dscale }}'/>
         </div><br/>
 
         <div>
-          <label for="style">style</label>
+          <label for="style">{{__('georigami.style')}}</label>
           <select id='styleswicther' name='style'>
 <?php
 
@@ -91,10 +87,10 @@ foreach ($styleList as $key => $value) {
           </select>
         </div><br/>
 
-        <input type='submit' value='update' class='vs-update btn'/>
+        <input type='submit' value='{{__('georigami.update')}}' class='vs-update btn'/>
       </fieldset>
       </form>
-      <a id='profildownload' class='btn' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>save &amp; download</a>
+      <a id='profildownload' class='btn' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>{{__('georigami.savedownload')}}</a>
 
     </div>
 
@@ -106,13 +102,13 @@ foreach ($styleList as $key => $value) {
 
 @section('bloc_menu')
           <li class="active">
-            <a href="">profil</a>
+            <a href="">{{__('georigami.profil')}}</a>
           </li>
           <li class="">
-            <a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">preview 3D</a>
+            <a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">{{__('georigami.3dview')}}</a>
           </li>
           <li class="">
-            <a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">print</a>
+            <a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">{{__('georigami.printmodel')}}</a>
           </li>
 @endsection
 
