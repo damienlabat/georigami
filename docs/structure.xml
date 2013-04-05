@@ -295,7 +295,7 @@
       <error line="29" code="50010">No DocBlock was found for method get_created_at_localized()</error>
     </parse_markers>
   </file>
-  <file path="controllers/geoname.php" hash="d9470a14e2f625ed85ee8800debca011" package="Default">
+  <file path="controllers/geoname.php" hash="eeda7f7081b88403f2be215815dedc75" package="Default">
     <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Geoname_Controller</name>

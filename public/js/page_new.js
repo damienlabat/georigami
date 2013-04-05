@@ -76,8 +76,9 @@ $('#input-search').change( function(){
 
                  for (var i = 0; i< data.geonames.length; i++) {
                     var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
-                    if (data.geonames[i].countryCode!=undefined) html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
+                    if (data.geonames[i].countryCode!=undefined) html=html+'<img src="'+Georigami.baseurl+'img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].countryName+'"/> ';
                     html=html+data.geonames[i].name;
+                    if ((data.geonames[i].adminName1!=undefined)&&(data.geonames[i].adminName1!='')) html=html+' ('+data.geonames[i].adminName1+')';
                     html=html+'</a></li>';
 
                     $(html).appendTo( $('#search-result>ul') );
@@ -405,13 +406,13 @@ var startWork= function(data) {
 
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
-      '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> <span class="countryname">'+data.location.countryname+'</span><br/>'+data.location.name+'</a></td></tr>'+
+      '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> <span class="countryname">'+data.location.countryname+'</span><br/>'+data.location.name+'</a></td></tr>'+
       '<div class="row">'+
         '<a href="'+data.url+'">'+
-          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" class="span2" title="'+Lang.nface+'"/>'+
-          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'E.svg" class="span2" title="'+Lang.eface+'"/>'+
-          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" class="span2" title="'+Lang.sface+'"/>'+
-          '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" class="span2" title="'+Lang.wface+'"/>'+
+          '<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" class="span2" title="'+Lang.nface+'"/>'+
+          '<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'E.svg" class="span2" title="'+Lang.eface+'"/>'+
+          '<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" class="span2" title="'+Lang.sface+'"/>'+
+          '<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" class="span2" title="'+Lang.wface+'"/>'+
           '<div class="span2">'+
           Lang.altitude(Math.round(data.min),Math.round(data.max))+'<br/>'+
           data.width+'m x '+data.height+'m<br/>'+

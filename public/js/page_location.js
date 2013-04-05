@@ -52,10 +52,10 @@ $(function() {
 
 
 
-        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" title="'+Lang.nface+'" width="64px">'; //TODO! style in  css
-        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" title="'+Lang.wface+'" width="64px">';
-        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" title="'+Lang.sface+'" width="64px">';
-        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'E.svg" title="'+Lang.eface+'" width="64px">';
+        html =html+'<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" title="'+Lang.nface+'" width="64px">'; //TODO! style in  css
+        html =html+'<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" title="'+Lang.wface+'" width="64px">';
+        html =html+'<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" title="'+Lang.sface+'" width="64px">';
+        html =html+'<img src="'+Georigami.baseurl+'svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'E.svg" title="'+Lang.eface+'" width="64px">';
 
         html =html+'<br/>';
 
@@ -68,7 +68,7 @@ $(function() {
         html =html+'</a>';
 
 
-        var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'/img/ico/'+Georigami.location.icon+'.png', Georigami.baseurl+'/img/ico/shadow.png' );
+        var marker = createMarker( html , new google.maps.LatLng(data.lat,data.lng), Georigami.baseurl+'img/ico/'+Georigami.location.icon+'.png', Georigami.baseurl+'img/ico/shadow.png' );
 
       gridObj=createGrid(map, data, marker);
       bounds.union( gridObj.getBounds() );
