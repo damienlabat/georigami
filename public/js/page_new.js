@@ -410,7 +410,7 @@ var startWork= function(data) {
 
     var html='<div class="result">'+
       '<p class="index">result '+id+'</p>'+
-      '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> '+data.location.countryname+'<br/>'+data.location.name+'</a></td></tr>'+
+      '<a href="'+data.location.url+'"><img src="'+Georigami.baseurl+'/img/flags/'+data.location.countrycode.toLowerCase()+'.png" title="'+data.location.countryname+'"/> <span class="countryname">'+data.location.countryname+'</span><br/>'+data.location.name+'</a></td></tr>'+
       '<div class="row">'+
         '<a href="'+data.url+'">'+
           '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" class="span2"/>'+
