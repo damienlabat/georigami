@@ -126,7 +126,7 @@ class Bloc_Controller extends Base_Controller
         if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
 
         if (Str::slug($bloc->location->name)!=$locname)
-          return Redirect::to_route('location', array(Str::slug($bloc->location->name),$locid));
+          return Redirect::to_route('get', array(Str::slug($bloc->location->name),$locid,$blocid));
 
         $blocArray=$bloc->presenter();
 
