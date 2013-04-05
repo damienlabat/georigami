@@ -76,7 +76,7 @@ $('#input-search').change( function(){
 
                  for (var i = 0; i< data.geonames.length; i++) {
                     var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
-                    if (data.geonames[i].country!=='') html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
+                    if (data.geonames[i].countryCode!=undefined) html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
                     html=html+data.geonames[i].name;
                     html=html+'</a></li>';
 
