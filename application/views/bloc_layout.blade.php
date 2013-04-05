@@ -9,18 +9,18 @@
          <ul class="pager">
               @if ($prev!=null)
               <li class="previous">
-                  <a href="{{ $prev->get_url($show) }}?face={{$face}}" title="{{$prev->location->name}}">&larr; Older</a>
+                  <a href="{{ $prev->get_url($show) }}?face={{$face}}" title="{{$prev->location->name}}">&larr; {{__('georigami.older')}}</a>
               @else
               <li class="previous disabled">
-                  <a href="#">&larr; Older</a>
+                  <a href="#">&larr; {{__('georigami.older')}}</a>
               @endif
               </li>
               @if ($next!=null)
               <li class="next">
-                  <a href="{{ $next->get_url($show) }}?face={{$face}}" title="{{$next->location->name}}">Newer &rarr;</a>
+                  <a href="{{ $next->get_url($show) }}?face={{$face}}" title="{{$next->location->name}}">{{__('georigami.newer')}} &rarr;</a>
               @else
               <li class="next disabled">
-                  <a href="#">Newer &rarr;</a>
+                  <a href="#">{{__('georigami.newer')}} &rarr;</a>
               @endif
               </li>
           </ul>

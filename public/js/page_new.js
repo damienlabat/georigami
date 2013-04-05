@@ -51,7 +51,6 @@ $(function() {
 
 
 Georigami.setStatus(null);
-//showLoading( 'test', 0.35 );
 
 
 $('#input-search').change( function(){
@@ -63,7 +62,7 @@ $('#input-search').change( function(){
     return false;
   }
 
-  $('#search-result').html('<i class="loading"></i> searching ...');
+  $('#search-result').html('<i class="loading"></i> '+Lang.searching);
 
   $.ajax({
                 url: Georigami.baseurl+"/search",
@@ -74,13 +73,12 @@ $('#input-search').change( function(){
                  $('#search-result').html('');
 
                  if (data.geonames.length>0) $('#search-result').html('<ul></ul>');
-                  else $('#search-result').html('<div class="alert alert-error">no results for '+$('#input-search').val()+'</div>'); //TODO
+                  else $('#search-result').html('<div class="alert alert-error">'+Lang.noresultfor+$('#input-search').val()+'</div>'); //TODO
 
                  for (var i = 0; i< data.geonames.length; i++) {
                     var html='<li><a href="#" data-lat="'+data.geonames[i].lat+'" data-lng="'+data.geonames[i].lng+'">';
                     if (data.geonames[i].country!=='') html=html+'<img src="'+Georigami.baseurl+'/img/flags/'+ data.geonames[i].countryCode.toLowerCase()+'.png" title="'+data.geonames[i].country+'"/> ';
                     html=html+data.geonames[i].name;
-                    if (data.geonames[i].feature!=='') html=html+' ('+data.geonames[i].feature[0]+')';
                     html=html+'</a></li>';
 
                     $(html).appendTo( $('#search-result>ul') );
@@ -157,14 +155,8 @@ $('#input-search').change( function(){
       res.hSamples= res.hSampling* (res.vSlices+1) + 1;
       $('#input-horizontal-samples').val(res.hSamples);
 
-     /* res.vSamples= parseFloat( $('#input-vertical-samples').val() );
-      res.hSamples= parseFloat( $('#input-horizontal-samples').val() );*/
 
       res.bbox= Georigami.rectangle.getBounds(true);
-
-      //$('#request-count').html((res.vSlices+res.hSlices) + ' request (max by day: 2 500)');
-      //$('#location-count').html((res.vSlices*res.vSamples+res.hSlices*res.hSamples) + ' points (max by day: 25 000)');
-      // TODO estimate time
 
        if ((Georigami.rectangle.lat!==0)||(Georigami.rectangle.lng!==0)) {
           if (Georigami.status!='loading') Georigami.setStatus('ready');
@@ -298,7 +290,7 @@ $('#input-search').change( function(){
       var slice=result.slices[i];
       var pathstr='';
       var samples;
-      showLoading( 'loading slice '+(i+1)+'/'+result.slices.length, (i+1)/result.slices.length );
+      showLoading( Lang.loadingslice((i+1),result.slices.length), (i+1)/result.slices.length );
 
 
       var path=[];
@@ -345,9 +337,9 @@ $('#input-search').change( function(){
               delete post.vSlicesObj;
               delete post.hSlicesObj;
 
-              showLoading( 'show result' );
+              showLoading( Lang.loading );
               $.ajax({
-                url: Georigami.baseurl+'/new',
+                url: Georigami.baseurl+Georigami.lang+'/new',
                 type: "POST",
                 data: post,
                 success: function(data){
@@ -426,12 +418,12 @@ var startWork= function(data) {
           '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" class="span2"/>'+
           '<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" class="span2"/>'+
           '<div class="span2">'+
-            'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>'+
-            data.width+'m x '+data.height+'m<br/>'+
-            'rotation: '+data.rotate+'m<br/>'+
-            'slices: '+data.hslices+' x '+data.vslices+'<br/>'+
-            (data.vslices*data.vsamples + data.hslices*data.hsamples)+' samples<br/>'+
-            data.created_at+
+          Lang.altitude(Math.round(data.min),Math.round(data.max))+'<br/>'+
+          data.width+'m x '+data.height+'m<br/>'+
+          Lang.rotation+': '+data.rotate+'°<br/>'+
+          Lang.slices+': '+data.vslices+' x '+data.hslices+'<br/>'+
+          Lang.samples+': '+(data.vslices*data.vsamples+data.hslices*data.hsamples)+'<br/>'+
+            data.created_at_localized+
           '</div>'+
         '</a>'+
       "</div>"+

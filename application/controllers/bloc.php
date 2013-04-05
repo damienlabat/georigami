@@ -238,7 +238,6 @@ class Bloc_Controller extends Base_Controller
     {   if (!$bloc=Bloc::with('location')->find($id)) return Response::error('404');
         $res=$bloc->presenter();
         $res['location']=$bloc->location->presenter();
-        $res['location']['countryname']=Geoname::getISO3166($res['location']['countrycode']);
 
         if ($withData) $res['coords']= $bloc->get_coords();
         return Response::json($res);

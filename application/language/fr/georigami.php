@@ -12,6 +12,11 @@ return array(
     'map' => 'carte',
     'build' => 'charger un nouveau bloc',
 
+    'buildnew' => 'charger un nouveau bloc',
+
+    'older' => 'précédent',
+    'newer' => 'suivant',
+
     'altitude' => 'altitude de :fromm à :tom',
     'rotation' => 'rotation',
     'slices' => 'tranches',
@@ -20,17 +25,17 @@ return array(
     'unnamed' => 'lieu inconnu',
     'ocean' => 'océan',
 
-    'setarea' => 'set area',
+    'setarea' => 'zone',
 
     'latitude' => 'latitude',
     'longitude' => 'longitude',
-    'searchbyname' => 'search by name',
+    'searchbyname' => 'rechercher un lieu',
     'searchbynameplaceholder' => '',
-    'width' => 'width',
-    'height' => 'height',
+    'width' => 'largeur',
+    'height' => 'hauteur',
     'rotate' => 'rotate',
 
-    'setslices' => 'set slices',
+    'setslices' => 'paramètres',
 
     'hslices' => 'horizontal slice number',
     'vslices' => 'vertical slice number',
@@ -47,8 +52,8 @@ return array(
     'vxsamplingtip' => 'vertical X sampling',
     'vsamplingtip' => 'vertical sampling',
 
-    'loadbutton' => 'start',
-    'cancelbutton' => 'cancel',
+    'loadbutton' => 'démarrer',
+    'cancelbutton' => 'annuler',
 
     'printmodel' => 'imprimer le modèle',
     '3dview' => 'vue 3D',

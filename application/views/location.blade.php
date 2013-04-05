@@ -12,18 +12,18 @@ location@endsection
          <ul class="pager">
               @if ($prev!=null)
               <li class="previous">
-                  <a href="{{ $prev->get_url() }}" title="{{$prev->name}}">&larr; Older</a>
+                  <a href="{{ $prev->get_url() }}" title="{{$prev->name}}">&larr; {{__('georigami.older')}}</a>
               @else
               <li class="previous disabled">
-                  <a href="#">&larr; Older</a>
+                  <a href="#">&larr; {{__('georigami.older')}}</a>
               @endif
               </li>
               @if ($next!=null)
               <li class="next">
-                  <a href="{{ $next->get_url() }}" title="{{$next->name}}">Newer &rarr;</a>
+                  <a href="{{ $next->get_url() }}" title="{{$next->name}}">{{__('georigami.newer')}} &rarr;</a>
               @else
               <li class="next disabled">
-                  <a href="#">Newer &rarr;</a>
+                  <a href="#">{{__('georigami.newer')}} &rarr;</a>
               @endif
               </li>
           </ul>
@@ -54,23 +54,24 @@ location@endsection
   @foreach ($location->blocs as $bloc)
 
             <div class='bloc2 clearfix'>
-            <div class='title'><a href='{{$bloc->get_url() }}'>altitude: {{round($bloc->min)}}m to {{round($bloc->max)}}m |
-                {{$bloc->width}}m x {{$bloc->height}}m |
-                slices: {{$bloc->vslices}} x {{$bloc->hslices}} |
-                {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
-                {{$bloc->created_at}}</a></div>
+            <div class='title'><a href='{{$bloc->get_url() }}'>{{__('georigami.altitude',array('from'=>round($bloc->min), 'to'=>round($bloc->max)))}}&nbsp;|&nbsp;
+                {{$bloc->width}}m x {{$bloc->height}}m&nbsp;|&nbsp;
+                {{__('georigami.rotation')}}: {{$bloc->rotate}}°&nbsp;|&nbsp;
+                {{__('georigami.slices')}}: {{$bloc->hslices}} x {{$bloc->vslices}}&nbsp;|&nbsp;
+                {{__('georigami.samples')}}: {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}}&nbsp;|&nbsp;
+                {{$bloc->created_at_localized}}</a></div>
               <div class='row'>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=N'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}N.svg" title="North face"></a></div>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=W'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}W.svg" title="West face"></a></div>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=S'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}S.svg" title="South face"></a></div>
-                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=E'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}E.svg" title="Est face"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=N'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}N.svg" title="{{__('georigami.nface')}}"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=W'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}W.svg" title="{{__('georigami.wface')}}"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=S'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}S.svg" title="{{__('georigami.sface')}}"></a></div>
+                <div class='span3'><a href='{{$bloc->get_url('profil') }}?face=E'><img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}E.svg" title="{{__('georigami.eface')}}"></a></div>
               </div>
             </div>
 
     @endforeach
   </div>
 
- <a href='{{ URL::to('new') }}?lat={{$location->lat}}&lng={{$location->lng}}' class='btn btn-primary'>Build a new one</a>
+ <a href='{{ URL::to('new') }}?lat={{$location->lat}}&lng={{$location->lng}}' class='btn btn-primary'>{{__('georigami.buildnew')}}</a>
 
 @endsection
 

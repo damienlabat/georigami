@@ -46,24 +46,24 @@ $(function() {
       bounds.extend(latLng);
 
 
-      var html='<a href="'+Georigami.baseurl+'/bloc'+data.id+'">';
+      var html='<a href="'+Georigami.baseurl+Georigami.lang+'/'+Georigami.location.name+'_'+Georigami.location.id+'/bloc'+data.id+'">'; //TODO! style in  css
 
         //html =html+data.lat+', '+data.lng+'<br/>';
 
 
 
-        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'N.svg" title="North" width="100px">';
-        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'W.svg" title="West" width="100px">';
-        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'S.svg" title="South" width="100px">';
-        html =html+'<img src="'+Georigami.baseurl+'/bloc'+data.id+'E.svg" title="Est" width="100px">';
+        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'N.svg" title="'+Lang.nface+'" width="64px">'; //TODO! style in  css
+        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'W.svg" title="'+Lang.wface+'" width="64px">';
+        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'S.svg" title="'+Lang.sface+'" width="64px">';
+        html =html+'<img src="'+Georigami.baseurl+'/svg/'+Math.floor(data.id/100)+'/bloc'+data.id+'E.svg" title="'+Lang.eface+'" width="64px">';
 
         html =html+'<br/>';
 
-        html =html+'altitude: '+Math.round(data.min)+'m to '+Math.round(data.max)+'m<br/>';
+        html =html+Lang.altitude(Math.round(data.min),Math.round(data.max))+'<br/>';
         html =html+data.width+'m x '+data.height+'m<br/>';
-        html =html+'slices: '+data.vslices+' x '+data.hslices+'<br/>';
-        html =html+(data.vslices*data.vsamples+data.hslices*data.hsamples)+' samples<br/>';
-        html =html+'created at  '+data.created_at+'<br/>';
+        html =html+Lang.rotation+': '+data.rotate+'°<br/>';
+        html =html+Lang.slices+': '+data.vslices+' x '+data.hslices+'<br/>';
+        html =html+Lang.samples+': '+(data.vslices*data.vsamples+data.hslices*data.hsamples)+'<br/>';
 
         html =html+'</a>';
 

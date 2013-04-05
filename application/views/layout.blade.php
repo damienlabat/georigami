@@ -85,25 +85,14 @@
         {{HTML::script("js/vendor/jquery-ui-1.10.1.custom.min.js")}}
 
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false&language={{Config::get('application.language')}}"></script>
-        <!--{{HTML::script("js/markerclusterer.js")}} -->
+        {{HTML::script("js/markerclusterer.js")}}
 
-          <!--script src="https://raw.github.com/mrdoob/three.js/master/build/three.js"></script-->
-        <script>Georigami={baseurl:'{{URL::base()}}'};</script>
+        <script>Georigami={baseurl:'{{URL::base()}}', lang:'{{Config::get('application.language')}}'};</script>
         {{HTML::script("js/vendor/three.min.js")}}
-
-        <!--{{HTML::script("js/map.js")}}
-        {{HTML::script("js/3d.js")}}
-
-        {{HTML::script("js/page_new.js")}}
-        {{HTML::script("js/page_map.js")}}
-        {{HTML::script("js/page_location.js")}}
-        {{HTML::script("js/page_bloc.js")}}
+        {{HTML::script("js/lang/".Config::get('application.language').".js")}}
 
 
 
-        {{HTML::script("js/main.js")}}-->
-
-        <!-- TODO compile JS files -->
         {{HTML::script("js/combined.min.js")}}
 @yield('script')
 

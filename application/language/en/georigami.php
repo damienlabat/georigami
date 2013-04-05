@@ -12,6 +12,11 @@ return array(
     'map' => 'map',
     'build' => 'build your own',
 
+    'buildnew' => 'build a new one',
+
+    'older' => 'older',
+    'newer' => 'newer',
+
     'altitude' => 'altitude: from :fromm to :tom',
     'rotation' => 'rotation',
     'slices' => 'slices',

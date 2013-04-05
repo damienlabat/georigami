@@ -104,16 +104,14 @@ $(function() {
 	// INIT
 
 
+	$('.tip').tooltip({placement:'top', delay:{show:2000, hide:0}, trigger: 'hover'});
+	if ($('body').hasClass('bloc3d')) Georigami.initBloc('3d');
+	if ($('body').hasClass('print')) Georigami.initBloc('print');
+	if ($('body').hasClass('profil')) Georigami.initBloc('profil');
 
-
-	$('.tip').tooltip({placement:'right', delay:{show:2000, hide:0}, trigger: 'hover'});
-	if ($('body').hasClass('bloc3d'))      		Georigami.initBloc('3d');
-	if ($('body').hasClass('print'))      		Georigami.initBloc('print');
-	if ($('body').hasClass('profil'))      		Georigami.initBloc('profil');
-
-	if ($('body').hasClass('location'))      	Georigami.initLocation();
-	if ($('body').hasClass('map'))      		Georigami.initMap();
-	if ($('body').hasClass('new'))      		Georigami.initNew();
+	if ($('body').hasClass('location')) Georigami.initLocation();
+	if ($('body').hasClass('map')) Georigami.initMap();
+	if ($('body').hasClass('new')) Georigami.initNew();
 
 
 

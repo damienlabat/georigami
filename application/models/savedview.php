@@ -26,4 +26,9 @@ class savedview extends BaseModel
             return URL::to_route('saved_show', array( Str::slug($this->bloc->location->name),  $this->id ));
     }
 
+    public function get_created_at_localized()
+    {
+        return  date( Lang::line('date.complete')->get() ,strtotime($this->created_at) );
+    }
+
 }
