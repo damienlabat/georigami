@@ -843,7 +843,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file bundles.php</error>
     </parse_markers>
   </file>
-  <file path="views/carousel.blade.php" hash="b59ca8d31ad14b4fe76b78a6893540d2" package="Default">
+  <file path="views/carousel.blade.php" hash="c9b4f848deccf99667cda6cd80e0575b" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/carousel.blade.php</error>
     </parse_markers>
@@ -853,7 +853,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/saved.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/layout.blade.php" hash="15aa7d314b4e0c2b58c3762c900e063c" package="Default">
+  <file path="views/layout.blade.php" hash="d53e3813df96d8429f9e6dd4d60be623" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/layout.blade.php</error>
     </parse_markers>
@@ -866,6 +866,21 @@
   <file path="views/bloc_3d.blade.php" hash="17a749d445f7a5693ef9dc0ccb3c77c8" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_3d.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/stats/piwik.blade.php" hash="cc38065627b2be2b20d84ef46a087801" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/stats/piwik.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/stats/main.blade.php" hash="c6bd5976fecbcd96ceccb9ace4cef890" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/stats/main.blade.php</error>
+    </parse_markers>
+  </file>
+  <file path="views/stats/googleanalytics.blade.php" hash="0ecfd9d135d61e9a6128b97c904e7efb" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file views/stats/googleanalytics.blade.php</error>
     </parse_markers>
   </file>
   <file path="views/location.blade.php" hash="6824cdcaa1075984d8966337e4c90fd4" package="Default">
@@ -903,7 +918,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/welcome_fr.blade.php" hash="068b8c29ef67a9b904655ff9d4b8a06d" package="Default">
+  <file path="views/welcome_fr.blade.php" hash="8121e11274e352a7bbca378faa48687e" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome_fr.blade.php</error>
     </parse_markers>
@@ -928,7 +943,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/defs.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_profil.blade.php" hash="75128c0eea6e035f78d4015b6a134856" package="Default">
+  <file path="views/bloc_profil.blade.php" hash="41fa3513cb286197a1ea13c5c1d896d9" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_profil.blade.php</error>
     </parse_markers>
@@ -1193,6 +1208,11 @@
       <error line="0" code="50007">No page-level DocBlock was found in file config/server/database.php</error>
     </parse_markers>
   </file>
+  <file path="config/server/georigami.php" hash="21d980ea731471422c4df4dc260e93db" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/server/georigami.php</error>
+    </parse_markers>
+  </file>
   <file path="config/strings.php" hash="48abe1bc13378157c4f2ade41fcbfbbe" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file config/strings.php</error>
@@ -1256,6 +1276,11 @@
   <file path="config/database.php" hash="51a468050c83baf7b7c394af32c4eebd" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file config/database.php</error>
+    </parse_markers>
+  </file>
+  <file path="config/georigami.php" hash="475de3b4901926f84ef072ea35227689" package="Default">
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file config/georigami.php</error>
     </parse_markers>
   </file>
   <file path="config/error.php" hash="8dc7a42046a6fd321a8a8cb5c80566e5" package="Default">

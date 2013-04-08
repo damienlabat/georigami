@@ -1,5 +1,3 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -23,14 +21,45 @@ hr { border-color: gray; }
 }
 
 .carousel {
-    max-width: 1000px;
     margin:auto;
+    max-width: 100%;
+    width: 600px;
+    box-shadow: 0 0 0 1px #999999, 2px 2px 0 1px rgba(0, 0, 0, 0.1);
 }
 
-.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+.carousel-inner > .item > img, .carousel-inner > .item > a > img, .carousel-inner > .item >  iframe {
     margin: auto;
-    width: 100%;
+    width:600px;
+    height:600px;
 }
+
+.carousel-caption {
+    background: @green;
+    position: static;
+    text-align: center;
+
+    a {
+        color:#fff;
+        display:block;
+        font-family: @headingsFontFamily;
+        font-size: 1.5em;
+        letter-spacing: 2px;
+    }
+}
+
+.carousel-indicators li      { background: rgba(50,50,50,0.5); }
+.carousel-indicators .active { background: @green; }
+
+.carousel-control {
+    font-family: verdana;
+    font-size: 39px;
+    line-height: 24px;
+    border-radius: 19px;
+    height: 30px;
+    width: 30px;
+}
+
+
 
 .btn,.navbar  {
     border-radius: 0px !important;
