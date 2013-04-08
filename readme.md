@@ -1,2 +1,2 @@
 # Georigami
-[http://lab.damienlabat.fr/georigami](http://lab.damienlabat.fr/georigami)
+demo: [http://lab.damienlabat.fr/georigami](http://lab.damienlabat.fr/georigami)
