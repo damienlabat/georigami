@@ -2,6 +2,6 @@
  /*   initIndex    */
 /*******************/
 
-  Georigami.initIndex = function() {
-
+  Georigami.initWelcome = function() {
+  	$('.carousel').carousel().carousel('pause');
   }

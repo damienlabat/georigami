@@ -112,6 +112,7 @@ $(function() {
 	if ($('body').hasClass('location')) Georigami.initLocation();
 	if ($('body').hasClass('map')) Georigami.initMap();
 	if ($('body').hasClass('new')) Georigami.initNew();
+	if ($('body').hasClass('welcome')) Georigami.initWelcome();
 
 
 
