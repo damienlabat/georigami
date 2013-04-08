@@ -90,7 +90,7 @@ foreach ($styleList as $key => $value) {
       </fieldset>
       </form>
       </div>
-      <a id='profildownload' class='btn btn-primary'' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>{{__('georigami.savedownload')}}</a>
+      <a id='profildownload' class='btn btn-primary'' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face={{$face}}&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>{{__('georigami.savedownload')}}</a>
 
 
 
