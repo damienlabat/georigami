@@ -1,2 +1,3 @@
 # Georigami
-work in progress
+http://lab.damienlabat.fr/georigami
+[http://lab.damienlabat.fr/georigami](http://lab.damienlabat.fr/georigami)
