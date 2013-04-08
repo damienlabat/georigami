@@ -25,6 +25,13 @@
         {{HTML::style("css/jquery-ui-1.10.1.custom.css")}}
         <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"/-->
 
+         <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{URL::base()}}icons/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{URL::base()}}icons/apple-touch-icon-114-precomposed.png">
+         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{URL::base()}}icons/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="{{URL::base()}}icons/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="{{URL::base()}}icons/favicon.png">
+
         {{HTML::script("js/vendor/modernizr-2.6.2-respond-1.1.0.min.js")}}
     </head>
     <body class='@yield('bodyclass')'>
