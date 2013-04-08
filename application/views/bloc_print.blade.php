@@ -15,7 +15,8 @@ print@endsection
   $w= $bloc->width  / max( $bloc->width, $bloc->height );
   $h= $bloc->height / max( $bloc->width, $bloc->height );
 ?>
-      <a id='profildownload' class='btn pull-right' href='#' onclick="window.print();return false;">{{__('georigami.print')}}</a>
+  <div class='blocmenu'>
+      <a id='profildownload' class='btn btn-primary pull-right' href='#' onclick="window.print();return false;">{{__('georigami.print')}}</a>
       <form method='get' class='form-inline'>
         <fieldset>
           {{__('georigami.verticalscale')}} <input class="vs-input" name='vscale' value="{{ $vscale }}" type="number" step="0.1" min="0.1">
@@ -28,6 +29,7 @@ print@endsection
           &nbsp;<input type='submit' value='{{__('georigami.update')}}' class='vs-update btn'/>
         </fieldset>
       </form>
+  </div>
 
 
   <div class='pull-left span12<?php

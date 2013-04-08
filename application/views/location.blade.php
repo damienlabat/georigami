@@ -30,7 +30,7 @@ location@endsection
 
       <div class="row">
 
-        <div class="span4">
+        <div class="span4 blocmenu">
 
           <h4>{{$location->name}}</h4>
                   <img src="{{URL::base()}}img/flags/{{ strtolower($location->countrycode) }}.png" title="{{ $location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($location->countrycode) }}" class="countryname">{{ $location->countryname}}</a><br/>

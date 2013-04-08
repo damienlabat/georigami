@@ -9,15 +9,72 @@
 
 .row { margin-left:0 !important;}
 
+hr { border-color: gray; }
+
+.pagination ul {
+    box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.1);
+    a {border:none !important;}
+}
+
+
+.pagination ul > .disabled > a, .pagination ul > .disabled > a:hover, .pagination ul > .disabled > span  {
+    background: #fff;
+    color:@grayLight;
+}
+
+.btn,.navbar  {
+    border-radius: 0px !important;
+    box-shadow:  2px 2px 0 0px rgba(0, 0, 0, 0.1);
+    }
+
+
+#blocinfo, .blocmenu {
+     background: #fff;
+     border: 1px solid #DDDDDD;
+     padding: 16px;
+     margin-bottom:22px;
+     box-shadow:  2px 2px 0 0px rgba(0, 0, 0, 0.1);
+}
+
+
+.hero-unit {
+    border-radius:0;
+    box-shadow: 0 0 0 1px #999999, 2px 2px 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-fixed-top {
+    box-shadow:0px 1px 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs > li > a {
+    border-radius: 0;
+    background:@grayLighter;
+}
 
 .pager li > a, .pager li > span {
     border-radius: 0;
+    box-shadow:   2px 2px 0 0px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .nav > li > a::first-letter,
 .container>h1::first-letter {
     text-transform: uppercase;
 }
+
+.nav-tabs {
+    margin-bottom:0;
+    > li.active > a, > li.active > a:hover, > li.active > a:focus {
+        background-color:#fff;
+    }
+}
+.tab-content {
+        background-color:#fff;
+        padding-top: 30px;
+        border-color: #DDDDDD;
+        border-style: solid;
+        border-width: 0 1px 1px;
+        box-shadow: 2px 2px 0 0px rgba(0, 0, 0, 0.1)
+    }
 
 .countryname {
     text-transform: capitalize;
@@ -52,12 +109,14 @@
     height:500px;
     width: 100%;
     margin:40px auto;
+    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
 }
 
 #map-canvas2 {
     height:400px;
     width: 100%;
     margin-bottom:40px;
+    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -67,6 +126,7 @@
 #map-canvas2 img
  {
     max-width: none !important;
+
 }
 
 #map-canvas a:hover,
@@ -88,6 +148,7 @@
     }
 }
 
+body.bloc3d canvas {background: @bodyBackground;}
 
 
 .div3Dview {
@@ -129,7 +190,7 @@ div.bloc, div.bloc3 {
     position:relative;
     line-height: 255px;
     margin:15px;
-    background-color: #E4E4E4;
+    background-color: rgba(0,0,0,0.1);
 }
 
 
@@ -138,14 +199,12 @@ div.bloc {
     width: 226px;
     height: 226px;
     line-height: 226px;
-    -webkit-box-shadow: 0px 0px 0px 4px #fff;
-    box-shadow:         0px 0px 0px 4px #fff;
+    box-shadow:         0px 0px 0px 4px #fff, 2px 2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
 div.bloc2 {
-    -webkit-box-shadow: 0px 0px 0px 8px #fff;
-    box-shadow:         0px 0px 0px 8px #fff;
-    background-color: #E4E4E4;
+    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0,0,0,0.1);
     padding:30px;
     margin-bottom: 30px;
 
@@ -160,8 +219,7 @@ div.bloc3 {
 
     width: 350px;
     height: 350px;
-    -webkit-box-shadow: 0px 0px 0px 8px #fff;
-    box-shadow:         0px 0px 0px 8px #fff;
+    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
 
 
     img.profil {
@@ -211,7 +269,7 @@ div.bloc:hover a, div.bloc3:hover a{
     left: 0;
 }
 
-div.bloc a, div.bloc3 a {
+div.bloc a, div.bloc3 a, div.bloc2 {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -221,14 +279,19 @@ div.bloc a, div.bloc3 a {
 
 
 div.locations>.row {
-
-    //border-radius: 3px 3px 3px 3px;
-    -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+    box-shadow: 0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0,0,0,0.1);
     margin-bottom: 30px;
     padding-bottom: 18px;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    -o-transition: background-color 0.5s ease;
+    -ms-transition: background-color 0.5s ease;
 }
+
+div.locations>.row:hover, div.bloc2:hover {
+    background-color: rgba(255,255,255,0.5);
+    }
 
 div.locations>.row>h2 {
     text-align: center;

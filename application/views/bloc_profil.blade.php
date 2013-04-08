@@ -34,7 +34,6 @@ $styleList=array(
   </div>
 
     <div class="span4">
-{{__('georigami.title')}}
      <div id='facepicker' class="btn-group">
         <a data-face='N' href='?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='N')
         active@endif">{{__('georigami.nface')}}</a>
@@ -46,7 +45,7 @@ $styleList=array(
         @endif">{{__('georigami.eface')}}</a>
     </div>
 
-  <div class=''>
+  <div class='blocmenu'>
       <form method='get' class='form-inline'>
         <fieldset>
         <input type='hidden' id='input-face' name='face' value='{{ $face }}'/>
@@ -90,9 +89,10 @@ foreach ($styleList as $key => $value) {
         <input type='submit' value='{{__('georigami.update')}}' class='vs-update btn'/>
       </fieldset>
       </form>
-      <a id='profildownload' class='btn' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>{{__('georigami.savedownload')}}</a>
+      </div>
+      <a id='profildownload' class='btn btn-primary'' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>{{__('georigami.savedownload')}}</a>
 
-    </div>
+
 
   </div>
 

@@ -25,7 +25,7 @@ bloc3d@endsection
       active@endif">{{__('georigami.eface')}}</a>
     </div>
 
-    <div class=''>
+    <div class='blocmenu'>
       <form method='get' class='form-inline'>
         <input type='hidden' name='face' value='{{ $face }}'/>
         <label for="vscale">{{__('georigami.verticalscale')}}</label>
