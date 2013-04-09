@@ -26,7 +26,7 @@ $styleList=array(
 
 <div class='row'>
 
-  <div class='span8'>
+  <div class='span8  blocmenu'>
 
 
     {{ $svg }}

@@ -1,19 +1,30 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+    background: url("../img/stripes.png") repeat scroll 0 0 @bodyBackground;
+}
+
 .container.row-fluid {
     max-width:90%;
 }
 
 .row { margin-left:0 !important;}
 
-hr { border-color: gray; }
+hr {
+    border-color: gray;
+    margin-top: 48px;
+}
 
 .pagination ul {
     box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.1);
     a {border:none !important;}
 }
 
+
+#profildownload {
+    display:block;
+}
 
 .pagination ul > .disabled > a, .pagination ul > .disabled > a:hover, .pagination ul > .disabled > span  {
     background: #fff;
@@ -66,10 +77,24 @@ hr { border-color: gray; }
     box-shadow:  2px 2px 0 0px rgba(0, 0, 0, 0.1);
     }
 
+.btn {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+
+.btn.disabled, .btn[disabled] {
+    border: none;
+    text-shadow: none;
+    background: #fff;
+    opacity: 0.5;
+    color: #000;
+}
+
 
 #blocinfo, .blocmenu {
      background: #fff;
-     border: 1px solid #DDDDDD;
      padding: 16px;
      margin-bottom:22px;
      box-shadow:  2px 2px 0 0px rgba(0, 0, 0, 0.1);
@@ -85,14 +110,12 @@ hr { border-color: gray; }
     box-shadow:0px 1px 0 0px rgba(0, 0, 0, 0.1);
 }
 
-.nav-tabs > li > a {
-    border-radius: 0;
-    background:@grayLighter;
-}
+
 
 .pager li > a, .pager li > span {
     border-radius: 0;
     box-shadow:   2px 2px 0 0px rgba(0, 0, 0, 0.1);
+    border: none;
 }
 
 .navbar .nav > li > a::first-letter,
@@ -100,19 +123,34 @@ hr { border-color: gray; }
     text-transform: uppercase;
 }
 
+.navbar-inner, .btn-group .btn {
+    border: none;
+}
+
+.btn-group .btn.active, .btn-group .btn:active {
+    text-decoration: underline;
+}
+
+
 .nav-tabs {
     margin-bottom:0;
+    border: none;
+    > li > a {
+        border-radius: 0;
+        background:@grayLighter;
+        border: none !important;
+        box-shadow: 2px 2px 0 0px rgba(0, 0, 0, 0.1);
+    }
     > li.active > a, > li.active > a:hover, > li.active > a:focus {
         background-color:#fff;
     }
 }
 .tab-content {
-        background-color:#fff;
-        padding-top: 30px;
-        border-color: #DDDDDD;
-        border-style: solid;
-        border-width: 0 1px 1px;
-        box-shadow: 2px 2px 0 0px rgba(0, 0, 0, 0.1)
+    background-color:#fff;
+    padding-top: 30px;
+    border:none;
+    box-shadow: 2px 2px 0 0px rgba(0, 0, 0, 0.1);
+    position:relative;
     }
 
 .countryname {
@@ -146,16 +184,17 @@ hr { border-color: gray; }
 
 #map-canvas {
     height:500px;
-    width: 100%;
     margin:40px auto;
-    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 #map-canvas2 {
     height:400px;
     width: 100%;
     margin-bottom:40px;
-    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 
@@ -176,8 +215,6 @@ hr { border-color: gray; }
 
 .result {
     background-color: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    //border-radius: 4px 4px 4px 4px;
     margin: 15px 0;
     padding: 39px 19px 14px;
     position: relative;
@@ -187,7 +224,12 @@ hr { border-color: gray; }
     }
 }
 
-body.bloc3d canvas {background: @bodyBackground;}
+body.bloc3d canvas {
+    background: #fff;
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 22px;
+}
 
 
 .div3Dview {
@@ -242,7 +284,8 @@ div.bloc {
 }
 
 div.bloc2 {
-    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
     background-color: rgba(0,0,0,0.1);
     padding:30px;
     margin-bottom: 30px;
@@ -258,7 +301,8 @@ div.bloc3 {
 
     width: 350px;
     height: 350px;
-    box-shadow:         0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
 
 
     img.profil {
@@ -318,7 +362,8 @@ div.bloc a, div.bloc3 a, div.bloc2 {
 
 
 div.locations>.row {
-    box-shadow: 0px 0px 0px 8px #fff, 2px 2px 0 8px rgba(0, 0, 0, 0.1);
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
     background-color: rgba(0,0,0,0.1);
     margin-bottom: 30px;
     padding-bottom: 18px;
@@ -356,6 +401,11 @@ input[type='range'] {
 
 #facepicker {
     margin-bottom:18px;
+    display: table;
+    width: 100%;
+    > a.btn {
+        display: table-cell;
+    }
 }
 
 

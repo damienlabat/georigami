@@ -10,6 +10,7 @@ new@endsection
 @section('content')
 
             <h1>{{__('georigami.build')}}</h1>
+            <div id="map-canvas"></div>
             <form id='paramform' class='form-horizontal'>
 
                 <ul class="nav nav-tabs">
@@ -108,7 +109,7 @@ new@endsection
 
                 </form>
 
-                <div id="map-canvas"></div>
+
 
                 <button id="start-btn" class="btn btn-primary btn-large span4">{{__('georigami.loadbutton')}}</button>
                 <button id="cancel-btn" class="btn btn-small span2 disabled">{{__('georigami.cancelbutton')}}</button>
