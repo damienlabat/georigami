@@ -32,16 +32,15 @@ hr {
 }
 
 .carousel {
-    margin:auto;
-    max-width: 100%;
-    width: 600px;
-    box-shadow: 0 0 0 1px #999999, 2px 2px 0 1px rgba(0, 0, 0, 0.1);
+    border: 8px solid #FFFFFF;
+    box-shadow: 2px 2px 0 1px rgba(0, 0, 0, 0.1);
+    margin: auto;
 }
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img, .carousel-inner > .item >  iframe {
     margin: auto;
-    width:600px;
-    height:600px;
+   /* width:600px;
+    height:600px;*/
 }
 
 .carousel-caption {
@@ -93,10 +92,10 @@ hr {
 }
 
 
-#blocinfo, .blocmenu {
+#blocinfo, .blocmenu, #status {
      background: #fff;
      padding: 16px;
-     margin-bottom:22px;
+     margin: 22px 0;
      box-shadow:  2px 2px 0 0px rgba(0, 0, 0, 0.1);
 }
 
@@ -187,6 +186,7 @@ hr {
     margin:40px auto;
     border: 8px solid #FFFFFF;
     box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
+    background: #fff !important;
 }
 
 #map-canvas2 {
@@ -218,9 +218,20 @@ hr {
     margin: 15px 0;
     padding: 39px 19px 14px;
     position: relative;
-
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
     .index {
-    //todo
+        border-bottom: 1px solid #DDDDDD;
+        border-left: 1px solid #DDDDDD;
+        border-radius: 0 0 0 5px;
+        color: #AAAAAA;
+        font-size: 0.8em;
+        font-weight: bold;
+        padding: 2px 6px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        width: 68px;
     }
 }
 

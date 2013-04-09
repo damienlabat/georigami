@@ -903,12 +903,12 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/error/404.php</error>
     </parse_markers>
   </file>
-  <file path="views/welcome_en.blade.php" hash="4cd2e4d8712c01710bdafbec28377c1e" package="Default">
+  <file path="views/welcome_en.blade.php" hash="630ded385869f17a4d543b2f94f65d56" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome_en.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/new.blade.php" hash="3f7fb690a0b6fd9966d3d153a9785920" package="Default">
+  <file path="views/new.blade.php" hash="e5b57c6679da0c4340e43ab06a81f29c" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/new.blade.php</error>
     </parse_markers>
@@ -918,7 +918,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/map.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/welcome_fr.blade.php" hash="81cceafe3e1d650b72653539aeb5c38b" package="Default">
+  <file path="views/welcome_fr.blade.php" hash="4304001c7c50def3eb9421f58d0f3c72" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome_fr.blade.php</error>
     </parse_markers>
