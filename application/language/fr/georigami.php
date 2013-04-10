@@ -78,4 +78,17 @@ return array(
     'horizontal' => 'horizontal',
     'vertical' => 'vertical',
 
+    'verticalslicesshow' => 'afficher',
+    'horizontalslicesshow' => 'afficher',
+
+    'none' => 'aucun',
+    'northside' => 'la face nord',
+    'southside' => 'la face sud',
+    'eastside' => 'la face est',
+    'westside' => 'la face ouest',
+
+    'north' => 'Nord',
+    'east' => 'Est',
+    'south' => 'Sud',
+    'west' => 'Ouest',
 );

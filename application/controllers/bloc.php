@@ -148,6 +148,8 @@ class Bloc_Controller extends Base_Controller
         if ($show=='print') {
             $data['hidecut']=       Input::get('hidecut', null);
             $data['hidetext']=      Input::get('hidetext',null);
+            $data['showvslice']=      Input::get('showvslice','west');
+            $data['showhslice']=      Input::get('showhslice','north');
         }
 
         if (($show=='profil')||($show=='download')) {

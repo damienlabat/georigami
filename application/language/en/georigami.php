@@ -5,7 +5,10 @@ return array(
 
     'title' => 'Georigami',
 
-    'footer' => 'Map and elevation from <a href=\'https://developers.google.com/maps/documentation/javascript/elevation\'>Google Maps</a> - Placenames from <a href=\'http://www.geonames.org/\'>geonames.org</a> - Fork me on <a href=\'https://github.com/damienl/georigami\'>GitHub</a>',
+    'footer' => 'Map and elevation from '.
+                '<a href=\'https://developers.google.com/maps/documentation/javascript/elevation\'>Google Maps</a>'.
+                ' - Placenames from <a href=\'http://www.geonames.org/\'>geonames.org</a> - Fork me on '.
+                '<a href=\'https://github.com/damienl/georigami\'>GitHub</a>',
 
     'lastones' => 'last ones',
     'lastsaved' => 'last saved',
@@ -60,7 +63,7 @@ return array(
     'profil' => 'profil',
 
     'nface' => 'north face',
-    'eface' => 'est face',
+    'eface' => 'east face',
     'sface' => 'south face',
     'wface' => 'west face',
 
@@ -77,5 +80,19 @@ return array(
     'hidetext' => 'hide text',
     'horizontal' => 'horizontal',
     'vertical' => 'vertical',
+
+    'verticalslicesshow' => 'show',
+    'horizontalslicesshow' => 'show',
+
+    'none' => 'none',
+    'northside' => 'the north side',
+    'southside' => 'the south side',
+    'eastside' => 'the east side',
+    'westside' => 'the west side',
+
+    'north' => 'North',
+    'east' => 'East',
+    'south' => 'South',
+    'west' => 'West',
 
 );

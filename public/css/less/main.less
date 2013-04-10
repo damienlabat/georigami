@@ -3,6 +3,7 @@
    ========================================================================== */
 body {
     background: url("../img/stripes.png") repeat scroll 0 0 @bodyBackground;
+    letter-spacing: 0.1em;
 }
 
 .container.row-fluid {
@@ -35,6 +36,7 @@ hr {
     border: 8px solid #FFFFFF;
     box-shadow: 2px 2px 0 1px rgba(0, 0, 0, 0.1);
     margin: auto;
+    background: #fff;
 }
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img, .carousel-inner > .item >  iframe {
@@ -106,7 +108,7 @@ hr {
 }
 
 .navbar-fixed-top {
-    box-shadow:0px 1px 0 0px rgba(0, 0, 0, 0.1);
+    box-shadow:0px 2px 0 0px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -435,8 +437,8 @@ input[type='range'] {
     svg.svgprint .svgslice {
         stroke:#000;
         fill: white;
-        stroke-width:0.15;
-        stroke-linecap:round
+        stroke-width:0.05;
+        stroke-linecap:butt
         }
 
     svg.svgprint .svgcut  {
@@ -447,22 +449,23 @@ input[type='range'] {
     .showcut svg.svgprint .svgcut   {
         stroke:#000;
         fill: none;
-        stroke-width:0.15;
-        stroke-linecap:round;
+        stroke-width:0.05;
+        stroke-linecap:butt;
         stroke-dasharray: 0.75,0.5
         }
 
     svg.svgprint text  {
         stroke:none;
         fill: none;
+        letter-spacing: 0;
         }
 
     .showtext svg.svgprint text {
         fill:#000;
         font-family:'Josefin Sans';
-        font-size:2px;
+        font-size:1.8px;
         letter-spacing: 10;
-        font-weight:bold;
+        font-weight:normal;
         }
 
 
@@ -489,15 +492,17 @@ input[type='range'] {
 
 @media print{
 
-
     body.print .container {width:95%;}
 
+    body.print noscript,
+    body.print footer,
     body.print .navbar,
     body.print .pager,
     body.print .nav,
     body.print .btn,
+    body.print #blocinfo,
     body.print form{
-        display: none;
+        display: none !important;
     }
 
     body.print a[href]:after {
@@ -524,16 +529,6 @@ input[type='range'] {
     body.print h4 {
         font-size:13px;
     }
-
-    body.print #blocinfo {
-        font-size:8px;
-        line-height:9px;
-    }
-
-    body.print #blocinfo div:first-child { display:none };
-
-    body.print #blocinfo .span2 {width:40%;}
-
 
 
 }
