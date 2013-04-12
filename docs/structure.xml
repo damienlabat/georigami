@@ -76,7 +76,7 @@
       <error line="3" code="50000">No DocBlock was found for \Create_Blocs_Table</error>
     </parse_markers>
   </file>
-  <file path="models/bloc.php" hash="fc4b706c927c455d5856bb7857704870" package="Default">
+  <file path="models/bloc.php" hash="5d19e21b13b16f4e405eaa1e87bf885f" package="Default">
     <class final="false" abstract="false" namespace="global" line="3" package="Default">
       <extends>\BaseModel</extends>
       <name>bloc</name>
@@ -140,32 +140,32 @@
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="80" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="83" package="Default">
         <name>validate_coords</name>
         <full_name>validate_coords</full_name>
-        <argument line="80">
+        <argument line="83">
           <name>$coordsJson</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="126" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="129" package="Default">
         <name>save_coords</name>
         <full_name>save_coords</full_name>
-        <argument line="126">
+        <argument line="129">
           <name>$coords</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="134" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="137" package="Default">
         <name>get_coords</name>
         <full_name>get_coords</full_name>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="141" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="144" package="Default">
         <name>count_with</name>
         <full_name>count_with</full_name>
-        <argument line="141">
+        <argument line="144">
           <name>$array_field</name>
           <default/>
           <type/>
@@ -182,10 +182,10 @@
       <error line="23" code="50010">No DocBlock was found for method getDirectory()</error>
       <error line="32" code="50010">No DocBlock was found for method get_created_at_localized()</error>
       <error line="50" code="50010">No DocBlock was found for method profil_data()</error>
-      <error line="80" code="50010">No DocBlock was found for method validate_coords()</error>
-      <error line="126" code="50010">No DocBlock was found for method save_coords()</error>
-      <error line="134" code="50010">No DocBlock was found for method get_coords()</error>
-      <error line="141" code="50010">No DocBlock was found for method count_with()</error>
+      <error line="83" code="50010">No DocBlock was found for method validate_coords()</error>
+      <error line="129" code="50010">No DocBlock was found for method save_coords()</error>
+      <error line="137" code="50010">No DocBlock was found for method get_coords()</error>
+      <error line="144" code="50010">No DocBlock was found for method count_with()</error>
     </parse_markers>
   </file>
   <file path="models/location.php" hash="1e7d334bd39475ad8eaabb0f830204c2" package="Default">
@@ -331,7 +331,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/geoname.php</error>
     </parse_markers>
   </file>
-  <file path="controllers/bloc.php" hash="9251a2bbc6aa3cf8c95ce1198c6439d3" package="Default">
+  <file path="controllers/bloc.php" hash="10a5236a97142239afd9635e1a5bd914" package="Default">
     <class final="false" abstract="false" namespace="global" line="5" package="Default">
       <extends>\Base_Controller</extends>
       <name>Bloc_Controller</name>
@@ -457,114 +457,114 @@
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="208" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="210" package="Default">
         <name>profil_svg</name>
         <full_name>profil_svg</full_name>
-        <docblock line="199">
+        <docblock line="201">
           <description>return svg profil image</description>
           <long-description/>
-          <tag line="199" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
+          <tag line="201" name="param" description="see Bloc::profil_data" type="array" variable="$profilData">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="199" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
+          <tag line="201" name="param" description="option: vscale, style, dx, dy, dscale, header, svg_hscale" type="array" variable="$options">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="199" name="return" description="" type="\View">
+          <tag line="201" name="return" description="" type="\View">
             <type by_reference="false">\View</type>
           </tag>
-          <tag line="199" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
+          <tag line="201" name="see" description="\Bloc::profil_data()" refers="\Bloc::profil_data()"/>
         </docblock>
-        <argument line="208">
+        <argument line="210">
           <name>$profilData</name>
           <default/>
           <type/>
         </argument>
-        <argument line="208">
+        <argument line="210">
           <name>$options</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="237" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="239" package="Default">
         <name>action_getJson</name>
         <full_name>action_getJson</full_name>
-        <docblock line="230">
+        <docblock line="232">
           <description>return bloc json data</description>
           <long-description/>
-          <tag line="230" name="param" description="bloc id" type="int" variable="$id">
+          <tag line="232" name="param" description="bloc id" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="230" name="param" description="add profil data to json" type="boolean" variable="$withData">
+          <tag line="232" name="param" description="add profil data to json" type="boolean" variable="$withData">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="230" name="return" description="Json response" type="\Response">
+          <tag line="232" name="return" description="Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
-        <argument line="237">
+        <argument line="239">
           <name>$id</name>
           <default/>
           <type/>
         </argument>
-        <argument line="237">
+        <argument line="239">
           <name>$withData</name>
           <default>FALSE</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="253" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="255" package="Default">
         <name>save_svg</name>
         <full_name>save_svg</full_name>
-        <argument line="253">
+        <argument line="255">
           <name>$bloc</name>
           <default/>
           <type/>
         </argument>
-        <argument line="253">
+        <argument line="255">
           <name>$face</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="282" package="Default">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="284" package="Default">
         <name>save_view</name>
         <full_name>save_view</full_name>
-        <argument line="282">
+        <argument line="284">
           <name>$bloc</name>
           <default/>
           <type/>
         </argument>
-        <argument line="282">
+        <argument line="284">
           <name>$profilData</name>
           <default/>
           <type/>
         </argument>
-        <argument line="282">
+        <argument line="284">
           <name>$params</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="305" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="307" package="Default">
         <name>action_store</name>
         <full_name>action_store</full_name>
-        <docblock line="300">
+        <docblock line="302">
           <description>Validate and add new bloc to database</description>
           <long-description/>
-          <tag line="300" name="return" description="Bloc Json response" type="\Response">
+          <tag line="302" name="return" description="Bloc Json response" type="\Response">
             <type by_reference="false">\Response</type>
           </tag>
         </docblock>
       </method>
     </class>
     <markers>
-      <todo line="338">better error message</todo>
+      <todo line="340">better error message</todo>
     </markers>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file controllers/bloc.php</error>
       <error line="39" code="50010">No DocBlock was found for method action_saved_show()</error>
-      <error line="253" code="50010">No DocBlock was found for method save_svg()</error>
-      <error line="282" code="50010">No DocBlock was found for method save_view()</error>
+      <error line="255" code="50010">No DocBlock was found for method save_svg()</error>
+      <error line="284" code="50010">No DocBlock was found for method save_view()</error>
     </parse_markers>
   </file>
   <file path="controllers/base.php" hash="8fce5114c9608d243b749e75747961bd" package="Default">
@@ -843,7 +843,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file bundles.php</error>
     </parse_markers>
   </file>
-  <file path="views/carousel.blade.php" hash="c9b4f848deccf99667cda6cd80e0575b" package="Default">
+  <file path="views/carousel.blade.php" hash="229ab17d5469059e93de842e39f67337" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/carousel.blade.php</error>
     </parse_markers>
@@ -853,7 +853,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/saved.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/layout.blade.php" hash="d53e3813df96d8429f9e6dd4d60be623" package="Default">
+  <file path="views/layout.blade.php" hash="236cc899e1a3c51b4500b64bb284ce5b" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/layout.blade.php</error>
     </parse_markers>
@@ -863,7 +863,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_layout.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_3d.blade.php" hash="17a749d445f7a5693ef9dc0ccb3c77c8" package="Default">
+  <file path="views/bloc_3d.blade.php" hash="d40cc1fc1ee97b54f2e00d823540c945" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_3d.blade.php</error>
     </parse_markers>
@@ -883,7 +883,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/stats/googleanalytics.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/location.blade.php" hash="6824cdcaa1075984d8966337e4c90fd4" package="Default">
+  <file path="views/location.blade.php" hash="cba980e4a0e9425d890188b839ebba0f" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/location.blade.php</error>
     </parse_markers>
@@ -908,7 +908,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome_en.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/new.blade.php" hash="e5b57c6679da0c4340e43ab06a81f29c" package="Default">
+  <file path="views/new.blade.php" hash="3d10bac2783b26fea361a80bbee55eae" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/new.blade.php</error>
     </parse_markers>
@@ -923,27 +923,27 @@
       <error line="0" code="50007">No page-level DocBlock was found in file views/welcome_fr.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_print.blade.php" hash="ccef06f6519091617e753619645fa19d" package="Default">
+  <file path="views/bloc_print.blade.php" hash="009d0dd7618e1a6d0a288ab2e7799e37" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_print.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/profil.blade.php" hash="fecae5f8bcf61893923ae59c98af4525" package="Default">
+  <file path="views/svg/profil.blade.php" hash="8e4c3a2552e2d09b42be0b225feba7d8" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/profil.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/style.blade.php" hash="f7a8294d26520503589707d415d7a56b" package="Default">
+  <file path="views/svg/style.blade.php" hash="a3d581bdec078ee1332ca927ed98fffc" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/style.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/svg/defs.blade.php" hash="aff5a860f5566cf9bbfa0af26c18d5bb" package="Default">
+  <file path="views/svg/defs.blade.php" hash="9267aa36ab7c8b6eda2cfacf58848b8c" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/svg/defs.blade.php</error>
     </parse_markers>
   </file>
-  <file path="views/bloc_profil.blade.php" hash="9f98cbe2cb37a044c42d3a6895fbab4b" package="Default">
+  <file path="views/bloc_profil.blade.php" hash="55cae5e7ea4e56c3691e2fdae5855a26" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file views/bloc_profil.blade.php</error>
     </parse_markers>
@@ -1008,7 +1008,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file language/en/validation.php</error>
     </parse_markers>
   </file>
-  <file path="language/en/georigami.php" hash="1f102a0b3e460ce56c6e8ed4841af353" package="Default">
+  <file path="language/en/georigami.php" hash="02c308a331721c5905efe97e337b02ad" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file language/en/georigami.php</error>
     </parse_markers>
@@ -1063,7 +1063,7 @@
       <error line="0" code="50007">No page-level DocBlock was found in file language/fr/validation.php</error>
     </parse_markers>
   </file>
-  <file path="language/fr/georigami.php" hash="b96395a0f824b1e95f165e98a66bdbef" package="Default">
+  <file path="language/fr/georigami.php" hash="096d0623d0bdd0cf3b425b22fa0f8e89" package="Default">
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file language/fr/georigami.php</error>
     </parse_markers>

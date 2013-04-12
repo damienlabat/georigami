@@ -12,7 +12,7 @@
                   <div class="item active">
                     <img alt="" src="{{URL::base()}}img/welcome/ossau.jpg">
                     <div class="carousel-caption">
-                      <p><a href="{{URL::base()}}pic-du-midi-dossau_5/bloc8_3d?vscale=1&face=N" title="">Pic du midi d'Ossau</a></p>
+                      <p><a href="{{URL::base()}}pic-du-midi-dossau_5/bloc8_3d?vscale=1&amp;face=N" title="">Pic du midi d'Ossau</a></p>
                     </div>
                   </div>
 

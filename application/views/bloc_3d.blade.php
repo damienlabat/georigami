@@ -15,13 +15,13 @@ bloc3d@endsection
   <div class="span4">
 
      <div id='facepicker' class="btn-group">
-      <a data-face='N' href='?vscale={{ $vscale }}&face=N' class="btn@if ($face=='N')
+      <a data-face='N' href='?vscale={{ $vscale }}&amp;face=N' class="btn@if ($face=='N')
       active@endif">{{__('georigami.nface')}}</a>
-      <a data-face='W' href='?vscale={{ $vscale }}&face=W' class="btn@if ($face=='W')
+      <a data-face='W' href='?vscale={{ $vscale }}&amp;face=W' class="btn@if ($face=='W')
       active@endif">{{__('georigami.wface')}}</a>
-      <a data-face='S' href='?vscale={{ $vscale }}&face=S' class="btn@if ($face=='S')
+      <a data-face='S' href='?vscale={{ $vscale }}&amp;face=S' class="btn@if ($face=='S')
       active@endif">{{__('georigami.sface')}}</a>
-      <a data-face='E' href='?vscale={{ $vscale }}&face=E' class="btn@if ($face=='E')
+      <a data-face='E' href='?vscale={{ $vscale }}&amp;face=E' class="btn@if ($face=='E')
       active@endif">{{__('georigami.eface')}}</a>
     </div>
 
@@ -41,9 +41,9 @@ bloc3d@endsection
 @endsection
 
 @section('bloc_menu')
-          <li class=""><a data-action="profil" href="{{ $bloc->get_url('profil') }}?vscale={{ $vscale }}&face={{ $face }}">{{__('georigami.profil')}}</a></li>
+          <li class=""><a data-action="profil" href="{{ $bloc->get_url('profil') }}?vscale={{ $vscale }}&amp;face={{ $face }}">{{__('georigami.profil')}}</a></li>
           <li class="active"><a href="#">{{__('georigami.3dview')}}</a></li>
-          <li class=""><a data-action="print" href="{{ $bloc->get_url('print') }}?vscale={{ $vscale }}&face={{ $face }}">{{__('georigami.printmodel')}}</a></li>
+          <li class=""><a data-action="print" href="{{ $bloc->get_url('print') }}?vscale={{ $vscale }}&amp;face={{ $face }}">{{__('georigami.printmodel')}}</a></li>
 @endsection
 
 @section('script')

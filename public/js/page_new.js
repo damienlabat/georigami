@@ -6,8 +6,11 @@ $(function() {
 
 
   var showLoading= function(content, pp) {
-      if ((content!='') || (content!==undefined) || (pp!==undefined)) $('#status').removeClass('hide');
-        else $('#status').addClass('hide');
+      if (((content!=='') && (content!==undefined)) || (pp!==undefined))
+          $('#status').slideDown();
+      else
+          $('#status').slideUp();
+
 
       $('#status .text').html(content);
       if (pp!==undefined) {
@@ -346,7 +349,7 @@ $('#input-search').change( function(){
 
                   var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
                   Georigami.results.push( { data:data } );
-                  showLoading( '' );
+                  showLoading();
 
                   }
                 });

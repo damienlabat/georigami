@@ -71,7 +71,7 @@ location@endsection
     @endforeach
   </div>
 
- <a href='{{ URL::to('new') }}?lat={{$location->lat}}&lng={{$location->lng}}' class='btn btn-primary'>{{__('georigami.buildnew')}}</a>
+ <a href='{{ URL::to('new') }}?lat={{$location->lat}}&amp;lng={{$location->lng}}' class='btn btn-primary'>{{__('georigami.buildnew')}}</a>
 
 @endsection
 

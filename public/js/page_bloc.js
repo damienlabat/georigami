@@ -133,7 +133,7 @@ $(function() {
 /* view == profil */
  if (view=='profil') {
 
-  $('.vs-update').hide();
+ // $('.vs-update').hide();
 
 
 
@@ -189,7 +189,7 @@ $(function() {
      profilobj.onDocumentMouseDown= function( event ) {
         event.preventDefault();
 
-       // svgobj[0].setAttribute("shape-rendering","crispEdges"); //optimize speed
+        //svgobj[0].setAttribute("shape-rendering","crispEdges"); //optimize speed
 
         svgobj[0].addEventListener( 'mousemove', profilobj.onDocumentMouseMove, false );
         svgobj[0].addEventListener( 'mouseup', profilobj.onDocumentMouseUp, false );
@@ -217,7 +217,7 @@ $(function() {
       };
 
       profilobj.onDocumentMouseOut= function( event ) {
-        //svgobj[0].setAttribute("shape-rendering", "geometricPrecision" );
+       // svgobj[0].setAttribute("shape-rendering", "geometricPrecision" );
         svgobj[0].removeEventListener( 'mousemove', profilobj.onDocumentMouseMove, false );
         svgobj[0].removeEventListener( 'mouseup', profilobj.onDocumentMouseUp, false );
         svgobj[0].removeEventListener( 'mouseout', profilobj.onDocumentMouseOut, false );

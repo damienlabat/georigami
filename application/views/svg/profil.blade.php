@@ -41,9 +41,9 @@ $VB= $viewbox['left'].' '.$viewbox['top'].' '.($viewbox['right']-$viewbox['left'
    if ($crop) echo '  preserveAspectRatio="xMidYMid slice"';
 ?>>
 
-@render('svg.style')
+@include('svg.style')
 <rect class='rectbackground' x='-1000' y='-1000' width='5000' height='5000'/>
-@render('svg.defs')
+@include('svg.defs')
 <?php
 
 foreach ($coords as $k=>$slice) {

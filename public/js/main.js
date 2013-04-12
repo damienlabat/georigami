@@ -117,8 +117,12 @@ $(function() {
 
 
 	//reload cropped svg ( usefull with chrome )
-	setTimeout(function(){		$('body.savedindex img.profil').width( function(){ return $(this).width()-1; } );		},500	);
-	setTimeout(function(){		$('body.savedindex img.profil').width( function(){ return $(this).width()+1; } );		},510	);
+
+
+	$(window).load(function(){
+		setTimeout(function(){		$('body.savedindex img.profil').width( function(){ return $(this).width()-1; } );		},10	);
+		setTimeout(function(){		$('body.savedindex img.profil').width( function(){ return $(this).width()+1; } );		},20	);
+	});
 
 
 

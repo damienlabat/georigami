@@ -68,12 +68,12 @@ new@endsection
 
                                 <div class='control-group livechange tip' data-toggle="tooltip" title="{{__('georigami.hslicestip')}}">
                                     <label class="control-label" for="input-horizontal-slices">{{__('georigami.hslices')}}</label>
-                                    <div class="controls"><input type="range" step="1" min="2" max="100" id="input-horizontal-slices"></div>
+                                    <div class="controls"><input type="range" step="1" min="1" max="100" id="input-horizontal-slices"></div>
                                 </div>
 
                                 <div class='control-group livechange tip' data-toggle="tooltip" title="{{__('georigami.vslicestip')}}">
                                     <label class="control-label" for="input-vertical-slices">{{__('georigami.vslices')}}</label>
-                                    <div class="controls"><input type="range" step="1" min="2" max="100" id="input-vertical-slices"></div>
+                                    <div class="controls"><input type="range" step="1" min="1" max="100" id="input-vertical-slices"></div>
                                 </div>
 
                             </div>

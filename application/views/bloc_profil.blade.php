@@ -16,7 +16,15 @@ $styleList=array(
   'lines'=>       'lines',
   'joydiv'=>      'joy division',
   'joydiv2'=>      'joy division 2',
-  'joydiv3'=>      'joy division 3'
+  'joydiv3'=>      'joy division 3',
+  'realtopo'=>      'realtopo',
+  'realtopo2'=>      'realtopo2',
+  'bands10'=>      'bands 10m',
+  'bands100'=>      'bands 100m',
+  'bands1000'=>      'bands 1000m',
+  'bands10b'=>      'bands 10m v2',
+  'bands100b'=>      'bands 100m v2',
+  'bands1000b'=>      'bands 1000m v2',
   );
 
 ?>
@@ -35,13 +43,13 @@ $styleList=array(
 
     <div class="span4">
      <div id='facepicker' class="btn-group">
-        <a data-face='N' href='?vscale={{ $vscale }}&face=N&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='N')
+        <a data-face='N' href='?vscale={{ $vscale }}&amp;face=N&amp;dx={{ $dx }}&amp;dy={{ $dy }}&amp;dscale={{ $dscale }}&amp;style={{ $style }}' class="btn@if ($face=='N')
         active@endif">{{__('georigami.nface')}}</a>
-        <a data-face='W' href='?vscale={{ $vscale }}&face=W&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='W') active
+        <a data-face='W' href='?vscale={{ $vscale }}&amp;face=W&amp;dx={{ $dx }}&amp;dy={{ $dy }}&amp;dscale={{ $dscale }}&amp;style={{ $style }}' class="btn@if ($face=='W') active
         @endif">{{__('georigami.wface')}}</a>
-        <a data-face='S' href='?vscale={{ $vscale }}&face=S&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='S') active
+        <a data-face='S' href='?vscale={{ $vscale }}&amp;face=S&amp;dx={{ $dx }}&amp;dy={{ $dy }}&amp;dscale={{ $dscale }}&amp;style={{ $style }}' class="btn@if ($face=='S') active
         @endif">{{__('georigami.sface')}}</a>
-        <a data-face='E' href='?vscale={{ $vscale }}&face=E&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}' class="btn@if ($face=='E') active
+        <a data-face='E' href='?vscale={{ $vscale }}&amp;face=E&amp;dx={{ $dx }}&amp;dy={{ $dy }}&amp;dscale={{ $dscale }}&amp;style={{ $style }}' class="btn@if ($face=='E') active
         @endif">{{__('georigami.eface')}}</a>
     </div>
 
@@ -90,7 +98,7 @@ foreach ($styleList as $key => $value) {
       </fieldset>
       </form>
       </div>
-      <a id='profildownload' class='btn btn-primary'' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&face={{$face}}&dx={{ $dx }}&dy={{ $dy }}&dscale={{ $dscale }}&style={{ $style }}'>{{__('georigami.savedownload')}}</a>
+      <a id='profildownload' class='btn btn-primary' href='{{ $bloc->get_url('download') }}?vscale={{ $vscale }}&amp;face={{$face}}&amp;dx={{ $dx }}&amp;dy={{ $dy }}&amp;dscale={{ $dscale }}&amp;style={{ $style }}'>{{__('georigami.savedownload')}}</a>
 
 
 
@@ -105,10 +113,10 @@ foreach ($styleList as $key => $value) {
             <a href="">{{__('georigami.profil')}}</a>
           </li>
           <li class="">
-            <a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&face={{$face}}">{{__('georigami.3dview')}}</a>
+            <a data-action="3d"  href="{{ $bloc->get_url('3d') }}?vscale={{$vscale}}&amp;face={{$face}}">{{__('georigami.3dview')}}</a>
           </li>
           <li class="">
-            <a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&face={{$face}}">{{__('georigami.printmodel')}}</a>
+            <a data-action="print"  href="{{ $bloc->get_url('print') }}?vscale={{$vscale}}&amp;face={{$face}}">{{__('georigami.printmodel')}}</a>
           </li>
 @endsection
 

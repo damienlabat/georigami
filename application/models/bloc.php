@@ -49,7 +49,10 @@ class bloc extends BaseModel
 
     public function profil_data($face)
     {
-        $data=array();
+        $data=array(
+            'altimin' => $this->min,
+            'altimax' => $this->max,
+            );
 
         $coords=$this->get_coords();
 
