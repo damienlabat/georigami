@@ -40,6 +40,16 @@
       </linearGradient>
     </defs>
 
+    <defs>
+      <linearGradient id="fillstyle5" x1="0%" x2="0%" y1="0" y2="{{-$max*$svg_vscale}}" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FAFAC0" stop-opacity="1" />
+        <stop offset="25%" stop-color="#C4BE90" stop-opacity="1" />
+        <stop offset="50%"  stop-color="#8C644C"  stop-opacity="1" />
+        <stop offset="75%"   stop-color="#594D37"  stop-opacity="1" />
+        <stop offset="100%"   stop-color="#293033"  stop-opacity="1" />
+      </linearGradient>
+    </defs>
+
 
     <!-- from -10000m to 10000m -->
     <?php

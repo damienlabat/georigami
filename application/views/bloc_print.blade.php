@@ -131,7 +131,7 @@ print@endsection
       }
 
     ?>
-      <text x="0" y="0" transform="translate( {{0.003*$svg_hscale}}, {{($slice->m+0.04)*$svg_vscale}}), rotate(90)"><?=$slicetitle?></text>
+      <text x="0" y="0" transform="translate( {{0.003*$svg_hscale}}, {{($slice->m+0.09)*$svg_vscale}}), rotate(90)" text-anchor="end"><?=$slicetitle?></text>
     </svg>
   @endforeach
   </div>
@@ -191,7 +191,7 @@ print@endsection
       }
 
     ?>
-       <text x="0" y="0" transform="translate( {{0.003*$svg_hscale}}, {{($slice->m+0.04)*$svg_vscale}}), rotate(90)"><?=$slicetitle?></text>
+       <text x="0" y="0" transform="translate( {{0.003*$svg_hscale}}, {{($slice->m+0.09)*$svg_vscale}}), rotate(90)" text-anchor="end"><?=$slicetitle?></text>
     </svg>
   @endforeach
   </div>

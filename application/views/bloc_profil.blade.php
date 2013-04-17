@@ -7,24 +7,31 @@ profil@endsection
 <?php
 
 $styleList=array(
-  ''=>            'default',
-  'grey'=>       'grey',
-  'fillstyle2'=>  'fillstyle2',
-  'fillstyle3'=>  'fillstyle3',
-  'fillstyle4'=>  'fillstyle4',
-  'beetlejuice'=>  'beetlejuice',
-  'lines'=>       'lines',
-  'joydiv'=>      'joy division',
-  'joydiv2'=>      'joy division 2',
-  'joydiv3'=>      'joy division 3',
-  'realtopo'=>      'realtopo',
-  'realtopo2'=>      'realtopo2',
-  'bands10'=>      'bands 10m',
-  'bands100'=>      'bands 100m',
-  'bands1000'=>      'bands 1000m',
-  'bands10b'=>      'bands 10m v2',
-  'bands100b'=>      'bands 100m v2',
-  'bands1000b'=>      'bands 1000m v2',
+
+  ''            =>    'default',
+
+  'grey'        =>    'fade to gray',
+  'fillstyle2'  =>    'hot stuff',
+  'fillstyle3'  =>    'fillstyle 1',
+  'fillstyle4'  =>    'fillstyle 2',
+  'fillstyle5'  =>    'fillstyle 3',
+
+  'beetlejuice' =>    'beetlejuice',
+  'lines'       =>    'lines',
+
+  'joydiv'      =>    'joy division',
+  'joydiv2'     =>    'joy division (medium)',
+  'joydiv3'     =>    'joy division (thin)',
+
+  'realtopo'    =>    'real elevation 1',
+  'realtopo2'   =>    'real elevation 2',
+
+  'bands10'     =>    'bands 10m',
+  'bands100'    =>    'bands 100m',
+  'bands1000'   =>    'bands 1000m',
+  'bands10b'    =>    'bands 10m v2',
+  'bands100b'   =>    'bands 100m v2',
+  'bands1000b'  =>    'bands 1000m v2',
   );
 
 ?>

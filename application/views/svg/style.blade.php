@@ -128,6 +128,18 @@
 
 
 
+    /* fillstyle5 */
+    #svgprofil.fillstyle5 polygon {
+      fill: url(#fillstyle5);
+    }
+    #svgprofil.fillstyle5 polyline.topline {
+      stroke-width: 0.005;
+    }
+    #svgprofil.fillstyle5 .gslice rect {
+      fill: #FAFAC0;
+    }
+
+
 
 
 

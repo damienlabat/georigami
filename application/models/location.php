@@ -38,10 +38,17 @@ class location extends BaseModel
         if (!isset($data_json['lat'])) {
             $data_json['lat']=number_format($lat, 5, '.', '');
             $data_json['lng']=number_format($lng, 5, '.', '');
+        } else {
+            $data_json['lat']=number_format($data_json['lat'], 5, '.', '');
+            $data_json['lng']=number_format($data_json['lng'], 5, '.', '');
         }
 
-        if ($location= self::where('lat', '=', $data_json['lat'])->where('lng', '=', $data_json['lng'])->first() )
+        if ($location= self::where('geonameId', '=', $data_json['geonameId'])->first() )
             return $location;
+
+        elseif ($location= self::where('lat', '=', $data_json['lat'])->where('lng', '=', $data_json['lng'])->first() )
+            return $location;
+
         else return self::create( $data_json );
 
     }

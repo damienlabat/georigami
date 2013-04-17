@@ -29,7 +29,7 @@ class Bloc_Controller extends Base_Controller
     public function action_saved()
     {   $perPage=12;
 
-        $saved=Savedview::with('bloc')->order_by('updated_at', 'desc')->paginate($perPage);
+        $saved=Savedview::with('bloc')->where('show','=',true)->order_by('updated_at', 'desc')->paginate($perPage);
 
         return View::make('saved')->with(array('savedviews'=>$saved));
     }
@@ -183,7 +183,10 @@ class Bloc_Controller extends Base_Controller
             );
 
             $params=Input::get();
-            self::save_view($bloc,$profilData, $params);
+            if ( ($params['vscale']!=1) || ($params['dx']!=0) || ($params['dy']!=0) || ($params['dscale']!=0) || ($params['style']!='') ) $showinsaved=true;
+                else  $showinsaved=false;
+
+            self::save_view($bloc,$profilData, $params,$showinsaved);
 
             return Response::make(
                 $data['svg'], 200, array(
@@ -281,11 +284,12 @@ class Bloc_Controller extends Base_Controller
      * @param  array $profilData
      * @return void
      */
-    private function save_view($bloc,$profilData,$params)
+    private function save_view($bloc,$profilData,$params,$showinsaved = false)
     {
             if (!$saved_view=Savedview::where('bloc_id', '=', $bloc->id)->where('params','=',json_encode($params))->first()) {
                 $saved_view = new Savedview;
                 $saved_view->params = json_encode($params);
+                $saved_view->show= $showinsaved;
                 $bloc->saved_views()->insert($saved_view);
             }
 

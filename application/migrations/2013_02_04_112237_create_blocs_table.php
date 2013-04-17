@@ -73,6 +73,7 @@ class Create_Blocs_Table
             $table->integer('bloc_id')->unsigned();
             $table->foreign('bloc_id')->references('id')->on('blocs');
             $table->string('params');
+            $table->boolean('show');
 
             $table->timestamps();
         });

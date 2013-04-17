@@ -5,6 +5,8 @@
                   <li data-slide-to="1" data-target="#myCarousel" class=""></li>
                   <li data-slide-to="2" data-target="#myCarousel" class=""></li>
                   <li data-slide-to="3" data-target="#myCarousel" class=""></li>
+                  <li data-slide-to="4" data-target="#myCarousel" class=""></li>
+                  <li data-slide-to="5" data-target="#myCarousel" class=""></li>
                 </ol>
 
                 <div class="carousel-inner">
@@ -12,7 +14,21 @@
                   <div class="item active">
                     <img alt="" src="{{URL::base()}}img/welcome/ossau.jpg">
                     <div class="carousel-caption">
-                      <p><a href="{{URL::base()}}pic-du-midi-dossau_5/bloc8_3d?vscale=1&amp;face=N" title="">Pic du midi d'Ossau</a></p>
+                      <p><a href="{{URL::base()}}pic-du-midi-dossau_5/bloc8_3d" title="">Pic du midi d'Ossau</a></p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <img alt="" src="{{URL::base()}}img/welcome/gavarnie_mko.jpg">
+                    <div class="carousel-caption">
+                      <p><a href="{{URL::base()}}cirque-de-gavarnie_44/bloc59_3d" title="">Cirque de Gavarnie</a></p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <img alt="" src="{{URL::base()}}img/welcome/gavarnie.jpg">
+                    <div class="carousel-caption">
+                      <p><a href="{{URL::base()}}cirque-de-gavarnie_44/bloc59_3d" title="">Cirque de Gavarnie</a></p>
                     </div>
                   </div>
 
