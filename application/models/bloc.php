@@ -2,24 +2,44 @@
 
 class bloc extends BaseModel
 {
+    /**
+     * enable timestamps
+     */
     public static $timestamps = true;
 
+    /**
+     * return bloc location
+     * @return Location
+     */
     public function location()
     {
         return $this->belongs_to('Location');
     }
 
+    /**
+     * return saved views
+     * @return array
+     */
     public function saved_views()
     {
         return $this->has_many('SavedView')
             ->order_by('updated_at', 'desc');
     }
 
+    /**
+     * return save directory name
+     * @return interger
+     */
     public function getDirectoryNum()
     {
         return floor($this->id/100);
     }
 
+    /**
+     * return directory
+     * @param  string $type directory type (svg-> svg preview  OR data->data json)
+     * @return string       directory name
+     */
     public function getDirectory($type='data')
     {
         if ($type=='svg') $dir= path('public').'./svg/'.$this->getDirectoryNum() .'/';
@@ -29,13 +49,17 @@ class bloc extends BaseModel
     }
 
 
+    /**
+     * return localized created date (autoloaded with presenter)
+     * @return string
+     */
     public function get_created_at_localized()
     {
-        return  date( Lang::line('date.complete')->get() ,strtotime($this->created_at) );
+        return  date(Lang::line('date.complete')->get(), strtotime($this->created_at));
     }
 
     /**
-     * get url to block view
+     * get url to block view (autoloaded with presenter)
      * @param  ['3d'|'profil'|'print'] $show [description]
      * @return [string]                url
      */
@@ -47,6 +71,11 @@ class bloc extends BaseModel
             return URL::to_route('getplus', array( Str::slug($this->location->name),  $this->location->id, $this->id, $show ));
     }
 
+    /**
+     * return profil data
+     * @param  string $face N|W|S|E
+     * @return array
+     */
     public function profil_data($face)
     {
         $data=array(
@@ -62,8 +91,8 @@ class bloc extends BaseModel
         if ($face=='W') $data['coords']=$coords->v;
         if ($face=='E') $data['coords']=array_reverse($coords->v);
 
-        if (($face=='N')||($face=='S')) $data['dim']=$this->width/max($this->height,$this->width);
-        else    $data['dim']=$this->height/max($this->height,$this->width);
+        if (($face=='N')||($face=='S')) $data['dim']=$this->width/max($this->height, $this->width);
+        else    $data['dim']=$this->height/max($this->height, $this->width);
 
         $data['max']=0;
 
@@ -80,6 +109,11 @@ class bloc extends BaseModel
         return $data;
     }
 
+    /**
+     * check posted data, get max val ..
+     * @param  string $coordsJson posted json data
+     * @return array
+     */
     public static function validate_coords($coordsJson)
     {
         $coords=json_decode($coordsJson);
@@ -126,6 +160,11 @@ class bloc extends BaseModel
         return $res;
     }
 
+    /**
+     * save topo data in data/rep/file.json
+     * @param  array $coords data
+     * @return string       data json
+     */
     public function save_coords($coords)
     {
 
@@ -134,6 +173,10 @@ class bloc extends BaseModel
         return json_encode($coords);
     }
 
+    /**
+     * get coord data (autoloaded with presenter)
+     * @return Object
+     */
     public function get_coords()
     {
        $contents = File::get($this->getDirectory().$this->id.'.json');
@@ -141,12 +184,17 @@ class bloc extends BaseModel
        return json_decode($contents);
     }
 
-    public static function count_with($array_field)
+    /**
+     * get bloc count in a country or subdiv ..
+     * @param  array $array_field select with in array ( fieldname => searchvalue)
+     * @return integer              count
+     */
+    public static function count_with($arrayField)
     {
         $count=0;
         $locations = Location::with('blocs');
-        foreach ($array_field as $key => $value)
-            $locations = $locations->where( $key,'=',$value );
+        foreach ($arrayField as $key => $value)
+            $locations = $locations->where($key, '=', $value);
 
         $locations = $locations->get();
 

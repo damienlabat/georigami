@@ -31,11 +31,9 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">147</span></a></li>
+                <span class="label label-info">115</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul><li>todo 
-                <span class="label label-info">1</span>
-</li></ul></a></li>
+                <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
                 <span class="label label-info">0</span></a></li>
 </ul>
@@ -58,32 +56,22 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_count_with" title="count_with :: "><span class="description">count_with()
-        </span><pre>count_with()</pre></a></li>
-<li class="method public "><a href="#method_getDirectory" title="getDirectory :: "><span class="description">getDirectory()
-        </span><pre>getDirectory()</pre></a></li>
-<li class="method public "><a href="#method_getDirectoryNum" title="getDirectoryNum :: "><span class="description">getDirectoryNum()
-        </span><pre>getDirectoryNum()</pre></a></li>
-<li class="method public "><a href="#method_get_coords" title="get_coords :: "><span class="description">get_coords()
-        </span><pre>get_coords()</pre></a></li>
-<li class="method public "><a href="#method_get_created_at_localized" title="get_created_at_localized :: "><span class="description">get_created_at_localized()
-        </span><pre>get_created_at_localized()</pre></a></li>
-<li class="method public "><a href="#method_get_url" title="get_url :: get url to block view"><span class="description">get url to block view</span><pre>get_url()</pre></a></li>
-<li class="method public "><a href="#method_location" title="location :: "><span class="description">location()
-        </span><pre>location()</pre></a></li>
-<li class="method public "><a href="#method_profil_data" title="profil_data :: "><span class="description">profil_data()
-        </span><pre>profil_data()</pre></a></li>
-<li class="method public "><a href="#method_save_coords" title="save_coords :: "><span class="description">save_coords()
-        </span><pre>save_coords()</pre></a></li>
-<li class="method public "><a href="#method_saved_views" title="saved_views :: "><span class="description">saved_views()
-        </span><pre>saved_views()</pre></a></li>
-<li class="method public "><a href="#method_validate_coords" title="validate_coords :: "><span class="description">validate_coords()
-        </span><pre>validate_coords()</pre></a></li>
+<li class="method public "><a href="#method_count_with" title="count_with :: get bloc count in a country or subdiv ."><span class="description">get bloc count in a country or subdiv .</span><pre>count_with()</pre></a></li>
+<li class="method public "><a href="#method_getDirectory" title="getDirectory :: return directory"><span class="description">return directory</span><pre>getDirectory()</pre></a></li>
+<li class="method public "><a href="#method_getDirectoryNum" title="getDirectoryNum :: return save directory name"><span class="description">return save directory name</span><pre>getDirectoryNum()</pre></a></li>
+<li class="method public "><a href="#method_get_coords" title="get_coords :: get coord data (autoloaded with presenter)"><span class="description">get coord data (autoloaded with presenter)</span><pre>get_coords()</pre></a></li>
+<li class="method public "><a href="#method_get_created_at_localized" title="get_created_at_localized :: return localized created date (autoloaded with presenter)"><span class="description">return localized created date (autoloaded with presenter)</span><pre>get_created_at_localized()</pre></a></li>
+<li class="method public "><a href="#method_get_url" title="get_url :: get url to block view (autoloaded with presenter)"><span class="description">get url to block view (autoloaded with presenter)</span><pre>get_url()</pre></a></li>
+<li class="method public "><a href="#method_location" title="location :: return bloc location"><span class="description">return bloc location</span><pre>location()</pre></a></li>
+<li class="method public "><a href="#method_profil_data" title="profil_data :: return profil data"><span class="description">return profil data</span><pre>profil_data()</pre></a></li>
+<li class="method public "><a href="#method_save_coords" title="save_coords :: save topo data in data/rep/file.json"><span class="description">save topo data in data/rep/file.json</span><pre>save_coords()</pre></a></li>
+<li class="method public "><a href="#method_saved_views" title="saved_views :: return saved views"><span class="description">return saved views</span><pre>saved_views()</pre></a></li>
+<li class="method public "><a href="#method_validate_coords" title="validate_coords :: check posted data, get max val ."><span class="description">check posted data, get max val .</span><pre>validate_coords()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
-                    <ul><li class="property public "><a href="#property_timestamps" title="$timestamps :: "><span class="description"></span><pre>$timestamps</pre></a></li></ul>
+                    <ul><li class="property public "><a href="#property_timestamps" title="$timestamps :: enable timestamps"><span class="description"></span><pre>$timestamps</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -101,50 +89,66 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method_count_with"></a><div class="element clickable method public method_count_with" data-toggle="collapse" data-target=".method_count_with .collapse">
-<h2>count_with()
-        </h2>
-<pre>count_with($array_field) </pre>
+<h2>get bloc count in a country or subdiv .</h2>
+<pre>count_with($arrayField) : integer</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>.</p></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$array_field</h4></div>
+<div class="subelement argument"><h4>$arrayField</h4></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>count</div>
 </div></div>
 </div>
 <a id="method_getDirectory"></a><div class="element clickable method public method_getDirectory" data-toggle="collapse" data-target=".method_getDirectory .collapse">
-<h2>getDirectory()
-        </h2>
-<pre>getDirectory($type) </pre>
+<h2>return directory</h2>
+<pre>getDirectory(string $type) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$type</h4></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>directory type (svg-> svg preview  OR data->data json)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>directory name</div>
 </div></div>
 </div>
 <a id="method_getDirectoryNum"></a><div class="element clickable method public method_getDirectoryNum" data-toggle="collapse" data-target=".method_getDirectoryNum .collapse">
-<h2>getDirectoryNum()
-        </h2>
-<pre>getDirectoryNum() </pre>
+<h2>return save directory name</h2>
+<pre>getDirectoryNum() : \interger</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\interger</code></div>
+</div></div>
 </div>
 <a id="method_get_coords"></a><div class="element clickable method public method_get_coords" data-toggle="collapse" data-target=".method_get_coords .collapse">
-<h2>get_coords()
-        </h2>
-<pre>get_coords() </pre>
+<h2>get coord data (autoloaded with presenter)</h2>
+<pre>get_coords() : Object</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>Object</code></div>
+</div></div>
 </div>
 <a id="method_get_created_at_localized"></a><div class="element clickable method public method_get_created_at_localized" data-toggle="collapse" data-target=".method_get_created_at_localized .collapse">
-<h2>get_created_at_localized()
-        </h2>
-<pre>get_created_at_localized() </pre>
+<h2>return localized created date (autoloaded with presenter)</h2>
+<pre>get_created_at_localized() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
 </div>
 <a id="method_get_url"></a><div class="element clickable method public method_get_url" data-toggle="collapse" data-target=".method_get_url .collapse">
-<h2>get url to block view</h2>
+<h2>get url to block view (autoloaded with presenter)</h2>
 <pre>get_url(\['3d' | \'profil' | \'print'] $show) : \[string]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -160,50 +164,66 @@
 </div></div>
 </div>
 <a id="method_location"></a><div class="element clickable method public method_location" data-toggle="collapse" data-target=".method_location .collapse">
-<h2>location()
-        </h2>
-<pre>location() </pre>
+<h2>return bloc location</h2>
+<pre>location() : \Location</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Location</code></div>
+</div></div>
 </div>
 <a id="method_profil_data"></a><div class="element clickable method public method_profil_data" data-toggle="collapse" data-target=".method_profil_data .collapse">
-<h2>profil_data()
-        </h2>
-<pre>profil_data($face) </pre>
+<h2>return profil data</h2>
+<pre>profil_data(string $face) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$face</h4></div>
+<div class="subelement argument">
+<h4>$face</h4>
+<code>string</code><p>N|W|S|E</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
 <a id="method_save_coords"></a><div class="element clickable method public method_save_coords" data-toggle="collapse" data-target=".method_save_coords .collapse">
-<h2>save_coords()
-        </h2>
-<pre>save_coords($coords) </pre>
+<h2>save topo data in data/rep/file.json</h2>
+<pre>save_coords(array $coords) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$coords</h4></div>
+<div class="subelement argument">
+<h4>$coords</h4>
+<code>array</code><p>data</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>data json</div>
 </div></div>
 </div>
 <a id="method_saved_views"></a><div class="element clickable method public method_saved_views" data-toggle="collapse" data-target=".method_saved_views .collapse">
-<h2>saved_views()
-        </h2>
-<pre>saved_views() </pre>
+<h2>return saved views</h2>
+<pre>saved_views() : array</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_validate_coords"></a><div class="element clickable method public method_validate_coords" data-toggle="collapse" data-target=".method_validate_coords .collapse">
-<h2>validate_coords()
-        </h2>
-<pre>validate_coords($coordsJson) </pre>
-<div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_validate_coords"></a><div class="element clickable method public method_validate_coords" data-toggle="collapse" data-target=".method_validate_coords .collapse">
+<h2>check posted data, get max val .</h2>
+<pre>validate_coords(string $coordsJson) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>.</p></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$coordsJson</h4></div>
+<div class="subelement argument">
+<h4>$coordsJson</h4>
+<code>string</code><p>posted json data</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
 <h3>
@@ -220,7 +240,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-17T07:57:09+02:00.<br></footer></div>
+            generated on 2013-04-18T10:48:38+02:00.<br></footer></div>
 </div>
 </body>
 </html>

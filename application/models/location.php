@@ -2,57 +2,90 @@
 
 class location extends BaseModel
 {
+     /**
+     * enable timestamps
+     */
     public static $timestamps = true;
 
+    /**
+     * location blocs
+     * @return array blocs array
+     */
     public function blocs()
     {
         return $this->has_many('Bloc')
             ->order_by('updated_at', 'desc');
     }
 
+    /**
+     * return location url (autoloaded with presenter)
+     * @return string
+     */
     public function get_url()
     {
         return URL::to_route('location', array( Str::slug($this->name),  $this->id ));
     }
 
+    /**
+     * return localized country name  (autoloaded with presenter)
+     * @return string
+     */
     public function get_countryname()
     {
         return Lang::line('geoname.'.$this->countrycode)->get();
     }
 
+    /**
+     * return localized feature class (autoloaded with presenter)
+     * @return string
+     */
     public function get_fclname()
     {
         return Lang::line('geoname.fcl_'.$this->fcl)->get();
     }
 
+    /**
+     * return location icon (autoloaded with presenter)
+     * @return string
+     */
     public function get_icon()
     {
         return Geoname::getIcon($this->fcode, $this->fcl);
     }
 
 
+    /**
+     * get location or create if not found
+     * @param  number $lat latitude
+     * @param  number $lng longitude
+     * @return Location
+     */
     public static function getorcreate($lat,$lng)
     {
-        $data_json=Geoname::findTheBest( $lat,$lng) ;
+        $dataJson=Geoname::findTheBest($lat, $lng);
 
-        if (!isset($data_json['lat'])) {
-            $data_json['lat']=number_format($lat, 5, '.', '');
-            $data_json['lng']=number_format($lng, 5, '.', '');
+        if (!isset($dataJson['lat'])) {
+            $dataJson['lat']=number_format($lat, 5, '.', '');
+            $dataJson['lng']=number_format($lng, 5, '.', '');
         } else {
-            $data_json['lat']=number_format($data_json['lat'], 5, '.', '');
-            $data_json['lng']=number_format($data_json['lng'], 5, '.', '');
+            $dataJson['lat']=number_format($dataJson['lat'], 5, '.', '');
+            $dataJson['lng']=number_format($dataJson['lng'], 5, '.', '');
         }
 
-        if ($location= self::where('geonameId', '=', $data_json['geonameId'])->first() )
+        if ($location= self::where('geonameId', '=', $dataJson['geonameId'])->first() )
             return $location;
 
-        elseif ($location= self::where('lat', '=', $data_json['lat'])->where('lng', '=', $data_json['lng'])->first() )
+        elseif ($location= self::where('lat', '=', $dataJson['lat'])->where('lng', '=', $dataJson['lng'])->first() )
             return $location;
 
-        else return self::create( $data_json );
-
+        else return self::create($dataJson);
     }
 
+    /**
+     * create new location from data
+     * @param  array $data geoname array
+     * @return Location
+     */
     public static function create($data)
     {
 

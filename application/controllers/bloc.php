@@ -29,13 +29,18 @@ class Bloc_Controller extends Base_Controller
     public function action_saved()
     {   $perPage=12;
 
-        $saved=Savedview::with('bloc')->where('show','=',true)->order_by('updated_at', 'desc')->paginate($perPage);
+        $saved=Savedview::with('bloc')->where('show', '=', true)->order_by('updated_at', 'desc')->paginate($perPage);
 
         return View::make('saved')->with(array('savedviews'=>$saved));
     }
 
 
-
+    /**
+     * show last saved views
+     * @param  string $locname location name
+     * @param  integer $id      bloc id
+     * @return View
+     */
     public function action_saved_show($locname,$id)
     {
         if (!$saved= Savedview::with('bloc')->find($id)) return Response::error('404');
@@ -48,6 +53,7 @@ class Bloc_Controller extends Base_Controller
         $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
         return Redirect::to($url);
     }
+
 
     /**
      * return map page
@@ -107,6 +113,8 @@ class Bloc_Controller extends Base_Controller
         );
     }
 
+
+
     /**
      * return bloc page
      *
@@ -147,9 +155,9 @@ class Bloc_Controller extends Base_Controller
 
         if ($show=='print') {
             $data['hidecut']=       Input::get('hidecut', null);
-            $data['hidetext']=      Input::get('hidetext',null);
-            $data['showvslice']=      Input::get('showvslice','west');
-            $data['showhslice']=      Input::get('showhslice','north');
+            $data['hidetext']=      Input::get('hidetext', null);
+            $data['showvslice']=      Input::get('showvslice', 'west');
+            $data['showhslice']=      Input::get('showhslice', 'north');
         }
 
         if (($show=='profil')||($show=='download')) {
@@ -167,10 +175,10 @@ class Bloc_Controller extends Base_Controller
 
             $data=array_merge($data, $profilData);
 
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg')) self::save_svg($bloc,'N');
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg')) self::save_svg($bloc,'E');
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg')) self::save_svg($bloc,'S');
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg')) self::save_svg($bloc,'W');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg')) self::save_svg($bloc, 'N');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg')) self::save_svg($bloc, 'E');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg')) self::save_svg($bloc, 'S');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg')) self::save_svg($bloc, 'W');
 
         }
 
@@ -183,10 +191,11 @@ class Bloc_Controller extends Base_Controller
             );
 
             $params=Input::get();
-            if ( ($params['vscale']!=1) || ($params['dx']!=0) || ($params['dy']!=0) || ($params['dscale']!=0) || ($params['style']!='') ) $showinsaved=true;
+            if ( ($params['vscale']!=1) || ($params['dx']!=0) || ($params['dy']!=0)
+                || ($params['dscale']!=0) || ($params['style']!='') ) $showinsaved=true;
                 else  $showinsaved=false;
 
-            self::save_view($bloc,$profilData, $params,$showinsaved);
+            self::save_view($bloc, $profilData, $params, $showinsaved);
 
             return Response::make(
                 $data['svg'], 200, array(
@@ -200,6 +209,8 @@ class Bloc_Controller extends Base_Controller
         return View::make('bloc_'.$show)->with($data);
 
     }
+
+
 
     /**
      * return svg profil image
@@ -274,7 +285,7 @@ class Bloc_Controller extends Base_Controller
 
             $svg= self::profil_svg($profilData, $data);
 
-            File::put($bloc->getDirectory('svg').'bloc'.$bloc->id.$face.'.svg', $svg );
+            File::put($bloc->getDirectory('svg').'bloc'.$bloc->id.$face.'.svg', $svg);
     }
 
 
@@ -341,7 +352,7 @@ class Bloc_Controller extends Base_Controller
         $coords= Bloc::validate_coords($input['coords']);
 
         if (!$coords) {
-            return 'INVALID COORDS'; // TODO better error message
+            return json_encode(array('error'=>'INVALID COORDS'));
         }
 
         $location= Location::getorcreate($input['lat'], $input['lng']);

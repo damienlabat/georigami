@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * use geonames.org API
+ */
 class geoname
 {
     /**
@@ -8,6 +10,14 @@ class geoname
      */
     protected static $_baseUrl= 'http://api.geonames.org/';
 
+    /**
+     * search loacation by name see http://www.geonames.org/export/geonames-search.html
+     * @param  string  $req          searchname
+     * @param  string  $featureClass character A,H,L,P,R,S,T,U,V see http://www.geonames.org/export/codes.html
+     * @param  integer $maxRows      the maximal number of rows in the document returned by the service. Default is 100, the maximal allowed value is 1000.
+     * @param  string  $style        verbosity of returned datas
+     * @return array
+     */
     public static function search($req,$featureClass=null,$maxRows=50,$style='short')
     {
 
@@ -22,6 +32,15 @@ class geoname
         return $res;
     }
 
+
+    /**
+     * search location starting with
+     * @param  string  $req          searchname
+     * @param  string  $featureClass character A,H,L,P,R,S,T,U,V see http://www.geonames.org/export/codes.html
+     * @param  integer $maxRows      the maximal number of rows in the document returned by the service. Default is 100, the maximal allowed value is 1000.
+     * @param  string  $style        verbosity of returned datas
+     * @return [type]                [description]
+     */
     public static function startwith($req,$featureClass=null,$maxRows=5,$style='short')
     {
 
@@ -36,6 +55,14 @@ class geoname
         return $res;
     }
 
+    /**
+     * find nearby  locations
+     * @param  number  $lat          latitude
+     * @param  number  $lng          longitude
+     * @param  string  $featureClass character A,H,L,P,R,S,T,U,V see http://www.geonames.org/export/codes.html
+     * @param  number  $radius       search radius in km
+     * @return array
+     */
     public static function findNearby($lat,$lng,$featureClass=null,$radius=1) // plus bbox ?
     {
         $url = self::$_baseUrl.'findNearbyJSON?lat='.$lat.'&lng='.$lng;
@@ -49,6 +76,12 @@ class geoname
             else return $res['geonames'][0];
     }
 
+    /**
+     * return country and subdivision
+     * @param  number  $lat          latitude
+     * @param  number  $lng          longitude
+     * @return array
+     */
     public static function findCountrySubdivision($lat,$lng)
     {
         $url = self::$_baseUrl.'countrySubdivisionJSON?lat='.$lat.'&lng='.$lng;
@@ -61,6 +94,12 @@ class geoname
         return $res;
     }
 
+    /**
+     * find ocean name
+     * @param  number  $lat          latitude
+     * @param  number  $lng          longitude
+     * @return array
+     */
     public static function findOcean($lat,$lng)
     {
         $url = self::$_baseUrl.'oceanJSON?lat='.$lat.'&lng='.$lng;
@@ -70,6 +109,12 @@ class geoname
         return $res;
     }
 
+    /**
+     * return best info location > country > ocean
+     * @param  number  $lat          latitude
+     * @param  number  $lng          longitude
+     * @return array
+     */
     public static function findTheBest($lat,$lng)
     {
         //$res= self::findNearby($lat, $lng, 'T', 5);
@@ -86,6 +131,13 @@ class geoname
 
     }
 
+    /**
+     * return location icon
+     * @param  string  $code
+     * @param  string  $code2
+     * @param  string  $code3
+     * @return string  icon name
+     */
     public static function getIcon( $code, $code2=false, $code3='default' )
     {
         $list= json_decode(Config::get('geoname.icons'), TRUE);
