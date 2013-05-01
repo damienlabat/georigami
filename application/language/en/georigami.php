@@ -74,7 +74,7 @@ return array(
     'style' => 'style',
     'update' => 'update',
     'print' => 'imprimer',
-    'savedownload' => 'save &amp; download',
+    'savedownload' => 'save &amp; download SVG',
 
     'hidecutlines' => 'hide cut lines',
     'hidetext' => 'hide text',

@@ -71,7 +71,7 @@ return array(
     'style' => 'style',
     'update' => 'actualiser',
     'print' => 'imprimer',
-    'savedownload' => 'enregistrer',
+    'savedownload' => 'enregistrer le SVG',
 
     'hidecutlines' => 'masquer les pointillés',
     'hidetext' => 'masquer le texte',

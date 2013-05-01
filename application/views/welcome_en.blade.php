@@ -12,7 +12,8 @@ welcome@endsection
 
         <div class='span6 hero-unit'>
             <h1>Georigami</h1>
-            <!--p>TODO blah blah blah</p-->
+            <br/>
+            <p>Build paper mountains and other stuffs from google map topographical data.</p>
           </div>
 
         <div class='span6'>

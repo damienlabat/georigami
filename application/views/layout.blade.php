@@ -91,7 +91,7 @@
         {{HTML::script("js/vendor/bootstrap.min.js")}}
         {{HTML::script("js/vendor/jquery-ui-1.10.1.custom.min.js")}}
 
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&amp;sensor=false&amp;language={{Config::get('application.language')}}"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false&language={{Config::get('application.language')}}"></script>
         {{HTML::script("js/markerclusterer.js")}}
 
         <script>Georigami={baseurl:'{{URL::base()}}', lang:'{{Config::get('application.language')}}'};</script>

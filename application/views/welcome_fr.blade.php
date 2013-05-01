@@ -12,7 +12,8 @@ welcome@endsection
 
         <div class='span6 hero-unit'>
             <h1>Georigami</h1>
-            <!--p>TODO blah blah blah</p-->
+            <br/>
+            <p>Fabriquez des montagnes en papier et plein d'autres choses à partir des données topographiques de google map.</p>
         </div>
 
         <div class='span6'>
