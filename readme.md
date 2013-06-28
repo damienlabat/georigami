@@ -1,5 +1,6 @@
 # Georigami
 Build paper mountains and other stuffs from google map topographical data.
+Using Laravel, GoogleMap, WebGL and SVG
 
 demo: [http://lab.damienlabat.fr/georigami](http://lab.damienlabat.fr/georigami)
 
