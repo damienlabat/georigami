@@ -10,6 +10,8 @@ $styleList=array(
 
   ''            =>    'default',
 
+  'preview'            =>    'preview',
+
   'grey'        =>    'fade to gray',
   'fillstyle2'  =>    'hot stuff',
   'fillstyle3'  =>    'fillstyle 1',

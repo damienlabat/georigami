@@ -28,11 +28,11 @@ index@endsection
                 @endif
                 <span class='countryname'>{{$bloc->location->countryname}}</span><br/>
                 {{$bloc->location->adminname1}}<br/>
-                {{__('georigami.altitude',array('from'=>round($bloc->min), 'to'=>round($bloc->max)))}}<br/>
-                {{$bloc->width}}m x {{$bloc->height}}m<br/>
-                {{__('georigami.rotation')}}: {{$bloc->rotate}}°<br/>
+                <br/>{{__('georigami.altitude',array('from'=>round($bloc->min), 'to'=>round($bloc->max)))}}<br/>
+               <!-- {{$bloc->width}}m x {{$bloc->height}}m<br/>
+                {{__('georigami.rotation')}}: {{$bloc->rotate}}°<br/> -->
                 {{__('georigami.slices')}}: {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
-                {{__('georigami.samples')}}: {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}}<br/>
+                <!--{{__('georigami.samples')}}: {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}}<br/>-->
                 {{$bloc->created_at_localized}}
               </a>
 

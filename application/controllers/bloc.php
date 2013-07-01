@@ -48,7 +48,7 @@ class Bloc_Controller extends Base_Controller
 
         $params=json_decode($saved->params, true);
         if (!file_exists($saved->getDirectory().'view'.$saved->id.'.svg'))
-            self::save_view($saved->bloc, $saved->bloc->profil_data($params['face']), $params);
+            profil::save_view($saved->bloc, $saved->bloc->profil_data($params['face']), $params);
 
         $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
         return Redirect::to($url);
@@ -169,16 +169,16 @@ class Bloc_Controller extends Base_Controller
             $data['dy']=          Input::get('dy', 0);
             $data['dscale']=      Input::get('dscale', 0);
 
-            $data['svg']=         self::profil_svg($profilData, $data);
+            $data['svg']=         profil::profil_svg($profilData, $data);
             $data['svg_hscale']=  100;
             $data['profil_data']= $profilData;
 
             $data=array_merge($data, $profilData);
 
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg')) self::save_svg($bloc, 'N');
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg')) self::save_svg($bloc, 'E');
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg')) self::save_svg($bloc, 'S');
-        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg')) self::save_svg($bloc, 'W');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg')) profil::save_svg($bloc, 'N');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg')) profil::save_svg($bloc, 'E');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg')) profil::save_svg($bloc, 'S');
+        if (!file_exists($bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg')) profil::save_svg($bloc, 'W');
 
         }
 
@@ -191,11 +191,10 @@ class Bloc_Controller extends Base_Controller
             );
 
             $params=Input::get();
-            if ( ($params['vscale']!=1) || ($params['dx']!=0) || ($params['dy']!=0)
-                || ($params['dscale']!=0) || ($params['style']!='') ) $showinsaved=true;
+            if ( !Agent::is_robot() ) $showinsaved=true;
                 else  $showinsaved=false;
 
-            self::save_view($bloc, $profilData, $params, $showinsaved);
+            profil::save_view($bloc, $profilData, $params, $showinsaved);
 
             return Response::make(
                 $data['svg'], 200, array(
@@ -212,34 +211,7 @@ class Bloc_Controller extends Base_Controller
 
 
 
-    /**
-     * return svg profil image
-     *
-     * @param  array $profilData see Bloc::profil_data
-     * @param  array $options    option: vscale, style, dx, dy, dscale, header, svg_hscale
-     * @return View
-     *
-     * @see Bloc::profil_data()
-     */
-    private function profil_svg($profilData, $options=array() )
-    {
-        if (!isset($options['vscale'])) $options['vscale']=1;
-        if (!isset($options['style']))  $options['style']='';
-        if (!isset($options['dx']))     $options['dx']=0;
-        if (!isset($options['dy']))     $options['dy']=0;
-        if (!isset($options['dscale'])) $options['dscale']=0;
-        if (!isset($options['header'])) $options['header']=false;
-        if (!isset($options['svg_hscale'])) $options['svg_hscale']=100;
-        if (!isset($options['reduce'])) $options['reduce']=false;
-        if (!isset($options['crop']))   $options['crop']=false;
-
-        $data=array_merge($profilData, $options);
-
-          $data['svg_vscale']= $data['vscale'] * $data['svg_hscale'];
-
-        return View::make('svg/profil')->with($data);
-
-    }
+ 
 
 
 
@@ -260,58 +232,6 @@ class Bloc_Controller extends Base_Controller
     }
 
 
-
-    /**save reduce profil svg image
-     * @param  Bloc $bloc
-     * @param  string $face face to show (N|W|S|E)
-     * @return void
-     */
-    private function save_svg($bloc,$face)
-    {
-
-            $profilData=$bloc->profil_data($face);
-
-            $data['style']=       'preview';
-            $data['dx']=          0;
-
-            if (($face=='N')||($face=='S'))
-                $data['dy']=      30/$bloc->hslices;
-            else
-                $data['dy']=      30/$bloc->vslices;
-
-            $data['dscale']=      0.2;
-            $data['header']=      true;
-            $data['reduce']=      true;
-
-            $svg= self::profil_svg($profilData, $data);
-
-            File::put($bloc->getDirectory('svg').'bloc'.$bloc->id.$face.'.svg', $svg);
-    }
-
-
-     /**save reduce profil svg image
-     * @param  Bloc $bloc
-     * @param  string $params face to show (N|W|S|E)
-     * @param  array $profilData
-     * @return void
-     */
-    private function save_view($bloc,$profilData,$params,$showinsaved = false)
-    {
-            if (!$saved_view=Savedview::where('bloc_id', '=', $bloc->id)->where('params','=',json_encode($params))->first()) {
-                $saved_view = new Savedview;
-                $saved_view->params = json_encode($params);
-                $saved_view->show= $showinsaved;
-                $bloc->saved_views()->insert($saved_view);
-            }
-
-            $params['header']=      true;
-            $params['crop']=      true;
-            $params['reduce']=      true;
-
-            $svg= self::profil_svg($profilData, $params);
-
-            File::put($saved_view->getDirectory().'view'.$saved_view->id.'.svg', $svg );
-    }
 
 
     /**
@@ -382,10 +302,10 @@ class Bloc_Controller extends Base_Controller
 
         $bloc->save_coords($coords);
 
-        self::save_svg($bloc,'N');
-        self::save_svg($bloc,'E');
-        self::save_svg($bloc,'S');
-        self::save_svg($bloc,'W');
+        profil::save_svg($bloc,'N');
+        profil::save_svg($bloc,'E');
+        profil::save_svg($bloc,'S');
+        profil::save_svg($bloc,'W');
 
         return Redirect::to_route('getJson', array($bloc->id));
 
