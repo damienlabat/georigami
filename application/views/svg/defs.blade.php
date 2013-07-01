@@ -6,6 +6,14 @@
     </defs>
 
     <defs>
+      <linearGradient id="greengradient" x1="0%" x2="0%" y1="0" y2="100%">
+        <stop offset="0%"    stop-color="#99e663" stop-opacity="0" />
+        <stop offset="100%"  stop-color="#99e663" stop-opacity="1" />
+      </linearGradient>
+    </defs>
+    
+
+    <defs>
       <linearGradient id="greygradient" x1="0%" x2="0%" y1="0" y2="{{-$max*$svg_vscale}}" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stop-color="#aaa" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="1" />

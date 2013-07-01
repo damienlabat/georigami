@@ -25,12 +25,15 @@
 
 
     /* preview */
-    #svgprofil.preview polygon {
-      fill: url(#preview2);
+    #svgprofil.preview polygon,
+    #svgprofil.preview .gslice rect {
+      fill: #99e663;
     }
 
+
     #svgprofil.preview polyline.topline {
-      stroke-width: 0.25;
+      stroke-width: 0.3;
+      stroke:black;
     }
 
 
