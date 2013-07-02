@@ -10,7 +10,7 @@ return array(
     'lastones' => 'derniers blocs',
     'lastsaved' => 'derniers rendus',
     'map' => 'carte',
-    'build' => 'charger un nouveau bloc',
+    'build' => 'Créer un nouveau bloc',
 
     'buildnew' => 'charger un nouveau bloc',
 
@@ -92,5 +92,5 @@ return array(
     'south' => 'Sud',
     'west' => 'Ouest',
 
-    'edit' => 'changer',
+    'edit' => 'modifier',
 );
