@@ -49,6 +49,8 @@ location@endsection
 
       </div>
 
+      <h3>Blocs</h3>
+
       <div class='row'>
 
   @foreach ($location->blocs as $bloc)
@@ -72,6 +74,12 @@ location@endsection
   </div>
 
  <a href='{{ URL::to('new') }}?lat={{$location->lat}}&amp;lng={{$location->lng}}' class='btn btn-primary'>{{__('georigami.buildnew')}}</a>
+
+    <h3>Rendu</h3>
+
+    <?php
+      // TODO !
+    ?>
 
 @endsection
 

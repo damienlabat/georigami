@@ -477,7 +477,14 @@ input[type='range'] {
 
 
 
+html.svg *.ifnotsvg {
+    display:none !important;
+}
 
+
+html:not(.svg) *.ifsvg {
+    display:none !important;
+}
 
 
 

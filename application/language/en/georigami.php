@@ -95,4 +95,6 @@ return array(
     'south' => 'South',
     'west' => 'West',
 
+    'edit' => 'edit',
+
 );

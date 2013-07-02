@@ -91,4 +91,6 @@ return array(
     'east' => 'Est',
     'south' => 'Sud',
     'west' => 'Ouest',
+
+    'edit' => 'changer',
 );

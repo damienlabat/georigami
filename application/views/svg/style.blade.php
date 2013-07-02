@@ -1,9 +1,9 @@
  <style>
 
-    #svgprofil {
+    /*#svgprofil {
       width: 100%;
       height: 700px;
-    }
+    }*/
 
 
 

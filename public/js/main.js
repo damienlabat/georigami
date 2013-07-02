@@ -110,6 +110,7 @@ $(function() {
 	if ($('body').hasClass('profil')) Georigami.initBloc('profil');
 
 	if ($('body').hasClass('location')) Georigami.initLocation();
+	if ($('body').hasClass('savedview')) Georigami.initLocation();
 	if ($('body').hasClass('map')) Georigami.initMap();
 	if ($('body').hasClass('new')) Georigami.initNew();
 	if ($('body').hasClass('welcome')) Georigami.initWelcome();

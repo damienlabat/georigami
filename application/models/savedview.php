@@ -30,9 +30,9 @@ class savedview extends BaseModel
      * return directory
      * @return string       directory name
      */
-    public function getDirectory()
+    public function getDirectory($type='svg')
     {
-        $dir= path('public').'./svg/view/'.$this->getDirectoryNum() .'/';
+        $dir= path('public').'./'.$type.'/view/'.$this->getDirectoryNum() .'/';
         if (!is_dir($dir)) mkdir($dir, 0777);
         return $dir;
     }

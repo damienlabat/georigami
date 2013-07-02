@@ -19,8 +19,6 @@ $(function() {
 
     google.maps.event.addListener(map, 'click', function(event) {
 
-
-
         var html= '<p class="coords">lat: '+event.latLng.lat()+'<br/>lng: '+event.latLng.lng()+'</p>';
         html= html+'<a href="'+Georigami.baseurl+'new?lat='+event.latLng.lat()+'&lng='+event.latLng.lng()+'" class="btn btn-primary btn-small"/>'+Lang.buildanew+'</a>';
 

@@ -43,6 +43,7 @@ class bloc extends BaseModel
     public function getDirectory($type='data')
     {
         if ($type=='svg') $dir= path('public').'./svg/'.$this->getDirectoryNum() .'/';
+        elseif ($type=='png') $dir= path('public').'./png/'.$this->getDirectoryNum() .'/';
             else $dir= path('public').'../data/'.$this->getDirectoryNum() .'/';
         if (!is_dir($dir)) mkdir($dir, 0777);
         return $dir;

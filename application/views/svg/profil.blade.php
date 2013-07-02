@@ -36,7 +36,8 @@ foreach ($coords as $k=>$slice) {
     $viewbox['top']  -= $height*0.05;
     $viewbox['bottom'] += $height*0.1;
 
-    $rect_height=max($svg_vscale*$max/10, $svg_hscale*$dim/10);  // TODO! tester
+    /*$rect_height=max($svg_vscale*$max/10, $svg_hscale*$dim/10);  // TODO! tester*/
+    $rect_height=$svg_vscale*$max/10;
 
 $VB= $viewbox['left'].' '.$viewbox['top'].' '.($viewbox['right']-$viewbox['left']).' '.($viewbox['bottom']-$viewbox['top']);
 
@@ -68,7 +69,7 @@ foreach ($coords as $k=>$slice) {
       echo "' transform='translate(".$X.",".$Y.")'>
           <g transform='translate(".($dim/2)*$svg_hscale.",".$max*$svg_hscale.")'>
               <g class='gscale' transform='scale(".$SCALE.")'>
-                <rect x='".-($svg_hscale*$dim/2)."' y='".-$svg_vscale*0.002."' width='".$svg_hscale*$dim."' height='".$rect_height."'/>
+                <!--rect x='".-($svg_hscale*$dim/2)."' y='".-$svg_vscale*0.002."' width='".$svg_hscale*$dim."' height='".$rect_height."'/-->
                 <polygon  points='".$coord . ($dim/2)*$svg_hscale.",".(0)*$svg_vscale.",".-($dim/2)*$svg_hscale.",".(0)*$svg_vscale."' fill='white'/>
                 <polyline class='topline' points='".$coord."'/>
 

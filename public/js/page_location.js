@@ -36,6 +36,18 @@ $(function() {
     map = new google.maps.Map(document.getElementById("map-canvas2"), mapOptions);
 
 
+    google.maps.event.addListener(map, 'click', function(event) {
+
+        var html= '<p class="coords">lat: '+event.latLng.lat()+'<br/>lng: '+event.latLng.lng()+'</p>';
+        html= html+'<a href="'+Georigami.baseurl+'new?lat='+event.latLng.lat()+'&lng='+event.latLng.lng()+'" class="btn btn-primary btn-small"/>'+Lang.buildanew+'</a>';
+
+        if (infowindow) infowindow.close();
+         infowindow = new google.maps.InfoWindow({content: html, position:new google.maps.LatLng( event.latLng.lat() , event.latLng.lng() ) });
+         infowindow.open(map);
+
+        });
+
+
     var markers = [];
     var bounds = new google.maps.LatLngBounds ();
     bounds.extend(Loc);

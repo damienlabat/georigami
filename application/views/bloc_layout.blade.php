@@ -28,7 +28,8 @@
         <div id='blocinfo' class='row' data-id='{{$bloc->id}}' data-vscale='{{$vscale}}' data-face='{{$face}}' data-view='{{$show}}'>
 
             <div class="span2">
-               <img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{$face}} view"  class="hidden-phone bloc-face">
+               <img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{Str::slug($bloc->location->name)}} {{$face}} view"  class="hidden-phone bloc-face">
+               <img src="{{URL::base()}}png/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}_{{ Str::slug($bloc->location->name) }}.png" title="{{Str::slug($bloc->location->name)}} {{$face}} view"  class="ifnotsvg bloc-face">
             </div>
             <div class="span2">
               <a href='{{ $bloc->location->get_url() }}'>
