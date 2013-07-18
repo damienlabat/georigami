@@ -17,6 +17,7 @@ class Bloc_Controller extends Base_Controller
 
         $blocs=Bloc::with('location')->order_by('updated_at', 'desc')->paginate($perPage);
 
+
         return View::make('index')->with(array('blocs'=>$blocs, 'face'=>$face ));
     }
 

@@ -9,20 +9,20 @@ index@endsection
 
 @section('content')
 <h1>{{__('georigami.lastones')}}</h1>
-<div class="pagination">
+<div class="pagination pagination-mini">
   <ul>
     <li @if ($face=='N') 
     class="active" 
-    @endif><a href='?face=N'>{{__('georigami.nface')}}</a></li>
+    @endif><a href='?page={{$blocs->page}}&face=N'>{{__('georigami.nface')}}</a></li>
     <li @if ($face=='E') 
     class="active" 
-    @endif><a href='?face=E'>{{__('georigami.eface')}}</a></li>
+    @endif><a href='?page={{$blocs->page}}&face=E'>{{__('georigami.eface')}}</a></li>
     <li @if ($face=='S') 
     class="active" 
-    @endif><a href='?face=S'>{{__('georigami.sface')}}</a></li>
+    @endif><a href='?page={{$blocs->page}}&face=S'>{{__('georigami.sface')}}</a></li>
     <li @if ($face=='W') 
     class="active" 
-    @endif><a href='?face=W'>{{__('georigami.wface')}}</a></li>
+    @endif><a href='?page={{$blocs->page}}&face=W'>{{__('georigami.wface')}}</a></li>
   </ul>
 </div>
 <div class="row">
