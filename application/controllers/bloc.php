@@ -43,8 +43,11 @@ class Bloc_Controller extends Base_Controller
      */
     public function action_saved_show($locname,$id)
     {
-        if (!$saved= Savedview::with('bloc')->find($id)) return Response::error('404');
+        if (!$saved= Savedview::with('bloc')->where('show', '=', true)->find($id)) return Response::error('404');
         if (Str::slug($saved->bloc->location->name)!=$locname) return Response::error('404');
+
+        $savedPrev= Savedview::with('bloc')->where('show', '=', true)->where('id', '<', $id)->order_by('id', 'desc')->first();
+        $savedNext= Savedview::with('bloc')->where('show', '=', true)->where('id', '>', $id)->order_by('id', 'asc')->first();
 
         $png_exist= file_exists($saved->getDirectory('png').'view'.$saved->id.'_'.Str::slug($saved->bloc->location->name).'.png');
         $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
@@ -64,7 +67,7 @@ class Bloc_Controller extends Base_Controller
         }
 
        
-        return View::make('saved_view')->with(array('saved'=>$saved, 'location_json'=> json_encode($locationArray), 'url'=>$url, 'svg'=>$svg, 'png_exist'=>$png_exist));
+        return View::make('saved_view')->with(array('saved'=>$saved,'prev'=> $savedPrev,'next'=>$savedNext, 'location_json'=> json_encode($locationArray), 'url'=>$url, 'svg'=>$svg, 'png_exist'=>$png_exist));
 
         
         //return Redirect::to($url);
@@ -147,7 +150,10 @@ class Bloc_Controller extends Base_Controller
         $face= Input::get('face', 'N');
         $vscale= Input::get('vscale', 1);
 
+
         if (!$bloc= Bloc::with('location')->find($blocid)) return Response::error('404');
+
+        $png_exist=file_exists($bloc->getDirectory('png').'bloc'.$bloc->id.$face.'_'.Str::slug($bloc->location->name).'.png');
 
         if (Str::slug($bloc->location->name)!=$locname)
           return Redirect::to_route('get', array(Str::slug($bloc->location->name),$locid,$blocid));
@@ -167,6 +173,7 @@ class Bloc_Controller extends Base_Controller
             'next'=>       $blocNext,
             'vscale'=>     $vscale,
             'face'=>       $face,
+            'png_exist'=>   $png_exist
         );
 
         $locationArray=$bloc->location->presenter();

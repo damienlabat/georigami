@@ -75,9 +75,10 @@ location@endsection
 
  <a href='{{ URL::to('new') }}?lat={{$location->lat}}&amp;lng={{$location->lng}}' class='btn btn-primary'>{{__('georigami.buildnew')}}</a>
 
-    <h3>Rendu</h3>
+<?php
+      // <h3>Rendu</h3>
 
-    <?php
+    
       // TODO !
     ?>
 
