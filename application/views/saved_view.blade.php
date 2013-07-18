@@ -55,6 +55,7 @@ savedview@endsection
 <a href='{{$url}}' title="{{$saved->bloc->location->name}}">
   <img class='imgprofil' src='{{URL::base()}}png/view/{{ $saved->getDirectoryNum() }}/view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png' alt="{{$saved->bloc->location->name}}" title="{{$saved->bloc->location->name}}"/>
 </a>
+<a href='{{URL::base()}}png/view/{{ $saved->getDirectoryNum() }}/view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png' title="{{$saved->bloc->location->name}}">view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png</a><br/>
 @else
 <a href='{{$url}}'   title="{{$saved->bloc->location->name}}">
   {{ $svg }}

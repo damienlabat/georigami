@@ -70,16 +70,16 @@ class Build_Task {
 
             
             if ( (!file_exists($bloc->getDirectory('png').'bloc'.$bloc->id.'N_'.Str::slug($bloc->location->name).'.png')) || ($force) ) 
-                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'N_'.Str::slug($bloc->location->name).'.png -w 226 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg'); 
+                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'N_'.Str::slug($bloc->location->name).'.png -w 256 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'N.svg'); 
 
             if ( (!file_exists($bloc->getDirectory('png').'bloc'.$bloc->id.'E_'.Str::slug($bloc->location->name).'.png')) || ($force) ) 
-                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'E_'.Str::slug($bloc->location->name).'.png -w 226 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg'); 
+                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'E_'.Str::slug($bloc->location->name).'.png -w 256 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'E.svg'); 
             
              if ( (!file_exists($bloc->getDirectory('png').'bloc'.$bloc->id.'W_'.Str::slug($bloc->location->name).'.png')) || ($force) ) 
-                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'W_'.Str::slug($bloc->location->name).'.png -w 226 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg'); 
+                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'W_'.Str::slug($bloc->location->name).'.png -w 256 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'W.svg'); 
             
              if ( (!file_exists($bloc->getDirectory('png').'bloc'.$bloc->id.'S_'.Str::slug($bloc->location->name).'.png')) || ($force) ) 
-                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'S_'.Str::slug($bloc->location->name).'.png -w 226 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg'); 
+                exec('inkscape -z -e '.$bloc->getDirectory('png').'bloc'.$bloc->id.'S_'.Str::slug($bloc->location->name).'.png -w 256 '.$bloc->getDirectory('svg').'bloc'.$bloc->id.'S.svg'); 
                                      
             ob_flush();
         }       
@@ -150,7 +150,7 @@ class Build_Task {
                 $svg= profil::profil_svg($saved->bloc->profil_data($params['face']), $params);
                 File::put( path('public').'./png/view/temp.svg', $svg );
                
-                exec('inkscape -z -e '.$saved->getDirectory('png').'view'.$saved->id.'_'.Str::slug($saved->bloc->location->name).'.png -w 1140 '.path('public').'./png/view/temp.svg');                       
+                exec('inkscape -z -e '.$saved->getDirectory('png').'view'.$saved->id.'_'.Str::slug($saved->bloc->location->name).'.png -w 2048 '.path('public').'./png/view/temp.svg');                       
             }
 
             ob_flush();
