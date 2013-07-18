@@ -32,7 +32,7 @@ index@endsection
             <div class=' bloc clearfix'>
               <img src="{{URL::base()}}svg/{{ $bloc->getDirectoryNum() }}/bloc{{ $bloc->id }}{{ $face }}.svg" title="{{ $face }} view">
 
-              <a href='{{ $bloc->get_url() }}'>
+              <a href='{{ $bloc->get_url('profil') }}?face={{ $face }}'>
                <h4><?php
             if ($bloc->location->name!='unknown place')  echo $bloc->location->name;
             elseif  ($bloc->location->adminname4!='')  echo $bloc->location->adminname4;
