@@ -49,5 +49,6 @@ bloc3d@endsection
 @section('script')
         <script>
             Georigami.bloc={{ $bloc_json }};
+            Georigami.location={{$location_json}};
         </script>
 @endsection

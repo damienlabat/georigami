@@ -9,12 +9,12 @@ savedview@endsection
 
 @section('content')
 
-<a href='{{$url}}' title='{{$saved->bloc->location->name}}'><h1>{{$saved->bloc->location->name}}</h1></a>
+<a href='{{$url}}' title="{{$saved->bloc->location->name}}"><h1>{{$saved->bloc->location->name}}</h1></a>
 
 <div class="row">
 
         <div class="span4 blocmenu">
-            <a href='{{$url}}' title='{{$saved->bloc->location->name}}'>
+            <a href='{{$url}}' title="{{$saved->bloc->location->name}}">
               <h4>{{$saved->bloc->location->name}}</h1>
             </a>
             <img src="{{URL::base()}}img/flags/{{ strtolower($saved->bloc->location->countrycode) }}.png" title="{{ $saved->bloc->location->countrycode }}" alt=""/> <a href="{{ URL::to('map') }}#{{ strtolower($saved->bloc->location->countrycode) }}" class="countryname">{{ $saved->bloc->location->countryname}}</a><br/>
@@ -28,15 +28,15 @@ savedview@endsection
 
 
         <div class="span8">
-          <div id="map-canvas2"></div>
+          <div id="map-canvas2" class='blocsmap'></div>
         </div>
 </div>        
 
-<a href='{{$url}}' title='{{$saved->bloc->location->name}}' class='ifnotsvg'>
-  <img src='{{URL::base()}}png/view/{{ $saved->getDirectoryNum() }}/view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png' alt='{{$saved->bloc->location->name}}'/>
+<a href='{{$url}}' class='ifnotsvg' title="{{$saved->bloc->location->name}}">
+  <img src='{{URL::base()}}png/view/{{ $saved->getDirectoryNum() }}/view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png' alt="{{$saved->bloc->location->name}}" title="{{$saved->bloc->location->name}}"/>
 </a>
 
-<a href='{{$url}}' title='{{$saved->bloc->location->name}}' class='ifsvg'>
+<a href='{{$url}}' class='ifsvg'  title="{{$saved->bloc->location->name}}">
   {{ $svg }}
 </a>
 

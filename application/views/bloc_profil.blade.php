@@ -133,5 +133,6 @@ foreach ($styleList as $key => $value) {
         <script>
             Georigami.profil={{ json_encode( $profil_data ) }};
             Georigami.svg_hscale={{ $svg_hscale }};
+            Georigami.location={{$location_json}};
         </script>
 @endsection

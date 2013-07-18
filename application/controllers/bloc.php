@@ -165,6 +165,10 @@ class Bloc_Controller extends Base_Controller
             'face'=>       $face,
         );
 
+        $locationArray=$bloc->location->presenter();
+        $locationArray['blocs']=array($bloc->presenter());
+        $data['location_json']= json_encode($locationArray);
+
         if ($show=='print') {
             $data['hidecut']=       Input::get('hidecut', null);
             $data['hidetext']=      Input::get('hidetext', null);

@@ -44,7 +44,7 @@ location@endsection
         </div>
 
         <div class="span8">
-          <div id="map-canvas2"></div>
+          <div id="map-canvas2" class='blocsmap'></div>
         </div>
 
       </div>

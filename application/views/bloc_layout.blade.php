@@ -47,13 +47,16 @@
                 {{$bloc->location->adminname1}}<br/>
 
             </div>
-            <div class="span6">
+            <div class="span2">
                 {{__('georigami.altitude',array('from'=>round($bloc->min), 'to'=>round($bloc->max)))}}<br/>
                 {{$bloc->width}}m x {{$bloc->height}}m<br/>
                 {{__('georigami.rotation')}} {{$bloc->rotate}}°<br/>
                 {{__('georigami.slices')}} {{$bloc->hslices}} x {{$bloc->vslices}}<br/>
                 {{$bloc->vslices*$bloc->vsamples + $bloc->hslices*$bloc->hsamples}} samples<br/>
                 {{$bloc->created_at_localized}}
+            </div>
+            <div class="span6">
+              <div id="map-canvas3" class='blocsmap'></div>
             </div>
       </div>
 
@@ -71,5 +74,7 @@
 @endsection
 
 @section('script')
-
+        <script>
+             Georigami.location={{$location_json}};
+        </script>
 @endsection
