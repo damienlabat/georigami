@@ -5,7 +5,7 @@ return array(
 
     'title' => 'Georigami',
 
-    'footer'  => 'Carte et données altimétriques <a href=\'https://developers.google.com/maps/documentation/javascript/elevation\'>Google Maps</a> - Toponymie <a href=\'http://www.geonames.org/\'>geonames.org</a> - Retrouvez le code source sur <a href=\'https://github.com/damienl/georigami\'>GitHub</a>',
+    'footer'  => 'Création <a href="http://www.damienlabat.fr">Damien Labat</a> - Carte et données altimétriques <a href=\'https://developers.google.com/maps/documentation/javascript/elevation\'>Google Maps</a> - Toponymie <a href=\'http://www.geonames.org/\'>geonames.org</a> - Retrouvez le code source sur <a href=\'https://github.com/damienl/georigami\'>GitHub</a>',
 
     'lastones' => 'derniers blocs',
     'lastsaved' => 'derniers rendus',
