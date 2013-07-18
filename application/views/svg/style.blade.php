@@ -30,8 +30,33 @@
       fill: #99e663;
     }
 
+    #svgprofil.previewN polygon,
+    #svgprofil.previewN .gslice rect {
+      fill: #99e663;
+    }
 
-    #svgprofil.preview polyline.topline {
+    #svgprofil.previewE polygon,
+    #svgprofil.previewE .gslice rect {
+      fill: #63dbe5;
+    }
+
+    #svgprofil.previewS polygon,
+    #svgprofil.previewS .gslice rect {
+      fill: #af63e5;
+    }
+
+    #svgprofil.previewW polygon,
+    #svgprofil.previewW .gslice rect {
+      fill: #e56e63;
+    }
+
+
+    #svgprofil.preview polyline.topline,
+    #svgprofil.previewN polyline.topline,
+    #svgprofil.previewE polyline.topline,
+    #svgprofil.previewW polyline.topline,
+    #svgprofil.previewS polyline.topline
+     {
       stroke-width: 0.3;
       stroke:black;
     }

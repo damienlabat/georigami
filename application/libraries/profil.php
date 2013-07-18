@@ -44,7 +44,7 @@ class profil
 
             $profilData=$bloc->profil_data($face);
 
-            $data['style']=       'preview';
+            $data['style']=       'preview'.$face;
             $data['dx']=          0;
 
             if (($face=='N')||($face=='S'))
