@@ -46,21 +46,25 @@ class Bloc_Controller extends Base_Controller
         if (!$saved= Savedview::with('bloc')->find($id)) return Response::error('404');
         if (Str::slug($saved->bloc->location->name)!=$locname) return Response::error('404');
 
-        $params=json_decode($saved->params, true);
-
-        
+        $png_exist= file_exists($saved->getDirectory('png').'view'.$saved->id.'_'.Str::slug($saved->bloc->location->name).'.png');
+        $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
 
         $locationArray=$saved->bloc->location->presenter();
         $locationArray['blocs']=array($saved->bloc->presenter());
 
-        $params=json_decode($saved->params, true);
-        $params['header']=      false;
-        $params['crop']=      false;
-        $params['reduce']=      false;
-        $svg= profil::profil_svg($saved->bloc->profil_data($params['face']), $params);
+        if (!$png_exist) {
+            $params=json_decode($saved->params, true);
+            $params['header']=      false;
+            $params['crop']=      false;
+            $params['reduce']=      false;
+            $svg= profil::profil_svg($saved->bloc->profil_data($params['face']), $params);
+        }
+        else {
+            $svg=false;
+        }
 
-        $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
-        return View::make('saved_view')->with(array('saved'=>$saved, 'location_json'=> json_encode($locationArray), 'url'=>$url, 'svg'=>$svg));
+       
+        return View::make('saved_view')->with(array('saved'=>$saved, 'location_json'=> json_encode($locationArray), 'url'=>$url, 'svg'=>$svg, 'png_exist'=>$png_exist));
 
         
         //return Redirect::to($url);

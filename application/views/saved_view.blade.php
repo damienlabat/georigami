@@ -32,13 +32,15 @@ savedview@endsection
         </div>
 </div>        
 
-<a href='{{$url}}' class='ifnotsvg' title="{{$saved->bloc->location->name}}">
-  <img src='{{URL::base()}}png/view/{{ $saved->getDirectoryNum() }}/view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png' alt="{{$saved->bloc->location->name}}" title="{{$saved->bloc->location->name}}"/>
+@if (TRUE==$png_exist)
+<a href='{{$url}}' title="{{$saved->bloc->location->name}}">
+  <img class='imgprofil' src='{{URL::base()}}png/view/{{ $saved->getDirectoryNum() }}/view{{$saved->id}}_{{Str::slug($saved->bloc->location->name)}}.png' alt="{{$saved->bloc->location->name}}" title="{{$saved->bloc->location->name}}"/>
 </a>
-
-<a href='{{$url}}' class='ifsvg'  title="{{$saved->bloc->location->name}}">
+@else
+<a href='{{$url}}'   title="{{$saved->bloc->location->name}}">
   {{ $svg }}
 </a>
+ @endif
 
 <a href='{{$url}}' title='modifier' class='btn'>{{__('georigami.edit')}}</a>
 
