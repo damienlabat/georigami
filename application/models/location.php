@@ -72,6 +72,8 @@ class location extends BaseModel
             $dataJson['lng']=number_format($dataJson['lng'], 5, '.', '');
         }
 
+        if (!isset($dataJson['geonameId'])) $dataJson['geonameId']=null;
+
         if ($location= self::where('geonameId', '=', $dataJson['geonameId'])->first() )
             return $location;
 

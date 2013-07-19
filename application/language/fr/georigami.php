@@ -33,24 +33,26 @@ return array(
     'searchbynameplaceholder' => '',
     'width' => 'largeur',
     'height' => 'hauteur',
-    'rotate' => 'rotate',
+    'rotate' => 'rotation',
 
     'setslices' => 'paramètres',
 
-    'hslices' => 'horizontal slice number',
-    'vslices' => 'vertical slice number',
-    'hxsampling' => 'horizontal X sampling',
-    'hsampling' => 'horizontal sampling',
-    'vxsampling' => 'vertical X sampling',
-    'vsampling' => 'vertical sampling',
+    'hslices' => 'nombre de coupe horizontales',
+    'vslices' => 'nombre de coupe verticales',
+    
+    'hxsampling' => 'sur-échantillonage horizontal',
+    'hsampling' => 'échantillonage horizontal',
+    'vxsampling' => 'échantillonage vertical',
+    'vsampling' => 'sur-échantillonage vertical',
 
     //!TODO
-    'hslicestip' => 'horizontal slice number',
-    'vslicestip' => 'vertical slice number',
-    'hxsamplingtip' => 'horizontal X sampling',
-    'hsamplingtip' => 'horizontal sampling',
-    'vxsamplingtip' => 'vertical X sampling',
-    'vsamplingtip' => 'vertical sampling',
+    'hslicestip' => 'nombre de coupe horizontales',
+    'vslicestip' => 'nombre de coupe verticales',
+
+    'hxsamplingtip' => 'sur-échantillonage horizontal',
+    'hsamplingtip' => 'échantillonage horizontal',
+    'vxsamplingtip' => 'sur-échantillonage vertical',
+    'vsamplingtip' => 'échantillonage vertical',
 
     'loadbutton' => 'démarrer',
     'cancelbutton' => 'annuler',

@@ -343,16 +343,19 @@ $('#input-search').change( function(){
               $.ajax({
                 url: Georigami.baseurl+Georigami.lang+'/new',
                 type: "POST",
-                data: post,
-                success: function(data){
-
-
+                data: post})
+                .done(function(data){
                   var visu= visuSlice( Georigami.results.length+1, data, $('#resultats') );
                   Georigami.results.push( { data:data } );
                   showLoading();
 
-                  }
+                  })
+                .fail(function(jqXHR, textStatus) {
+                  console.log(jqXHR);
+                  showLoading( '<h1 style="color:red">'+jqXHR.statusText+'</h1><div style="text-align:left">'+jqXHR.responseText+'</div>');
                 });
+
+                
 
               }
        };
