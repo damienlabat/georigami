@@ -190,6 +190,8 @@ class Bloc_Controller extends Base_Controller
 
         if (($show=='profil')||($show=='download')) {
 
+            ini_set('memory_limit','512M');
+
             $profilData=$bloc->profil_data($face);
 
             $data['style']=       Input::get('style', '');
