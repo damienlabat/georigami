@@ -52,6 +52,7 @@ class Bloc_Controller extends Base_Controller
 
         $png_exist= file_exists($saved->getDirectory('png').'view'.$saved->id.'_'.Str::slug($saved->bloc->location->name).'.png');
         $url=$saved->bloc->get_url('profil').'?'.http_build_query(json_decode($saved->params));
+        $urldownload=$saved->bloc->get_url('download').'?'.http_build_query(json_decode($saved->params));
 
         $locationArray=$saved->bloc->location->presenter();
         $locationArray['blocs']=array($saved->bloc->presenter());
@@ -68,7 +69,7 @@ class Bloc_Controller extends Base_Controller
         }
 
        
-        return View::make('saved_view')->with(array('saved'=>$saved,'prev'=> $savedPrev,'next'=>$savedNext, 'location_json'=> json_encode($locationArray), 'url'=>$url, 'svg'=>$svg, 'png_exist'=>$png_exist));
+        return View::make('saved_view')->with(array('saved'=>$saved,'prev'=> $savedPrev,'next'=>$savedNext, 'location_json'=> json_encode($locationArray), 'url'=>$url, 'urldownload'=>$urldownload, 'svg'=>$svg, 'png_exist'=>$png_exist));
 
         
         //return Redirect::to($url);
@@ -221,7 +222,7 @@ class Bloc_Controller extends Base_Controller
             );
 
             $params=Input::get();
-            if ( !Agent::is_robot() ) $showinsaved=true;
+            if ( (!Agent::is_robot()) && (strpos($_SERVER['HTTP_USER_AGENT'],'robot')==false) ) $showinsaved=true;
                 else  $showinsaved=false;
 
             profil::save_view($bloc, $profilData, $params, $showinsaved);
