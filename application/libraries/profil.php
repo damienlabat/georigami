@@ -26,10 +26,53 @@ class profil
         if (!isset($options['crop']))   $options['crop']=false;
 
         $data=array_merge($profilData, $options);
+        $data['slCount']= count($data['coords']);
 
           $data['svg_vscale']= $data['vscale'] * $data['svg_hscale'];
+          $data['viewbox']= self::get_vb($data);
 
         return View::make('svg/profil')->with($data);
+
+    }
+
+
+
+    public static function get_vb($data) {
+
+        $viewbox=array( 'left'=>1000, 'right'=>0, 'top'=>1000, 'bottom'=>0 );
+
+
+        foreach ($data['coords'] as $k=>$slice) {
+
+            $SCALE= 1-$data['dscale']*((($data['slCount']-1)-$k)/$data['slCount']);
+
+            $left=   ($k-$data['slCount']/2) *$data['dx'] + $data['dim']/2*$data['svg_hscale'] - $data['dim']/2*$data['svg_hscale']*$SCALE;
+            $right=  ($k-$data['slCount']/2) *$data['dx'] + $data['dim']/2*$data['svg_hscale'] + $data['dim']/2*$data['svg_hscale']*$SCALE;
+
+            $bottom= ($k-$data['slCount']/2) *$data['dy'] + $data['max']*$data['svg_hscale'];
+            $top=    ($k-$data['slCount']/2) *$data['dy'] + $data['max']*$data['svg_hscale'] - $slice->m*$data['svg_vscale']*$SCALE;
+
+            
+
+            if ( $top < $viewbox['top'] )       $viewbox['top']=$top;
+            if ( $bottom > $viewbox['bottom'] ) $viewbox['bottom']=$bottom;
+
+            if ( $left < $viewbox['left'] )   $viewbox['left']=$left;
+            if ( $right > $viewbox['right'] ) $viewbox['right']=$right;
+        }
+
+
+     //marge 5%
+        $width=  $viewbox['right']-$viewbox['left'];
+        $height= $viewbox['bottom']-$viewbox['top'];
+
+        $viewbox['left']  -= $width*0.05;
+        $viewbox['right'] += $width*0.05;
+
+        $viewbox['top']  -= $height*0.05;
+        $viewbox['bottom'] += $height*0.1;
+
+        return $viewbox;
 
     }
 

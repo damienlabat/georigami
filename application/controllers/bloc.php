@@ -222,10 +222,12 @@ class Bloc_Controller extends Base_Controller
             );
 
             $params=Input::get();
-            if ( (!Agent::is_robot()) && (strpos($_SERVER['HTTP_USER_AGENT'],'robot')==false) ) $showinsaved=true;
+            if ( (!Agent::is_robot()) && (strpos($_SERVER['HTTP_USER_AGENT'],'robot')==false) && (strpos($_SERVER['HTTP_USER_AGENT'],'spider')==false) ) $showinsaved=true;
                 else  $showinsaved=false;
 
             profil::save_view($bloc, $profilData, $params, $showinsaved);
+
+            if (!$showinsaved) return Response::error('404');
 
             return Response::make(
                 $data['svg'], 200, array(

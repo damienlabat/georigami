@@ -149,6 +149,8 @@ class bloc extends BaseModel
             $slice['m']=-9999999;
             $slice['c']=array();
 
+            ini_set('memory_limit','512M');
+
             foreach ($value as $pt) {
                 if ($pt[1]>$slice['m']) $slice['m']=$pt[1];
                 if ( (!is_numeric($pt[0])) || (!is_numeric($pt[1])) ) return FALSE;
@@ -181,7 +183,7 @@ class bloc extends BaseModel
     public function get_coords()
     {
        $contents = File::get($this->getDirectory().$this->id.'.json');
-
+        ini_set('memory_limit','512M');
        return json_decode($contents);
     }
 

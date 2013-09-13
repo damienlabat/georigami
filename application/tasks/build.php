@@ -97,7 +97,7 @@ class Build_Task {
     {
         $force= in_array('force', $arguments);
 
-    	$views=Savedview::all();
+    	$views=Savedview::where('show', '=', true)->get();     
     	$n=0;
 
         $dir= path('public').'./svg/view/';
@@ -129,6 +129,7 @@ class Build_Task {
 
     public function view_png($arguments)
     {
+        /* !TODO recuperer width et height from viewbox */
         $force= in_array('force', $arguments);
 
         $views=Savedview::where('show', '=', true)->get();        
@@ -147,6 +148,7 @@ class Build_Task {
                 $params['header']=      true;
                 $params['crop']=      false;
                 $params['reduce']=      false;
+                $data=
                 $svg= profil::profil_svg($saved->bloc->profil_data($params['face']), $params);
                 File::put( path('public').'./png/view/temp.svg', $svg );
                

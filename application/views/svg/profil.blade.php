@@ -1,9 +1,9 @@
 <?php
 if ($header) echo HTML::SVG_header();
-$slCount= count($coords);
+//$slCount= count($coords);
 
 // GET VIEW BOX
-$viewbox=array( 'left'=>1000, 'right'=>0, 'top'=>1000, 'bottom'=>0 );
+/*$viewbox=array( 'left'=>1000, 'right'=>0, 'top'=>1000, 'bottom'=>0 );
 
 
 foreach ($coords as $k=>$slice) {
@@ -34,7 +34,9 @@ foreach ($coords as $k=>$slice) {
     $viewbox['right'] += $width*0.05;
 
     $viewbox['top']  -= $height*0.05;
-    $viewbox['bottom'] += $height*0.1;
+    $viewbox['bottom'] += $height*0.1;*/
+
+
 
     /*$rect_height=max($svg_vscale*$max/10, $svg_hscale*$dim/10);  // TODO! tester*/
     $rect_height=$svg_vscale*$max/10;
